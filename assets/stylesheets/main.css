@@ -6,6 +6,10 @@ html, body {
     background-color: #E6E2DB;
 }
 
+body {
+    position: relative;
+}
+
 header {
     padding-bottom: 15px;
 }
@@ -39,6 +43,25 @@ p {
 .name {
     font-family: georgia, 'palatino', 'palatino linotype', serif;
 }
+
+
+/* FOOTER STYLES ============================================================ */
+
+footer {
+    color: white;
+    background-color: #0f2c26;
+    padding: 30px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
 
 /* NAV STYLES =============================================================== */
 
@@ -233,6 +256,7 @@ article {
     z-index: 1;
 }
 
+
 @media (max-width:1800px) {
     .intro {
         left: 45%;
@@ -307,6 +331,7 @@ article {
     }
 
     article {
+        position: relative;
         width: 100%;
         padding-bottom: 100px;
     }
@@ -330,6 +355,11 @@ article {
     .intro p {
         padding-right: 0;
     }
+}
+
+#under-construction {
+    color: #BE6D53;
+    text-transform: uppercase;
 }
 
 
@@ -392,10 +422,6 @@ li:hover .tooltiptext {
     visibility: visible;
 }
 
-.easter-egg {
-    color: #20BF55;
-}
-
 .p-tooltiptext {
     visibility: hidden;
     width: 150px;
@@ -415,11 +441,56 @@ a:hover .p-tooltiptext, a:hover .tooltiptext {
 }
 
 
-/* FOOTER STYLES ============================================================ */
+/* GEARS ANIMATION ========================================================== */
 
-footer {
-    color: white;
-    background-color: #0f2c26;
-    padding: 30px;
+.centered-text {
+    position: relative;
     text-align: center;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+}
+
+#construction-center {
+    padding-top: 40px;
+    text-align: center;
+    margin: auto;
+    width: 10%;
+}
+
+.three-cogs {
+    color: #B5614C;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 5%;
+}
+
+.fa:first-child {
+    animation-duration: 4s;
+}
+
+.fa:nth-child(2), .fa:last-child {
+    position: absolute;
+    top: -0.2em;
+    left: 0.5em;
+    animation-direction: reverse;
+    animation-duration: 2s;
+}
+
+.fa:last-child {
+    top: auto;
+    bottom: -0.2em;
+}
+
+@keyframes barrelRoll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes invertBarrelRoll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
 }
