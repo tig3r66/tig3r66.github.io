@@ -341,10 +341,10 @@ a:hover .p-tooltiptext, a:hover .tooltiptext {
 
 .fa:nth-child(2), .fa:last-child {
     position: absolute;
-    top: -0.2em;
-    left: 0.5em;
+    top: -0.25em;
+    left: 0.45em;
     animation-direction: reverse;
-    animation-duration: 2s;
+    animation-duration: 2.25s;
 }
 
 .fa:last-child {
