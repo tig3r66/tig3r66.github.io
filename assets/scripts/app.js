@@ -16,33 +16,28 @@ function navHighlight(elem, active) {
 }
 
 
-// animates the burger slide
-function navSlide() {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
-
-    burger.addEventListener('click', () => {
+// animates the burger slide and link fades
+function navExpand() {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    const links = document.querySelectorAll(".nav-links li");
+    
+    hamburger.addEventListener("click", () => {
         // toggle nav
-        nav.classList.toggle('nav-active');
-
-        // animate links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = ``;
-            } else {
-                link.style.animation = `navLinkFadeIn 0.45s ease forwards ${index / 7 + 0.25}s`;
-            }
-        });
-
+        navLinks.classList.toggle('nav-active');
         // burger animation
-        burger.classList.toggle('toggle');
+        hamburger.classList.toggle('toggle');
+        // link animation
+        navLinks.classList.toggle("open");
+        links.forEach(link => {
+            link.classList.toggle("fade");
+        });
     });
 }
 
 
 // for typewriter effect
-var TxtRotate = function(el, toRotate, period) {
+var txtRotate = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
@@ -52,7 +47,8 @@ var TxtRotate = function(el, toRotate, period) {
     this.isDeleting = false;
 };
 
-TxtRotate.prototype.tick = function() {
+
+txtRotate.prototype.tick = function() {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
 
@@ -82,7 +78,7 @@ TxtRotate.prototype.tick = function() {
         that.tick();
     }, delta);
 };
-  
+
 window.onload = function() {
     var elements = document.getElementsByClassName('txt-rotate');
 
@@ -90,11 +86,11 @@ window.onload = function() {
         var toRotate = elements[i].getAttribute('data-rotate');
         var period = elements[i].getAttribute('data-period');
         if (toRotate) {
-            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            new txtRotate(elements[i], JSON.parse(toRotate), period);
         }
     }
 
-    // INJECT CSS
+    // inject CSS
     var css = document.createElement("style");
     css.type = "text/css";
     css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid #BE6D53 }";
@@ -102,11 +98,10 @@ window.onload = function() {
 };
 
 
-
 // MAIN FUNCTION
 const app = ()=> {
-    navSlide();
     navHighlight('nav .nav-links a', 'current');
+    navExpand();
 }
 
 app();

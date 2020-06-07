@@ -4,122 +4,123 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="assets/stylesheets/reset.css">
         <link rel="stylesheet" href="assets/stylesheets/main.css">
+        <link rel="stylesheet" href="assets/stylesheets/styles.css">
         <title>Eddie Guo</title>
         <!-- font awesome icons -->
         <script src="https://kit.fontawesome.com/aa1eb67981.js" crossorigin="anonymous"></script>
         <!-- fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Libre+Baskerville&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     </head>
 
 
     <body>
         <div id="page-container">
+
             <header>
                 <nav>
-                    <div class="logo">
-                        <h1>
-                            <a href="index.html" class="name current">Eddie Guo</a>
-                        </h1>
-                    </div>
+                    <div class="nav-container">
+                        <!-- name -->
+                        <div class="logo">
+                            <h1><a href="index.html" class="name current">Eddie Guo</a></h1>
+                        </div>
 
-                    <ul class="nav-links">
-                        <li><a href="index.html" class="current">Home</a></li>
-                        <li><a href="construction.html">Projects</a></li>
-                        <li><a href="construction.html">Research</a></li>
-                        <li><a href="construction.html">Contact</a></li>
-                    </ul>
+                        <!-- navigation links -->
+                        <ul class="nav-links">
+                            <li><a href="index.html" class="current">Home</a></li>
+                            <li><a href="construction.html">Projects</a></li>
+                            <li><a href="construction.html">Research</a></li>
+                            <li><a href="construction.html">Contact</a></li>
+                        </ul>
 
-                    <div class="burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
+                        <!-- burger menu icon -->
+                        <div class="hamburger">
+                            <div class="line1"></div>
+                            <div class="line2"></div>
+                            <div class="line3"></div>
+                        </div>
                     </div>
                 </nav>
 
-                <!-- uni affiliation -->
-                <div class="affiliation">
-                    <a class="current">BSc Engineering Student<br>University of Alberta</a>
-                </div>
-            </header>
+                <section class="affiliation current">
+                    <p>BSc Eng Student<br>University of Alberta</p>
+                </section>
 
-
-            <article>
                 <div class="spacer"></div>
 
-                <div class="container-outer">
-                    <picture>
-                        <img class="profile-pic" src="assets/img/eddieguo.jpeg">
-                    </picture>
+                <section class="header-header">
+                    <div class="mobile-spacer"></div>
 
-                    <div class="article-container">
-                        <div class="spacer article-spacer"></div>
-                        <div class="spacer article-spacer"></div>
-                        <div class="spacer article-spacer"></div>
-                    </div>
+                    <section class="picture">
+                        <img class="profile-pic" src="assets/img/eddieguo.jpeg">
+                    </section>
 
                     <section class="intro">
-                        <h1>Eddie Guo
-                            <h2>
-                                <span class="txt-rotate" data-period="2000" data-rotate='[ "Creator", "Innovator", "Educator", "Researcher" ]'></span>
-                            </h2>
-                        </h1>
+                        <div class="page-name-container">
+                            <h2>Eddie Guo</h2>
+                            <h3>
+                                <span class="txt-rotate" data-period="2000" data-rotate='[ "Innovator", "Leader", "Creator", "Educator", "Researcher" ]'></span>
+                            </h3>
+    
+                            <div class="head-p-spacer"></div>
+    
+                            <p>
+                                Hello world! I'm an undergraduate student who is passionate about <a class="easter-egg">computational methods <span class="tooltiptext">CS!</span></a> in <a class="easter-egg"> human physiological systems <span class="p-tooltiptext">Biomechanics and signal processing galore :)</span></a>. I love to tinker with the interface between software and hardware in the context of <a class="easter-egg">human biology <span class="p-tooltiptext">Especially relating to the nervous system</span></a>. Feel free to reach out (hot tip: hover your cursor over the icons below)!
+                            </p>
 
-                        <h4>
-                            <br><br>
-                            <strong>Engineering Student, University of Alberta</strong>
-                        </h4>
-                        <p>
-                            Hello world! I'm an undergraduate student who is passionate about <a class="easter-egg">computational methods <span class="tooltiptext">CS!</span></a> in <a class="easter-egg"> human physiological systems <span class="p-tooltiptext">Biomechanics and signal processing galore :)</span></a>. I love to tinker with the interface between software and hardware in the context of <a class="easter-egg">human biology <span class="p-tooltiptext">Especially relating to the nervous system</span></a>. Feel free to reach out (hot tip: hover your cursor over the icons below)!
-                        </p>
+                            <div class="head-p-spacer"></div>
 
-                        <ul class="social-media-icons">
-                            <li id="github-icon">
-                                <a href="https://github.com/tig3r66" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    <span class="tooltiptext">GitHub</span>
-                                </a>
-                            </li>
-                            <!-- filler -->
-                            <div class="filler"></div>
-                            <li id="cv-icon">
-                                <a href="assets/downloads/eddie_guo_cv.pdf" target="_blank">
-                                    <i class="fas fa-user-circle"></i>
-                                    <span class="tooltiptext">CV</span>
-                                </a>
-                            </li>
-                            <!-- filler -->
-                            <div class="filler"></div>
-                            <li id="linkedin-icon">
-                                <a href="https://www.linkedin.com/in/eguo1/" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span class="tooltiptext">LinkedIn</span>
-                                </a>
-                            </li>
-                            <!-- filler -->
-                            <div class="filler"></div>
-                            <!-- envelope -->
-                            <li id="email-icon">
-                                <a href="mailto:eguo1@ualberta.ca">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="tooltiptext">Email</span>
-                                </a>
-                            </li>
-                        </ul>
+                            <!-- social media icons -->
+                            <ul class="social-media-icons">
+                                <li id="github-icon">
+                                    <a href="https://github.com/tig3r66" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                        <span class="tooltiptext">GitHub</span>
+                                    </a>
+                                </li>
+                                <!-- filler -->
+                                <div class="filler"></div>
+                                <li id="cv-icon">
+                                    <a href="assets/downloads/eddie_guo_cv.pdf" target="_blank">
+                                        <i class="fas fa-user-circle"></i>
+                                        <span class="tooltiptext">CV</span>
+                                    </a>
+                                </li>
+                                <!-- filler -->
+                                <div class="filler"></div>
+                                <li id="linkedin-icon">
+                                    <a href="https://www.linkedin.com/in/eguo1/" target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span class="tooltiptext">LinkedIn</span>
+                                    </a>
+                                </li>
+                                <!-- filler -->
+                                <div class="filler"></div>
+                                <!-- envelope -->
+                                <li id="email-icon">
+                                    <a href="mailto:eguo1@ualberta.ca">
+                                        <i class="fas fa-envelope"></i>
+                                        <span class="tooltiptext">Email</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </section>
-                </div>
-
-            </article>
+                </section>
+            </header>
 
             <div class="spacer"></div>
+
             <footer>
-                <p>
-                    &copy; 2020 by Eddie Guo
-                </p>
+                <div class="footer-container">
+                    <p>
+                        &copy; 2020 by Eddie Guo
+                    </p>
+                </div>
             </footer>
+
         </div>
 
-
         <!-- scripts -->
-        <script src="assets/scripts/script.js"></script>
+        <script src="assets/scripts/app.js"></script>
     </body>
 </html>
