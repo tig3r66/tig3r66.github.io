@@ -4,6 +4,7 @@ html, body {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     background-color: #E6E2DB;
+    overflow: allow;
 }
 
 body {
