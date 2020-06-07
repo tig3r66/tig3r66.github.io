@@ -9,8 +9,6 @@
 
 /* NAV STYLES =============================================================== */
 
-nav { border-bottom: 1px solid black; }
-
 nav a { 
     text-decoration: none;
     color: black;
@@ -31,7 +29,7 @@ nav a:hover, .current {
 }
 
 .logo {
-    padding-left: 5%;
+    padding-left: 0%;
     width: 50%;
 }
 
@@ -120,7 +118,7 @@ nav a:hover, .current {
 /* HEAD CONTENT STYLES ====================================================== */
 
 .affiliation * {
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 5%;
     color: #B5614C;
 }
