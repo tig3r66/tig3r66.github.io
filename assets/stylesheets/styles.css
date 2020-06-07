@@ -220,7 +220,7 @@ nav a:hover, .current {
 
 @media (max-width:1000px) {
     .intro {
-        left: 37.5%;
+        left: 35%;
     } .profile-pic {
         left: 5%;
     }
@@ -228,7 +228,7 @@ nav a:hover, .current {
 
 @media (max-width:900px) {
     .intro {
-        left: 45%;
+        left: 35%;
     } .profile-pic {
         left: 5%;
     }
