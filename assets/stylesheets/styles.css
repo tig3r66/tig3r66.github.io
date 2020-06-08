@@ -252,7 +252,12 @@ nav a:hover, .current {
 
     .intro p { text-align: left; }
 
-    .social-media-icons { justify-content: center; }
+    .social-media-icons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .filler { width: 15px; }
 }
 
 
