@@ -98,28 +98,11 @@ ul, ol, dl {
 }
 
 
-/* SPACER STYLES ============================================================ */
-
-.spacer { padding-bottom: 200px; }
-
-.mobile-spacer { padding-bottom: 450px; }
-
-.spacer-top { padding-bottom: 25px; }
-
-.sec-sec-spacer { padding-bottom: 50px; }
-
-.head-head-spacer { padding-bottom: 10px; }
-
-.head-p-spacer { padding-bottom: 20px; }
-
-.p-p-spacer { padding-bottom: 15px; }
-
-
 /* LAYOUT STYLES ============================================================ */
 
 #page-container {
     position: relative;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 .nav-container {
@@ -162,6 +145,7 @@ ul, ol, dl {
 }
 
 .footer-container {
+    padding-top: 100px;
     display: flex;
     bottom: 0;
     margin-top: auto;
@@ -170,7 +154,6 @@ ul, ol, dl {
 
 footer {
     position: absolute;
-    margin-top: auto;
     width: 100%;
     bottom: 0;
 }

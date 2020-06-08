@@ -112,18 +112,18 @@ nav a:hover, .current {
     padding-top: 10px;
     padding-left: 5%;
     color: #B5614C;
+    padding-bottom: 125px;
 }
 
 .picture {
-    display: flex;
     position: relative;
     flex-direction: column;
 }
 
 .profile-pic {
-    position: absolute;
-    top: -500px;
-    left: 15%;
+    background: transparent;
+    position: relative;
+    top: -75px;
     width: 350px;
     z-index: 1;
 }
@@ -226,8 +226,6 @@ nav a:hover, .current {
 }
 
 @media only screen and (max-width: 875px) {
-    body { height: 100%; }
-
     .header-header {
         display: flex;
         width: 80%;
@@ -255,8 +253,6 @@ nav a:hover, .current {
     }
 
     .intro p { text-align: left; }
-
-    .mobile-spacer { padding: 0; }
 
     .social-media-icons { justify-content: center; }
 }
