@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- custom stylesheets -->
         <link rel="stylesheet" href="assets/stylesheets/reset.css">
         <link rel="stylesheet" href="assets/stylesheets/main.css">
         <link rel="stylesheet" href="assets/stylesheets/styles.css">
@@ -64,7 +66,7 @@
                             <div class="head-p-spacer"></div>
     
                             <p>
-                                Hello world! I'm an undergraduate student who is passionate about <a class="easter-egg">computational<span class="tooltiptext">CS!</span></a> methods in <a class="easter-egg"> human physiological systems <span class="p-tooltiptext">Biomechanics and signal processing galore :)</span></a>. I love to tinker with the interface between software and hardware in the context of <a class="easter-egg">human biology <span class="p-tooltiptext">Especially relating to the nervous system</span></a>. Feel free to reach out (hot tip: hover your cursor over the icons below)!
+                                Hello world! I'm an undergraduate student who is passionate about <a data-toggle="tooltip" data-placement="top" title="CS!">computational</a> methods in human <a data-toggle="tooltip" data-placement="bottom" title="Biomechanics and signal processing galore :)">systems</a>. I love to tinker with the interface between software and hardware in the context of <a data-toggle="tooltip" data-placement="top" title="Especially relating to the nervous system">human</a> biology. Feel free to reach out (hot tip: hover your cursor over the icons below!).
                             </p>
 
                             <div class="head-p-spacer"></div>
@@ -72,34 +74,30 @@
                             <!-- social media icons -->
                             <ul class="social-media-icons">
                                 <li id="github-icon">
-                                    <a href="https://github.com/tig3r66" target="_blank">
+                                    <a href="https://github.com/tig3r66" target="_blank" data-toggle="tooltip" data-placement="bottom" title="GitHub">
                                         <i class="fab fa-github"></i>
-                                        <span class="tooltiptext">GitHub</span>
                                     </a>
                                 </li>
                                 <!-- filler -->
                                 <div class="filler"></div>
                                 <li id="cv-icon">
-                                    <a href="assets/downloads/eddie_guo_cv.pdf" target="_blank">
+                                    <a href="assets/downloads/eddie_guo_cv.pdf" target="_blank" data-toggle="tooltip" data-placement="bottom" title="CV">
                                         <i class="fas fa-user-circle"></i>
-                                        <span class="tooltiptext">CV</span>
                                     </a>
                                 </li>
                                 <!-- filler -->
                                 <div class="filler"></div>
                                 <li id="linkedin-icon">
-                                    <a href="https://www.linkedin.com/in/eguo1/" target="_blank">
+                                    <a href="https://www.linkedin.com/in/eguo1/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="LinkedIn">
                                         <i class="fab fa-linkedin"></i>
-                                        <span class="tooltiptext">LinkedIn</span>
                                     </a>
                                 </li>
                                 <!-- filler -->
                                 <div class="filler"></div>
                                 <!-- envelope -->
                                 <li id="email-icon">
-                                    <a href="mailto:eguo1@ualberta.ca">
+                                    <a href="mailto:eguo1@ualberta.ca" data-toggle="tooltip" data-placement="bottom" title="Email">
                                         <i class="fas fa-envelope"></i>
-                                        <span class="tooltiptext">Email</span>
                                     </a>
                                 </li>
                             </ul>
@@ -121,6 +119,9 @@
         </div>
 
         <!-- scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="assets/scripts/app.js"></script>
     </body>
 </html>

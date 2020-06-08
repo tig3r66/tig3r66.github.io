@@ -102,6 +102,10 @@ window.onload = function() {
 const app = ()=> {
     navHighlight('nav .nav-links a', 'current');
     navExpand();
+    // for bootstrap tooltip
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 }
 
 app();
