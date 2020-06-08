@@ -19,7 +19,7 @@ nav a:hover, .current {
     font-weight: bold;
 }
 
-.nav-links {
+.my-nav-links {
     display: flex;
     width: 50%;
     height: 100%;
@@ -66,7 +66,7 @@ nav a:hover, .current {
         right: 0;
     }
 
-    .nav-links {
+    .my-nav-links {
         z-index: 100;
         position: absolute;
         background: rgba(250, 235, 215, 0.95);
@@ -81,32 +81,24 @@ nav a:hover, .current {
         transform: translateX(-20px) translateY(-10px);
     }
 
-    .nav-links li {
+    .my-nav-links li {
         z-index: 100;
         opacity: 0;
         text-align: center;
     }
 
     /* animating links */
-    .nav-links.open {
+    .my-nav-links.open {
         clip-path: circle(1250px at 100% -20%);
         -webkit-clip-path: circle(1250px at 100% -20%);
         transition: all 1s ease-out;
     }
 
     /* animating navbar */
-    .nav-links li:nth-child(1) {
-        transition: all 0.75s ease 0.1s;
-    }
-    .nav-links li:nth-child(2) {
-        transition: all 0.75s ease 0.2s;
-    }
-    .nav-links li:nth-child(3) {
-        transition: all 0.75s ease 0.3s;
-    }
-    .nav-links li:nth-child(4) {
-        transition: all 0.75s ease 0.4s;
-    }
+    .my-nav-links li:nth-child(1) { transition: all 0.75s ease 0.1s; }
+    .my-nav-links li:nth-child(2) { transition: all 0.75s ease 0.2s; }
+    .my-nav-links li:nth-child(3) { transition: all 0.75s ease 0.3s; }
+    .my-nav-links li:nth-child(4) { transition: all 0.75s ease 0.4s; }
 
     li.fade {
         opacity: 1;
@@ -321,3 +313,10 @@ nav a:hover, .current {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(-360deg); }
 }
+
+
+/* BOOTSTRAP STYLES ========================================================= */
+
+.tooltip-inner { border-radius: 5px; }
+
+.my-tooltip, .my-tooltip:hover { color: white; }

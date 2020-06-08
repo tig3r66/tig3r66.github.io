@@ -19,12 +19,12 @@ function navHighlight(elem, active) {
 // animates the burger slide and link fades
 function navExpand() {
     const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-    const links = document.querySelectorAll(".nav-links li");
-    
+    const navLinks = document.querySelector(".my-nav-links");
+    const links = document.querySelectorAll(".my-nav-links li");
+
     hamburger.addEventListener("click", () => {
         // toggle nav
-        navLinks.classList.toggle('nav-active');
+        navLinks.classList.toggle('my-nav-active');
         // burger animation
         hamburger.classList.toggle('toggle');
         // link animation
@@ -100,7 +100,7 @@ window.onload = function() {
 
 // MAIN FUNCTION
 const app = ()=> {
-    navHighlight('nav .nav-links a', 'current');
+    navHighlight('nav .my-nav-links a', 'current');
     navExpand();
     // for bootstrap tooltip
     $(function () {
