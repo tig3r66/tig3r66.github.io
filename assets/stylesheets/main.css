@@ -13,7 +13,7 @@ html, body {
     background-color: #E6E2DB;
     font-family: 'Lato', sans-serif;
     font-weight: normal;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 h1 *, h2 * {
@@ -112,6 +112,11 @@ ul, ol, dl {
 
 /* LAYOUT STYLES ============================================================ */
 
+#page-container {
+    position: relative;
+    height: 100%;
+}
+
 .nav-container {
     display: flex;
     position: relative;
@@ -159,6 +164,7 @@ ul, ol, dl {
 }
 
 footer {
+    position: absolute;
     margin-top: auto;
     width: 100%;
     bottom: 0;
