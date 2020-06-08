@@ -41,11 +41,7 @@ nav a:hover, .current {
 .toggle .line3 { transform: rotate(45deg) translate(-5px, -5px); }
 
 /* fluid navbar for small screens */
-@media only screen
-and (device-width : 375px) 
-and (device-height : 812px) 
-and (-webkit-device-pixel-ratio : 2),
-only screen and (max-width: 875px) {
+@media screen and (max-width: 940px) {
     .line1, .line2, .line3 {
         z-index: 100;
         width: 30px;
@@ -178,7 +174,7 @@ only screen and (max-width: 875px) {
 
 /* SMALL SCREEN STYLES ====================================================== */
 
-@media (max-width:2048px) {
+@media screen and (max-width: 2048px) {
     .intro {
         left: 20%;
     } .profile-pic {
@@ -186,7 +182,7 @@ only screen and (max-width: 875px) {
     }
 }
 
-@media (max-width:1720px) {
+@media screen and (max-width: 1720px) {
     .intro {
         left: 22.5%;
     } .profile-pic {
@@ -194,7 +190,7 @@ only screen and (max-width: 875px) {
     }
 }
 
-@media (max-width:1480px) {
+@media screen and (max-width: 1480px) {
     .intro {
         left: 27.5%;
     } .profile-pic {
@@ -202,7 +198,7 @@ only screen and (max-width: 875px) {
     }
 }
 
-@media (max-width:1280px) {
+@media screen and (max-width: 1280px) {
     .intro {
         left: 27.5%;
     } .profile-pic {
@@ -210,7 +206,7 @@ only screen and (max-width: 875px) {
     }
 }
 
-@media (max-width:1120px) {
+@media screen and (max-width: 1120px) {
     .intro {
         left: 32.5%;
     } .profile-pic {
@@ -218,7 +214,7 @@ only screen and (max-width: 875px) {
     }
 }
 
-@media (max-width:1000px) {
+@media screen and (max-width: 1000px) {
     .intro {
         left: 35%;
     } .profile-pic {
@@ -226,19 +222,7 @@ only screen and (max-width: 875px) {
     }
 }
 
-@media (max-width:900px) {
-    .intro {
-        left: 35%;
-    } .profile-pic {
-        left: 5%;
-    }
-}
-
-@media only screen and (max-width: 875px)
-and (device-width : 375px) 
-and (device-height : 812px) 
-and (-webkit-device-pixel-ratio : 2),
-only screen and (max-width: 875px) {
+@media screen and (max-width: 940px) {
     .header-header {
         display: flex;
         width: 80%;
@@ -334,3 +318,42 @@ only screen and (max-width: 875px) {
 .tooltip-inner { border-radius: 5px; }
 
 .my-tooltip, .my-tooltip:hover { color: white; }
+
+
+/* CARD GALLERY STYLES ====================================================== */
+
+.card {
+    position: relative;
+    width: 400px;
+    transform-style: preserve-3d;
+}
+
+.card .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.card .face.front {
+    background-color: black;
+}
+
+.card:hover .face.front {
+    transform: rotateY(180deg);
+}
+
+.card .face.back {
+    transform: rotateY(180deg);
+}
+
+.card:hover .face.back {
+    transform: rotateY(360deg);
+}
