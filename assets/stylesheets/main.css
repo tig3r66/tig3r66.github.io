@@ -3,7 +3,7 @@
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
     purple background color: #5F0F40
-    header pink color: #EE3E40
+    header pink color: #ff0074
     white on green: rgb(245, 245, 245)
 */
 
@@ -22,12 +22,12 @@ body {
 }
 
 h1 *, h2 * {
-    color: #EE3E40;
+    color: #ff0074;
     text-decoration: none;
 }
 
 h1, h2 {
-    color: #EE3E40;
+    color: #ff0074;
     font-family: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     font-size: 24px;
     font-weight: bold;
@@ -41,7 +41,7 @@ h2 {
 }
 
 h3 {
-    color: #EE3E40;
+    color: #ff0074;
     font-family: 'Lato', sans-serif;
     font-size: 24px;
 }

@@ -3,20 +3,19 @@
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
     purple background color: #5F0F40
-    header pink color: #EE3E40
+    header pink color: #ff0074
     white on green: rgb(245, 245, 245)
 */
 
 /* NAV STYLES =============================================================== */
-nav a { 
-    text-decoration: none;
-    color: black;
-}
+nav a { color: black; }
 
 nav a:hover, .current {
     color: #5F0F40;
     font-weight: bold;
 }
+
+.my-nav-links li a { text-decoration: none; }
 
 .my-nav-links {
     display: flex;
