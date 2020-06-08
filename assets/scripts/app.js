@@ -93,7 +93,7 @@ window.onload = function() {
     // inject CSS
     var css = document.createElement("style");
     css.type = "text/css";
-    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid #FF5666 }";
+    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid #B80F0A }";
     document.body.appendChild(css);
 };
 

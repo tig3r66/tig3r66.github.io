@@ -2,8 +2,8 @@
     normal font: 'Lato', sans-serif;
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
-    purple background color: #5F0F40
-    header pink color: #ff0074
+    green background color: #00563F
+    header pink color: #B80F0A
     white on green: rgb(245, 245, 245)
 */
 
@@ -11,7 +11,7 @@
 nav a { color: black; }
 
 nav a:hover, .current {
-    color: #5F0F40;
+    color: #B80F0A;
     font-weight: bold;
 }
 
@@ -113,7 +113,7 @@ nav a:hover, .current {
 .affiliation * {
     padding-top: 10px;
     padding-left: 5%;
-    color: #5F0F40;
+    color: #B80F0A;
     padding-bottom: 125px;
 }
 
