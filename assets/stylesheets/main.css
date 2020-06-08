@@ -3,7 +3,7 @@
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
     green background color: #00563F
-    important color: #B5614C
+    important color: #EE3E40
     white on green: rgb(245, 245, 245)
 */
 
@@ -22,12 +22,12 @@ body {
 }
 
 h1 *, h2 * {
-    color: #B5614C;
+    color: #EE3E40;
     text-decoration: none;
 }
 
 h1, h2 {
-    color: #B5614C;
+    color: #EE3E40;
     font-family: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     font-size: 24px;
     font-weight: bold;
@@ -41,7 +41,7 @@ h2 {
 }
 
 h3 {
-    color: #B5614C;
+    color: #EE3E40;
     font-family: 'Lato', sans-serif;
     font-size: 24px;
 }
@@ -117,7 +117,7 @@ ul, ol, dl {
 .header-header {
     position: relative;
     width: 100%;
-    background-color: #00563F;
+    background-color: #5F0F40;
 }
 
 .header-header p { color: rgb(245, 245, 245); }
@@ -139,7 +139,7 @@ ul, ol, dl {
     display: flex;
     justify-content: center;
     color: rgb(245, 245, 245);
-    background-color: #00563F;
+    background-color: #5F0F40;
     padding-top: 30px;
     padding-bottom: 30px;
 }
