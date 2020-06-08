@@ -143,7 +143,6 @@ ul, ol, dl {
 .footer-container * {
     /* display */
     display: flex;
-    position: absolute;
     bottom: 0;
     width: 100%;
     justify-content: center;
@@ -152,11 +151,4 @@ ul, ol, dl {
     background-color: #00563F;
     padding-top: 30px;
     padding-bottom: 30px;
-}
-
-footer {
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
 }
