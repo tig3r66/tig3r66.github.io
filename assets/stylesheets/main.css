@@ -16,7 +16,10 @@ html, body {
     min-height: 100vh;
 }
 
-body { position: relative; }
+body {
+    position: relative;
+    overflow-y: hidden;
+}
 
 h1 *, h2 * {
     color: #B5614C;
