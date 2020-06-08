@@ -7,6 +7,13 @@
     toned-down white: rgb(230, 230, 230)
 */
 
+:root {
+    --main-bg-color: #600B04;
+    --dark-white : rgb(230, 230, 230);
+    --light-white : white;
+    --dark-black: black;
+}
+
 /* MAIN STYLES ============================================================== */
 
 html, body {
@@ -22,12 +29,12 @@ body {
 }
 
 h1 *, h2 * {
-    color: white;
+    color: var(--light-white);
     text-decoration: none;
 }
 
 h1, h2 {
-    color: white;
+    color: var(--light-white);
     font-family: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     font-size: 24px;
     font-weight: bold;
@@ -41,27 +48,27 @@ h2 {
 }
 
 h3 {
-    color: white;
+    color: var(--light-white);
     font-family: 'Lato', sans-serif;
     font-size: 24px;
 }
 
 h4 {
-    color: black;
+    color: var(--dark-black);
     font-family: 'Lato', sans-serif;
     font-size: 24px;
     font-weight: normal;
 }
 
 h5 {
-    color: black;
+    color: var(--dark-black);
     font-family: 'Lato', sans-serif;
     font-size: 18px;
     font-weight: bold;
 }
 
 h6 {
-    color: black;
+    color: var(--dark-black);
     font-family: 'Lato', sans-serif;
     font-size: 18px;
     font-weight: normal;
@@ -71,7 +78,7 @@ h6 {
 /* PARAGRAPH STYLES ========================================================= */
 
 p, .primary-text {
-    color: black;
+    color: var(--dark-black);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -90,7 +97,7 @@ p, .primary-text {
 /* LIST STYLES ============================================================== */
 
 ul, ol, dl {
-    color: black;
+    color: var(--dark-black);
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -111,16 +118,16 @@ ul, ol, dl {
     width: 90%;
     margin: auto;
     padding: 20px 0 20px 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--dark-black);
 }
 
 .header-header {
     position: relative;
     width: 100%;
-    background-color: #600B04;
+    background-color: var(--main-bg-color);
 }
 
-.header-header p { color: rgb(230, 230, 230) }
+.header-header p { color: var(--dark-white) }
 
 .page-name-container {
     position: relative;
@@ -138,8 +145,8 @@ ul, ol, dl {
     width: 100%;
     display: flex;
     justify-content: center;
-    color: rgb(230, 230, 230);
-    background-color: #600B04;
+    color: var(--dark-white);
+    background-color: var(--main-bg-color);
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -170,7 +177,7 @@ footer {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: white;
+    background: var(--light-white);
 }
 
 /* Handle */

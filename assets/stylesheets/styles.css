@@ -7,10 +7,18 @@
     toned-down white: rgb(230, 230, 230)
 */
 
-/* NAV STYLES =============================================================== */
-nav a { color: black; }
+:root {
+    --main-bg-color: #600B04;
+    --dark-white : rgb(230, 230, 230);
+    --light-white : white;
+    --dark-black: black;
+}
 
-nav a:hover, .current { color: #600B04; }
+/* NAV STYLES =============================================================== */
+
+nav a { color: var(--dark-black); }
+
+nav a:hover, .current { color: var(--main-bg-color); }
 
 button {
     background-color: transparent;
@@ -119,7 +127,7 @@ button {
 .affiliation * {
     padding-top: 10px;
     padding-left: 5%;
-    color: #600B04;
+    color: var(--main-bg-color);
     padding-bottom: 125px;
 }
 
@@ -142,7 +150,7 @@ button {
     position: absolute;
     top: 50px;
     left: 45%;
-    color: #600B04;
+    color: var(--main-bg-color);
     width: 60%;
     z-index: 2;
 }
@@ -164,7 +172,7 @@ button {
 }
 
 .social-media-icons a {
-    color: white;
+    color: var(--light-white);
     text-decoration: none;
 }
 
@@ -244,13 +252,13 @@ button {
 
     .my-nav-links .fade-in:hover {
         padding: 10px 40px;
-        color: white;
-        background-color: #600B04;
+        color: var(--light-white);
+        background-color: var(--main-bg-color);
         border-radius: 15px;
     }
 
     .my-nav-links .fade-in:hover a {
-        color: #600B04;
+        color: var(--main-bg-color);
     }
 
     .header-header {
@@ -304,12 +312,12 @@ button {
 .construction * {
     text-align: center;
     text-transform: uppercase;
-    color: rgb(245, 245, 245);
+    color: var(--dark-white);
 }
 
 .three-cogs {
     position: relative;
-    color: white;
+    color: var(--light-white);
     display: flex;
     justify-content: center;
     width: 5%;
@@ -353,7 +361,7 @@ button {
 
 .tooltip-inner { border-radius: 5px; }
 
-.my-tooltip, .my-tooltip:hover { color: rgb(230, 230, 230); }
+.my-tooltip, .my-tooltip:hover { color: var(--dark-white); }
 
 
 /* CARD GALLERY STYLES ====================================================== */
@@ -379,7 +387,7 @@ button {
 }
 
 .card .face.front {
-    background-color: black;
+    background-color: var(--dark-black);
 }
 
 .card:hover .face.front {
