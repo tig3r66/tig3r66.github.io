@@ -154,7 +154,9 @@ ul, ol, dl {
     padding-bottom: 30px;
 }
 
-#page-container {
+footer {
+    clear: both;
     position: relative;
-    min-height: 100vh;
+    height: 200px;
+    margin-top: -200px;
 }
