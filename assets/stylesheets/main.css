@@ -1,16 +1,16 @@
 /*
     normal font: 'Lato', sans-serif;
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
-    html background color: #E6E2DB
+    html background color: #F0EBE1
     header-header background color: #600B04
     header color: white
-    white on green: rgb(230, 230, 230)
+    toned-down white: rgb(230, 230, 230)
 */
 
 /* MAIN STYLES ============================================================== */
 
 html, body {
-    background-color: #E6E2DB;
+    background-color: #F0EBE1;
     font-family: 'Lato', sans-serif;
     font-weight: normal;
     min-height: 100vh;

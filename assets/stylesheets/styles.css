@@ -1,10 +1,10 @@
 /*
     normal font: 'Lato', sans-serif;
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
-    html background color: #E6E2DB
+    html background color: #F0EBE1
     header-header background color: #600B04
     header color: white
-    white on header-header: rgb(230, 230, 230)
+    toned-down white: rgb(230, 230, 230)
 */
 
 /* NAV STYLES =============================================================== */
@@ -353,9 +353,7 @@ button {
 
 .tooltip-inner { border-radius: 5px; }
 
-.my-tooltip, .my-tooltip:hover {
-    color: rgb(230, 230, 230);
-}
+.my-tooltip, .my-tooltip:hover { color: rgb(230, 230, 230); }
 
 
 /* CARD GALLERY STYLES ====================================================== */
