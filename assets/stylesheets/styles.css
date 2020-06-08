@@ -234,8 +234,9 @@ nav a:hover, .current {
         border-radius: 25px;
     }
 
+    .picture { margin: auto; }
+
     .profile-pic {
-        position: relative;
         margin: auto;
         border-radius: 25px;
         top: -50px;

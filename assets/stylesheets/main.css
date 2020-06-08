@@ -152,6 +152,8 @@ ul, ol, dl {
     width: 100%;
 }
 
+article { padding-bottom: 200px; }
+
 footer {
     position: absolute;
     width: 100%;
