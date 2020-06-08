@@ -2,7 +2,7 @@
     normal font: 'Lato', sans-serif;
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
-    header-header background color: rgb(185, 3, 3)
+    header-header background color: #600B04
     header color: white
     white on header-header: rgb(230, 230, 230)
 */
@@ -10,7 +10,7 @@
 /* NAV STYLES =============================================================== */
 nav a { color: black; }
 
-nav a:hover, .current { color: rgb(185, 3, 3); }
+nav a:hover, .current { color: #600B04; }
 
 button {
     background-color: transparent;
@@ -119,7 +119,7 @@ button {
 .affiliation * {
     padding-top: 10px;
     padding-left: 5%;
-    color: rgb(185, 3, 3);
+    color: #600B04;
     padding-bottom: 125px;
 }
 
@@ -142,7 +142,7 @@ button {
     position: absolute;
     top: 50px;
     left: 45%;
-    color: rgb(185, 3, 3);
+    color: #600B04;
     width: 60%;
     z-index: 2;
 }
@@ -245,12 +245,12 @@ button {
     .my-nav-links .fade-in:hover {
         padding: 10px 40px;
         color: white;
-        background-color: rgb(185, 3, 3);
+        background-color: #600B04;
         border-radius: 15px;
     }
 
     .my-nav-links .fade-in:hover a {
-        color: rgb(185, 3, 3);
+        color: #600B04;
     }
 
     .header-header {
