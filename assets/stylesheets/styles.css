@@ -312,7 +312,7 @@ button {
 .construction * {
     text-align: center;
     text-transform: uppercase;
-    color: var(--dark-white);
+    color: var(--light-white);
 }
 
 .three-cogs {
