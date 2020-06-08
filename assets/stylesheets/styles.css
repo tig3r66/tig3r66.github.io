@@ -85,7 +85,7 @@ button {
         /* circle flow animation */
         clip-path: circle(100px at 100% -100%);
         -webkit-clip-path: circle(100px at 100% -100%);
-        transition: all 1s ease-out;
+        transition: all 0.75s ease-out;
         transform: translateX(30%) translateY(-15px);
     }
 
