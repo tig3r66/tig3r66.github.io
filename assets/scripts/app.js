@@ -93,14 +93,14 @@ window.onload = function() {
     // inject CSS
     var css = document.createElement("style");
     css.type = "text/css";
-    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid #8C0004 }";
+    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.1em solid white; }";
     document.body.appendChild(css);
 };
 
 
 // MAIN FUNCTION
 const app = ()=> {
-    navHighlight('nav .my-nav-links a', 'current');
+    navHighlight('nav .my-nav-links .fade-in a', 'current');
     navExpand();
     // for bootstrap tooltip
     $(function () {

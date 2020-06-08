@@ -2,7 +2,7 @@
     normal font: 'Lato', sans-serif;
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
-    header-header background color: #8C0004
+    header-header background color: rgb(185, 3, 3)
     header color: white
     white on header-header: rgb(230, 230, 230)
 */
@@ -10,10 +10,18 @@
 /* NAV STYLES =============================================================== */
 nav a { color: black; }
 
-nav a:hover, .current {
-    color: #8C0004;
-    font-weight: bold;
+nav a:hover, .current { color: rgb(185, 3, 3); }
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    border-radius: 15px;
 }
+
+.current { font-weight: bold; }
 
 .logo {
     padding-left: 0%;
@@ -22,7 +30,7 @@ nav a:hover, .current {
 
 .logo a { text-decoration: none; }
 
-.my-nav-links li a { text-decoration: none; }
+.my-nav-links a li { text-decoration: none; }
 
 .my-nav-links {
     display: flex;
@@ -70,15 +78,15 @@ nav a:hover, .current {
         z-index: 100;
         position: absolute;
         background: rgba(250, 235, 215, 0.95);
-        height: 25vh;
-        width: 100%;
+        height: 300px;
+        width: 75%;
         flex-direction: column;
         border-radius: 25px;
         /* circle flow animation */
         clip-path: circle(100px at 100% -100%);
         -webkit-clip-path: circle(100px at 100% -100%);
         transition: all 1s ease-out;
-        transform: translateY(-15px);
+        transform: translateX(30%) translateY(-15px);
     }
 
     .my-nav-links li {
@@ -87,7 +95,7 @@ nav a:hover, .current {
         text-align: center;
     }
 
-    .my-nav-links li a { text-decoration: none; }
+    .my-nav-links a li { text-decoration: none; }
 
     /* animating links */
     .my-nav-links.open {
@@ -102,9 +110,7 @@ nav a:hover, .current {
     .my-nav-links li:nth-child(3) { transition: all 0.75s ease 0.3s; }
     .my-nav-links li:nth-child(4) { transition: all 0.75s ease 0.4s; }
 
-    li.fade {
-        opacity: 1;
-    }
+    li.fade { opacity: 1; }
 }
 
 
@@ -113,7 +119,7 @@ nav a:hover, .current {
 .affiliation * {
     padding-top: 10px;
     padding-left: 5%;
-    color: #8C0004;
+    color: rgb(185, 3, 3);
     padding-bottom: 125px;
 }
 
@@ -136,7 +142,7 @@ nav a:hover, .current {
     position: absolute;
     top: 50px;
     left: 45%;
-    color: #8C0004;
+    color: rgb(185, 3, 3);
     width: 60%;
     z-index: 2;
 }
@@ -223,7 +229,30 @@ nav a:hover, .current {
     }
 }
 
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 940px) {
+    .my-nav-links .fade-in {
+        padding: 10px 40px;
+        width: 50%;
+        margin: auto;
+        border-radius: 15px;
+        background: transparent;
+        transition: all 0.25s ease-in;
+        border: 0;
+    }
+
+    .my-nav-links .fade-in a { transition: all 0.4s ease; }
+
+    .my-nav-links .fade-in:hover {
+        padding: 10px 40px;
+        color: white;
+        background-color: rgb(185, 3, 3);
+        border-radius: 15px;
+    }
+
+    .my-nav-links .fade-in:hover a {
+        color: rgb(185, 3, 3);
+    }
+
     .header-header {
         display: flex;
         width: 80%;
@@ -261,12 +290,6 @@ nav a:hover, .current {
     .social-media-icons { justify-content: center; }
 
     .filler { width: 15px; }
-
-    .my-nav-links li a:hover {
-        padding: 10px 40px;
-        border: 2px solid #8C0004;
-        border-radius: 15px;
-    }
 }
 
 

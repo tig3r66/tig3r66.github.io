@@ -2,7 +2,7 @@
     normal font: 'Lato', sans-serif;
     important font: Georgia, 'Libre Baskerville', 'Times New Roman', Times, serif;
     html background color: #E6E2DB
-    header-header background color: #8C0004
+    header-header background color: #870000
     header color: white
     white on green: rgb(230, 230, 230)
 */
@@ -117,7 +117,7 @@ ul, ol, dl {
 .header-header {
     position: relative;
     width: 100%;
-    background-color: #8C0004;
+    background-color: #870000;
 }
 
 .header-header p { color: rgb(230, 230, 230) }
@@ -139,7 +139,7 @@ ul, ol, dl {
     display: flex;
     justify-content: center;
     color: rgb(230, 230, 230);
-    background-color: #8C0004;
+    background-color: #870000;
     padding-top: 30px;
     padding-bottom: 30px;
 }
