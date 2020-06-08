@@ -41,7 +41,16 @@ nav a:hover, .current {
 .toggle .line3 { transform: rotate(45deg) translate(-5px, -5px); }
 
 /* fluid navbar for small screens */
-@media screen and (max-width: 768px) {
+@media only screen
+    and (max-width: 768px)
+    and (device-width: 375px)
+    and (-webkit-device-pixel-ratio: 3)
+    and (device-width: 735px)
+    and (device-height: 667 px)
+    and (-webkit-device-pixel-ratio: 2)
+    and (device-width: 414px)
+    and (device-height: 736px)
+    and (orientation: portrait) {
 
     .line1, .line2, .line3 {
         z-index: 100;
