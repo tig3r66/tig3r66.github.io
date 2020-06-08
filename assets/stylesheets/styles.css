@@ -272,6 +272,8 @@ only screen and (max-width: 875px) {
 .construction {
     width: 90%;
     min-width: 360px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .construction * {
