@@ -41,11 +41,7 @@ nav a:hover, .current {
 .toggle .line3 { transform: rotate(45deg) translate(-5px, -5px); }
 
 /* fluid navbar for small screens */
-@media only screen
-    and (device-width : 414px) 
-    and (device-height : 896px) 
-    and (-webkit-device-pixel-ratio : 2)
-    and (orientation : portrait) {
+@media only screen and (max-width: 875px) {
     .line1, .line2, .line3 {
         z-index: 100;
         width: 30px;
@@ -237,7 +233,7 @@ nav a:hover, .current {
     }
 }
 
-@media screen and (max-width:768px) {
+@media only screen and (max-width: 875px) {
     .header-header {
         display: flex;
         width: 80%;
