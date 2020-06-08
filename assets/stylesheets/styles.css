@@ -78,7 +78,7 @@ nav a:hover, .current {
         clip-path: circle(100px at 100% -100%);
         -webkit-clip-path: circle(100px at 100% -100%);
         transition: all 1s ease-out;
-        transform: translateX(-20px) translateY(-10px);
+        transform: translateX(0px) translateY(-15px);
     }
 
     .my-nav-links li {
