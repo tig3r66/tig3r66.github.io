@@ -78,7 +78,7 @@ nav a:hover, .current {
         clip-path: circle(100px at 100% -100%);
         -webkit-clip-path: circle(100px at 100% -100%);
         transition: all 1s ease-out;
-        transform: translateX(0px) translateY(-15px);
+        transform: translateY(-15px);
     }
 
     .my-nav-links li {
@@ -152,6 +152,7 @@ nav a:hover, .current {
     flex-direction: row;
     font-size: 48px;
     justify-content: left;
+    width: 100%;
 }
 
 .social-media-icons a {
@@ -165,9 +166,7 @@ nav a:hover, .current {
 
 .social-media-icons #linkedin-icon a:hover { color: #2A9DF4; }
 
-.social-media-icons #email-icon a:hover {
-    color: #20BF55;
-}
+.social-media-icons #email-icon a:hover { color: #20BF55; }
 
 .filler { width: 15px; }
 
@@ -231,13 +230,17 @@ nav a:hover, .current {
         border-radius: 25px;
     }
 
-    .picture { margin: auto; }
+    .picture {
+        display: flex;
+        align-items: center;
+    }
 
     .profile-pic {
         border-radius: 25px;
         top: -50px;
         left: 0;
         margin: auto;
+        width: 65%;
     }
 
     .intro {
@@ -251,10 +254,7 @@ nav a:hover, .current {
 
     .intro p { text-align: left; }
 
-    .social-media-icons {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+    .social-media-icons { justify-content: center; }
 
     .filler { width: 15px; }
 }
