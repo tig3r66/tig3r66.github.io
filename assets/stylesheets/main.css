@@ -9,10 +9,11 @@
 
 /* MAIN STYLES ============================================================== */
 
-html {
+html, body {
     background-color: #E6E2DB;
     font-family: 'Lato', sans-serif;
     font-weight: normal;
+    min-height: 100%;
 }
 
 h1 *, h2 * {
