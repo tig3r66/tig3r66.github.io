@@ -1,0 +1,363 @@
+\documentclass{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{multicol, xspace, relsize, setspace, sectsty, fancyhdr, xcolor}
+\usepackage{hyperref}
+% Font
+\usepackage[default]{lato}
+\renewcommand{\mddefault}{l}
+
+\hypersetup{colorlinks, citecolor=blue, filecolor=blue, linkcolor=blue, urlcolor=blue}
+
+% Format headers/footers
+\fancyhf{}
+\fancyhead[R]{Edward (Eddie) Guo}
+\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+
+% Uncomment if you want centerized headings
+%\sectionfont{\centering}
+\sectionfont{\Large}
+
+\setlength{\parindent}{0cm}
+% Uncomment for compressed CV Spacing
+% \setstretch{0.75}
+
+
+\begin{document}
+\thispagestyle{plain}
+% =================================== HEADER ===================================
+\begin{flushleft}
+    \LARGE \textbf{Edward (Eddie) Guo}\\ \vspace{0.25em}
+    \normalfont \normalsize (587) 988-0292 $\cdot$ eguo1@ualberta.ca $\cdot$ \href{https://www.linkedin.com/in/eguo1}{\textcolor{blue}{LinkedIn}} $\cdot$ \href{https://github.com/tig3r66}{\textcolor{blue}{GitHub}} $\cdot$ \href{https://tig3r66.github.io/index.html}{Personal Website}\\
+    \hrulefill
+\end{flushleft}
+
+% ================================== EDUCATION ================================== 
+\section*{Education}
+    \textbf{University of Alberta \textbar\ Edmonton, AB} \hfill \textbf{Sep. 2020 -- Present}\\
+    Bachelor of Science in Engineering\\
+
+    \textbf{University of Alberta \textbar\ Edmonton, AB} \hfill \textbf{Sep. 2018 -- Apr. 2020}\\
+    Bachelor of Science Honors Neuroscience (cumulative GPA: 4.00/4.00)\\
+    Transferred to the Faculty of Engineering at the University of Alberta June 2020.\\
+
+    \textbf{Old Scona Academic High School \textbar\ Edmonton, AB} \hfill \textbf{Sep. 2015 -- Jun. 2018}\\
+    Alberta High School Diploma (graduating grade: 95\%)
+
+
+% ================================== TECHNICAL SKILLS ================================== 
+\section*{Technical Skills}
+\textbf{Programming (proficient):} C++, Python\\
+\textbf{Programming (familiar):} Arduino, R\\
+\textbf{Markup and Version Control:} Git, \LaTeX, HTML, CSS\\
+\textbf{Design:} Fusion 360\\
+\textbf{Software:} GitHub, SPSS, Graphpad Prism\\
+\textbf{Microsoft Office:} Word, Powerpoint, Excel, OneNote
+
+
+% ================================== RESEARCH ==================================
+\section*{Research and Clinical Experience}
+    \textbf{Zochodne Lab \textbar\ Li Ka Shing Center for Health Innovation, Edmonton, AB} \hfill \textbf{Oct. 2018 -- Present}\\
+    Undergraduate Research Student
+    \begin{itemize}
+        \item Current project: researching the effects of acute and chronic cutaneous denervation (defined here as a loss of axons) on differential mRNA expression in skin keratinocytes.
+        \item Techniques: mouse nerve microsurgery (sciatic nerve crush), mouse and rat harvesting (sciatic nerve, saphenous nerve, dorsal root ganglion, footpad biopsy), mouse intranasal injections, electroporation, electrophysiological testing, immunohistochemistry, co-IP, Western blot, confocal microscopy.
+    \end{itemize}
+
+    \textbf{Neurosurgery Shadow \textbar\ Walter C. Mackenzie Hospital, Edmonton, AB} \hfill \textbf{Jul. 2019}\\
+    Shadow in the Neurosurgical Operating Room
+    \begin{itemize}
+        \item Shadowed for three surgical cases: deep brain stimulation for Parkinson's disease, microvascular decompression for trigeminal neuralgia, and percutaneous rhizotomy for trigeminal neuralgia.
+    \end{itemize}
+
+    \textbf{Kalra Lab \textbar\ Heritage Medical Research Centre, Edmonton, AB} \hfill  \textbf{Oct. 2018 -- Jun. 2019}\\
+    Data Auditor
+    \begin{itemize}
+        \item Audited MRI scans and patient data forms for the Canadian Amyotrophic Lateral Sclerosis Neuroimaging Consortium (CALSNIC).
+    \end{itemize}
+
+    \textbf{Baker Lab \textbar\ Cross Cancer Institute, Edmonton, AB} \hfill \textbf{Mar. 2018}\\
+    Gene Researcher for a Week Program
+    \begin{itemize}
+        \item Researched DNA mutations associated with colorectal cancer.
+        \item Techniques: Western Blot, qPCR.
+    \end{itemize}
+
+
+% ================================== EMPLOYMENT ==================================
+\section*{Employment}
+    \textbf{Edmonton Fencing Club \textbar\ Edmonton, AB} \hfill \textbf{Nov. 2016 -- Present}\\
+    Fencing  Coach \vspace{-0.5em}
+    \begin{itemize}
+        \item Coaching children to fence and refereeing fencing competitions.
+        \item Fixing and making fencing blades and wires.
+        \item Facilitating demonstrations and open houses.
+    \end{itemize}
+
+
+% ================================== PROJECT EXPERIENCE ==================================
+\section*{Project Experience}
+    \textbf{NeurAlbertaTech \textbar\ University of Alberta}
+
+    Hardware Team \textbar\ Eye-Tracking Team Lead \hfill \textbf{Jan. 2020 -- Present}
+    \begin{itemize}
+        \item Modelling and building an eye-tracking apparatus along with software that returns a real-time vector in the direction that the user is looking.
+        \item Creating an application that integrates eye-tracking, body-tracking, and EEG signals. Software driven by PyQt5, Lab Streaming Layer, fast Fourier transforms, and multithreading.
+    \end{itemize}
+
+    \textbf{Introduction to Tangible Computing II (CMPUT 275) \textbar\ University of Alberta}
+
+    EEG Visualizer \hfill \textbf{May 2020 -- Apr. 2020}
+    \begin{itemize}
+        \item The application takes an electroencephalogram (EEG) data stream over a local network and visualizes both the raw and transformed signals in a Matplotlib figure embedded in a PyQt5 user interface.
+        \item The program implements the radix-2 decimation-in-time fast Fourier transform algorithm.
+    \end{itemize}
+
+    Driving Route Finder \hfill \textbf{May 2020 -- Apr. 2020}
+    \begin{itemize}
+        \item A route finder where the user can indicate a start and end point anywhere in the city of Edmonton using a joystick.
+        \item The program uses a client-server model with a desktop C++ program communicating with an Arduino client.
+        \item A desktop C++ program computes the shortest route possible using either the A$^*$ or Dijkstra algorithm and displays it on an Adafruit 3.5'' touchscreen display on an Arduino Mega2560.
+    \end{itemize}
+
+
+% ================================ EXTRACURRICULAR ACTIVITIES ================================
+\section*{Volunteering}
+    \textbf{Youreka Canada}
+
+    Associate Director of Programs \textbar\ Youreka Canada \hfill \textbf{May 2020 -- Present}
+    \begin{itemize}
+        \item Curating the national Youreka curriculum and analyzing previous curricula. Topics are focused on introductory bioinformatics techniques in the biomedical sciences.
+        \item Providing judging and awards criteria for student research projects at both the regional and national symposia.
+        \item Editing promising projects for undergraduate journal publications.
+        \item Conducting national teaching sessions and distributing curriculum material to the regional academic directors.
+    \end{itemize}
+
+    National Operations Committee Member \textbar\ Youreka Canada \hfill \textbf{May 2020 -- Present}
+    \begin{itemize}
+        \item Spearheaded a curriculum bifurcation pilot project for Youreka Edmonton.
+        \item National short-term strategy and execution.
+        \item Collaboration on Youreka Canada organizational policy and procedures.
+    \end{itemize}
+
+    Vice President of Academics \textbar\ Youreka Edmonton \hfill \textbf{May 2019 -- Present}
+    \begin{itemize}
+        \item Provided four live video lectures to all Youreka Canada chapters (University of Alberta, Calgary, Windsor, Queen's) and created slide sets, worksheets, and Python 3 code on introductory statistics during the COVID-19 pandemic.
+        \item Lectured an eight-week program to a group of 60 high school and undergraduate students (2020 cohort).
+        \item Presided over all academic sessions and supplementary material.
+    \end{itemize}
+
+    Senior Investigator \textbar\ Youreka Edmonton \hfill \textbf{Feb. 2019 -- May 2019}
+    \begin{itemize}
+        \item Mentoring high school students to do research involving bioinformatics.
+        \item Facilitating and ensuring quality of projects, and compiling team data for a public research symposium.
+        \item Received best senior investigator award for exemplary leadership of a research team.
+    \end{itemize}
+
+    \textbf{Canadian Blood Services \textbar\ Edmonton, AB}
+
+    Stem Cell Board Coordinator \hfill \textbf{Sep. 2019 -- Present}
+    \begin{itemize}
+        \item Planning, coordinating, and executing Canadian Blood Services stem cell related events (ex: patient campaigns) with staff and volunteers. There are typically one or two stem cell recruitment events per month.
+    \end{itemize}
+
+    Stem Cell Board Member \hfill \textbf{Sep. 2018 -- Present}
+    \begin{itemize}
+        \item Planning and executing Canadian Blood Services stem cell related events.
+        \item Providing public education about stem cell donations (ex: presentations at major Edmonton high schools and university student groups, exhibitions at the Telus World of Science, etc.).
+    \end{itemize}
+
+    Edmonton NextGen Lifeline Committee \hfill \textbf{Sep. 2018 -- Present}
+    \begin{itemize}
+        \item Recruitment for blood donations and informing the public about blood and stem cell donations.
+        \item Lead developer of a volunteer database framework, digitization and automation of volunteer resources (volunteer contracts, event forms, event data).
+        \item Created a Python 3 Tkinter application that queries and analyzes volunteer contracts from an SQL database.
+        \item Migrated Canadian Blood Services Youth Committee event data from 2011-2019 to an SQL database.
+    \end{itemize}
+
+    Summer Youth Program \hfill \textbf{Jun. 2018 -- Aug. 2018}
+    \begin{itemize}
+        \item Volunteer of the month, June 2018.
+    \end{itemize}
+    
+    
+    \textbf{Edmonton World Health Organization (eWHO) \textbar\ University of Alberta}
+
+    Vice President Finance \hfill \textbf{Apr. 2019 -- Jun. 2020}
+    \begin{itemize}
+        \item Writing grant applications for the eWHO conference.
+        \item Managing eWHO funds.
+    \end{itemize}
+    
+    
+    \textbf{Office of the Registrar's  Student Advisory Committee \textbar\ University of Alberta}
+
+    Member \hfill \textbf{Oct. 2018 -- Apr. 2020}
+    \begin{itemize}
+        \item Provide feedback on student services (ex: University of Alberta Calendar, admissions website).
+        \item Give input on potential University of Alberta projects (ex: Green and Gold Getaway).
+    \end{itemize}
+
+
+    \textbf{Brain Awareness Movement \textbar\ University of Alberta}
+
+    Director of Education \hfill \textbf{Apr. 2019 -- Sep. 2019}
+    \begin{itemize}
+        \item Organizing and giving presentation throughout Edmonton on brain awareness.
+    \end{itemize}
+
+    Event Facilitator \hfill \textbf{Oct. 2018 -- Apr. 2019}
+    \begin{itemize}
+        \item Outreach for sponsorships and event planning.
+    \end{itemize}
+
+
+% ===================================== SPORTS =====================================
+\section*{Sports}
+    \textbf{Fencing (Foil)} \hfill \textbf{Feb. 2011 -- Present}
+
+    International
+
+    \begin{itemize}
+        \item 23rd Guatemala Junior (U20) World Cup \hfill \textbf{Dec. 2016}
+        \item Ranked A16 in the USA (qualified for Division 1) \hfill \textbf{Dec. 2016}
+    \end{itemize}
+
+    National
+
+    \begin{itemize}
+        \item 3rd Senior (Open) Canada Cup West, Winnipeg, MB \hfill \textbf{Nov. 2018}
+        \item 2nd Junior (U20) Canada Cup West, Winnipeg, MV \hfill \textbf{Nov. 2018}
+        \item 2nd Cadet (U17) Western Canadian Championships, Calgary, AB \hfill \textbf{Nov. 2017}
+        \item 3rd Cadet (U17) Canada Cup, Longueuil, QC \hfill \textbf{May 2015}
+        \item 3rd Y14 Canada Cup, Richmond, BC \hfill \textbf{Dec. 2013}
+    \end{itemize}
+
+    \textbf{Table Tennis} \hfill \textbf{Jan. 2006 -- Jul. 2011}
+
+    \begin{itemize}
+        \item 1st U-1500 Round Robin Milwaukee Table Tennis Open \hfill \textbf{Jul. 2011}
+        \item Halifax 2011 Canada Winter Games -- 5th team, 19th individual \hfill \textbf{Feb. 2011}
+        \item See the CBC interview \href{http://www.cbc.ca/sports/olympics-sochi-old/table-tennis-player-10-turning-heads-in-halifax-1.1115785}{here}.
+    \end{itemize}
+
+
+% ===================================== CERTIFICATIONS =====================================
+\section*{Certifications}
+    \textbf{Fundamentals of Reinforcement Learning} \hfill \textbf{Mar. 2020}\\
+    University of Alberta and Alberta Machine Intelligence Institute on Coursera\\[0.5em]
+    \textbf{CCAC Training for Animal Users Part II: The Care and Use of the Laboratory Mouse} \hfill \textbf{Jun. 2019}\\
+    University of Alberta (Research Area: Health Sciences)\\[0.5em]
+    \textbf{CCAC Training for Animal Users Part I: Ethics of Animal Use (IAUTP)} \hfill \textbf{May 2019}\\
+    University of Alberta\\[0.5em]
+    \textbf{Concepts in Biosafety 2018} \hfill \textbf{May 2019}\\
+    University of Alberta\\[0.5em]
+    \textbf{Laboratory and Chemical Safety 2018} \hfill \textbf{May 2019}\\
+    University of Alberta\\[0.5em]
+    \textbf{WHMIS 2019} \hfill \textbf{Jan. 2019}\\
+    University of Alberta\\[0.5em]
+    \textbf{Emergency First Aid Level A CPR and AED} \hfill \textbf{Jul. 2018}\\
+    St. John Ambulance\\[0.5em]
+    \textbf{Dipl\^ome d'\'etudes en langues fran\c{c}aise niveau B1 (translation: French studies diploma level B1)} \hfill \textbf{May 2018}\\
+    Minist\`ere de l'\'Education nationale (translation: Ministry of National Education)\\[0.5em]
+    \textbf{Advanced Rudiments First Class Honours with Distinction} \hfill \textbf{Oct. 2015}\\
+    The Royal Conservatory of Music\\[0.5em]
+    \textbf{Grade 8 Piano First Class Honours} \hfill \textbf{Oct. 2015}\\
+    The Royal Conservatory of Music
+
+
+% ================================== HONOURS AND AWARDS ================================== 
+\section*{Honours and Awards}
+\textbf{COVID-19 Data Science Hackathon Post-Secondary Student Award (\$500)} \hfill \textbf{May 2020}
+\begin{itemize}
+    \item Developed an interactive application using a multivariate regression model to better understand the impacts of age, poverty, income, and population density on the spread of the COVID-19 virus. The application was developed with R Shiny and dygraphs and embedded in a website. The program utilized data from the Alberta Data Institute's data analytics platform: \href{https://dataxch.ai}{Dataxch.ai}.
+    \item The goal of the hackathon was to collect and curate worldwide open data and to refine, transform, and link that data to provide a visualization regarding the impact of COVID-19. The two themes were: (1) overall understanding of the efforts to flatten the curve and (2) economic recovery especially for Alberta and Canada.
+    \item Hackathon hosted by Alberta Innovates, CYBERA, and the Pacific Institute for Mathematical Sciences. 120 individuals and teams competed in the hackathon.
+    \item See the project \href{https://yourekacanada.org/index}{here}. See the Alberta Innovates media announcement \href{https://albertainnovates.ca/impact/newsroom/flattening-the-curve-and-promoting-economic-recovery-through-innovation}{here} (my team is called ``Youreka Data Science''). See the CYBERA media announcement \href{https://www.cybera.ca/news-and-events/news/covid-19-data-science-hackathon-winners/}{here}.
+    \item Awarded by Alberta Innovates.
+\end{itemize}
+\textbf{Alberta Innovates Summer Research Studentship (\$6000)} \hfill \textbf{Apr. 2020}
+\begin{itemize}
+    \item Grant for summer research project titled ``Skin and Nerves: Understanding the dialogue between axons and skin cells to restore sensation.''
+    \item Awarded by the Undergraduate Research Initiative, University of Alberta.
+\end{itemize}
+\textbf{Undergraduate Researcher Stipend (\$5000, declined)} \hfill \textbf{Apr. 2020}
+\begin{itemize}
+    \item Grant for summer research project titled ``Skin and Nerves: Understanding the dialogue between axons and skin cells to restore sensation.''
+    \item Awarded by the Undergraduate Research Initiative, University of Alberta.
+\end{itemize}
+\textbf{Sci5 Outstanding Achievement in Science Scholarship (\$500)} \hfill \textbf{Mar. 2020}
+\begin{itemize}
+    \item Awarded to 4 well-rounded students with strong academic achievement, extracurricular involvement, and recommendation letters.
+    \item Awarded by the Interdepartmental Science Students' Society at the University of Alberta.
+\end{itemize}
+    \textbf{Louise McKinney Post-Secondary Scholarship (\$2500)} \hfill \textbf{Dec. 2019}
+        \begin{itemize}
+            \item Awarded on the basis of superior academic achievement (top 1.5-2\% of faculty) to students at the University of Alberta who are also Alberta residents.
+        \end{itemize}
+    \textbf{University of Alberta Undergraduate Scholarship (\$2000)} \hfill \textbf{Sep. 2019}
+        \begin{itemize}
+            \item Awarded to students with superior academic achievement.
+        \end{itemize}
+    \textbf{T4K Undergraduate Leadership Scholarship (\$1400)} \hfill \textbf{Sep. 2019}
+        \begin{itemize}
+            \item Awarded to students at the University of Alberta with superior academic achievement who demonstrate leadership through involvement and participation in university or community organizations, sports activities, or cultural activities.
+        \end{itemize}
+    \textbf{Faculty of Science Undergraduate Scholarship (\$500)} \hfill \textbf{Sep. 2019}
+        \begin{itemize}
+            \item Awarded to students with superior academic achievement enrolled in the second, third, or fourth year of an undergraduate degree in the Faculty of Science at the University of Alberta.
+        \end{itemize}
+    \textbf{Office of the Provost and VP (Academic) Summer Studentship Award (\$2600)} \hfill \textbf{May 2019}
+        \begin{itemize}
+            \item Grant for summer research project titled ``Axon regrowth and plasticity in diabetic neuropathy: the role of growth cone molecules.''
+            \item Awarded by the Faculty of Medicine and Dentistry, University of Alberta.
+        \end{itemize}
+    \textbf{Dean's Honor Roll 2018-19, Faculty of Science} \hfill \textbf{May 2019}
+        \begin{itemize}
+            \item Awarded to students at the University of Alberta with a Grade Point Average of 3.5 or higher.
+        \end{itemize}
+    \textbf{Sci5 Outstanding Achievement in Science Scholarship (\$500)} \hfill \textbf{Apr. 2019}
+        \begin{itemize}
+            \item Awarded to the top 5 students in the Faculty of Science at the University of Alberta who also demonstrate exceptional extracurricular activities.
+            \item Awarded by the Interdepartmental Science Students' Society at the University of Alberta.
+        \end{itemize}
+    \textbf{Alexander Rutherford Scholarship (\$2500)} \hfill \textbf{Aug. 2018}
+        \begin{itemize}
+            \item Awarded to high school graduates with exceptional academic standing over all three years of high school.
+        \end{itemize}
+    \textbf{Service Award} \hfill \textbf{Jun. 2018}
+        \begin{itemize}
+            \item Awarded by Old Scona Academic High School.
+        \end{itemize}
+    \textbf{Jujie Luan Travel Bursary (\$250)} \hfill \textbf{Mar. 2013}
+        \begin{itemize}
+            \item Awarded to upcoming fencers travelling for competitions.
+        \end{itemize}
+    \textbf{Recognition of Accomplishment at the Canadian Table Tennis Championships (\$220)} \hfill \textbf{Jan. 2011}
+        \begin{itemize}
+            \item Awarded for exceptional performance at the 2011 Canadian Table Tennis Championships.
+        \end{itemize}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
