@@ -100,6 +100,7 @@ window.onload = function() {
 
 // MAIN FUNCTION
 const app = ()=> {
+    AOS.init();
     navHighlight('nav .my-nav-links .fade-in a', 'current');
     navExpand();
     // for bootstrap tooltip

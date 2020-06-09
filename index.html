@@ -11,6 +11,8 @@
         <meta name="theme-color" content="#600B04">
         <!-- bootstrap stylesheet -->
         <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
+        <!-- AOS stylesheet -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <!-- custom stylesheets -->
         <link rel="stylesheet" href="assets/stylesheets/reset.css">
         <link rel="stylesheet" href="assets/stylesheets/main.css">
@@ -58,11 +60,11 @@
                 <section class="header-header">
 
                     <section class="picture">
-                        <img class="profile-pic" src="assets/img/eddieguo.jpeg" alt="photo of Eddie Guo">
+                        <img class="profile-pic" src="assets/img/eddieguo.jpeg" alt="photo of Eddie Guo" data-aos="fade-right" data-aos-duration="750">
                     </section>
 
                     <section class="intro">
-                        <div class="page-name-container">
+                        <div class="page-name-container" data-aos="fade-in" data-aos-duration="500">
                             <h2>Eddie Guo</h2>
                             <h3 id="typewriter-rotate">
                                 <span class="txt-rotate" data-period="2000" data-rotate='[ "Innovator", "Leader", "Creator", "Educator", "Researcher" ]'></span>
@@ -73,7 +75,7 @@
                             </p>
 
                             <!-- social media icons -->
-                            <ul class="social-media-icons">
+                            <ul class="social-media-icons" data-aos="fade-in" data-aos-duration="1000">
                                 <li id="github-icon">
                                     <a href="https://github.com/tig3r66" target="_blank" data-toggle="tooltip" data-placement="bottom" title="GitHub">
                                         <i class="fab fa-github"></i>
@@ -110,15 +112,7 @@
             <article>
                 <div class="article-container">
                     <section class="article-intro">
-                        <!-- COVID tracker -->
-                        <!-- <div class="card">
-                            <div class="face front">
-                                <img src="assets/img/covid_tracker.png" alt="COVID-19 tracker application">
-                            </div>
-                            <div class="face back">
-                                <h4>Hello world!</h4>
-                            </div>
-                        </div> -->
+                        <!-- placeholder -->
                     </section>
                 </div>
             </article>
@@ -131,9 +125,12 @@
 
         </div>
 
-        <!-- scripts -->
+        <!-- bootstrap -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="assets/scripts/bootstrap.min.js"></script>
+        <!-- AOS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- custom -->
         <script src="assets/scripts/app.js"></script>
     </body>
 </html>
