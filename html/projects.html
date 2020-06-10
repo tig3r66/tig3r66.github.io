@@ -2,16 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <!-- media meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="Page Undeer Construction">
-        <meta property="og:description" content="Construction page for Eddie Guo's personal website.">
-        <meta property="og:image" content="../assets/img/construction_thumbnail.png">
-        <meta property="og:url" content="https://tig3r66.github.io/construction.html">
+        <meta property="og:title" content="Eddie Guo">
+        <meta property="og:description" content="Template HTML for Eddie Guo's personal website.">
+        <meta property="og:image" content="../assets/img/index_thumbnail.png">
+        <meta property="og:url" content="https://tig3r66.github.io/index.html">
         <meta name="author" content="Eddie Guo">
         <meta name="theme-color" content="#600B04">
-        <!-- boostrap stylesheet -->
-        <link rel="stylesheet" href="../assets/stylesheets/bootstrap.min.css">
+        <!-- bootstrap stylesheet -->
+        <link rel="stylesheet" href=../assets/stylesheets/bootstrap.min.css">
         <!-- AOS stylesheet -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <!-- custom stylesheets -->
@@ -40,7 +39,7 @@
                         <!-- navigation links -->
                         <ul class="my-nav-links">
                             <li><a href="../index.html"><button class="fade-in">Home</button></a></li>
-                            <li><a href="projects.html"><button class="fade-in">Projects</button></a></li>
+                            <li><a href="projects.html"><button class="fade-in current">Projects</button></a></li>
                             <li><a href="construction.html"><button class="fade-in">Research</button></a></li>
                             <li><a href="construction.html"><button class="fade-in">Contact</button></a></li>
                         </ul>
@@ -58,17 +57,9 @@
                     <p>BSc Eng Student<br>University of Alberta</p>
                 </section>
 
-                <section class="header-header">
-                    <div class="page-name-container construction" data-aos="fade-in" data-aos-duration="1500">
-                        <h1>Page Under Construction</h1>
-                        <!-- spinning cogs -->
-                        <div id="construction-center">
-                            <div class="three-cogs fa-3x">
-                                <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>
-                                <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
-                                <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
-                            </div>
-                        </div>
+                <section class="page-title">
+                    <div class="page-name-container" data-aos="fade-in" data-aos-duration="1000">
+                        <h2>Projects</h2>
                     </div>
                 </section>
             </header>
@@ -76,10 +67,11 @@
 
             <article>
                 <div class="article-container">
-                    <!-- intro -->
-                    <section class="article-intro">
-                       <!--  -->
-                    </section>
+                    <h3 class="med-spacer">COVID-19 Tracker</h3>
+                    <p class="med-spacer">This application uses a multivariate regression model to better understand the impacts of age, poverty, income, and population density on the spread of the COVID-19 virus. The application was developed with R Shiny and dygraphs and embedded in a website. The program utilized data from the Alberta Data Institute’s data analytics platform: Dataxch.ai. The project won the Post-Secondary Student Award in the COVID-19 Data Science Hackathon hosted by Alberta Innovates CYBERA, and the Pacific Institute for Mathematical Sciences. See the Alberta Innovates media announcement <a class="url" href="https://albertainnovates.ca/impact/newsroom/flattening-the-curve-and-promoting-economic-recovery-through-innovation/" target="_blank">here</a> and the CYBERA media announcement <a class="url" href="https://www.cybera.ca/news-and-events/news/covid-19-data-science-hackathon-winners/" target="_blank">here</a> (my team is called Youreka Data Science).</p>
+                    <div class="app-container">
+                        <iframe id="covid-app" src="https://tig3r66.shinyapps.io/covid_tracker/" alt="COVID-19 prevalence and mortality curve visualization"></iframe>
+                    </div>
                 </div>
             </article>
 
