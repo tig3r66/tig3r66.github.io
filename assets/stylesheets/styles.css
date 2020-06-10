@@ -124,7 +124,7 @@ button {
 
 /* HEAD CONTENT STYLES ====================================================== */
 
-.header-header * { color: var(--light-white); }
+.white-container { color: var(--light-white); }
 
 .page-title {
     padding: 50px 0;
