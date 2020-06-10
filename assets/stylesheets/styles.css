@@ -357,12 +357,16 @@ button {
 
 /* APPLICATION STYLES ======================================================= */
 
-.app-container { height: 480px; }
+.app-container {
+    height: 480px;
+    border-radius: 15px;
+    overflow: hidden;
+}
 
 #covid-app {
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 15px;
     transform: translateY(0px);
 }
 

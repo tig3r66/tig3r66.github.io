@@ -221,8 +221,8 @@ footer {
 
 .med-spacer { margin: 25px 0; }
 
-.large-spacer { margin: 100px 0; }
+.large-spacer { margin: 50px 0; }
 
-.xl-spacer { margin: 150px 0; }
+.xl-spacer { margin: 100px 0; }
 
 .bottom-border { border-bottom: 2px solid var(--main-bg-color); }
