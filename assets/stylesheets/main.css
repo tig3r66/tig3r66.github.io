@@ -157,7 +157,7 @@ ul, ol, dl {
     flex-direction: column;
     width: 75%;
     margin: auto;
-    margin-top: 35px;
+    margin-top: 50px;
 }
 
 .footer-container * {
@@ -220,3 +220,19 @@ footer {
 .large-spacer { margin: 100px 0; }
 
 .xl-spacer { margin: 150px 0; }
+
+.small-spacer-top { margin: 10px 0; }
+
+.med-spacer-top { margin: 25px 0; }
+
+.large-spacer-top { margin: 100px 0; }
+
+.xl-spacer-top { margin: 150px 0; }
+
+.small-spacer-bottom { margin: 10px 0; }
+
+.med-spacer-bottom { margin: 25px 0; }
+
+.large-spacer-bottom { margin: 100px 0; }
+
+.xl-spacer-bottom { margin: 150px 0; }
