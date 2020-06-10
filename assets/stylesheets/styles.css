@@ -411,6 +411,8 @@ button {
 
 .overlay-container:hover .overlay-item { opacity: 1; }
 
+.wide-gif { border-radius: 5px; }
+
 @media screen and (max-width: 1400px) {
     .gallery-container {
         display: flex;
@@ -419,7 +421,7 @@ button {
 
     .photo-img-container {
         padding-bottom: 50px;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid var(--main-bg-color);
     }
 
     .photo-img-container:last-child { border-bottom: none; }
