@@ -75,6 +75,8 @@ h6 {
     font-weight: normal;
 }
 
+span { display: inline-block; }
+
 .url {
     text-decoration: none;
     font-weight: bold;
@@ -191,7 +193,7 @@ footer {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 /* Track */
@@ -201,38 +203,24 @@ footer {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(96, 11, 4, 0.65);
+    background: rgba(96, 11, 4, 0.75);
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(96, 11, 4, 0.8);
+    background: rgba(96, 11, 4, 0.9);
 }
 
 
 /* SPACERS ================================================================== */
 
-.small-spacer { margin: 10px 0; }
+.xs-spacer { margin: 10px 0; }
+
+.small-spacer { margin: 15px 0; }
 
 .med-spacer { margin: 25px 0; }
 
 .large-spacer { margin: 100px 0; }
 
 .xl-spacer { margin: 150px 0; }
-
-.small-spacer-top { margin: 10px 0; }
-
-.med-spacer-top { margin: 25px 0; }
-
-.large-spacer-top { margin: 100px 0; }
-
-.xl-spacer-top { margin: 150px 0; }
-
-.small-spacer-bottom { margin: 10px 0; }
-
-.med-spacer-bottom { margin: 25px 0; }
-
-.large-spacer-bottom { margin: 100px 0; }
-
-.xl-spacer-bottom { margin: 150px 0; }
