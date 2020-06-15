@@ -98,11 +98,24 @@ window.onload = function() {
 };
 
 
+// for flip card function
+function flipCard() {
+    const card = document.querySelectorAll('.flip-card-inner');
+    // looping through cards to see if something was clicked
+    for (let i = 0; i < card.length; i++) {
+        card[i].addEventListener('click', function() {
+            card[i].classList.toggle('flip-active');
+        });
+    }
+}
+
+
 // MAIN FUNCTION
 const app = ()=> {
     AOS.init();
     navHighlight('nav .my-nav-links .fade-in a', 'current');
     navExpand();
+    flipCard();
     // for bootstrap tooltip
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
