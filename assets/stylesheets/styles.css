@@ -447,13 +447,13 @@ button {
 
     .photo-img-container {
         padding-bottom: 50px;
+        padding-top: 50px;
         border-bottom: 2px solid var(--main-bg-color);
     }
 
     .photo-img-container:last-child { border-bottom: none; }
 
     .overlay-image {
-        padding-top: 50px;
         position: relative;
         min-width: 500px;
     }
