@@ -198,6 +198,11 @@ button {
 
 /* SMALL SCREEN STYLES ====================================================== */
 
+@media screen and (min-width: 2050px) {
+    .intro { left: 20%; }
+    .profile-pic { left: 10%; }
+}
+
 @media screen and (max-width: 2048px) {
     .intro { left: 25%; }
     .profile-pic { left: 7.5%; }
