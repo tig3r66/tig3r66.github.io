@@ -446,10 +446,6 @@ button {
         width: 100%;
         min-height: 100px;
     }
-
-    .overlay-item {
-        min-height: 65px;
-    }
 }
 
 
