@@ -22,6 +22,7 @@ html, body {
     font-family: 'Lato', sans-serif;
     font-weight: normal;
     min-height: 100vh;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -226,3 +227,35 @@ footer {
 .xl-spacer { margin: 100px 0; }
 
 .bottom-border { border-bottom: 2px solid var(--main-bg-color); }
+
+
+/* BACK TO TOP BUTTON ======================================================= */
+
+#btt-button {
+    color: white;
+    font-size: 35px;
+    background-color: rgba(96, 11, 4, 0.75);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+}
+
+#btt-button:hover {
+    cursor: pointer;
+    background-color: var(--main-bg-color);
+}
+
+#btt-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fa-angle-up { transform: translate(-1px, -15px); }

@@ -109,6 +109,23 @@ function flipCard() {
     }
 }
 
+function toTop() {
+    var btn = $('#btt-button');
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, 'medium');
+    });
+}
+
 
 // MAIN FUNCTION
 const app = ()=> {
@@ -116,6 +133,7 @@ const app = ()=> {
     navHighlight('nav .my-nav-links .fade-in a', 'current');
     navExpand();
     flipCard();
+    toTop();
     // for bootstrap tooltip
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
