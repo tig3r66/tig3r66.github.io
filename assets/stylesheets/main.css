@@ -86,10 +86,20 @@ span { display: inline-block; }
 
 .url:hover {
     color: var(--main-bg-color-hover);
+    text-decoration: none;
 }
 
 .url:active {
     color: var(--main-bg-color);
+    text-decoration: none;
+}
+
+.Lato-italic, .Lato-italic:hover {
+    font-family: 'Lato', arial, sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--dark-black);
 }
 
 
@@ -120,6 +130,7 @@ ul, ol, dl {
     font-size: 16px;
     font-weight: normal;
     line-height: 20px;
+    margin-left: 20px;
 }
 
 
