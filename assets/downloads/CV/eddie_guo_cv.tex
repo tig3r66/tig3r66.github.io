@@ -1,7 +1,11 @@
 % !TEX program = xelatex
 \documentclass{article}
 \usepackage[margin=0.75in]{geometry}
-\usepackage{amsmath, enumitem}
+\usepackage{amsmath, enumitem, graphicx}
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{0.75}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
 
 % Font
 \usepackage{fontspec}
@@ -20,6 +24,7 @@
 \fancyhead[R]{Edward (Eddie) Guo}
 \fancyfoot[C]{\thepage}
 \pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
 
 \usepackage{sectsty}
 \sectionfont{\large}
@@ -39,30 +44,32 @@
 \begin{document}
 \thispagestyle{plain}
 % =================================== HEADER ===================================
-\begin{center}
-    \LARGE \textbf{\textcolor{my_colour}{Edward (Eddie) Guo}}\\ \vspace{0.25em}
-    \normalfont \normalsize (587) 988-0292
-        \hspace{.25em} $\boldsymbol{\cdot}$ \hspace{.25em}
-    \href{mailto:eguo1@ualberta.ca}{eguo1@ualberta.ca}
-        \hspace{.25em} $\boldsymbol{\cdot}$ \hspace{.25em}
-    \href{https://www.linkedin.com/in/eguo1}{\textcolor{blue}{LinkedIn}}
-        \hspace{.25em} $\boldsymbol{\cdot}$ \hspace{.25em}
-    \href{https://github.com/tig3r66}{\textcolor{blue}{GitHub}}
-        \hspace{.25em} $\boldsymbol{\cdot}$ \hspace{.25em}
-    \href{https://tig3r66.github.io/index.html}{Personal Website}
-\end{center}
+\LARGE \textbf{\textcolor{my_colour}{Edward (Eddie) Guo}} \vspace{.25em}
+
+\normalfont \normalsize
+(587) 988-0292
+    \hspace{.25em} $\bigcdot$ \hspace{.25em}
+\href{mailto:eguo1@ualberta.ca}{\textcolor{black}{eguo1@ualberta.ca}}
+    \hspace{.25em} $\bigcdot$ \hspace{.25em}
+\href{https://www.linkedin.com/in/eguo1}{\textcolor{black}{linkedin.com/in/eguo1}}
+    \hspace{.25em} $\bigcdot$ \hspace{.25em}
+% \href{https://github.com/tig3r66}{\textcolor{blue}{github.com/tig3r66}}
+%     \hspace{.25em} $\bigcdot$ \hspace{.25em}
+\href{https://tig3r66.github.io/index.html}{\textcolor{black}{tig3r66.github.io}}
+\vspace{-.25em}
+
 
 % ================================== EDUCATION ================================== 
 \section*{\textcolor{my_colour}{Education}}
 \vspace{-.25em} \hrulefill \vspace{.75em}
 
-\textbf{University of Alberta \textbar\ Edmonton, AB} \hfill \textbf{Sep. 2020 -- Present}\\
+\textbf{University of Alberta} \hfill \textbf{Sep. 2020 -- Present}\\
 Bachelor of Science in Engineering (GPA: 4.00/4.00)\\
 
-% \textbf{University of Oxford \textbar\ Oxford, England} \hfill \textbf{Mar. 2021 -- Jul. 2021}\\
+% \textbf{University of Oxford} \hfill \textbf{Mar. 2021 -- Jul. 2021}\\
 % Study Abroad Student \\
 
-\textbf{University of Alberta \textbar\ Edmonton, AB} \hfill \textbf{Sep. 2018 -- Apr. 2020}\\
+\textbf{University of Alberta} \hfill \textbf{Sep. 2018 -- Apr. 2020}\\
 Bachelor of Science Honors Neuroscience (GPA: 4.00/4.00)\\
 Transferred to the Faculty of Engineering at the University of Alberta
 
@@ -72,29 +79,29 @@ Transferred to the Faculty of Engineering at the University of Alberta
 \vspace{-.25em} \hrulefill \vspace{.75em}
 
 \textbf{Undergraduate Teaching Assistant} \hfill \textbf{Sep. 2020 -- Present}\\
-Introduction to Tangible Computing I \& II (CMPUT 274/275) \textbar\ University of Alberta
+Introduction to Tangible Computing I \& II (CMPUT 274 \& 275), University of Alberta
 \begin{itemize}
     \item Providing personalized student support during office hours to a class of 160+ students.
-    \item CMPUT 274/275 is the honors stream of introductory CS and Computer Engineering courses at the University of Alberta. Topics include introductory programming, data structures, and algorithms in Python and C++.
+    \item CMPUT 274 \& 275 is the honors stream of introductory CS and Computer Engineering courses at the University of Alberta. Topics include introductory programming, data structures, and algorithms in Python and C++.
 \end{itemize}
 
 \textbf{Undergraduate Research Student} \hfill \textbf{Oct. 2018 -- Oct. 2021}\\
-Zochodne Lab \textbar\ Li Ka Shing Center for Health Innovation, Edmonton, AB
+Zochodne Lab
 \begin{itemize}
     \item Researching the effects of acute and chronic cutaneous denervation on differential mRNA expression in skin keratinocytes.
     \item Techniques: mouse nerve microsurgery (sciatic nerve crush), mouse tissue harvesting, electroporation, immunohistochemistry, co-IP, Western blot, confocal microscopy.
 \end{itemize}
 
 \textbf{Fencing Coach} \hfill \textbf{Nov. 2016 -- Oct. 2020}\\
-Edmonton Fencing Club \textbar\ Edmonton, AB
+Edmonton Fencing Club
 \begin{itemize}
     \item Taught fencing to children and teenagers in class sizes ranging from 5-25 students.
     \item Fixed and made fencing blades and wires and refereed fencing competitions.
 \end{itemize}
 
 
-% ================================== CONFERENCES ================================== 
-\section*{\textcolor{my_colour}{Conference Paper Presentations}}
+% ================================== PUBLICATIONS ==================================
+\section*{\textcolor{my_colour}{Publications}}
 \vspace{-.25em} \hrulefill \vspace{.75em}
 \vspace{-.5em}
 \begin{enumerate}[leftmargin=!, itemindent=-.55cm]
@@ -131,7 +138,7 @@ Edmonton Fencing Club \textbar\ Edmonton, AB
 
 \textbf{Youreka Canada}
 
-Associate Director of Programs \textbar\ Youreka Canada \hfill \textbf{May 2020 -- Present}
+Associate Director of Programs, Youreka Canada \hfill \textbf{May 2020 -- Present}
 \begin{itemize}
     \item Leading the Programs Department to develop the national curriculum, which provides 15,000+ hours of research and data science education for 200+ high school and undergraduate students annually across Canada. My team consists of Ph.D. and senior undergraduate students across Canada.
     \item Collaborating with the Clark laboratory at the Werklund School of Education at the University of Calgary to develop a multi-year research study of the educational effectiveness of the Youreka program.
@@ -139,14 +146,14 @@ Associate Director of Programs \textbar\ Youreka Canada \hfill \textbf{May 2020 
     \item Authored a \href{https://youreka-textbook.netlify.app/}{textbook on R programming and data science} currently used by 200+ students across Canada.
 \end{itemize}
 
-National Operations Committee Member \textbar\ Youreka Canada \hfill \textbf{May 2020 -- Present}
+National Operations Committee Member, Youreka Canada \hfill \textbf{May 2020 -- Present}
 \begin{itemize}
     \item Leading a national talent recognition and mentorship initiative.
     \item Managing national short-term strategy and organizational policy.
     \item Co-directed a nationwide hackathon that attracted 100+ students.
 \end{itemize}
 
-Vice President of Academics \textbar\ Youreka Edmonton \hfill \textbf{May 2019 -- Present}
+Vice President of Academics, Youreka Edmonton \hfill \textbf{May 2019 -- Present}
 \begin{itemize}
     \item Lecturing a ten-week program to a cohort of 60 high school and undergraduate students.
     \item Leading an undergraduate trainee initiative for promising Vice President of Academics candidates.
@@ -154,7 +161,7 @@ Vice President of Academics \textbar\ Youreka Edmonton \hfill \textbf{May 2019 -
     \item Spearheaded a pilot project that doubled student enrollment from 30 to 60 students from 2019 to 2020.
 \end{itemize}
 
-\textbf{Canadian Blood Services \textbar\ Edmonton, AB}
+\textbf{Canadian Blood Services}
 
 Vice President Volunteer Resources Committee \hfill \textbf{Aug. 2020 -- Jan. 2021}
 \begin{itemize}
@@ -205,7 +212,7 @@ Edmonton NextGen Lifeline Committee \hfill \textbf{Sep. 2018 -- Jan. 2021}
     \item Awarded for the 2018/19 and 2019/20 academic terms.
 \end{itemize}
 
-\textbf{Undergraduate Big Data Challenge: Research Excellence Award} \hfill \textbf{Jul. 2020}
+\textbf{Undergraduate Big Data Challenge Research Excellence Award} \hfill \textbf{Jul. 2020}
 \begin{itemize}
     \item Project titled ``Deep learning transcriptomic model for prediction of pan-drug chemotherapeutic sensitivity.''
     \item Hackathon theme: \textit{Personal and Public Health Decisions in a New Open Data Reality}. 524 participants across Canada and America. See the \href{https://github.com/tig3r66/youreka_genes}{manuscript and source code}.
