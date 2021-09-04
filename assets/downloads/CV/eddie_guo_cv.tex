@@ -1,7 +1,7 @@
 % !TEX program = xelatex
 \documentclass{article}
 \usepackage[margin=0.75in]{geometry}
-\usepackage{amsmath, enumitem, graphicx}
+\usepackage{amsmath, enumitem, graphicx, wrapfig}
 \setlist[itemize]{topsep=5pt}
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{0.75}}
@@ -47,18 +47,23 @@
 \begin{document}
 \thispagestyle{plain}
 % =================================== HEADER ===================================
+\begin{wrapfigure}{R}{0.25\textwidth} \vspace{-1em}
+    \includegraphics[width=0.25\textwidth]{2020_coop_logo.jpeg}
+\end{wrapfigure}
+
 \LARGE \textbf{\textcolor{my_colour}{Edward (Eddie) Guo}} \vspace{.25em}
 
 \normalfont \normalsize
-(587) 988-0292
-    \hspace{.25em} $\bigcdot$ \hspace{.25em}
+% 10907 18 Avenue NW, Edmonton, AB, Canada, T6J 6K3
+
+% (587) 988-0292
+%     \hspace{.15em} $\bigcdot$ \hspace{.15em}
 \href{mailto:eguo1@ualberta.ca}{\textcolor{black}{eguo1@ualberta.ca}}
-    \hspace{.25em} $\bigcdot$ \hspace{.25em}
+    \hspace{.15em} $\bigcdot$ \hspace{.15em}
 \href{https://www.linkedin.com/in/eguo1}{\textcolor{black}{linkedin.com/in/eguo1}}
-    \hspace{.25em} $\bigcdot$ \hspace{.25em}
+    \hspace{.15em} $\bigcdot$ \hspace{.15em}
 \href{https://tig3r66.github.io/index.html}{\textcolor{black}{tig3r66.github.io}}
 
-10907 18 Avenue NW, Edmonton, AB, Canada, T6J 6K3
 \vspace{-.25em}
 
 
@@ -67,7 +72,11 @@
 \vspace{-.25em} \hrulefill \vspace{.75em}
 
 \textbf{University of Alberta} \hfill \textbf{Sep. 2020 -- Present}\\
-Bachelor of Science, Engineering Physics (GPA: 4.00/4.00) \\
+Bachelor of Science, Engineering Physics Co-Op (GPA: 4.00/4.00) \\
+Completed Academic Terms: 4/8 \\
+Completed Co-Op Work Terms: 0/5 \\
+Availability Starting May 2021 \\
+  
 
 \textbf{New College, University of Oxford} \hfill \textbf{May 2021 -- Aug. 2021}\\
 Study Abroad, Magnetic Resonance Imaging and Stem Cell Engineering (GPA equivalent: 4.00/4.00) \\
@@ -81,14 +90,19 @@ Transferred to the Faculty of Engineering at the University of Alberta
 \section*{\textcolor{my_colour}{Employment}}
 \vspace{-.25em} \hrulefill \vspace{.75em}
 
+\textbf{Research Assistant} \hfill \textbf{Sep. 2021 -- Present}\\
+Telerobotic and Biorobotic Systems Group
+\begin{itemize}
+    \item Project on smoothing locomotion trajectory transitions for lower limb exoskeletons.
+\end{itemize}
+
 \textbf{Undergraduate Teaching Assistant} \hfill \textbf{Sep. 2020 -- Present}\\
 Introduction to Tangible Computing I \& II (CMPUT 274 \& 275), University of Alberta
 \begin{itemize}
-    \item Providing personalized student support during office hours and class time to a class of 160+ students.
-    \item CMPUT 274 \& 275 is the honours stream of introductory CS and Computer Engineering courses at the University of Alberta. Topics include introductory programming, data structures, and algorithms in Python and C++.
+    \item Providing personalized student support during office hours and class time to a class of 160+ honours computer science and computer engineering students. Topics include data structures and algorithms in Python and C++.
 \end{itemize}
 
-\textbf{Undergraduate Research Student} \hfill \textbf{Oct. 2018 -- Oct. 2021}\\
+\textbf{Research Assistant} \hfill \textbf{Oct. 2018 -- Oct. 2021}\\
 Zochodne Lab
 \begin{itemize}
     \item Studied the effects of acute and chronic cutaneous denervation on differential mRNA expression in skin keratinocytes.
@@ -127,7 +141,7 @@ Zochodne Lab
 
 \textbf{Programming:} R, Python, C++, MATLAB \\
 \textbf{Markup and Version Control:} \LaTeX, HTML, CSS, Git \\
-\textbf{Software:} Excel, FMRIB Software Library
+\textbf{Software:} Excel, Word, Powerpoint, FMRIB Software Library
 
 
 % ================================== PROJECT EXPERIENCE ==================================
@@ -136,13 +150,12 @@ Zochodne Lab
 
 \textbf{Interactive Statistics Applications} \hfill \textbf{May 2021 -- Present}
 \begin{itemize}
-    \item Created interactive websites with R Shiny for statistical concepts. View the \href{https://intro-stats.shinyapps.io/slreg/}{simple linear regression website}.
-    \item Developed the website as a study resource for my peers.
+    \item Created interactive websites with R Shiny for statistical concepts to act as a study resource for my peers.
 \end{itemize}
 
 \textbf{Deep Learning Transcriptomic Model for Chemotherapies} \hfill \textbf{May 2020 -- Jun. 2020}
 \begin{itemize}
-    \item Used clustering algorithms, feature selection algorithms, and neural networks using Keras and scikit-learn to classify human cell lines into therapeutic response groups.
+    \item Used machine learning algorithms with Keras to classify cancer cell responses to chemotherapy.
 \end{itemize}
 
 
@@ -152,13 +165,13 @@ Zochodne Lab
 
 \textbf{Youreka Canada}
 
-Associate Director of Programs, Youreka Canada \hfill \textbf{May 2020 -- Present}
+Vice President of Programs, Youreka Canada \hfill \textbf{May 2020 -- Present}
 \begin{itemize}
-    \item Leading the Programs Department to develop the Youreka national curriculum, which provides 15,000+ hours of research and data science education for 150+ high school and undergraduate students annually across Canada.
+    \item Leading the Programs Department to develop the Youreka national curriculum, which provides 15,000+ hours of research and data science education for 200+ high school and undergraduate students annually across Canada.
     \item Collaborating with the Clark laboratory at the Werklund School of Education at the University of Calgary to develop a multi-year research study of the educational effectiveness of the Youreka program.
     \item Collaborating with the City of Edmonton Neighbourhood Empowerment Team to address youth unemployment.
-    \item Authored an \href{https://youreka-textbook.netlify.app/}{interactive e-textbook on R programming and data science} currently used by 150+ students across Canada.
-    \item Co-directed a hackathon that attracted 100+ students across Canada.
+    \item Authored an \href{https://youreka-textbook.netlify.app/}{interactive e-textbook on R programming and data science} currently used by 200+ students across Canada.
+    % \item Co-directed a hackathon that attracted 100+ students across Canada.
 \end{itemize}
 
 Vice President of Academics, Youreka Edmonton \hfill \textbf{May 2019 -- Jun. 2021}
@@ -180,18 +193,18 @@ Vice President of Academics, Youreka Edmonton \hfill \textbf{May 2019 -- Jun. 20
 
 \textbf{Louise McKinney Post-Secondary Scholarship} \hfill \textbf{Dec. 2019, Sep. 2020}
 \begin{itemize}
-    \item Awarded to the top 1.5-2\% of students based on GPA at the University of Alberta. Awarded twice. Valued at \$2,500.
+    \item Awarded to the top 1.5-2\% of students based on GPA at the University of Alberta. Awarded twice.
 \end{itemize}
 
 \textbf{Undergraduate Big Data Challenge Research Excellence Award} \hfill \textbf{Jul. 2020}
 \begin{itemize}
     \item Project titled ``Deep learning transcriptomic model for prediction of pan-drug chemotherapeutic sensitivity.''
-    \item 180 teams across Canada and United States of America. See the \href{https://github.com/tig3r66/youreka_genes}{manuscript and source code}. Valued at \$500.
+    \item 180 teams across Canada and United States of America. See the \href{https://github.com/tig3r66/youreka_genes}{manuscript and source code}.
 \end{itemize}
 
-\textbf{COVID-19 Data Science Hackathon Post-Secondary Student Award} \hfill \textbf{May 2020}
+\textbf{Alberta Innovates COVID-19 Data Science Hackathon Post-Secondary Student Award} \hfill \textbf{May 2020}
 \begin{itemize}
-    \item Developed an interactive application using a regression model to better understand the impacts of age, poverty, income, and population density on the spread of the COVID-19 virus. Valued at \$500.
+    \item Developed an interactive application using a regression model to better understand the impacts of age, poverty, income, and population density on the spread of the COVID-19 virus.
     % \item The hackathon was hosted by Alberta Innovates, Cybera, and the Pacific Institute for Mathematical Sciences. 120 individuals and teams competed in the hackathon.
     \item Media coverage: \href{https://www.folio.ca/students-develop-online-tool-to-predict-covid-19-spread-based-on-demographics/}{University of Alberta Folio article} and the \href{https://genomealberta.ca/genomics/genomics_blog_08182001.aspx}{Genome Alberta podcast}.
 \end{itemize}
@@ -206,10 +219,10 @@ Vice President of Academics, Youreka Edmonton \hfill \textbf{May 2019 -- Jun. 20
 %         \item Awarded to students with superior academic achievement.
 %     \end{itemize}
 
-\textbf{Thirst 4 Knowledge Undergraduate Leadership Scholarship} \hfill \textbf{Sep. 2019}
-    \begin{itemize}
-        \item Awarded to University of Alberta students with superior academic achievement who demonstrate leadership through involvement in university or community organizations, sports activities, or cultural activities. Valued at \$1,400.
-    \end{itemize}
+% \textbf{Thirst 4 Knowledge Undergraduate Leadership Scholarship} \hfill \textbf{Sep. 2019}
+% \begin{itemize}
+%     \item Awarded to University of Alberta students with superior academic achievement who demonstrate leadership through involvement in university or community organizations, sports activities, or cultural activities. Valued at \$1,400.
+% \end{itemize}
 
 % \textbf{Faculty of Science Undergraduate Scholarship} \hfill \textbf{Sep. 2019}
 %     \begin{itemize}
