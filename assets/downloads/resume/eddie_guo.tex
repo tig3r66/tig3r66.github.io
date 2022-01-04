@@ -1,16 +1,7 @@
 % !TEX program = xelatex
 \documentclass{article}
-\usepackage[margin=0.75in]{geometry}
-\usepackage{amsmath, enumitem, graphicx, wrapfig}
-\setlist[itemize]{topsep=5pt}
-\makeatletter
-\newcommand*\bigcdot{\mathpalette\bigcdot@{0.75}}
-\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
-\makeatother
-
-% Font
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
+\usepackage[margin=0.55in]{geometry}
+\usepackage{amsmath, graphicx}
 
 % Link Colors
 \usepackage{xcolor}
@@ -20,212 +11,192 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks, citecolor=myblue, filecolor=myblue, linkcolor=myblue, urlcolor=myblue}
 
-% Format headers/footers
-\usepackage{fancyhdr}
-\fancyhf{}
-% \renewcommand{\headrulewidth}{0pt}
-\fancyhead[R]{Edward (Eddie) Guo}
-\fancyfoot[C]{\thepage}
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
-
 \usepackage{sectsty}
 \sectionfont{\large}
-% Uncomment if you want centerized headings
-%\sectionfont{\centering}
 
 % section spacing
 \usepackage{titlesec}
-\titlespacing\section{0pt}{22pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\section{0pt}{16pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
+\usepackage{enumitem}
 \setlength{\parindent}{0cm}
+\setlist{nolistsep}
 
 
 
 \begin{document}
 \thispagestyle{plain}
 % =================================== HEADER ===================================
-\begin{wrapfigure}{R}{0.275\textwidth} \vspace{-0.95em}
-    \includegraphics[width=0.275\textwidth]{2020_coop_logo.jpeg}
-\end{wrapfigure}
-
-\LARGE \textbf{\textcolor{my_colour}{Edward (Eddie) Guo}} \vspace{.2em}
+\begin{center}
+\LARGE \textbf{\textcolor{my_colour}{Eddie Guo}} \vspace{.2em}
 
 \normalfont \normalsize
-% (587) 988-0292 \hspace{1.625em} $\bigcdot$ \hspace{.15em} 10907 18 Avenue NW, Edmonton, AB, T6J 6K3
-
 \href{mailto:eguo1@ualberta.ca}{\textcolor{black}{eguo1@ualberta.ca}}
-    \hspace{.15em} $\bigcdot$ \hspace{.15em}
+    \hspace{.15em} $\diamond$ \hspace{.15em}
 \href{https://www.linkedin.com/in/eguo1}{\textcolor{black}{linkedin.com/in/eguo1}}
-    \hspace{.15em} $\bigcdot$ \hspace{.15em}
+    \hspace{.15em} $\diamond$ \hspace{.15em}
 \href{https://tig3r66.github.io/index.html}{\textcolor{black}{tig3r66.github.io}}
+\end{center}
 
-\vspace{-.25em}
+\vspace{-1em}
 
 
 % ================================== EDUCATION ================================== 
 \section*{\textcolor{my_colour}{Education}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
+\vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{University of Alberta} \hfill \textbf{Sep. 2020 -- Present}\\
-Bachelor of Science, Engineering Physics Co-Op (GPA: 4.00/4.00) \\
-Completed Academic Terms: 4/8 \\
-Completed Co-Op Work Terms: 0/5 \\
-Availability Starting May 2021 \\
-  
+\textbf{University of Alberta} \hfill \textbf{Sep. 2020 -- Present} \\
+\textit{Bachelor of Science, Engineering Physics Co-Op} \hfill GPA: 4.0/4.0
+\begin{itemize}
+    \item Awarded over \$30,000 for my leadership, research, and academic work at the University of Alberta.
+    \item Awarded a Dean's Research Award from the University of Alberta for exoskeleton research.
+\end{itemize} \vspace{1em}
 
-\textbf{New College, University of Oxford} \hfill \textbf{May 2021 -- Aug. 2021}\\
-Study Abroad, Magnetic Resonance Imaging and Stem Cell Engineering (GPA equivalent: 4.00/4.00) \\
+\textbf{New College, University of Oxford} \hfill \textbf{May 2021 -- Aug. 2021} \\
+\textit{Study Abroad, Magnetic Resonance Imaging and Stem Cell Engineering} \hfill First Class Honours \\
 
 \textbf{University of Alberta} \hfill \textbf{Sep. 2018 -- Apr. 2020} \\
-Bachelor of Science Honours, Neuroscience (GPA: 4.00/4.00) \\
-Transferred to the Faculty of Engineering at the University of Alberta
+\textit{Bachelor of Science Honours, Neuroscience} \hfill GPA: 4.0/4.0
+\begin{itemize}
+    \item Awarded two grants for research on improving patient outcomes after peripheral nerve injury.
+    \item Transferred to the Faculty of Engineering at the University of Alberta.
+\end{itemize}
 
 
 % ================================== EMPLOYMENT ==================================
-\section*{\textcolor{my_colour}{Employment}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
+\section*{\textcolor{my_colour}{Experience}}
+\vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{Research Assistant} \hfill \textbf{Sep. 2021 -- Present}\\
-Telerobotic and Biorobotic Systems Group
+\textbf{Telerobotic and Biorobotic Systems Group} \hfill \textbf{Sep. 2021 -- Present}\\
+\textit{Research Assistant}
 \begin{itemize}
-    \item Working with MATLAB Simulink code for a lower-limb exoskeleton (Exo-H3) to smooth the transitions between different states (e.g., walking, sitting, standing) based on speech processing of the wearer.
-\end{itemize}
+    \item Designing voice-controlled exoskeleton control systems in MATLAB Simulink to help patients rehabilitate after injury.
+    \item Collaborating with engineers and neuroscientists to design safe and natural human-robot interactions.
+    \item Designing human exoskeleton experiments and writing research manuscripts for publication.
+\end{itemize} \vspace{1em}
 
-\textbf{Teaching Assistant} \hfill \textbf{Sep. 2020 -- Present}\\
-Introduction to Tangible Computing I \& II (CMPUT 274 \& 275), University of Alberta
+\textbf{University of Alberta} \hfill \textbf{Sep. 2020 -- Present}\\
+\textit{Teaching Assistant, Introduction to Tangible Computing I \& II}
 \begin{itemize}
-    \item Providing personalized student support during office hours and class time to a class of 160+ honours computer science and computer engineering students. Topics include data structures and algorithms in Python and C++.
-\end{itemize}
+    \item Providing personalized support to a class of 160+ honours computer science and computer engineering students.
+    \item Supporting students with algorithms and data structures in Python and C++.
+\end{itemize} \vspace{1em}
 
-\textbf{Research Assistant} \hfill \textbf{Oct. 2018 -- Oct. 2021}\\
-Zochodne Lab
+\textbf{Zochodne Laboratory, University of Alberta} \hfill \textbf{Oct. 2018 -- Oct. 2020}\\
+\textit{Research Assistant}
 \begin{itemize}
-    \item Studied the effects of acute and chronic cutaneous denervation on differential mRNA expression in skin keratinocytes.
-    % \item Techniques: mouse nerve microsurgery, electroporation, immunohistochemistry, co-IP, Western blot.
+    \item Studied mouse models of peripheral nerve damage to improve patient outcomes after injury.
+    \item Performed mouse sciatic nerve microsurgery, electroporation, immunohistochemistry, co-IP, and Western blot.
+    % \item Received two research grants for my work with growth factors that facilitate recovery after nerve damage.
 \end{itemize}
-
 
 % ================================== PUBLICATIONS ==================================
-\section*{\textcolor{my_colour}{Scholarly Activities}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
+\section*{\textcolor{my_colour}{Publications}}
+\vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{Paper Presentation at the Canadian Society for the Study of Education Conference} \hfill \textbf{Jun. 2021}
-\begin{itemize}
-    \item Paper titled ``Deepening Undergraduate Student Understanding of Science Inquiry by Reflecting on the Creation and Enactment of a Citizen Science Project.''
-    \item Authors: Becker, S., Clark, D., Gupta, M., Kannappan, S., Wong, B., Hernandez-Zavaleta, E., and \textbf{Guo, E.}
-\end{itemize}
+\begin{enumerate}[itemsep=1em]
+    \item S. Becker, D. Clark, M. Gupta, S. Kannappan, B. Wong, E. Hernandez-Zavaleta, and \textbf{E. Guo}, ``More than a Eureka Moment: Undergraduate Students' Reflective Understanding of Science Inquiry in a Citizen Science Project,'' \textit{Alberta Science Education Journal}, 2021. (Accepted).
+    \item \textbf{E. Guo}, P. Torabi, D.E. Nielsen, and M. Pietrosanu, ``Deep learning transcriptomic model for prediction of pan-drug chemotherapeutic sensitivity,'' \textit{STEM Fellowship Journal}, 2021. (Accepted).
+    \item S. Becker, D. Clark, M. Gupta, S. Kannappan, B. Wong, \textbf{E. Guo}, and E. Hernandez-Zavaleta, ``Deepening Undergraduate Student Understanding of Science Inquiry by Reflecting on the Creation and Enactment of a Citizen Science Project,'' presented at the Canadian Society for the Study of Education XLIX Annual Conference, Canada, May 30--June 3, 2021.
+\end{enumerate}
 
-\textbf{Peer Reviewer for the Muscle \& Nerve Medical Journal} \hfill \textbf{Aug. 2020}
-\begin{itemize}
-    \item Provided a peer review for a bioinformatics paper in the Muscle \& Nerve medical journal.
-\end{itemize}
-
-\textbf{Alberta Innovates Summer Research Studentship} \hfill \textbf{Apr. 2020}
-\begin{itemize}
-    \item Grant for summer research project titled ``Skin and Nerves: Understanding the dialogue between axons and skin cells to restore sensation.'' Awarded by the Undergraduate Research Initiative, University of Alberta.
-\end{itemize}
-\textbf{Office of the Provost and VP (Academic) Summer Studentship Award} \hfill \textbf{May 2019}
-    \begin{itemize}
-        \item Grant for summer research project titled ``Axon regrowth and plasticity in diabetic neuropathy: the role of growth cone molecules.'' Awarded by the Faculty of Medicine and Dentistry, University of Alberta.
-    \end{itemize}
 
 
 % ================================== TECHNICAL SKILLS ================================== 
-\section*{\textcolor{my_colour}{Technical Skills}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
+\section*{\textcolor{my_colour}{Skills}}
+\vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{Programming:} R, Python, C++, MATLAB \\
-\textbf{Markup and Version Control:} \LaTeX, HTML, CSS, Git \\
-\textbf{Software:} Excel, Word, Powerpoint, FMRIB Software Library \\
-\textbf{Certifications:} Class 5 Driver's Licence, WHMIS 2021, Engineering Laboratory Safety, Construction Safety Training System
+\textbf{Programming} \hfill \parbox[t]{.8\linewidth}{R, Python, C++, MATLAB, VHDL}
+
+\textbf{Software} \hfill \parbox[t]{0.8\linewidth}{Simulink, FMRIB Software Library, Git, \LaTeX, HTML, CSS, R Markdown, Microsoft Office}
+
+\textbf{Electronics} \hfill \parbox[t]{0.8\linewidth}{Arduino, Raspberry Pi, Zybo Z7 FPGA, Oscilloscope, Digital Multimeter, Exo-H3}
+
+% \textbf{Certifications} \hfill \parbox[t]{.8\linewidth}{Class 5 Driver's Licence, WHMIS 2021, Engineering Laboratory Safety}
 
 
-% ================================== PROJECT EXPERIENCE ==================================
-\section*{\textcolor{my_colour}{Project Experience}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
+% ================================== HONOURS AND AWARDS ================================== 
+\section*{\textcolor{my_colour}{Selected Honours and Awards}}
+\vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{Interactive Statistics Applications} \hfill \textbf{May 2021 -- Present}
+\textbf{Peter Lougheed Scholarship} \hfill \textbf{Sep. 2021}
 \begin{itemize}
-    \item Created interactive websites with R Shiny for statistical concepts to act as a study resource for my peers.
-\end{itemize}
+    \item Awarded to University of Alberta students who demonstrate leadership through involvement in university or community organizations, sports activities, or cultural activities and academic achievement. Valued at \$10,000.
+\end{itemize} \vspace{1em}
 
-\textbf{Deep Learning Transcriptomic Model for Chemotherapies} \hfill \textbf{May 2020 -- Jun. 2020}
+\textbf{Louise McKinney Post-Secondary Scholarship} \hfill \textbf{Dec. 2019, Sep. 2020}
 \begin{itemize}
-    \item Used machine learning algorithms with Keras to classify cancer cell responses to chemotherapy.
+    \item Awarded on the basis of superior academic achievement (top 1.5-2\% of faculty) to students at the University of Alberta who are also Alberta residents. Awarded for the 2018/19 and 2019/20 academic terms.
+\end{itemize} \vspace{1em}
+
+\textbf{Undergraduate Big Data Challenge Research Excellence Award} \hfill \textbf{Jul. 2020}
+\begin{itemize}
+    \item Used unsupervised learning, feature selection, and neural networks to predict cancer response to chemotherapies.
+\end{itemize} \vspace{1em}
+
+\textbf{Alberta Innovates COVID-19 Hackathon Post-Secondary Student Award} \hfill \textbf{May 2020}
+\begin{itemize}
+    \item Created an interactive app to model how COVID-19 spreads given age, poverty, income, and population density.
+    \item Media coverage: \href{https://www.folio.ca/students-develop-online-tool-to-predict-covid-19-spread-based-on-demographics/}{University of Alberta Folio article} and the \href{https://genomealberta.ca/genomics/genomics_blog_08182001.aspx}{Genome Alberta podcast}.
+\end{itemize} \vspace{1em}
+
+\textbf{Thirst 4 Knowledge Undergraduate Leadership Scholarship} \hfill \textbf{Sep. 2019}
+\begin{itemize}
+    \item Awarded to University of Alberta students with superior academic achievement who demonstrate leadership through involvement in university or community organizations, sports activities, or cultural activities.
 \end{itemize}
 
 
 % ================================ EXTRACURRICULAR ACTIVITIES ================================
 \section*{\textcolor{my_colour}{Volunteering}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
+\vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{Youreka Canada}
-
-Vice President of Programs, Youreka Canada \hfill \textbf{May 2020 -- Present}
+\textbf{Youreka Canada} \hfill \textbf{Feb. 2019 -- Present} \\
+\textit{Vice President, Department of Programs}
 \begin{itemize}
-    \item Leading the Programs Department to develop the Youreka national curriculum, which provides 15,000+ hours of research and data science education for 200+ high school and undergraduate students annually across Canada.
-    \item Collaborating with the Clark laboratory at the Werklund School of Education at the University of Calgary to develop a multi-year research study of the educational effectiveness of the Youreka program.
-    \item Collaborating with the City of Edmonton Neighbourhood Empowerment Team to address youth unemployment.
-    \item Authored an \href{https://youreka-textbook.netlify.app/}{interactive e-textbook on R programming and data science} currently used by 200+ students across Canada.
-    % \item Co-directed a hackathon that attracted 100+ students across Canada.
+    \item Leading researchers, medical students, and undergraduates to develop the Youreka national curriculum, which provides 15,000+ hours of research education for 200+ high school and undergraduate students across Canada.
+    \item Authored an \href{https://youreka-textbook.netlify.app/}{interactive e-textbook on R programming and data science} used by 200+ students across Canada.
+    % \item Presented educational research findings at the Canadian Society for the Study of Education 2021 Conference.
+    \item Taught a ten-week science program to a cohort of 30 high school and undergraduate students.
+\end{itemize} \vspace{1em}
+
+\textbf{Engineering Physics Club at the University of Alberta} \hfill \textbf{Sep. 2021 -- Present} \\
+\textit{Second Year Representative}
+\begin{itemize}
+    \item Founder and head editor of the Atom magazine for Engineering Physics at the University of Alberta.
+    \item Advocating for second year engineering physics at the University of Alberta.
+\end{itemize} \vspace{1em}
+
+\textbf{Canadian Blood Services}  \hfill \textbf{Jun. 2018 -- Jan. 2021} \\
+\textit{NextGen Lifeline Committee Executive}
+\begin{itemize}
+    \item Coordinated and organized blood donation and stem cell events (e.g., patient campaigns) with staff and volunteers.
+    \item Created a software management system for volunteer contracts and event data.
 \end{itemize}
 
-Vice President of Academics, Youreka Edmonton \hfill \textbf{May 2019 -- Jun. 2021}
+% ================================ PERSONAL PROJECTS ================================
+\section*{\textcolor{my_colour}{Personal Projects}}
+\vspace{-.25em} \hrulefill \vspace{.25em}
+
+\textbf{Interactive Statistics Applications} \hfill \textbf{May 2021 -- Present}
 \begin{itemize}
-    \item Taught a ten-week program to a cohort of 30 high school and undergraduate students.
-    \item Provided introductory statistics lectures to all Youreka Canada branches during the COVID-19 pandemic.
-    \item Spearheaded a pilot project that doubled student enrollment from 30 to 60 students from 2019 to 2020.
-\end{itemize}
+    \item Created interactive applications using R Shiny for statistical concepts. View the \href{https://intro-stats.shinyapps.io/slreg/}{simple linear regression app}.
+    \item Developed the app as a study resource for my peers.
+\end{itemize} \vspace{1em}
 
-
-% ================================== HONOURS AND AWARDS ================================== 
-\section*{\textcolor{my_colour}{Select Honours and Awards}}
-\vspace{-.25em} \hrulefill \vspace{.75em}
-
-\textbf{Peter Lougheed Scholarship} \hfill \textbf{Sep. 2021}
+\textbf{Robotic Arm} \hfill \textbf{Sep. 2020 -- Dec. 2020}
 \begin{itemize}
-    \item Awarded to University of Alberta students who demonstrate leadership through involvement in university or community organizations, sports activities, or cultural activities and academic achievement. Valued at \$10,000.
-\end{itemize}
+    \item Designed a robotic arm in Fusion 360 and 3D printed the arm. Programmed the arm with C++ on an Arduino.
+\end{itemize} \vspace{1em}
 
-\textbf{Louise McKinney Post-Secondary Scholarship} \hfill \textbf{Dec. 2019, Sep. 2020}
+\textbf{Electroencephalogram (EEG) Visualizer} \hfill \textbf{Apr. 2020 -- May 2020}
 \begin{itemize}
-    \item Awarded to the top 1.5-2\% of students based on GPA at the University of Alberta. Awarded twice.
-\end{itemize}
+    \item The application takes an EEG data stream over a local network and visualizes both the raw and transformed signals in a PyQt5 user interface. The program implements the radix-2 decimation-in-time fast Fourier transform algorithm.
+\end{itemize} \vspace{1em}
 
-\textbf{Undergraduate Big Data Challenge Research Excellence Award} \hfill \textbf{Jul. 2020}
+\textbf{Driving Route Finder} \hfill \textbf{Apr. 2020 -- May 2020}
 \begin{itemize}
-    \item Project titled ``Deep learning transcriptomic model for prediction of pan-drug chemotherapeutic sensitivity.''
-    \item 180 teams across Canada and United States of America. See the \href{https://github.com/tig3r66/youreka_genes}{manuscript and source code}.
+    \item Developed a route finder where the user can indicate a start and endpoint anywhere in Edmonton using a joystick. A desktop C++ program computes the shortest possible route using the A$^*$ algorithm and displays it on an Adafruit 3.5'' touchscreen display on an Arduino Mega2560.
 \end{itemize}
-
-\textbf{Alberta Innovates COVID-19 Data Science Hackathon Post-Secondary Student Award} \hfill \textbf{May 2020}
-\begin{itemize}
-    \item Developed an interactive application using a regression model to better understand the impacts of age, poverty, income, and population density on the spread of the COVID-19 virus.
-    % \item The hackathon was hosted by Alberta Innovates, Cybera, and the Pacific Institute for Mathematical Sciences. 120 individuals and teams competed in the hackathon.
-    \item Media coverage: \href{https://www.folio.ca/students-develop-online-tool-to-predict-covid-19-spread-based-on-demographics/}{University of Alberta Folio article} and the \href{https://genomealberta.ca/genomics/genomics_blog_08182001.aspx}{Genome Alberta podcast}.
-\end{itemize}
-
-% \textbf{Sci5 Outstanding Achievement in Science Scholarship} \hfill \textbf{Apr. 2019, Mar. 2020}
-% \begin{itemize}
-%     \item Awarded to 4 well-rounded students with strong academic achievement, extracurricular involvement, and recommendation letters in the Faculty of Science at the University of Alberta. Awarded twice.
-% \end{itemize}
-
-% \textbf{University of Alberta Undergraduate Scholarship} \hfill \textbf{Sep. 2019}
-%     \begin{itemize}
-%         \item Awarded to students with superior academic achievement.
-%     \end{itemize}
-
-% \textbf{Thirst 4 Knowledge Undergraduate Leadership Scholarship} \hfill \textbf{Sep. 2019}
-% \begin{itemize}
-%     \item Awarded to University of Alberta students with superior academic achievement who demonstrate leadership through involvement in university or community organizations, sports activities, or cultural activities. Valued at \$1,400.
-% \end{itemize}
-
-% \textbf{Faculty of Science Undergraduate Scholarship} \hfill \textbf{Sep. 2019}
-%     \begin{itemize}
-%         \item Awarded to students with superior academic achievement in the Faculty of Science at the University of Alberta.
-%     \end{itemize}
 
 \end{document}

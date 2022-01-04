@@ -78,6 +78,10 @@ h6 {
 
 span { display: inline-block; }
 
+li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
 .url {
     text-decoration: none;
     font-weight: bold;
