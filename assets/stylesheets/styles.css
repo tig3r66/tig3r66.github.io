@@ -185,13 +185,15 @@ button {
     text-decoration: none;
 }
 
-.social-media-icons #github-icon a:hover { color: #FF0800; }
+.social-media-icons #cv-icon a:hover { color: #FF0800; }
 
-.social-media-icons #cv-icon a:hover { color: #FFE74C; }
+.social-media-icons #email-icon a:hover { color: #D90077; }
 
 .social-media-icons #linkedin-icon a:hover { color: #2A9DF4; }
 
-.social-media-icons #email-icon a:hover { color: #20BF55; }
+.social-media-icons #orcid-icon a:hover { color: #FFE74C; }
+
+.social-media-icons #github-icon a:hover { color: #20BF55; }
 
 .filler { width: 15px; }
 
