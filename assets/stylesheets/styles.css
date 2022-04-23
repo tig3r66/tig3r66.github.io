@@ -403,9 +403,8 @@ button {
 
 .overlay-image {
     display: block;
-    max-height: 500px;
-    min-height: 400px;
-    max-width: 650px;
+    object-fit: cover;
+    height: 500px;
     width: 100%;
 }
 
