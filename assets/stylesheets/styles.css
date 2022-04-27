@@ -489,11 +489,42 @@ button {
 .flip-card-back {
     box-sizing: border-box;
     padding: 25px;
-    background-color: white;
+    background-color: var(--light-white);
     color: var(--dark-black);
     transform: rotateY(180deg);
 }
 
 .flip-active {
     transform: rotateY(180deg);
+}
+
+
+/* TABLE STYLES */
+.uni-notes {
+    border: 2px solid var(--main-bg-color);
+    border-radius: 10px;
+}
+
+.uni-notes th {
+    padding: 12px;
+    text-align: left;
+    color: var(--dark-white);
+    background-color: var(--main-bg-color);
+}
+
+.uni-notes th:first-child {
+    border-top-left-radius: 5px;
+}
+
+.uni-notes th:last-child {
+    border-top-right-radius: 5px;
+}
+
+.uni-notes td {
+    padding: 12px;
+    border-top: 1px solid var(--main-bg-color);
+}
+
+.uni-notes tr:hover {
+    background-color: #600B0420;
 }

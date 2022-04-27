@@ -1,0 +1,395 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Basics}
+\author{Eddie Guo}
+\date{September 2019}
+
+\begin{document}
+\lstset{language=Python}
+
+\maketitle
+
+
+% Topics Covered
+\section{Introduction to Python Basics}
+% Topics Covered
+\subsection{Topics Covered}
+\begin{multicols}{2}
+    \begin{enumerate}[label=(\roman*)]
+        \item Interpreted vs compiled code
+        \item Programming style: comments, PEP8
+        \item Simple input/output
+        \item Values and variables
+        \item Introduction to built-in data types \& how to use them
+    \end{enumerate}
+\end{multicols}
+
+% Intro
+\section{Intro}
+
+% Programming = Data + Algorithms
+\subsection{Programming = Data + Algorithms}
+    Data strucs + pseudo-code algorithms $\rightarrow$  programming lang $\rightarrow$ compiled/interpreted into machine code
+
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Why are computers dumb?
+                \begin{itemize}
+                    \item They take instructions literally.
+                \end{itemize}
+            \item Why are computers good?
+                \begin{itemize}
+                    \item B/c they do things over and over rly fast.
+                \end{itemize}
+            \item Program = set of instrucs given to computer.
+            \item Computers understand machine lang (1s \& 0s; i.e., CPU \textbf{only} understands machine lang).
+            \item \hl{Unsolvable problems are not computable}
+            \item \hl{Programs CANNOT exist w/out algorithms}
+        \end{itemize}
+    \end{multicols}
+
+
+    \begin{multicols}{2}
+        \textbf{Interpreter (ex: Python 3)}
+            \begin{itemize}
+                \item Interpreter translates program line-by-line until it meets 1st error/end of program.
+                \item Code interpreted every time you run your program.
+            \end{itemize}
+    
+        \textbf{Compiler (ex: C++)}
+            \begin{itemize}
+                \item Translates entire program into machine code efficiently (execution usually faster).
+                \item Code only compiled when new executable req.
+            \end{itemize}
+    \end{multicols}
+
+% Python Program Style Notes
+\subsection{Python Program Style Notes}
+    \begin{itemize}
+        \item Always include header.
+        \item In header, always include what your program does.
+        \item Comments improve code readability \& maintainability.
+            \begin{itemize}
+                \item Should explain approach of code (the 'why,' not line-by-line description).
+            \end{itemize}
+        \item \hl{To check style of helloworld.py, type \texttt{style helloworld.py} in terminal.}
+    \end{itemize}
+
+\begin{lstlisting}[language=Python]
+    # ==============================
+    #   Name: Eddie Guo
+    #   ID: 1576381
+    #   CMPUT 274, Fall 2019
+    #
+    #   Exercise 1: Hello World.
+    #   Description here
+    # ==============================
+\end{lstlisting}
+    
+% More Python Notes
+\subsection{More Python Notes}
+    \begin{itemize}
+        \item Python is dynamically typed.
+            \begin{itemize}
+                \item i.e., don't have to explicitly declare variable along w/ type (C++ is diff).
+            \end{itemize}
+        \item Any var not assoc w/ var is periodically deleted from mem by Python's garbage collector.
+    \end{itemize}
+
+% Python Variable Names
+\section{Python Variable Names}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Python keywords can't be used as var names (ex: and, as, in, class).
+            \item \hl{Variable names also called identifier.}
+            \item Underscore ex: \texttt{hello\_world}
+            \item Lower camel case ex: \texttt{dogsTasteGoodLol}
+            \item Upper camel case ex: \texttt{MyNameIsJeeeefffff}
+            \item \hl{According to PEP 8, use underscore for multi-word identifiers.}
+        \end{itemize}
+    \end{multicols}
+
+    \begin{figure}[!h]
+        \begin{center}
+            \includegraphics[scale = 0.35]{keywords.png}
+        \end{center}
+    \vspace*{-5mm}
+    \caption{Common Python 3 keywords}
+    \end{figure}
+    
+% Built-in Types   
+\section{Built-In Types \& Methods}
+\hl{\textbf{Immutable means var can't change in place; a new obj is created for each operation. You must assign a variable to ref \& store the new obj. Else, garbage collector will remove.}}
+% Buil-In Types int, float, complex
+    \subsection{Built-In Types: \texttt{int, float, complex}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \texttt{int, float, complex} are immutable
+            \item \texttt{5//2} returns \texttt{2} (floored division)
+            \item \texttt{-7//3} returns \texttt{-3} (floored division)
+            \item \texttt{5\%2} returns \texttt{1} (modulo operator)
+        \end{itemize}
+    \end{multicols}
+
+% Convert Type
+\subsection{Convert Type}
+    \begin{itemize}
+        \item Can convert type of one type to another (ex: \texttt{list()}, \texttt{set()}).
+        \item Can't mix types when performing operation (ex: \texttt{'CMPUT'+12.0} $\rightarrow$ \texttt{'CMPUT'+str(12.0)}).
+    \end{itemize}
+
+% Built-in types: Bool
+\subsection{Built-in Types: \texttt{bool}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Boolean is immutable
+            \item Remember the truth tables
+            \item For 'and', only if both operands \texttt{True}, then True
+                \begin{itemize}
+                    \item if 1$^{\mathrm{st}}$ item is \texttt{False}, don't eval 2nd part
+                \end{itemize}
+            \item For 'or', only if both operands \texttt{False}, then false
+                \begin{itemize}
+                    \item If 1$^{\mathrm{st}}$ item is \texttt{True}, don't eval 2$^{\mathrm{nd}}$ part.
+                \end{itemize}
+            \item Strings are indexed starting from 0
+                \begin{itemize}
+                    \item If \texttt{myVar='CMPUT'}, then \texttt{myVar[2]='P'}
+                \end{itemize}
+            \item \texttt{replace(old, new, max)} method
+            \item Rem that \texttt{strip()!=split(char)}
+        \end{itemize}
+    \end{multicols}
+    
+    
+% format()
+\subsection{String Method: \texttt{format()}}
+\begin{lstlisting}{Language=Python}
+    >>> print('my number is {:15}!'.format(1))
+    'my number is 1!'
+    
+    """
+    {:<} - left-justified in field width
+    {:^} - centerized in field width
+    {:>} - right-justified in field width
+    {:015} - pad w/ 0s for field width of 15
+    """
+    
+    >>> print('my number is {:15}!'.format(1))
+    >>> print('my number is {:015}!'.format(1))
+    my number is               1!
+    my number is 000000000000001!
+    
+    """
+    {15.2f} - 2 digits after decimal pnt
+    {0} - mapping 1st element in str to 1st argument in format()
+    """
+    
+    name = 'Fred'; amount = 5.43
+    >>> print('The person {0:^015} has {1:>07.2f} dollars'.format(name, amount)
+    The person 00000Fred000000 has 00005.4 dollars
+    """ NOTES:
+        - 1st arg in format centerized w/ Fred in middle, field width = 15, empty spaces filled by 0s, 5 0s on left, 6 0s on right
+        - 2nd arg in format right-aligned, padded w/ 0s, width = 7, 2 decimal places
+        - format() may come in handy for making tables
+    """
+\end{lstlisting}
+
+% List
+\subsection{Built-In Type: \texttt{list}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item List is seq of values of \textit{any} type \& is mutable.
+            \item Operators \texttt{+}, \texttt{*} concatenate list; \texttt{:} slices lists
+                \begin{itemize}
+                    \item \texttt{[1,2,3]+[4,5,6]} returns \texttt{[1, 2, 3, 4, 5, 6]}
+                    \item \texttt{[1,2,3]*3} returns \texttt{[1, 2, 3, 1, 2, 3, 1, 2, 3]}
+                \end{itemize}
+            \item \texttt{k=[1,2,3,4,5,6]}
+                \begin{itemize}
+                    \item \texttt{k[2:3]} returns \texttt{[3, 4]}
+                    \item \texttt{k[2:]} returns \texttt{[3, 4, 5, 6]}
+                    \item \texttt{k[:4]} returns \texttt{[1, 2, 3, 4]}
+                \end{itemize}
+            \item Membership operator \texttt{in} asks whether item is in list.
+                \begin{itemize}
+                    \item \texttt{3 in [1,2,3,4,5,6]} returns \texttt{True}
+                    \item \texttt{len([1,2,3,4,5,6])} returns \texttt{6}
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+% Lis tMethods
+\subsection{List Methods}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \texttt{append()} adds item at end of list
+            \item \texttt{insert(i, item)} inserts item at i$^{\mathrm{th}}$ pos of list
+            \item \texttt{extend(iterable)} appends all items in iterable
+            \item \texttt{pop()} removes \& returns last item in list
+                \begin{itemize}
+                    \item \texttt{pop(i)} removes \& returns i$^{\mathrm{th}}$ element in list
+                \end{itemize}
+            \item \texttt{del list[i]} removes i$^{\mathrm{th}}$ element in list
+                \begin{itemize}
+                    \item \texttt{del k[2]} deletes item at index 2 from k
+                \end{itemize}
+            \item \texttt{remove(item)} removes 1$^{\mathrm{st}}$ occurrence of item
+            \item \texttt{sort()} modifies list to be sorted
+            \item \texttt{reverse()} reverses order of items in list
+            \item \texttt{count(item)} returns number of occurrences of item in list
+            \item \texttt{index(item)} returns index at 1$^{\mathrm{st}}$ occurrence of item
+        \end{itemize}
+    \end{multicols}
+
+\begin{lstlisting}
+    >>> list('CMPUT')
+    ['C', 'M', 'P', 'U', 'T']
+    
+    >>> '1,2,3,,5'.split(',')
+    ['1', '2', '3', '', '5']
+    >>>'the cat sat on the mat'.split()
+    ['the', 'cat', 'sat', 'on', 'the', 'mat']
+    >>>'the,cat,sat,on,the,mat'.split(',',3)
+    ['the', 'cat', 'sat', 'on,the,mat']
+    
+    >>> ' '.join(['1','2','3','4','5'])
+    '1 2 3 4 5'
+    >>> ''.join(['1','2','3','4','5'])
+    '12345'
+    >>>  '**'.join(['1','2','3','4','5'])
+    '1**2**3**4**5'
+    
+    >>> x = [1,2,3,4,5]
+    >>> x.reverse()
+    >>> x
+    [5, 4, 3, 2, 1]
+    
+    # Note that del x[len(x)-1] removes the same value as x.pop()
+    # However, del x[len(x)-1] != x.pop()
+    
+\end{lstlisting}
+
+% Bio;t-In Types: Set, Tuple
+\subsection{Built-In Types: \texttt{tuple, set}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Tuple is immutable list
+                \begin{itemize}
+                    \item ex: (2, True, 'cat', [1,2,3], 3.5)
+                \end{itemize}
+            \item Can't change content of tuple, but can change mutable objs in tuple
+                \begin{itemize}
+                    \item i.e., can change content of set in tuple
+                \end{itemize}
+        \item Set is unordered collection of unique immutable objs, but set itself is mutable
+            \begin{itemize}
+                \item ex: {2, True, 'cat', 3.5}
+                \item \textbf{CANNOT include lists in sets}
+            \end{itemize}
+        \item Sets do not support indexing
+        \item Sets support methods like:
+            \begin{itemize}
+                \item \texttt{union} or \texttt{|}
+                \item \texttt{intersection} or \texttt{\&}
+                \item \texttt{issubset} or \texttt{<=}
+                \item \texttt{difference} or \texttt{-}
+                \item \texttt{add(item), remove(item), clear(), pop()}
+            \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+\begin{lstlisting}
+    >>> k = (2, True, 'cat', [1,2,3])
+    >>> print(k[2])
+    >>> k[2].append(4)
+    >>> print(k[2])
+    [1, 2, 3]
+    [1, 2, 3, 4]
+\end{lstlisting}
+
+% Aliasing
+\section{Aliasing}
+\begin{itemize}
+    \item \texttt{x=y} does NOT make copy of y
+    \item \texttt{x=y} makes x ref same obj that y refs CURRENTLY
+    \item Use aliasing ONLY as 2nd name for MUTABLE obj.
+        \begin{itemize}
+            \item Aliasing for immutable objs is tricky.
+        \end{itemize}
+    \item Aliasing can cause problems:
+\end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+    >>> first_var = 'CMPUT'
+    >>> second_var = first_var
+    >>> first_var = first_var + '275'
+    >>> print(first_var)
+    >>> print(second_var)
+    CMPUT 275
+    CMPUT
+\end{lstlisting}
+
+\end{document}

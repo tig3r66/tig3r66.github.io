@@ -1,0 +1,432 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=1.9cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, amsmath, amsfonts, multicol, color, listings, siunitx}
+\setlength{\parindent}{0pt}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\usepackage[labelfont=bf, tableposition=top]{caption}
+% \captionsetup[table]{skip=1em}
+\def\arraystretch{1.15}
+
+\title{PHYS 292 Notes}
+\author{Eddie Guo\\University of Alberta}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+% DARTBOARD STATISTICS
+\section{Dartboard Statistics}
+\subsection{Statistics}
+\subsubsection{Uncertainty Measurements}
+\begin{itemize}
+    \item Assertions of uncertainties w/o some explanation of how they were estimated are \underline{useless}.
+    \item If $t=2.4$ s, report it as $t = 2.4 \pm 0.1$ s.
+    \begin{itemize}
+        \item Uncertainties should almost always have 1 (or sometimes 2) significant figures.
+        \item Measured value should not be more accurate than the uncertainty (i.e., to same digit or decimal place as the standard error).
+    \end{itemize}
+    \item Measurements \textit{accurate} when \textit{random} uncertainties reduced to an acceptable lvl.
+    \item Measurements \textit{precise} when \textit{systematic} uncertainties reduced to an acceptable lvl.
+\end{itemize}
+
+\subsubsection{Gaussian PDF}
+$\displaystyle G(x, \bar{x}, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp \left[ -\frac{(x-\bar{x})^2}{2 \sigma^2} \right]$
+\begin{itemize}
+    \item Normalization: $\displaystyle \int_{-\infty}^\infty G(x, \bar{x}, \sigma)\ dx = 1$
+    \item Mean: $\displaystyle \int_{-\infty}^\infty x G(x, \bar{x}, \sigma)\ dx = 1$
+    \item Variance: $\displaystyle \int_{-\infty}^\infty (x-\bar{x})^2 G(x, \bar{x}, \sigma)\ dx = 1$
+\end{itemize}
+
+\subsubsection{Other Impt Equations} \vspace{-1em}
+\begin{align*}
+    \bar{x} &= \mathbb{E}(X) = \frac{\sum x_i}{n} \\
+    \sigma_{N-1} &= \sqrt{\frac{1}{N-1} \sum(x_i - \bar{x})^2} \\
+    \alpha &= \frac{\sigma_{N-1}}{\sqrt{N}}
+\end{align*}
+
+
+\subsection{Lab}
+\begin{itemize}
+    \item Testing random dist'n of errors using darts.
+    \item This lab is basically free marks so don't mess up lol.
+\end{itemize}
+
+% CONSTANT-V GAS THERMOMETER
+\section{Const-V Gas Thermometer}
+
+\subsection{Statistics}
+\subsubsection{Ordinary Least Squares (OLS)} \label{subsec:ols} \vspace{-1em}
+\begin{align*}
+    y &= A + Bx\\
+    P_{A,B}(y_i) &\propto \frac{1}{\sigma_y} e^{(y_i A - Bx_i)^2/(2 \sigma_y^2)} \\
+    P_{A,B} (y_i) &= \prod_{i=1}^N P_{A,B}(y_i) \propto \frac{1}{\sigma_y^N} e^{-\chi^2/2} \\
+    \intertext{where $\chi^2 = \sum_{i=1}^N \frac{(y_i-A-B_{x_i})^2}{\sigma_i^2}$. We can minimize $\chi^2$ via partial derivatives wrt $A$ and $B$ to obtain:}
+    &\begin{cases}
+        AN + B \sum x_i = \sum y_i \\
+        A \sum{x_i} + B \sum x_i^2 = \sum x_i y_i
+    \end{cases}
+    \intertext{And the solution to this system is:}
+    A &= \frac{(\sum x^2 \sum y - \sum x \sum xy)}{\Delta} \\
+    B &= \frac{N \sum xy - \sum x \sum y}{\Delta} \\
+    \Delta &= N \sum x^2 - (\sum x)^2
+    \intertext{And the errors are:}
+    \sigma_y &= \sqrt{\frac{1}{N-2} \sum(y_i - A - Bx_i)^2} \\
+    \sigma_A &= \sigma_y \sqrt{\frac{\sum x^2}{\Delta}}, \quad\quad\quad \sigma_B = \sigma_y \sqrt{\frac{N}{\Delta}}
+\end{align*}
+
+
+\subsection{Lab}
+
+\begin{itemize}
+    \item Goals:
+    \begin{itemize}
+        \item Det abs zero temp using ideal gas.
+        \item Measure P using MEMS (microelectromechanical system).
+        \item Perform lin reg using least squares.
+        \item Test if model (ideal gas) can explain expt.
+    \end{itemize}
+    \item Procedure:
+    \begin{itemize}
+        \item Make P measruements of a const V.
+        \item Anallyze data using ideal gas model.
+        \item Obtain abs zero temp.
+    \end{itemize}
+    \item $PV = nRT$
+    \item Assume gas behaves like billiard balls w/ elastic collisions. Low density, no interactions outside collisions.
+    \item Ctrl $T$ and $V$ to determine $P$.
+    \item Gas trapped in bulb, heating water w/ bunsen burner. $P$ measured w/ Raspberry Pi sensor (Honeywell TruStability$^\text{\textregistered}$ Board Mount Pressure Sensors). Works via piezoelectrics.
+\end{itemize}
+
+
+% E/M Ratio
+\section{E/M Ratio}
+
+\subsection{Statistics}
+If variables indep,
+\begin{equation*}
+    \sigma_f^2 = \sum_i \left( \frac{\partial f}{\partial x_i} \sigma_i \right)^2
+\end{equation*}
+
+If not indep, add covariance terms (linear approx):
+\begin{equation*}
+    \sigma_f^2 = \sum_i \left( \frac{\partial f}{\partial x_i} \sigma_i \right)^2 + \mathop{\sum \sum}_{i \neq j} \left( \frac{\partial f}{\partial x_i} \right) \left( \frac{\partial f}{\partial x_j} \right) \sigma_{ij}
+\end{equation*}
+
+% In its full glory:
+% \begin{align*}
+%     C_Y &= F_X C_X F_X^T
+%     \intertext{where}
+%     F_X &= [\nabla_X \cdot f(X)^T]^T \\
+%     C_X &= \begin{bmatrix}
+%         \sigma^2_{X_1} & \sigma_{X_1, X_2} & \cdots & \sigma_{X_1, X_n} \\
+%         \sigma^2_{X_2, X_1} & \sigma_{X_2}^2 & \cdots & \sigma_{X_2, X_n} \\
+%         \vdots & \vdots & \ddots & \vdots \\
+%         \sigma^2_{X_n X_1} & \sigma_{X_n, X_2} & \cdots & \sigma_{X_n}^2 \\
+%     \end{bmatrix} \\
+%     \intertext{For 2 variables,}
+%     C_Y &= \begin{bmatrix}
+%         \sigma_{Y_1}^2 & \sigma_{Y_1, Y_2} \\
+%         \sigma_{Y_2, Y_1} & \sigma_{Y_2}^2
+%     \end{bmatrix} \\
+% \end{align*}
+
+\subsection{Lab}
+\begin{itemize}
+    \item Goals
+    \begin{itemize}
+        \item Bending of charges in \textbf{B} to est their E.
+        \item Analyze data from CRT.
+        \item Perform a linear fit, extract the e/m ratio from the slope of the fit.
+    \end{itemize}
+    \item Use WLS (NOT OLS) for this experiment.
+    \item R, v, and B relation: $mv = qBR$
+    \item Energy relation: $E_k = \frac{1}{2}mv^2 = eV_A$
+    \item Helmholtz coil B strength: $B_H = \left( \frac{4}{5} \right)^{3/2} \frac{\mu_0 NI_H}{R}$
+    \item The ratio e/m (or m/e) will be the slope of your fn.
+    \item Vary electron kinetic energy and magnetic fields and record the bending radius of the cathode rays.
+    \item  Modify the settings to get the electrons to pass over each of the crossbars: which are placed at a known radius. You can:
+    \begin{itemize}
+        \item Change V while keeping B constant,
+        \item Change B while keeping V constant, and
+        \item Change both B and V simultaneously.
+    \end{itemize}
+\end{itemize}
+
+
+% Millikin's Oil Drop
+\section{Millikan's Oil Drop}
+
+\subsection{Statistics}
+Consider the following cases for uncertainties in linear least squares fitting:
+\begin{enumerate}
+    \item Error in $y$, no error in $x$: just use $\sigma_y$.
+    \item Error in $x$, no error in $y$: $\sigma_y(\text{equiv}) = \frac{dy}{dx} \sigma_x = B \sigma_x$
+    \item Error in $x$ and $y$: $\sigma_y(\text{equiv}) = \sqrt{\sigma_y^2 + (B \sigma_x)^2}$
+\end{enumerate}
+
+Remarks:
+\begin{itemize}
+    \item $\sigma_y$ and $B$ computed using eqs in Section (\ref{subsec:ols}).
+    \item Use $dy/dx$ instead of $B$ for non-linear least squares.
+    \item Use a weighted fit if errors do not have the same uncertainty: $w_i = 1/\sigma_i^2$, where $\sigma_i$ is the associated error for each $y_i$:
+    \begin{align*}
+        A &= \frac{\sum wx^2 \sum wy - \sum wx \sum wxy}{\Delta} \\
+        B &= \frac{\sum w \sum wxy - \sum wx \sum wy}{\Delta} \\
+        \Delta &= \sum w \sum wx^2 - (\sum wx)^2\\
+        w_i &= \frac{1}{\sigma_i^2} \\
+        \sigma_A &= \sqrt{\frac{\sum wx^2}{\Delta}}, \quad\quad\quad \sigma_B = \sqrt{\frac{\sum w}{\Delta}}
+    \end{align*}
+\end{itemize}
+
+\subsection{Lab}
+\begin{itemize}
+    \item Objectives:
+    \begin{itemize}
+        \item Measure charge of electrons.
+        \item Experimentally est charge quantization.
+    \end{itemize}
+    \item Experimental goals:
+    \begin{itemize}
+        \item Use terminal velocities to est forces and charge.
+        \item Analyze data from droplets falling and rising uner diff forces.
+        \item Search for evidence of charge quantization.
+    \end{itemize}
+    \item Procedure: track oil droplets in controlled setup. Measure their velocities, analyze the data.
+    \item Millikan's expt showed:
+    \begin{itemize}
+        \item Could suspend single oil drops using $\mathbf{E}$ to balance gravity.
+        \item Measured terminal velocity of oil drop to det its radius. Knowing the oil's density, we can find itss mass.
+        \item He found the charge each drop to be a multiple of $e =1.601 \times 10^{-19}$ C.
+    \end{itemize}
+    \item $a = 0 \Longrightarrow mg = kv_f$
+    \item If each droplet has a charge, $qE = mg + kv_f$.
+    \item Sphere moving in fluid: $kv_f = 6 \pi \eta a^3 \rho$, where $k$ is friction ccoeff, $\eta$ is viscosity, $a$ is radius, $\rho$ is density.
+\end{itemize}
+
+% Superconductivity
+\section{Superconductivity}
+\subsection{Lab}
+\begin{itemize}
+    \item Goals
+    \begin{itemize}
+        \item Establish whether a prepared material shows superconductivity.
+        \item Search for the Meissner effect.
+        \item Measre the resistance of a material.
+    \end{itemize}
+    \item Meissner effect: expulsin of magnetic field from a superconductr when it's coooled below a critical tempterature, $T_C$.
+    \begin{itemize}
+        \item Magnetic field lines ``expelled'' from an object when $T < T_C$ (i.e., no field lines pass through the object).
+        \item A ssupercurrent induced on surface to exactly cancel the external field within the material.
+        \item Requires extremely low temperatures.
+    \end{itemize}
+\end{itemize}
+
+% Data Rejection
+\section{Data Rejection}
+Chauvenet's criterion. (If taking more data impractical).
+\begin{enumerate}
+    \item Assume all data points legitimate, take mean and standard deviation then quantify how anomalous the measurement is by finding its z-score.
+    \item Calc probability assoc w/ that z-score for both tails.
+    \item Determine number of measurements expected to be that extreme (multiply probability by number of data points collected).
+    \item Chauvenet says anything below 0.5 can be rejected.
+\end{enumerate}
+Alternatively, obtain final results w/ and w/o rejection.
+
+
+% PHYS 292B notes begin here
+\cleardoublepage
+
+\section{Franck-Hertz \& Arbitrary Fits}
+\subsection{Statistics}
+\subsubsection{Fitting an Arbitrary Function}
+\begin{itemize}
+    \item In Franck-Hertz, valleys look like quadratic functions: $y = a(x+b)^2 + c$. We want to compute $b$.
+\end{itemize} \vspace{-.5em}
+
+\begin{lstlisting}[language=python]
+import numpy as np
+from scipy import optimize
+
+def myquad(x, a, b, c):
+    return a*(x-b)**2+c
+
+# non-linear least squares
+# popt = estimated parameters
+# pcov = covariance matrix
+popt, pcov = optimize.curve_fit(
+    myquad, x, y,
+    [100, 7, 50],  # initial guess
+    sigma=yerr)
+
+perr = np.sqrt(np.diag(pcov))
+\end{lstlisting}
+
+\subsection{Lab}
+\begin{itemize}
+    \item Defend atomic model w/ E lvls using Franck-Hertz expt (think Bohr and quantization).
+    \item Goals:
+    \begin{itemize}
+        \item Operate vacuum tube w/ hot cathode inside.
+        \item Measure small currents w/ an electrometer.
+        \item Est excitation E of Hg.
+    \end{itemize}
+    \item Franck-Hertz
+    \begin{enumerate}
+        \item Accelerate electrons to some known E (use parallel plate capacitor).
+        \item Now place collector plate past the accelerating voltage. Put negative $V_s$ on collector plate. Only e$^-$ w/ $T > V_s$ will hit (stopping voltage).
+        \item Continue increasing $V_s$ until e$^-$ start exciting Hg atoms and measure current.
+        \item Once an Hg atom is excited, current drops suddenly then increases again (peaks and valleys in $I$ vs $V_s$ plot). Diff btw peaks and valleys is the E diff for raising Hg an energy state.
+    \end{enumerate}
+\end{itemize}
+
+\section{Radioactivity of Radon \& Exponential Fits}
+\subsection{Lab}
+\begin{itemize}
+    \item Understand and measure radioactive decays using radon.
+    \item Goals:
+    \begin{itemize}
+        \item Use leaf electroscope to collect charges.
+        \item Take differential measurement vs time.
+        \item Fit the half-life of radon-220.
+    \end{itemize}
+    \item Radioactive decay relates to stability in binding the nucleus together.
+    \item 3 types of decays:
+    \begin{itemize}
+        \item $\alpha$: Emission of an He nucleus (2p2n). Paper can stop it (thin).
+        \item $\beta$: Neutron to electron + neutrino. Thin sheet of metal can stop it (normal).
+        \item $\gamma$: Change in internal E config leading to emission of $\gamma$ ray. Lead shielding can stop it (thick).
+    \end{itemize}
+    \item Decay is a quantum mechanical effect.
+    \item Decay rate: $\frac{dN_n}{dt} = -kN_n \implies N_n(t) = N_0 e^{-kt}$
+    \subitem Half-life: $t_{1/2} = \ln 2 / k, \quad k$ is prop const
+    \item Th-232 has a long decay series.
+\end{itemize}
+
+\subsection{Statistics}
+\begin{itemize}
+    \item Linear fit: simple, can be done by hand.
+    \item Arbitrary curve fit: requires a computer.
+    \item Exponential functions can be linearized.
+    \subitem $N_n = N_0 e^{-kt} \implies \ln N_n = \ln N_0 - kt$
+\end{itemize}
+
+
+\section{Faraday Effect \& Goodness of Fit}
+\subsection{Statistics}
+\begin{itemize}
+    \item Objectives: Corroborate Malus' law and explore Faraday rotation.
+    \item Goals:
+    \begin{itemize}
+        \item Explore polarization of light.
+        \item Learn how to measure small signals.
+    \end{itemize}
+    \item Procedure
+    \begin{itemize}
+        \item Measure intensity of polarized beam.
+        \item Pass beam thru dielectric material.
+        \item Pass beam thru material in magnetic field.
+    \end{itemize}
+    \item 3 types of polarized light: linear (plane waves), circular (\SI{90}{\degree} phase diff), elliptical (2 plane waves of diff amplitude but relative phase shift of \SI{90}{\degree}).
+    \begin{itemize}
+        \item Linear pol: $\mathbf{E}_l = E_0 \cos(kz - \omega t + \phi_1) \hat{x}$
+        \item Circular pol: $\mathbf{E}_c = E_0 \cos(kz - \omega t + \phi_2) \hat{x} - E_0 \sin(kz - \omega t + \phi_2) \hat{y}$
+        \item Elliptical pol: $E_l(x, y, 0) \hat{x} + E_l(x, y, \frac{-\pi}{2}) \hat{y}$
+    \end{itemize}
+    \item Can make linearly polarized light by expressing it as circularly polarized beams: $\mathbf{E}_l = \mathbf{E}_c (x, y, \phi) + \mathbf{E}_c(x, y, -\phi)$
+    \item Light interacts w/ materials (light can't interact w/ light due to superposition), so can polarize beam of unpolarized light by decoupling their components.
+    \item $\Delta \theta = VBL$, $V$ is Verdet's constant (how strongly $B$ affects refractive index), $L$ is length of medium.
+    \item Malus' law: $I = I_0 \cos^2 \theta$, since $V \propto I \propto E^2$ then $V = V_0 \cos^2(\theta - \theta_0)$
+\end{itemize}
+
+\subsection{Lab}
+Recall: $\chi^2 = \sum_{i=1}^N \frac{(y_i - A - Bx_i)^2}{\sigma_i^2}$. Let's generalize this:
+\begin{equation*}
+    \chi^2 = \sum_{i=1}^N \frac{(y_i - y_{m,i})^2}{\sigma_i^2}
+\end{equation*}
+where $y_{m,i}$ is the model or expected value. This parameter can be used to test the agreement btw a dataset and a model. \\
+
+Degrees of freedom: $\nu = N_{\text{data}} - N_{\text{params}}$. Goodness of fit can be estimated using the reduced chi-squared:
+\begin{equation}
+    \chi_\nu^2 = \left( \sum_{i=1}^N \frac{(y_i - y_{m,i})^2}{\sigma_i^2} \right) / \nu
+\end{equation}
+Naively, expect each dof contributes 1 unit, dist'n.
+\begin{itemize}
+    \item $\chi_\nu^2 = 0 \implies$ no uncertainty and perfect fit w/ dist'n.
+    \item $\chi_\nu^2 = 1 \implies$ data well described by proposed dist'n.
+    \item $\chi_\nu^2 \gg 1 \implies$ unlikely data comes from proposed dist'n.
+\end{itemize}
+Can compute p-value via integration of pdf of the chi-squared dist'n w/ a given dof.
+
+\begin{lstlisting}[language=python]
+import numpy as np
+from scipy import stats
+
+# assume variables exist
+chi_sq = np.sum((y_exp - y_model)**2 / error**2)
+dof = x.length() - 1
+reduced_chi_sq = chi_sq / dof
+p = 1 - stats.chi2.cdf(chi_sq, dof)
+print(f'p-value: {p}')
+\end{lstlisting}
+
+
+\section{Covariance \& Correlation}
+\subsection{Derivation of Covariance}
+\begin{align*}
+    q_i &= q(x_i, y_i) \\
+    q_i &\approx q(\bar{x}, \bar{y}) + \frac{\partial q}{\partial x} (x_i - \bar{x}) + \frac{\partial q}{\partial y} (y_i - \bar{y}) \\
+    \bar{q} &= \frac{\sum_i q_i}{N} = q(\bar{x}, \bar{y})\\
+    &= \frac{1}{N} \sum_i \left( q(\bar{x}, \bar{y}) + \frac{\partial q}{\partial x} (x_i - \bar{x}) + \frac{\partial q}{\partial y} (y_i - \bar{y}) \right) \\
+    \sigma^2_q &= \frac{1}{N} \sum_i (q_i - \bar{q})^2 \\
+    \sigma_q^2 &= \left( \frac{\partial q}{\partial x} \right)^2 \underbrace{\frac{1}{N} \sum_i (x_i - \bar{x})^2}_{\sigma_x^2} + \left( \frac{\partial q}{\partial y} \right)^2 \underbrace{\frac{1}{N} \sum_i (y_i - \bar{y})^2}_{\sigma_y^2} \\
+    &\quad\quad + 2 \frac{\partial q}{\partial x} \frac{\partial q}{\partial y} \underbrace{\frac{1}{N} \sum_i (x_i - \bar{x}) (y_i - \bar{y})}_{\sigma_{xy}} \\
+    & = \left( \frac{\partial q}{\partial x} \right)^2 \sigma_x^2 + \left( \frac{\partial q}{\partial y} \right)^2 \sigma_y^2 + 2 \frac{\partial q}{\partial x} \frac{\partial q}{\partial y} \sigma_{xy}
+\end{align*}
+
+\subsection{Remarks}
+\begin{itemize}
+    \item Covariance is $\sigma_{xy} = \frac{1}{N} \sum_i (x_i - \bar{x}_i) (y_i - \bar{y})$.
+    \item If $\sigma_{xy} \neq 0$, errors of $x$ and $y$ are correlated.
+    \item Schwarz's inequality: $|\sigma_{xy}| \leq \sigma_x \sigma_y \implies \sigma_q \leq \left| \frac{\delta q}{\delta x} \right| \sigma_x + \left| \frac{\delta q}{\delta y} \right| \sigma_y$
+    \item If you have more variables, $\sigma_{xy}$ becomes a matrix.
+\end{itemize}
+
+\subsection{Correlation}
+
+\begin{equation}
+    r = \frac{\sigma_{xy}}{\sigma_x \sigma_y}
+\end{equation}
+
+
+\end{document}

@@ -1,0 +1,186 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Control Structures}
+\author{Eddie Guo}
+\date{September 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Python Control Structures
+\section{Decision Making}
+% Topics Covered
+\subsection{Topics Covered}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item \texttt{if/elif/else}
+            \item \texttt{for} loop
+            \item \texttt{range}
+            \item \texttt{while} loop
+        \end{enumerate}
+    \end{multicols}
+
+% If Statement
+\subsection{\texttt{if/elif/else} Statement}
+    \begin{itemize}
+        \item \texttt{if} statement only executes when Boolean expression is True
+        \item \texttt{elif} statement executes if \texttt{if} statement \& above \texttt{elif} statements are false; tests series of conditions
+        \item \texttt{else} statement only executes if all above condition(s) are false
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+    # To compare floats w/o rounding, test the difference & compare to tolerance value
+    tolerance = 0.001
+    if abs(float_val_1 - float_val_2) <= tolerance:
+        print('equal')
+\end{lstlisting}
+
+% Loops
+\section{Loops}
+% for Loops
+\subsection{\texttt{for} Loops}
+    \begin{itemize}
+        \item \texttt{for} loop $\rightarrow$ when you know how many times to repeat code: \hl{\textit{count ctrld}}
+            \item \texttt{for} loop repeats code for every element in given seq
+            \item Can use for strs, lists, tuples, sets
+            \item \texttt{range(start, stop, step)}
+                \begin{itemize}
+                    \item Up to, but not including, \texttt{stop}
+                    \item Must always include \texttt{stop}, \texttt{start} \& \texttt{step} are optional
+                \end{itemize}
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+    # print chrs that come b4 s/S alphabetically
+    >>> for char in 'CMPUT':
+    ...    if char.lower() < 's':
+    ...        print(char, end='*)
+    'C*M*P*'
+\end{lstlisting}
+
+% While Loops
+\subsection{\texttt{while} Loops}
+    \begin{itemize}
+        \item \texttt{while} loop $\rightarrow$ when you know how many times to repeat code: \hl{\textit{condition ctrld}}
+        \item \texttt{while condition}: execute fn $\rightarrow$ condition will be evaluated to true/false
+        \item Repeat action until user enters specific value: a \hl{\textbf{sentinel}} value
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+    >>> SENTINEL = 0
+    >>> total = 0
+    >>> num = -1 # initialize -> diff from sentinel
+    >>> while num != SENTINEL:
+    ...     num = int(input('Enter value to add; 0 to stop > '))
+    ...     total += num
+    ... print('Sum of values entered by user is', total)
+\end{lstlisting}
+\vspace{-1em}
+    \begin{itemize}
+        \item BEWARE of the $\infty$ loop; something inside loop should eventually make \texttt{while} condition \texttt{False}
+            \begin{itemize}
+                \item i.e., \textit{at least one thing related to condition expression must be updated each iteration}
+            \end{itemize}
+        \item Can also use ctrl value
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+    # Should prolly use a for loop for this scenario (more Pythonic)
+    >>> total = 0
+    >>> my_list = [10, -2, 3, 24]
+    >>> i = 0 # INITIALIZE control variable
+    >>> while i < len(my_list):
+    ...    total += my_list[i]
+    ...    i += 1 # UPDATE control variable
+    ... print('Sum of elements is', total)
+    Sum of elements is 35
+\end{lstlisting}
+
+% break
+\subsection{\texttt{break}}
+    \begin{itemize}
+        \item Avoid using \texttt{break}: better to use Boolean flags b/c code easier to read
+        \item \hl{Don't use break in this class}
+    \end{itemize}
+
+% Nested Loops
+\subsection{Nested Loops}
+\begin{lstlisting}
+    >>> for row in range(3):
+    ...     print(row, end=": ")
+    ...     for col in range(5):
+    ...         print(col, end=" ")
+    ... print()
+    0: 0 1 2 3 4
+    1: 0 1 2 3 4
+    2: 0 1 2 3 4 
+\end{lstlisting}
+
+
+
+
+\end{document}

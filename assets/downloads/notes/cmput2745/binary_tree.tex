@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Binary Tree Implementation}
+\author{Eddie Guo}
+\date{September 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Introduction to Binary Trees
+\section{Introduction to Binary Trees}
+% Topics Covered
+\subsection{Topics Covered}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item Recursive representation
+            \item Tree leaf class
+            \item Tree branch class
+            \item Binary tree traversal
+        \end{enumerate}
+    \end{multicols}
+
+% Defining a Binary Tree
+\subsection{Defining a Binary Tree}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Binary tree made up of 1/more nodes
+            \item Each node has 0/1/2 children
+            \item All nodes have 1 parent, except root node (which has no parent)
+            \item All leaf nodes store a value (byte to be compressed)
+            \item All interior nodes are root node of subtree
+        \end{itemize}
+    \end{multicols}
+\begin{center}
+    \includegraphics[scale=0.4]{trees.png}
+\end{center}
+
+% How to Implement in Python?
+\section{How to Implement Binary Trees in Python?}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Need way to rep tree nodes \& rels btw them
+            \item Option 1: lists of lists
+                \begin{itemize}
+                    \item Each subtree is list that contains root, left subtree, right subtree
+                    \item Gets complicated quickly; hard to keep track of nested subtrees
+                \end{itemize}
+            \item Option 2: custom classes
+                \begin{itemize}
+                    \item Tree branch class capable of containing left \& right subtree
+                    \item Tree leaf class to rep indiv leaf nodes
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+\begin{multicols}{2}
+% Tree Leaf Class
+\subsection{Tree Leaf Class}
+        \begin{itemize}
+            \item Tree leaf properties: has value (uncompressed byte) that it's storing
+            \item Tree leaf behavs: n/a
+        \end{itemize}
+
+% Tree Branch (Subtree) Class
+\subsection{Tree Branch (Subtree) Class}
+    \begin{itemize}
+        \item Tree branch properties: left child, right child
+        \item Tree branch behavs: n/a
+    \end{itemize}
+\end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+class TreeLeaf:
+    def __init__(self, uncompressed_byte):
+        self.value = uncompressed_byte
+    
+    def __str__(self):
+        return 'Leaf storing: ' + self.value
+
+class TreeBranch:
+    def __init__(self, lchild, rchild):
+        self.left = lchild
+        self.right = rchild
+    
+    def __str__(self):
+        return f'({self.left} <- branch root -> {self.right})'
+
+if __name__ == "__main__":
+    leafA = TreeLeaf('a')
+    leafB = TreeLeaf('b')
+    leafC = TreeLeaf('c')
+    print(leafA, leafB)
+    branch = TreeBranch(leafA, leafB)
+    branch2 = TreeBranch(branch, leafC)
+    print(branch)
+    print(branch2)
+
+# Output
+a b
+(a <- branch root -> b)
+((a <- branch root -> b) <- branch root -> c)
+\end{lstlisting}
+
+% Binary Tree Traversals
+\subsection{Binary Tree Traversals}
+    \begin{itemize}
+        \item Base case is leaf
+        \item Processing of left \& right subtrees done recursively
+        \item There are 4 common binary tree traversals:
+    \end{itemize}
+\vspace{-1em}
+\begin{center}
+    \includegraphics[scale=0.35]{tree_travs.PNG}
+    \includegraphics[scale=0.5]{recursion.PNG}
+\end{center}
+
+% Binary Tree Traversals: Example
+\subsection{Binary Tree Traversals: Example}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Preorder: 1 2 3 4 5 6 7 8 9
+            \item Inorder: 4 3 5 2 6 8 7 9 1
+            \item Postorder: 4 5 3 6 2 8 9 7 1
+            \item Levelorder: 1 2 7 3 6 8 9 4 5
+        \end{itemize}
+    \end{multicols}
+\begin{center}
+    \includegraphics[scale=0.65]{tree.PNG}
+    \includegraphics[scale=0.75]{traversal.PNG}
+\end{center}
+
+\end{document}

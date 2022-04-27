@@ -1,0 +1,211 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, mathtools, multicol, pgfplots, wrapfig, caption, subcaption}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+
+\begin{document}
+
+\small
+
+\textbf{Doppler} \hspace{8em} $f_0 = f_s \frac{c \pm v_0}{c \mp v_s}$
+
+\begin{multicols}{2}
+    \textit{Observer} \vspace{-1em}
+    \begin{itemize}
+        \item $+v_0$ = towards source
+        \item $-v_0$ = away from source
+    \end{itemize}
+
+    \textit{Source} \vspace{-1em}
+    \begin{itemize}
+        \item $-v_s$ = towards observer
+        \item $+v_s$ = away from observer
+    \end{itemize}
+\end{multicols} \vspace{-1.5em}
+
+\dotfill
+
+\textbf{Standing Waves}
+
+General form: $\psi(x, t) = 2A \sin(kx) \sin(\omega t)$
+
+Both ends open/closed: $\lambda = \frac{2l}{n},\ f = \frac{nc}{2l}$
+
+1 open, 1 closed: $\lambda = \frac{4l}{2n-1},\ f  = \frac{(2n-1)c}{4l}$
+
+\begin{multicols}{2}
+    \textit{Closed Boundary} (inverted) \\[5pt]
+    $\psi_i(x_0) + \psi_r(x_0) = 0$ \hfill $\Delta \phi = \pi$ \\[5pt]
+    Open end $\rightarrow$ anti-node (max $A$)
+
+    \textit{Open Boundary} (not inverted) \\[5pt]
+    $\frac{\partial \psi}{\partial x} = 0$ \hfil $\Delta \phi = 0$ \\[5pt]
+    Closed end $\rightarrow$ node ($A = 0$)
+\end{multicols} \vspace{-1em}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{Figures/one_closed.jpg} \\[1em]
+    \includegraphics[width=\columnwidth]{Figures/both_open.jpg}
+\end{figure} \vspace{-1em}
+
+\dotfill
+
+\textbf{Geometric Optics}
+
+\begin{wrapfigure}[4]{l}{0.21\columnwidth} \vspace{-1.5em}
+    \includegraphics[width=0.21\columnwidth]{Figures/snell.png}
+\end{wrapfigure}
+
+Reflection: $\theta_i = \theta_r$
+
+Snell's law: $n_1 \sin \theta_1 = n_2 \sin \theta_2$
+
+$\sin \theta_c = \frac{n_2}{n_1},\ n_1 > n_2$ \hfill $\theta_c < \theta$ is TIL
+
+$n = \frac{c}{v_p} = \frac{v \text{ in vacuum}}{v \text{  in medium}},\ n \geq 1$ \vspace{5pt}
+
+Total trapping of light ocurs when material surrounded by lower $n$
+
+Thin lens: $\frac{1}{f} = \frac{1}{u} + \frac{1}{v}$ \hfill Linear magnification: $M = \frac{I}{O} = -\frac{v}{u}$
+
+\textbf{Sign Conventions}
+
+$f < 0$ for diverging mirrors (convex) and lenses (concave)
+
+$v > 0 \rightarrow$ real \hspace{10.65em} $v < 0 \rightarrow$ virtual
+
+$I,\ M > 0 \rightarrow$ upright \hspace{7.25em} $I,\ M < 0 \rightarrow$ inverted
+
+Mirrors: img opposite to obj $\rightarrow$ virtual
+
+Lenses: diverging rays $\rightarrow$ virtual
+
+
+% colummn break
+\newpage
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{Figures/convex_mirror.png}
+        \caption{Convex mirror (div)}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{Figures/concave_mirror.png}
+        \caption{Concave mirror (conv)}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{Figures/convex_lens.png}
+        \caption{Convex lens (conv)}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{Figures/concave_lens.png}
+        \caption{Concave lens (div)}
+    \end{subfigure}
+\end{figure} \ \\[-5em]
+
+\dotfill
+
+\textbf{Optical Instruments}
+
+Lensmaker's equation: $\frac{1}{f} = \left( \frac{n}{n_o}-1 \right) \left( \frac{1}{R_1} + \frac{1}{R_2} \right)$ \hfill $n_o \approx 1$ in air
+
+Combined $f$ (touching): $\frac{1}{f} = \frac{1}{f_1} + \frac{1}{f_2}$
+
+Combined $f$ (sep by $d$): $\frac{1}{f} = \frac{1}{f_1} + \frac{1}{f_2} - \frac{d}{f_1 f_2}$
+
+$R_i > 0$ if convex, $R_i < 0$ if concave
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{Figures/mag_glass.png}
+    \caption{Magnifying glass: $M_{\text{max}} = 1 + \frac{d}{f}$ \hspace{2em} $M_{\text{min}} = \frac{d}{f}$}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\columnwidth]{Figures/microscope.png}
+    \caption{Microscope: object placed just over 1 $f_o$ away. Intermediate image formed w/in 1 $f_e$. \hfill $M = m_o m_e = -\frac{L}{f_0} \left( 1 + \frac{d}{f_e} \right)$}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{Figures/telescope.png} \hfill \includegraphics[width=0.45\columnwidth]{Figures/max_diam.png}
+    \caption{Telescope: $M_\theta = \frac{\phi}{\theta} = -\frac{f_0}{f_e} (= -\frac{d_0}{d_e}$ if all light captured). Here, $d_0 = $ objective diam, $d_e =$ eyepiece diam, $f_0 + f_e = L$. $L$ is distance btw eyepiece 1$^\circ$ mirror/obj lens).}
+\end{figure}
+
+
+% new page
+
+\clearpage
+
+\centering \includegraphics[width=0.55\columnwidth]{Figures/string.jpg} \flushleft \vspace{-1.5em}
+
+\dotfill
+
+Spherical aberrations caused by radius of curvature. \vspace{-.5em}
+\begin{itemize}
+    \item Diff focal lengths depending on where light hits lens/mirror.
+    \item Solution: Schmidt corrector plate OR parabolic mirror.
+\end{itemize}
+
+Chromatic abberrations caused by nonuniform index of refraction. \vspace{-.5em}
+\begin{itemize}
+    \item Diff focal lengths depending on $\lambda$ of light.
+    \item Achromats show little/no chromatic aberrations.
+    \item Solution: weak concave + strong convex lens together.
+\end{itemize} \vspace{-1em}
+
+\dotfill
+
+\textbf{Ray Tracing Principles} \vspace{-.5em}
+\begin{enumerate}
+    \item Ray parallel to optical axis is reflected thru $F$.
+    \item Ray passing thru $F$ reflects parallel to optical axis.
+    \item Ray that hits centre of mirror at optical axis reflects w/ equal and opposite angled ray.
+    \item Ray that passes thru $C$ reflects along the same incident path.
+\end{enumerate} \vspace{-1em}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[t]{0.33\columnwidth}
+        \centering
+        \includegraphics[height=5em]{Figures/concave_tracing.png}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.33\columnwidth}
+        \centering
+        \includegraphics[height=5em]{Figures/convex_tracing.png}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.33\columnwidth}
+        \centering
+        \includegraphics[height=5em]{Figures/conv_tracing.png}
+    \end{subfigure}
+\end{figure}
+
+
+\end{document}

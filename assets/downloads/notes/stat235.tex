@@ -1,0 +1,666 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, multicol, wrapfig, caption, multirow, nccmath, mathtools, amsfonts, booktabs}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\usepackage{array, cellspace}
+
+\usepackage[tableposition=top]{caption}
+\captionsetup[table]{skip=1em}
+\def\arraystretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\everymath{\displaystyle}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{STAT 235 Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\small
+
+\textbf{Introduction}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|lcc}
+    \toprule
+    \multirow{2}{*}{} &                        & \multicolumn{2}{c}{random sampling}                  \\ \cline{2-4} 
+                      & \multicolumn{1}{l|}{}  & \multicolumn{1}{c|}{Y}                     & N       \\ \cline{2-4} 
+    \rotatebox[origin=c]{90}{\parbox[c]{1cm}{\centering random asn}} & \multicolumn{1}{l|}{Y} & \multicolumn{1}{c|}{both} & causal inferences \\ \cline{2-4} 
+                      & \multicolumn{1}{l|}{N} & \multicolumn{1}{c|}{population inferences} & neither \\
+    \bottomrule
+    \end{tabular}
+\end{table} \vspace{-1em}
+
+$\overbar{x} = \frac{\sum\limits_{i=1}^n x_i}{n}$ \hfill $s^2 = \frac{\sum\limits_{i=1}^n (x_i - \overbar{x})^2}{n-1} = \frac{1}{n-1} \Biggl[ \sum\limits_{i=1}^n x_i^2 - \frac{\left( \sum\limits_{i=1}^n x_i \right)^2}{n} \Biggr]$
+
+relative frequency = $\frac{f}{\sum f}$ \hfill \% = relative frequency $\times$ 100\%
+
+IQR = Q$_3$ - Q$_1$
+\vspace{-.5em}
+\begin{itemize}
+    \item Mild outliers 1.5 IQR below Q$_1$ or above Q$_3$ \hfill (inner fence)
+    \item Extreme outliers 3 IQR below Q$_1$ or above Q$_3$ \hfill (outer fence)
+    \item EXCLUDE median when finding quartiles for odd $n$
+\end{itemize} \vspace{-1em}
+
+\dotfill
+
+\textbf{Probability: Two Set Operations}
+
+\textbf{\textit{Complement law:}} $P(A') = 1 - P(A)$
+
+$\quad\quad (A \cup B)' = A' \cap B'$ \hfill $(A \cap B)' = A' \cup B'$
+
+$\quad\quad P(A \cup B) = 1 - P(A' \cap B')$
+
+\textbf{\textit{Mult law:}} $P(A \cap B) = P(B) \times P(A | B) = P(A) \times P(B|A)$
+
+\textbf{\textit{Add law:}} $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+$\quad\quad$\textit{Disjoint/mutually exclusive:} $P(A \cup B) = P(A) + P(B)$
+
+\textbf{\textit{Conditional prob:}} $P(A | B) = \frac{P(A \cap B)}{P(B)}$
+
+$\quad\quad$\textit{Indep events:} $P(A \cap B) = P(A) \times P(B)$ \hfill given $P(A|B) = P(A)$
+
+\vspace{-1em}
+\begin{fleqn}
+    \begin{align*}
+        \quad\quad P(A) &= P(A \cap B) + P(A \cap B') \\
+        &= P(B) \times P(A|B) + P(B) \times P(A | B')
+    \end{align*}
+\end{fleqn} \vspace{-2em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Probability: Three Set Operations}
+
+\vspace{-1em}
+\begin{fleqn}
+    \begin{align*}
+        P(A \cup B \cup C) = P(A) &+ P(B) + P(C) \\
+        &- P(A \cap B) - P(A \cap C) - P(B \cap C) \\
+        &+ P(A \cap B \cap C)
+    \end{align*}
+
+    \vspace{-2em}
+
+    \begin{align*}
+        P(A \cap B' \cap C') &= P(A) - P(A \cap B) - P(A \cap C) + P(A \cap B \cap C) \\
+        &= P(A \cup B \cup C) - P(B) - P(C) + P(B \cap C)
+    \end{align*}
+\end{fleqn} \vspace{-2em}
+
+$P(A | B \cap C) = P(A | (B \cap C)) = \frac{P(A \cap B \cap C)}{P(B \cap C)}$
+
+\dotfill
+
+\textbf{Deck of Cards}
+\vspace{-.5em}
+\begin{itemize}
+    \item 52 cards total w/ 13 cards in each suit
+    \item 26 black, 26 red
+    \item Each rank has 4 cards ($4/52=1/13$)
+    \item Face cards: J, Q, K \hfill 12 face cards ($12/52=3/13$)
+    \item Diamonds (R) $<$ clubs (B) $<$ hearts (R) $<$ spades (B)
+    \item Black/red and face are independent
+\end{itemize}
+
+
+% column break
+\newpage
+
+
+\textbf{Counting Theory}
+
+Expt with $k$ steps, and step $i$ has $n_i$ outcomes:
+
+\vspace{-.5em} $\quad\quad$ Total no. of outcomes = $\prod_{i=1}^k n_i$ \vspace{-.5em}
+
+Permutations: $P_k^n = \frac{n!}{(n-k)!}$ \hfill (order impt)
+
+\vspace{-.5em} $\quad\quad P_0^n = 1$ \hfill $P_1^n = n$ \hfill $P_n^n = n!$ \vspace{-.5em}
+
+Combinations: $C_k^m = {n \choose k} = \frac{n!}{k! (n-k!)}$ \hfill (order not impt) \vspace{-1em}
+
+$\quad\quad {n \choose 0} = {n \choose n} = 1$ \hfill ${n \choose 1} = n$
+
+\dotfill
+
+\textbf{Discrete Random Variables}
+
+\textit{Probability mass function (pmf)} \vspace{-.5em}
+\begin{enumerate}
+    \item $f(x_i) = P(X = x_i)$
+    \item $0 \leq f(x_i) \leq 1$
+    \item $ \sum_{i=1}^n f(x_i) = 1$
+\end{enumerate}
+
+\textit{Cumulative distribution function (cdf)} \\[.5em]
+$F(x) = P(X \leq x) = \sum_{x_i \leq x} f(x_i)$
+\vspace{-1.5em}
+\begin{enumerate}
+    \item $0 \leq F(x) \leq 1$
+    \item If $x \leq y$, then $F(x) \leq F(y)$
+    \item $P(a \leq X \leq b) = F(b) - F(a-1)$
+\end{enumerate}
+
+\textit{Expectations}
+
+$\mu = \mathbb{E}(X) = \sum_{i=1} x_i p_i$
+
+$\sigma^2 = Var(X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = \sum_{i=1}(x - \mu)^2 p_i = \sum_{i=1}x_i^2 p_i - \mu^2$
+
+\dotfill
+
+\textbf{Continuous Random Variables}
+
+\textit{Probability density function (pdf)} \vspace{-.5em}
+\begin{enumerate}
+    \item $f(x) \geq 0$
+    \item $\int_{-\infty}^\infty f(x)\ dx = 1 \quad\quad$ (generic limits here)
+    \item $P(a \leq X \leq b) = \int_a^b f(x)\ dx$
+    \item $P(X=x) = 0 \quad\Rightarrow\quad P(a < X < b) = P(a \leq X \leq b)$
+\end{enumerate}
+
+\textit{Cumulative distribution function (cdf)} \\[.5em]
+$F(x) = P(X \leq x) = \int_{-\infty}^x f(u)\ du$ \hfill $f(x) = \frac{dF}{dx}$
+\vspace{-.5em}
+\begin{enumerate}
+    \item $0 \leq F(x) \leq 1$
+    \item If $x \leq y$, then $F(x) \leq F(y)$
+    \item $P(a \leq X \leq b) = F(b) - F(a)$
+\end{enumerate}
+
+\textit{Expectations}
+
+$\mu = \mathbb{E}(X) = \int_{-\infty}^\infty xf(x)\ dx$ \hfill $\tilde{x} = F(x) = \frac{1}{2}$
+
+$\sigma^2 = Var(X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = \int_{-\infty}^\infty x^2 f(x)\ dx - \mu^2$
+
+If $X$ has pdf $f(x)$, $\mathbb{E}[h(X)] = \int_{-\infty}^\infty h(x) f(x)\ dx$
+
+
+\clearpage
+
+
+\onecolumn
+
+
+\textbf{Linear Combinations of Random Variables}
+
+If $Y = a_1 X_1 + \cdots + a_n X_n + b$, then $\mathbb{E}(Y) = a_1 \mathbb{E}(X_1) + a_2 \mathbb{E}(X_2) + \cdots + a_n \mathbb{E}(X_n) + b$
+
+If all $X_i$ are indep, $V(Y) = a_1^2 V(X_1) + a_2^2 V(X_2) + \cdots + a_n^2 V(X_n)$
+
+\vspace{-.5em}
+\begin{multicols}{2}
+    \textit{Means} \vspace{-.5em}
+    \begin{enumerate}
+        \item $\mathbb{E}(a) = a$
+        \item $\mathbb{E}(aX) = a \mathbb{E}(X)$
+        \item $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$
+        \item $\mathbb{E}(aX \pm bY) = a\mathbb{E}(X) + b \mathbb{E}(Y)$
+    \end{enumerate} \vspace{1em}
+
+    \textit{Variances} \vspace{-.5em}
+    \begin{enumerate}
+        \item $V(a) = 0$
+        \item $V(aX) = a^2 V(X)$
+        \item $V(aX + b) = a^2 V(X)$
+        \item $V(aX \pm bY) = a^2 V(X) + b^2 V(Y) \pm 2ab\ \text{cov}(X, Y)$
+        \subitem If independent, $\text{cov}(X, Y) = 0$
+    \end{enumerate}
+\end{multicols} \vspace{-.5em}
+
+If $X_i$ are indep rvs w/ $\mathbb{E}(X_i) = \mu$ and $V(X_i) = \sigma^2$, then $\overbar{X} = \frac{\sum X_i}{n}$ is a random variable w/ $\mathbb{E}(\overbar{X}) = \mu$ and $V(\overbar{X}) = \frac{\sigma^2}{n}$
+
+$\bar{X}$ more likely to be w/in larger sample size due to decreased variability. \hfill \textbf{NOTE:} $(X_1 + X_2) - (Y_1 + Y_2 + Y_3) \neq 2X - 3Y$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Discrete Probability Distributions}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{Sl S{p{15.9em}} Sc Sc Sc}
+        \toprule \toprule
+        $X$ & Interpretation of $X$ & Pmf: $P(X=x)$ & $\mathbb{E}(x)$ & $Var(x)$ \\
+        \toprule \toprule
+        Binomial & No of successes $x$ in $n$ trials & ${n \choose x} p^x (1-p)^{n-x}$ & $np$ & $np(1-p)$ \\
+        \midrule
+        Geometric & No of trials $x$ until 1st success & $(1-p)^{x-1} p$ & $\frac{1}{p}$ & $\frac{1-p}{p^2}$ \\
+        \midrule
+        Negative binomial & No of trials $x$ until $r$th success & ${x-1 \choose r-1} (1-p)^{x-r} p^r$ & $\frac{r}{p}$ & $\frac{r(1-p)}{p^2}$ \\
+        \midrule
+        Hypergeometric & Pop size $N$, $n$ draws, $M$ success states, $x$ successes, no replacement & $\frac{{M \choose x} {N-M \choose n-x}}{{N \choose n}}$ & $\frac{nM}{N}$ & $\left( \frac{N-n}{N-1} \right) np (1-p)$ \\
+        \midrule
+        Poisson & No of arrivals $x$ in fixed interval w/ expected value $\lambda$ & $\frac{e^{-\lambda} \lambda^x}{x!}$ & $\lambda$ & $\lambda$ \\
+        \bottomrule \bottomrule
+    \end{tabular}
+\end{table}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Properties of Discrete Probability Distributions}
+
+\begin{minipage}[t]{.48\textwidth}
+    \vspace{-3em}
+    \begin{itemize}
+        \item Geometric dist'n has lack of memory property:
+        \subitem $P(X < t + \Delta t | X > t) = \frac{P(t < X < t + \Delta t)}{P(X > t)} = P(X < \Delta t)$
+        \item Geometric dist'n is special case of -ve binom dist'n w/ $r=1$.
+        \item Binomial $\approx$ hypergeometric if sampling small part of pop'n.
+        \item Poisson $\approx$ binomial dist'n $\Longrightarrow n$ is large and $p$ is small.
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.5\textwidth}
+    \flushright
+    \begin{tabular}{Sl | Sc Sc Sc}
+        \toprule
+        & Binomial & -ve Binomial & Poisson \\
+        \hline
+        Trials & constant ($n$) & variable ($X$) & $\infty$ \\
+        Successes & variable ($X$) & constant ($r$) & variable ($X$) \\
+        $P$(success) & constant ($p$) & constant ($p$) & constant ($p = \lambda/n$) \\
+        \bottomrule
+    \end{tabular}
+\end{minipage}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ Sl S{p{0.69\textwidth}} }
+        \toprule
+        Binomial & If a coin is tossed 20 times, what is the probability heads comes up exactly 14 times? ($x=14,\ n=20,\ p=0.5$) \\
+        \midrule
+        Geometric & If a coin is repeatedly tossed, what is the probability the first time heads appears occurs on the 8th toss? ($x=8,\ p=0.5$) \\
+        \midrule
+        Negative binomial & If a coin is repeatedly tossed, what is the probability the third time heads appears occurs on the 9th toss? ($x=9,\ r=3,\ p=0.5$) \\
+        \midrule
+        Hypergeometric & 5 pandas caught, tagged, and released into the pop. After mixing, a random sample of 10 animals selected. Suppose there are 25 animals in the region. What is the probability that exactly 2 of the caught animals are tagged? ($N=25,\ n=10,\ M=5,\ x=2$) \\
+        \midrule
+        Poisson & Floods occur once every 100 years on avg in Canada. What is the probability there will be 4 floods in 100 years? ($\lambda = 1,\ x = 4$) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\clearpage
+
+
+\textbf{Continuous Probability Distributions}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{Sl Sc Sc Sc Sc}
+        \toprule \toprule
+        Distribution & Pdf: $f(x)$ & $\mathbb{E}(X)$ & $Var(X)$ & Cdf: $F(x)$ \\
+        \toprule \toprule
+        Uniform & $\frac{1}{b-a}$ & $\frac{b+a}{2}$ & $\frac{(b-a)^2}{12}$ & $\frac{x-a}{b-a}$ \\
+        \midrule
+        Exponential & $\lambda e^{-\lambda x}$ & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^2}$ & $1-e^{-\lambda x}$ \\
+        \midrule
+        Normal & $\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ & $\mu$ & $\sigma^2$ & $\Phi(z) = P(Z \leq z)$ \\
+        \bottomrule \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}
+
+\vspace{-.5em}
+\begin{itemize}
+    \item Exponential dist'n has lack of memory property: $P(X < t + \Delta t | X > t) = P(X < \Delta t)$
+    \item Exponential $X$ is length of interval until next success in a Poisson process; $P(X)$ is probability of next success.
+    \item Exponential $\lambda$ is rate (i.e., per unit time); it's the SAME as that for Poisson.
+    \item Poisson and exponential interchangeable if succcess hasn't happened yet ($N=0$).
+    \item If $N \neq 0$, use Poisson (i.e., number of successes in interval): $\lambda = \lambda_x x$ where $x$ is the interval.
+    \item If success already happened, must use exponential.
+\end{itemize} \vspace{-.5em}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{Sl | Sc Sc}
+        \hline
+        & Poisson & Exponential \\
+        \hline
+        Length of interval & constant & variable ($X$, until 1st success) \\
+        No of successes & varianble ($N$) & constant (1) \\
+        \hline
+    \end{tabular}
+\end{table}
+
+$X \sim N(\mu, \sigma^2), \quad Z \sim N(0, 1)$ \hfill $Z = \frac{X-\mu}{\sigma}, \quad z = \frac{x - \mu}{\sigma}, \quad x = \mu + z \sigma$ \hfill $P(X \leq x) = P\left( \frac{X-\mu}{\sigma} \leq \frac{x - \mu}{\sigma} \right) = P(Z \leq z)$
+
+\textit{Normal Approximation to Binomial}
+
+If $X \sim B(n, p)$, then $P(a \leq X \leq b) \approx P(a - 0.5 \leq Y \leq b + 0.5)$ \hfill where $Y \sim N \left(\mu = np,\ \sigma^2 = np(1-p) \right), \quad np \geq 5$ and $n(1-p) \geq 5$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Sampling Distributions}
+
+\textit{CLT}: If $n$ is sufficiently large, the sampling distribution of $\bar{x}$ is approximately normal, even if the pop'n dist'n is not itself normal.
+
+\textit{Confidence lvl}: Success rate of the method used to construct the interval: $100(1-\alpha)\%$. If $\alpha = 0.05$, 95/100 samples will capture $\mu$.
+
+Lower confidence = narrower interval. Higher confidence = wider interval.
+
+CI = estimator $\pm \underbrace{(\text{critical value}) \times (\text{standard error})}_{\text{margin of error}}$ \hfill test statistic = $\frac{\text{estimate} - H_0}{\text{se(estimate)}}$
+
+\begin{minipage}[t]{.5\textwidth}
+    \centering
+    \begin{tabular}{l|lcc}
+        \toprule
+        \multirow{2}{*}{} &                        & \multicolumn{2}{c}{Actual situation}                  \\ \cline{2-4} 
+                        & \multicolumn{1}{l|}{}  & \multicolumn{1}{c|}{$H_0$ true}                     & $H_0$ false       \\ \cline{2-4} 
+        \rotatebox[origin=c]{90}{\parbox[c]{1cm}{\centering Decision}} & \multicolumn{1}{l|}{Don't reject $H_0$} & \multicolumn{1}{c|}{correct} & type II, $\beta$ \\ \cline{2-4}
+                        & \multicolumn{1}{l|}{Reject $H_0$} & \multicolumn{1}{c|}{type I, $\alpha$} & correct \\
+        \bottomrule
+    \end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.48\textwidth}
+    \vspace{-4em}
+    \begin{itemize}
+        \item $\alpha =$ significance $= P(H_0$ rejected \textbar\ $H_0$ true)
+        \item $1 - \alpha =$ confidence
+        \item $\beta = P(H_0)$ not rejected \textbar\ $H_0$ false)
+        \item $1 - \beta =$ power of the test
+    \end{itemize}
+\end{minipage}
+
+Evidence against $H_0$:
+$\begin{cases}
+    0 < p < 0.01 & \text{convincing to strong} \\
+    0.01 < p < 0.05 & \text{strong too moderate} \\
+    0.05 < p < 0.1 & \text{moderate to suggestive but inconclusive} \\
+    0.1 < p < 1 & \text{little to no}
+\end{cases}$
+
+Note: you can find sample size using $V(\hat{\theta})$, where $\hat{\theta}$ is a generic estimator for $\theta$ with $\mathbb{E}(\hat{\theta}) = \mu_{\hat{\theta}}$ and SD $= \sigma_{\hat{\theta}}$.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{S{p{15em}} | S{p{15em}} | S{p{15em}}}
+        \toprule\toprule
+        Sample mean & Sample prop'n & Difference in sample means \\
+        \midrule
+        $\mathbb{E}(\bar{X}) = \mu$ & $\mathbb{E}(\hat{p}) = p$ & $\mathbb{E}(\bar{X}_1 - \bar{X}_2) = \mu_1 - \mu_2$ \\
+        $V(\bar{X}) = \frac{\sigma^2}{n}$ & $V(\hat{p}) = \frac{p(1-p)}{n}$ & $V(\bar{X}_1 - \bar{X}_2) = \frac{\sigma_1^2}{n_1} + \frac{\sigma^2_2}{n_2}$ \\
+        Normal if $n \geq 30$ OR pop'n normal & Normal if $np \geq 5$ and $n(1-p) \geq 5$ & Normal if $n_1 \geq 30$ \& $n_2 \geq 30$ OR pop'n normal \\
+        \bottomrule\bottomrule
+    \end{tabular}
+\end{table}
+
+
+% new page
+\clearpage \twocolumn
+
+\textbf{Inferences About $\mu$ ($\sigma$ known)}
+
+Asn's: $n \geq 30$ or pop'n is normal
+
+Statistic: $z_0 = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}$ \hfill CI: $\bar{x} \pm z_{\alpha/2} \left( \frac{\sigma}{\sqrt{n}} \right)$
+
+Upper bound: $\mu \leq \bar{x} + z_\alpha \left( \frac{\sigma}{\sqrt{n}} \right)$
+
+Lower bound: $\bar{x} - z_\alpha \left( \frac{\sigma}{\sqrt{n}} \right) \leq \mu$
+
+\dotfill
+
+\textbf{Inferences About $\mu$ ($\sigma$ unknown)}
+
+Asn's: random sample, $n \geq 30$ or pop'n normal
+
+Statistic: $t_0 = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}$ \hfill CI: $\bar{x} \pm t_{\alpha/2,\ n-1} \left( \frac{s}{\sqrt{n}} \right)$
+
+Upper bound: $\mu \leq \bar{x} + t_{\alpha,\ n-1} \left( \frac{s}{\sqrt{n}} \right)$
+
+Lower bound: $\bar{x} - t_{\alpha,\ n-1} \left( \frac{s}{\sqrt{n}} \right) \leq \mu$
+
+\dotfill
+
+\textbf{Inferences About $\mu_d$ for Paired Data}
+
+Asn's: paired and random samples, $n \geq 30$ or pop'n normal
+
+Statistic: $t_0 = \frac{\bar{d} - \delta_0}{s_d / \sqrt{n}}$ \hfill CI: $\bar{d} \pm t_{\alpha/2,\ n-1} \left( \frac{s_d}{\sqrt{n}} \right)$
+
+\dotfill
+
+\textbf{Inferences About $\mu_1 - \mu_2$ (indep, $V$ known)}
+
+Statistic: $z_0 = \frac{(\bar{x}_1 - \bar{x}_2) - \delta_0}{\sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }}$ \hfill CI: $(\bar{x}_1 - \bar{x}_2) \pm z_{\alpha/2} \sqrt{ \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} }$
+
+\dotfill
+
+\textbf{Inferences About $\mu_1 - \mu_2$ (indep, $V$ unknown, equal $V$)}
+
+Asn's: $n_1 \geq 30$ and $n_2 \geq 30$ or both pop'ns normal, $\frac{s_{\text{max}}}{s_{\text{min}}} < 2$
+
+$\quad\quad$\textbf{N.B.,} $n_1 \geq 15$ \& $n_2 \geq 15$ to check equal variance
+
+$\text{df} = n_1 + n_2 - 2$
+
+Statistic: $t_0 = \frac{(\bar{x}_1 - \bar{x}_2) - \delta_0}{\text{se}(\bar{x}_1 - \bar{x}_2)}$ \hfill CI: $(\bar{x}_1 - \bar{x}_2) \pm t_{\alpha/2, \text{df}} \times \text{se}(\bar{x}_1 - \bar{x}_2)$
+
+$s_p = \sqrt{ \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 -2} }$ \hfill $\text{se}(\bar{x}_1 - \bar{x}_2) = s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$
+
+\dotfill
+
+\textbf{Inferences About $\mu_1 - \mu_2$ (indep, $V$ unknown, unequal $V$)}
+
+Asn's: $\frac{s_{\text{max}}}{s_{\text{min}}} > 2$ \hfill $\text{df} = \text{min} \{ n_1, n_2 \} - 1$
+
+Statistic: $t_0 = \frac{(\bar{x}_1 - \bar{x}_2) - \delta_0}{\sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }}$ \hfill CI: $(\bar{x}_1 - \bar{x}_2) \pm t_{\alpha/2,\ \text{df}} \sqrt{ \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} }$
+
+\dotfill
+
+
+\textbf{Inferences About $p$}
+
+Asn's: $np_0 \geq 5$ and $n(1-p_0) \geq 5$
+
+Statistic: $z_0 = \frac{\hat{p} - p_0}{\sqrt{p_0 (1-p_0)/n}}$ \hfill CI: $\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
+
+Upper bound: $p \leq \hat{p} + z_\alpha \sqrt{ \frac{\hat{p}(1-\hat{p})}{n} }$
+
+Lower bound: $\hat{p} - z_\alpha \sqrt{ \frac{\hat{p}(1-\hat{p})}{n} } \leq p$
+
+
+\newpage
+
+
+\textbf{Inferences About $p_1 - p_2$}
+
+Asn's: $n_1 \hat{p}_1$, $n_1(1 - \hat{p}_1)$, $n_2\hat{p}_2$, $n_2 (1-\hat{p}_2)$ all $\geq 5$
+
+Statistic: $z_0 = \frac{(\hat{p}_1 - \hat{p}_2) - (p_1 - p_2)}{\sqrt{ \hat{p}(1-\hat{p}) \left( \frac{1}{n_1} + \frac{1}{n_2} \right) }}$
+
+$\hat{p} = \frac{\text{successes}}{\text{total}} = \frac{n_1 \hat{p}_1 + n_2 \hat{p}_2}{n_1 + n_2} = \frac{x_1 + x_2}{n_1 + n_2}$
+
+CI: $(\hat{p}_1 - \hat{p}_2) \pm z_{\alpha/2} \sqrt{ \frac{\hat{p}_1 (1-\hat{p}_1)}{n_1}  + \frac{\hat{p}_2 (1 - \hat{p}_2)}{n_2} }$
+
+\dotfill
+
+\textbf{Simple Linear Regression (SLR)}
+
+Model: $y_i = \beta_0 + \beta_1 x_i + \epsilon_i$ \hfill $Y | x \sim N(\beta_0 + \beta_1 x_i, \sigma^2)$
+
+$\mathbb{E}(Y | x) = \mathbb{E}(\beta_0 + \beta_i x_i + \epsilon) = \beta_0 + \beta_1 x$ \hfill $\mathbb{E}(\epsilon) = 0$
+
+$V(Y | x) = V(\beta_0 + \beta_1 x + \epsilon) = \sigma^2$ \hfill $V(\beta_0 + \beta_1 x) = 0$
+
+dist'n of $\epsilon$ is normal \hfill $\sigma_\epsilon = \text{const}$ for all $x$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Least Squares Fitting}
+
+$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i$ \hfill Residuals: $\epsilon_i = y_i - \bar{y}_i = y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i$
+
+$\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}} = \frac{\text{Cov}(x, y)}{\text{Var}(x)} = r \frac{s_y}{s_x}$ \hfill $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$
+
+\vspace{-.5em}
+\begin{itemize}
+    \item $S_{xx} = \sum (x_i - \bar{x})^2 = \sum x^2 - \frac{1}{n} \left( \sum x \right)^2$
+    \item $S_{yy} = \sum (y_i - \bar{y})^2 = \sum y^2 - \frac{1}{n} \left( \sum y \right)^2$
+    \item $S_{xy} = \sum (x_i - \bar{x}) (y_i - \bar{y}) = \sum xy - \frac{1}{n} \sum x \sum y$
+\end{itemize} \vspace{-.5em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{ANOVA for SLR}
+
+$F_0 = \frac{\text{SSR}/1}{\text{SSE} / (n-2)} = \frac{\text{MSR}}{\text{MSE}}$ \hfill $(t_{n-2})^2 = F_{1, n-2}$
+
+$\overbrace{\sum_{i=1}^n (y_i - \bar{y})^2}^{SST} = \overbrace{\sum_{i=1}^n (\hat{y}_i - \bar{y})^2}^{SSR} + \overbrace{\sum_{i=1}^n (y_i - \hat{y}_i)^2}^{SSE}$
+
+MSR = SSR/1 \hfill MSE = SSE/$(n-2)$
+
+% \begin{itemize}
+    % \item $SST$: sum of squares total.
+    % \item $SSR$: sum of squares regression.
+    % \item $SSE$: sum of squares error.
+    % \item $MSR$: mean square regression (SSR divided by regression df).
+    % \item $MSE$: mean square error (SSE divided by error df)
+% \end{itemize} \vspace{-1em}
+
+\vspace{-.5em}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lccccc}
+        \toprule
+        & df & SS & MS & F & p-value \\
+        \midrule
+        Regression & 1 & SSR & MSR & $\textstyle\frac{MSR}{MSE}$ & $P(F_{1,n-2} > F_0)$ \\
+        Residual & $n-2$ & SSE & MSE \\
+        Total & $n-1$ & SST \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Inferences in Regression}
+
+Statistic: $t_0 = \frac{\hat{\beta}_1 - b_1}{se(\hat{\beta}_1)} \sim t_{n-2}$ \hfill $se(\hat{\beta}_1) = \sqrt{\frac{\hat{\sigma}^2}{S_{xx}}}$
+
+CI (slope): $\hat{\beta}_1 \pm t_{\alpha/2, n-2} \times se(\hat{\beta}_1)$ \hfill $\hat{\beta}_1 \sim N(\beta_1, \sigma^2 / S_{xx})$
+
+Error/model variance: $\hat{\sigma}^2 = \frac{\text{SSE}}{n-2}$
+
+\dotfill
+
+\textbf{Inferences on Regression Line}
+
+CI: $(\hat{\beta}_0 + \hat{\beta}_1 x^*) \pm t_{\alpha/2, n-2} \times \hat{\sigma} \sqrt{\frac{1}{n} + \frac{(x^* - \bar{x})^2}{S_{xx}}}$
+
+PI: $(\hat{\beta}_0 + \hat{\beta}_1 x^*) \pm t_{\alpha/2, n-2} \times \hat{\sigma} \sqrt{1 + \frac{1}{n} + \frac{(x^* - \bar{x})^2}{S_{xx}}}$
+
+
+\newpage
+
+
+\textbf{Correlation}
+
+Coefficient of determination: $R^2 = \frac{SSR}{SST} = 1 - \frac{SSE}{SST}$
+
+Pearson's sample correlation: $r = \frac{1}{n-1} \sum z_x z_y = \frac{S{xy}}{\sqrt{S_{xx} S_{yy}}}$
+
+$\quad\quad \hat{\beta}_1 = r \frac{s_y}{s_x}$
+
+$\quad\quad z_x = \frac{x_i - \bar{x}}{s_x}$ \hspace{3em} $z_y = \frac{y_i - \bar{y}}{s_y}$
+
+$\quad\quad R^2 = r^2$ for single-variable regression
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{One-Way ANOVA}
+
+$H_0: \mu_1 = \mu_2 = \cdots = \mu_k$ \hfill $SST = SSTr + SSE$
+
+$F_0 = \frac{\text{SSTr}/(k-1)}{\text{SSE}/(N-k)} = \frac{\text{MSTr}}{\text{MSE}} \sim F_{k-1,N-k}$
+
+$F_0 = \frac{\text{MS btw groups}}{\text{MS w/in groups}}$
+
+Assumptions:
+\vspace{-.5em}
+\begin{enumerate}
+    \item Samples from diff pop'ns are random and indep.
+    \item Pop'ns all normally distributed.
+    \item Pop'ns all have same sd.
+\end{enumerate}
+
+$N = k n_i$ \hfill $k$ is n(groups); $n_i$ is n(obs in each group)
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lccccc}
+        \toprule
+        & df & SS & MS & F & p-value \\
+        \midrule
+        Tx & $k-1$ & SSTr & MSTr & $\textstyle\frac{MSTr}{MSE}$ & $P(F_{1,n-2} > F_0)$ \\
+        Error & $N-k$ & SSE & MSE \\
+        Total & $N-1$ & SST \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}
+
+\dotfill
+
+\textbf{Sample Size for Desired Margin of Error}
+
+One proportion: $n = \left( \frac{z^*}{ME}\right)^2 p^* (1-p^*)$
+
+One mean: $n = \left( \frac{z^*}{ME}\right)^2 \hat{\sigma}^2$
+
+\dotfill
+
+\textbf{Tips}
+
+On the TI-36X Pro, \verb|{distn}cdf| computes $P(X \leq x)$
+
+Use \texttt{quartile.inc()} and \texttt{tdist()} on Excel
+
+Round DOWN in the $t$-table
+
+1-sided test: use $\alpha = \frac{1}{2} (1 - \text{confidence}) \iff$ one-sided CI
+
+2-sided test: use $\alpha = 1 - \text{confidence} \iff$ two-sided CI
+
+Lower-tailed test $\iff$ upper bound
+
+Upper-tailed test $\iff$ lower bound
+
+
+\end{document}

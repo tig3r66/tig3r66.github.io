@@ -1,0 +1,221 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, mathtools, multicol, pgfplots, wrapfig, caption, subcaption}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+
+\usepackage[tableposition=top]{caption}
+\captionsetup[table]{skip=1em}
+\def\arraystretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+
+\begin{document}
+
+\small
+
+\textbf{Polarization}
+
+If $I_0$ unpolarized: $I = \frac{1}{2} I_0$ \hfill Else: $A = A_0 \cos \phi$ \hspace{1em} $I = I_0 \cos^2 \phi$
+
+Brewster's angle: $\tan \theta_B = \frac{n_2}{n_1}$ \hfill ($\theta_B = \theta_i = \theta_r$; light hits $n_2$) \vspace{-.5em}
+\begin{itemize}
+    \item \textit{Reflected} ray \textit{completely} polarized
+    \item \textit{Refracted} beam is \textit{partially} polarized
+\end{itemize} \vspace{-1em}
+
+\dotfill
+
+\textbf{Dispersion}
+
+$\psi(x, t) = 2A \cos \left( \frac{1}{2} \Delta kx - \frac{1}{2} \Delta \omega t \right) \cos( \bar{k}x - \bar{\omega} t)$
+
+$\bar{k} = \frac{1}{2} (k_1 + k_2)$ \hfill $\bar{\omega} = \frac{1}{2} (\omega_1 + \omega_2)$ \hfill $\Delta k = k_1 - k_2$ \hfill $\Delta \omega = \omega_1 - \omega_2$
+
+Phase velocity: $v_p = \frac{\omega}{k}$ \hfill Group velocity: $v_g = \frac{d\omega}{dk}$
+
+Normal dispersion: $n$ greater for shorter $\lambda$
+
+\begin{wrapfigure}[3]{l}{0.3\columnwidth} \vspace{-2em}
+    \includegraphics[width=0.3\columnwidth]{Figures/prism_disp.png}
+\end{wrapfigure}
+
+$v_p < v_g \Rightarrow$ anomalous dispersion
+
+$v_p = v_g \Rightarrow$ no dispersion
+
+$v_p > v_g \Rightarrow$ normal dispersion
+
+\dotfill
+
+\textbf{Interference}
+
+\textit{The type of interference only det by reflection $\Delta \phi$}
+
+$\Delta L = 2h = \frac{m \lambda}{n}$
+
+\textbf{Thin film} formulae for $n = 1, 2, 3, ...$ \hfill $n_1 \lambda_1 = n_2 \lambda_2$
+
+\textbf{REMEMBER TO ACCOUNT FOR $n$!!!} \vspace{-1em}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{rll}
+        \hline \hline
+        & Constructive & Destructive \\
+        \hline
+        No/both phase change & $h = n\lambda / 2$ & $h = (2n-1)\lambda/4$ \\
+        One phase change & $h = (2n-1)\lambda/4$ & $h = n\lambda / 2$ \\
+        \hline \hline
+    \end{tabular}
+\end{table} \vspace{-1em}
+
+\begin{wrapfigure}[3]{l}{0.3\columnwidth} \vspace{-1em}
+    \includegraphics[width=0.3\columnwidth]{Figures/thin_wedge.png}
+\end{wrapfigure}
+
+\textbf{Thin wedge} (for $n=0,1,2...$)
+
+Constructive: $x = \frac{(2n+1)\lambda}{4 \tan \theta}$
+
+Destructive: $x = \frac{n\lambda}{2 \tan \theta}$
+
+\vspace{1em}
+
+\begin{wrapfigure}[5]{l}{0.3\columnwidth} \vspace{-2em}
+    \includegraphics[width=0.3\columnwidth]{Figures/newtons_rings.png}
+\end{wrapfigure}
+
+\textbf{Newton's rings} (for $n = 0, 1, 2, ...$)
+
+$t \approx \frac{x^2}{2r}$
+
+Constructive: $x = \sqrt{\left( n + \frac{1}{2} \right) \lambda r}$
+
+Destructive: $x = \sqrt{n \lambda r}$
+
+Middle dark w/ decreasing width (due to $\sqrt{n}$)
+
+\vspace{.5em}
+
+\textbf{Interferometers}
+
+$t_{||} - t_{\perp} \approx \frac{Lv^2}{c^3}$ \hfill where $v$ is speed of ``aether''
+
+\vspace{-1em}
+\begin{itemize}
+    \item $\Delta L = 2 \Delta x = \frac{m \lambda_0}{2}$ \hspace{1em} ($\Delta \phi = \pi$; pattern inversion)
+    \item $\Delta L = 2 \Delta x = m \lambda_0$ \hspace{1em} ($\Delta \phi = 2\pi$; 1 fringe shift)
+    \item $\Delta L$ is path length diff and $\Delta x$ is mirror mvmt
+\end{itemize} \vspace{-1em}
+
+\dotfill
+
+\textbf{Diffraction (General)}
+
+Fringe width $\propto \lambda \propto 1/d \propto 1/a \propto 1/I$
+
+$N = \frac{L}{\lambda} = \frac{2 x}{\lambda}$ \hfill $N$ is $\lambda$s that fits in length $L$
+
+$m = N_2 - N_1 = \frac{L}{\lambda} (n_2 - n_1)$ \hfill $n$ is refractive index ($L = 2x$)
+
+sinc $x = \frac{\sin x}{x}$ \hfill \textbf{USE RADIANS!!!}
+
+
+% colummn break
+\newpage
+
+\textbf{Single Slit Diffraction}
+
+$\psi(\theta) = A \cos (kr - \omega t)\ \text{sinc} \left( \frac{\pi}{\lambda} a \sin\theta \right)$ \hfill $I = I_0\ \text{sinc}^2 \left( \frac{\pi}{\lambda} a \sin\theta \right)$
+
+At min: $\Delta L = a \sin \theta = n \lambda$ \hfill $n = \pm 1, \pm 2, ...$ (NOT 0)
+
+\vspace{-1em}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{Figures/single_slit_intensity.jpeg}
+\end{figure}
+
+\vspace{-1.5em}
+
+\dotfill
+
+
+\begin{wrapfigure}[7]{r}{0.35\columnwidth}
+    \includegraphics[height=0.35\columnwidth]{Figures/double_slit.png}
+\end{wrapfigure}
+
+\textbf{Double Slit Diffraction}
+
+\textbf{\textit{Narrow Slit}}
+
+$\psi(\theta) = 2A \cos(\frac{\pi d}{\lambda} \sin \theta) \cos(kr - \omega t)$
+
+$I = I_0 \cos^2 \left( \frac{\pi d}{\lambda} \sin \theta \right)$
+
+For $m=0, \pm 1, \pm 2, ...$ \vspace{-.5em}
+\begin{itemize}
+    \item Max $I$: $d \sin \theta = m\lambda$
+    \item Min $I$: $d \sin \theta = \left( m + \frac{1}{2} \right) \lambda$
+\end{itemize}
+
+$x = \frac{L}{d} (n_2 w_2 - n_1 w_1)$ \vspace{-.5em}
+\begin{itemize}
+    \item $x$ is shift of central max \hfill $L$ is distance to screen
+    \item $n$ is refractive index \hfill $w$ is width of slit covering
+\end{itemize}
+
+\textbf{\textit{Wide Slit}} \vspace{-.5em}
+\begin{itemize}
+    \item Double narrow slit fn multiplied by single slit fn
+    \item $a$ is slit width, $d$ is distance btw slits
+\end{itemize}
+
+$m = \frac{d}{a}$ \hfill where $m$ is the missing order
+
+$\psi(\theta) = 2 \psi_1 \cos \left( \frac{\pi d}{\lambda} \sin \theta \right)$ \hfill where $\psi_1 = A \cos(kr - \omega t)\ \text{sinc} \left( \frac{\pi}{\lambda} a \sin \theta \right)$
+
+$I = 4 I_1 \cos^2 \left( \frac{\pi d}{\lambda} \sin \theta \right)$ \hfill where $I_1 = I_0\ \text{sinc}^2 \left( \frac{\pi}{\lambda} a \sin\theta \right)$
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Diffraction Grating}
+
+Bright lines: $\sin \theta = \frac{m \lambda}{d} = m N \lambda$ \hfill $m = 0, 1, 2, ...$ and $N = 1/d$
+
+$\Delta \lambda = \frac{\lambda}{Nm}$
+
+$d$ is spacing btw 2 lines \hfill $N$ is number of slits per $L$
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Rayleigh Criterion (Circular Aperture)}
+
+$\theta_R = \frac{1.22 \lambda}{a} = \frac{D}{L}$ \hfill (for small $\theta$ to resolve 2 srcs) \vspace{-.5em}
+\begin{itemize}
+    \item $a$ is diameter of telescope
+    \item $D$ is distance btw 2 barely resolvable points
+    \item $L$ is distance to obj
+\end{itemize}
+
+Resolving power: $R = \frac{\lambda_{\text{avg}}}{\delta \lambda} \leq m N w$ \hfill (lines in grating = $Nw$)
+
+$\sin \theta \approx \theta = m N \lambda = \frac{\lambda}{w}$ \hfill $\delta \theta = m N \delta \lambda \geq \frac{\lambda}{w} \hspace{.5em} \Rightarrow \hspace{.5em} R = \frac{\lambda}{\delta \lambda} \leq mNw$
+
+
+\end{document}

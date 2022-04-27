@@ -1,0 +1,269 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, mathtools, multicol, pgfplots, wrapfig, caption, subcaption, amssymb}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+
+\usepackage[labelfont=bf, tableposition=top]{caption}
+\captionsetup[table]{skip=1em}
+\def\arraystretch{1.5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+
+\begin{document}
+
+\small
+
+\textbf{Trigonometry}
+
+Sine law: $\frac{\sin \text{A}}{\sin \text{B}} = \frac{a}{b}$ \hfill Cosine law: $c^2 = a^2 + b^2 - 2ab \cos \text{C}$
+
+\dotfill
+
+\textbf{Vectors}
+
+$\mathbf{F} = \mathbf{F_x} + \mathbf{F_y} + \mathbf{F_z} = F_x \mathbf{i} + F_y \mathbf{j} + F_z \mathbf{k} = F (\cos \alpha \mathbf{i} + \cos \beta \mathbf{j} + \cos \gamma \mathbf{k})$
+
+$\cos^2 \alpha + \cos^2 \beta + \cos^2 \gamma = 1$
+
+Position vector: $\mathbf{r}_{AB} = (x_B - x_A) \mathbf{i} + (y_B - y_A) \mathbf{j} + (z_B - z_A) \mathbf{k}$
+
+Unit position vector: $\mathbf{u} = \frac{\mathbf{r}}{|| \mathbf{r} ||}$
+
+$\mathbf{F} = F \mathbf{u}$ \hfill ($\mathbf{u}$ is in the direction of $\mathbf{F}$)
+
+\dotfill
+
+\textbf{Dot Product}
+
+$\langle \textbf{A}, \textbf{B} \rangle = \mathbf{A} \cdot \mathbf{B} = A_x B_x + A_y B_y + A_z B_z = AB \cos \theta$
+
+$\cos \theta = \frac{\mathbf{A} \cdot \mathbf{B}}{\text{AB}}$
+
+Vector directed along a line: $A_{||} = A \cos \theta = \mathbf{A} \cdot \mathbf{u}$
+
+\dotfill
+
+\textbf{Determinants}
+
+Second order:
+\begin{equation*}
+    \begin{vmatrix}
+        a_1 & a_2 \\
+        b_1 & b_2
+    \end{vmatrix} = a_1 b_1 - a_2 b_2
+\end{equation*}
+
+Third order:
+\begin{equation*}
+    \begin{vmatrix}
+        a_1 & a_2 & a_3 \\
+        b_1 & b_2 & b_3 \\
+        c_1 & c_2 & c_3
+    \end{vmatrix}
+    = a_1 \begin{vmatrix}
+        b_2 & b_3 \\
+        c_2 & c_3
+    \end{vmatrix}
+    - a_2 \begin{vmatrix}
+        b_1 & b_3 \\
+        c_1 & c_3
+    \end{vmatrix}
+    + a_3 \begin{vmatrix}
+        b_1 & b_2 \\
+        c_1& c_2
+    \end{vmatrix}
+\end{equation*}
+
+\dotfill
+
+\textbf{Cross Product}
+
+Magnitude of cross product: $C = AB \sin \theta$
+
+$\mathbf{C} = \mathbf{A} \times \mathbf{B} = (AB \sin \theta) \mathbf{u_c}$ \hfill $\mathbf{u_c} \perp \mathbf{A}, \mathbf{B}$ by the RHR
+
+\begin{equation*}
+    \mathbf{A} \times \mathbf{B} =
+    \begin{vmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        A_x & A_y & A_z \\
+        B_x & B_y & B_z
+    \end{vmatrix}
+\end{equation*}
+
+\dotfill
+
+\textbf{Moments}
+
+$M = Fd$ (scalar form) \hfill $\mathbf{M} = \mathbf{r} \times \mathbf{F}$ (vector form)
+
+Moment about a specified axis:
+\begin{itemize}
+    \item Scalar form: $M = F d$
+    \item Vector form: $\mathbf{M_a} = [ \mathbf{u_a} \cdot (\mathbf{r} \times \mathbf{F})] \mathbf{u_a}$
+\end{itemize}
+
+\dotfill
+
+\textbf{Shear Force and Bending Moment Diagrams (SFD \& BMD)}
+
+Shear and load: $\frac{dV}{dx} = - w(x)$ \hfill $\displaystyle\int_a^b dV = \int_a^b -w(x) dx$
+
+Moment and shear: $\frac{dM}{dx} = V(x)$ \hfill $\displaystyle\int_a^b dM = \int_a^b V(x) dx$
+
+Concentrated loads: +ve if point load $\uparrow$ \hfill -ve if point load $\downarrow$
+
+Couple moments: +ve if $\circlearrowleft$ (CW) \hfill -ve if $\circlearrowright$ (CCW)
+
+\newpage
+
+\textbf{Friction}
+
+Max static friction force: $F_{\text{max}} = \mu_s N$
+
+Kinetic friction force: $F = \mu_k N$
+
+Angle of static friction: $\tan \phi_s = \frac{\mathbf{F}_s}{\mathbf{N}} = \mu_s$
+
+\dotfill
+
+\textbf{Center of Gravity and Mass}
+
+\textit{Center of Gravity (Uniform Body)}
+\begin{equation*}
+    \bar{x} = \frac{\displaystyle\int \tilde{x}\ dW}{\displaystyle\int dW} \hspace{1em} \bar{y} = \frac{\displaystyle\int \tilde{y}\ dW}{\displaystyle\int dW} \hspace{1em} \bar{z} = \frac{\displaystyle\int \tilde{z}\ dW}{\displaystyle\int dW}
+\end{equation*}
+
+\textit{Center of Gravity (Non-Uniform Body)}
+\begin{align*}
+    \bar{x} &= \frac{\displaystyle\int \tilde{x} \gamma\ dV}{\displaystyle\int \gamma\ dV} \hspace{1em} \bar{y} = \frac{\displaystyle\int \tilde{y} \gamma\ dV}{\displaystyle\int \gamma\ dV} \hspace{1em} \bar{z} = \frac{\displaystyle\int \tilde{z} \gamma\ dV}{\displaystyle\int \gamma\ dV} \\
+    \gamma &= \rho g = \frac{mg}{V} = \frac{W}{V} \hspace{2em} \Rightarrow \hspace{2em} dW = \gamma\ dV
+\end{align*}
+
+\textit{Center of Mass (Uniform Body)}
+\begin{equation*}
+    \bar{x} = \frac{\displaystyle\int \tilde{x}\ dm}{\displaystyle\int dm} \hspace{1em} \bar{y} = \frac{\displaystyle\int \tilde{y}\ dm}{\displaystyle\int dm} \hspace{1em} \bar{z} = \frac{\displaystyle\int \tilde{z}\ dm}{\displaystyle\int dm}
+\end{equation*}
+
+\textit{Center of Mass (Non-Uniform Body)}
+\begin{align*}
+    \bar{x} &= \frac{\displaystyle\int \tilde{x} \rho\ dV}{\displaystyle\int \rho\ dV} \hspace{1em} \bar{y} = \frac{\displaystyle\int \tilde{y} \rho\ dV}{\displaystyle\int \rho\ dV} \hspace{1em} \bar{z} = \frac{\displaystyle\int \tilde{z} \rho\ dV}{\displaystyle\int \rho\ dV} \\
+    \rho &= \frac{m}{V} \hspace{2em} \Rightarrow \hspace{2em} dm = \rho\ dV
+\end{align*}
+
+\dotfill
+
+\textbf{Centroids}
+
+\textit{Centroid of a Volume}
+\begin{equation*}
+    \bar{x} = \frac{\displaystyle\int_V \tilde{x}\ dV}{\displaystyle\int_V dV} \hspace{1em} \bar{y} = \frac{\displaystyle\int_V \tilde{y}\ dV}{\displaystyle\int_V dV} \hspace{1em} \bar{z} = \frac{\displaystyle\int_V \tilde{z}\ dV}{\displaystyle\int_V dV}
+\end{equation*}
+
+\textit{Centroid of an Area}
+\begin{equation*}
+    \bar{x} = \frac{\displaystyle\int_A \tilde{x}\ dA}{\displaystyle\int_A dA} \hspace{1em} \bar{y} = \frac{\displaystyle\int_A \tilde{y}\ dA}{\displaystyle\int_A dA} \hspace{1em} \bar{z} = \frac{\displaystyle\int_A \tilde{z}\ dA}{\displaystyle\int_A dA}
+\end{equation*}
+
+\textit{Centroid of a Line}
+\begin{equation*}
+    \bar{x} = \frac{\displaystyle\int_L \tilde{x}\ dL}{\displaystyle\int_L dL} \hspace{1em} \bar{y} = \frac{\displaystyle\int_L \tilde{y}\ dL}{\displaystyle\int_L dL} \hspace{1em} \bar{z} = \frac{\displaystyle\int_L \tilde{z}\ dL}{\displaystyle\int_L dL}
+\end{equation*}
+
+\newpage
+
+\textbf{Centroids by Composite Bodies}
+\begin{equation*}
+    \bar{x} = \frac{\sum \tilde{x} W}{\sum W} \hspace{1em} \bar{y} = \frac{\sum \tilde{y} W}{\sum W} \hspace{1em} \bar{z} = \frac{\sum \tilde{z} W}{\sum W}
+\end{equation*}
+
+Set $A < 0$ for holes.
+\begin{table}[h]
+    \begin{tabular}{l c c c}
+        \hline \hline
+        section & $\tilde{x}$ & $A$ & $\tilde{x}A$ \\
+        \hline
+        $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+        \hline
+        Sum & n/a & $\cdots$ & $\cdots$ \\
+        \hline \hline
+    \end{tabular}
+\end{table} \vspace{-1em}
+
+\dotfill
+
+\textbf{Area Moments of Inertia}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{Figures/ix.png}
+        \caption{$I_x = \displaystyle\int_A y^2\ dA$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\columnwidth}
+        \centering
+        \includegraphics[width=\columnwidth]{Figures/iy.png}
+        \caption{$I_y = \displaystyle\int_A x^2\ dA$}
+    \end{subfigure}
+    \caption{Length of $dA$ should be \textit{parallel} to axis about which $I$ is computed.}
+\end{figure}
+
+Polar moment of inertia: $J_0 = I_x + I_y = \displaystyle\int_A r^2\ dA$
+
+Product moment of inertia: $I_{xy} = \displaystyle\int_A xy\ dA$
+
+Radii of gyration:
+\begin{equation*}
+    k_x = \sqrt{\frac{I_x}{A}} \hspace{1em} k_y = \sqrt{\frac{I_y}{A}} \hspace{1em} k_0 = \sqrt{\frac{I_0}{A}}
+\end{equation*}
+
+Parallel axis theorem:
+
+\begin{itemize}
+    \item $I_x = \bar{I}_{x'} + Ad_y^2$ \hfill $I_y = \bar{I}_{y'} + Ad_x^2$
+    \item $J_0 = \bar{J}_c + Ad^2$ \hfill $I_{xy} = \bar{I}_{x'y'} + A d_x d_y$
+\end{itemize}
+
+\dotfill
+
+\textbf{Area Moments of Inertia by Composite Bodies}
+
+Find the appropriate centroids. Set $A < 0$ for holes.
+\begin{table}[h]
+    \begin{tabular}{l c c c c}
+        \hline \hline
+        section & $\tilde{I}_{x'}$ & $d = \tilde{x} - x$ & $A$ & $\bar{I}_x = Ad^2$ \\
+        \hline
+        $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+        \hline
+        Sum & $\cdots$ & n/a & n/a & $\cdots$ \\
+        \hline \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+
+\begin{figure}[h]
+    \includegraphics[width=\columnwidth]{Figures/centroids.png}
+\end{figure}
+
+
+
+
+
+
+\end{document}

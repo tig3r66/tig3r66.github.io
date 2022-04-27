@@ -1,0 +1,332 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, multicol, wrapfig, caption, multirow, nccmath, mathtools, amsfonts, booktabs,esint}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\usepackage{array, cellspace}
+
+\usepackage[tableposition=top]{caption}
+\captionsetup[table]{skip=1em}
+\def\arraystretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\everymath{\displaystyle}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{PHYS 281 Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\small
+
+\textbf{Electric Fields}
+
+Coulomb's law: $\mathbf{E} = \frac{k q}{r^2} \mathbf{\hat{r}}$ \hfill $\mathbf{F} = \frac{k q_1 q_2}{r^2} \mathbf{\hat{r}}$ \hfill $\mathbf{\hat{r}} = \frac{\mathbf{r_0} - \mathbf{r}}{|\mathbf{r_0} - \mathbf{r}|}$
+
+$k = \frac{1}{4 \pi \epsilon_0} = 8.99 \times 10^9\ \text{Nm}^2/\text{C}^2$ \hfill $\epsilon_0 = 8.85 \times 10^{-12}\ \text{C}/\text{(Nm)}^2$
+
+Curve: $\mathbf{E} = k \int_C \frac{\mathbf{\hat{r}}}{r^2}\ dq = k \lambda \int_C \frac{\mathbf{r_0} - \mathbf{r}}{|\mathbf{r_0} - \mathbf{r}|^3}\ ds$
+
+$\quad dq = \lambda\ ds = \lambda \frac{d|\mathbf{r}|}{dt}\ dt = \lambda \sqrt{ \dot{x}^2 + \dot{y}^2 + \dot{z}^2 }\ dt$
+
+Surface: $\mathbf{E} = \frac{k}{r^2} \iint_S \mathbf{\hat{r}}\ dq = k \sigma \iint_S \frac{\mathbf{r_0} - \mathbf{r}}{|\mathbf{r_0} - \mathbf{r}|^3}\ dS$
+
+$\quad dq = \sigma\ dS = \sigma \left| \mathbf{r_u} \times \mathbf{r_v} \right|\ du\ dv$
+
+Volume: $\mathbf{E} = \frac{k}{r^2} \iiint_V \mathbf{\hat{r}}\ dq = k \rho \iiint_V \frac{\mathbf{r_0} - \mathbf{r}}{|\mathbf{r_0} - \mathbf{r}|^3}\ dV$
+
+$\quad dq = \rho\ dV = \rho\ dS\ ds$
+
+$\mathbf{r_0}$ is arbitrary position \hfill $\mathbf{r}$ is position on curve/surface/volume
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Electric Flux}
+
+Gauss' law: $\Phi_E = \frac{q_{\text{enc}}}{\epsilon_0} = \oiint_S \mathbf{E} \cdot d\mathbf{S} = \oiint_S E\ dS \cos \theta = \iiint_V \nabla \cdot \mathbf{E}\ dV$
+
+$q_{\text{enc}} = \iiint_V \rho\ dV$ \hfill $\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}$
+
+Cylinder: $\Phi_E = 2 \pi r h E(r)$ \hfill Sphere: $\Phi_E = 4 \pi r^2 E(r)$
+
+$E(r) =$ electric field \hfill $r =$ d from origin \hfill $h =$ cylinder length
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Electric Potential}
+
+Work: $W = |\mathbf{F}|d = q|\mathbf{E}|d = q \mathbf{E} \cdot \mathbf{d} = \int_C q \mathbf{E} \cdot d\mathbf{r}$ \hfill $U + W = 0$
+
+Electric potential energy: $U = -\int_C q \mathbf{E} \cdot d\mathbf{r}$
+
+Electric potential: $\Delta V = U/q = -\int_C \mathbf{E} \cdot d\mathbf{r}$
+
+$\nabla \times \mathbf{E} = 0 \quad \Longrightarrow \quad \oint_C \mathbf{E} \cdot d\mathbf{r} = 0$ \hfill $\mathbf{E} = - \nabla V$
+
+For a test charge $q$: \hfill $\mathbf{F} = q \mathbf{E}$ \hfill $U = qV$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Capacitors}
+
+$C = \left| \frac{q}{\Delta V} \right|$ \hfill $C_{\text{parallel}} = \sum_{i=1}^n C_i$ \hfill $C_{\text{series}} = \left( \sum_{i=1}^n \frac{1}{C_i} \right)^{-1}$
+
+Parallel plate: $C = \frac{\epsilon_0 A}{d}$ \hfill area $A$, separated by $d$
+
+Cylindrical: $C = \frac{\epsilon_0 2 \pi L}{\ln(b/a)}$ \hfill length $L$, inner radius $a$, outer radius $b$
+
+Spherical: $C = 4 \pi \epsilon_0 \frac{ab}{b-a}$ \hfill inner radius $a$, outer radius $b$
+
+E stored by capacitor: $U = \frac{q^2}{2C} = \frac{1}{2} CV^2$
+
+$U = \iiint_V u\ dV = \iiint_V \frac{1}{2} \epsilon_0 |\mathbf{E}|^2\ dV$
+
+
+\newpage
+
+
+\textbf{Current, Resistance, and Power}
+
+$i = \frac{dq}{dt} = \iint_S \mathbf{J} \cdot d\mathbf{S}$ \hfill 1 A = 1 C/s \hfill $\mathbf{J} =$ current density
+
+Resistance: $R = \frac{V}{i}$ \hfill Resistivity: $\rho = \left| \frac{\mathbf{E}}{\mathbf{J}} \right|$ \hfill Conductivity: $\sigma = \frac{1}{\rho}$
+
+$\mathbf{J} = \sigma \mathbf{E}$ \hfill $\mathbf{E} = \rho \mathbf{J}$
+
+Power: $P = \frac{dU}{dt} = iV$ \hfill Power loss: $P = i^2 R = \frac{V^2}{R}$
+
+\dotfill
+
+\textbf{Circuits}
+
+Series: $R = \sum_{i=1}^n R_i$ \hfill Parallel: $R = \left( \frac{1}{R_i} \right)^{-1}$
+
+$q_{\text{eq}} = C \epsilon$ and $\tau = RC$
+
+Charging RC circuit: $\epsilon - iR - \frac{q}{C} = 0 \hspace{1em} \Longrightarrow \hspace{1em} R \frac{dq}{dt} + \frac{1}{C} q = \epsilon$
+
+$\quad\quad q(t) = q_{\text{eq}} (1-e^{-t/\tau})$ \hfill $i(t) = \frac{dq}{dt} = \frac{q_{\text{eq}}}{\tau} e^{-t/\tau} = \frac{\epsilon}{R} e^{-t/\tau}$
+
+Discharging RC circuit: $iR + \frac{q}{C} = 0 \hspace{1em} \Longrightarrow \hspace{1em} R \frac{dq}{dt} + \frac{1}{C} q = 0$
+
+$\quad\quad q(t) = q_{\text{eq}} e^{-t/\tau}$ \hfill $i(t) = \frac{dq}{dt} = -\frac{q_{\text{eq}}}{\tau} e^{-t/\tau} = -\frac{q_{\text{eq}}}{RC} e^{-t/\tau}$
+
+\dotfill
+
+\textbf{Magnetic Fields}
+
+$\mathbf{F}_B = q \mathbf{v} \times \mathbf{B}$ \hfill $|\mathbf{B}| = \frac{|\mathbf{F}_B|}{q v_\perp} = \frac{|\mathbf{F}_B|}{qv \sin \phi}, \quad \phi$ is angle from $\mathbf{v}$ to $\mathbf{B}$
+
+Biot-Savart law: $d\mathbf{B} = \left( \frac{\mu_0 i}{4 \pi r^2} \right) d\mathbf{s} \times \mathbf{\hat{r}}$
+
+$\quad \mathbf{B} = \frac{\mu_0 i}{4 \pi} \int_C \frac{d\mathbf{s} \times \mathbf{\hat{r}}}{r^2} = \frac{\mu_0 i}{4 \pi} \int_a^b \frac{d\mathbf{s}}{dt} \times \frac{\mathbf{r_0} - \mathbf{r}}{|\mathbf{r_0} - \mathbf{r}|^3}\ dt$
+
+$\quad \mathbf{r_0}$ is arbitrary position \hfill $\mathbf{r}$ is position on curve
+
+Ampere's law: $\nabla \times \mathbf{B} = \mu_0 \mathbf{J}_{\text{enc}}$
+
+$\int_C \mathbf{B} \cdot d\mathbf{S} = \mu_0 i_{\text{enc}} = \mu_0 \iint_S \mathbf{J}_{\text{enc}}\ dA$
+
+\dotfill
+
+\textbf{Induction and Inductance}
+
+$\varepsilon = - \frac{d}{dt} \iint_S \mathbf{B} \cdot d\mathbf{S}$ \hfill $\Phi_B = \iint_S \mathbf{B} \cdot d\mathbf{S} \Longrightarrow \varepsilon = -\frac{d\Phi_B}{dt}$
+
+Lenz's law: direction of $i$ induces $\mathbf{B}$ to oppose change in $\Phi_B$
+
+Induced current: $i = \frac{\varepsilon}{R} = \frac{BLv}{R}$
+
+$\quad$Circuit has speed $v$ \hfill length $L$ perp to mvmt of circuit
+
+$\quad P_{\text{in}} = Fv = i L B_0 v = \frac{B_0^2 L^2 v^2}{R}$ \hfill $\quad P_{\text{out}} = i^2 R = \frac{B_0^2 L^2 v^2}{R}$
+
+Faraday's law: $\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$
+
+Solenoid: $L = \frac{N \Phi_B}{i} = \mu_0 \frac{N^2}{l} \pi R^2 = \mu_0 n^2 \pi R^2 l$ \hfill $n=N/l$
+
+$\quad N =$ number of turns, $l =$ length, $R =$ radius
+
+$\varepsilon_L = -L \frac{di}{dt}$ \hfill Inductance units: $1 \text{ H} = 1 \text{ T m$^2$/A}$
+
+
+\cleardoublepage
+
+
+\textbf{RL Circuits}
+
+RL charge: $\varepsilon - iR - L \frac{di}{dt} = 0 \Longrightarrow \frac{di}{dt} + \frac{R}{L} i = \frac{\varepsilon}{L}$ \hfill $i(0) = 0$
+
+$\quad i(t) = \frac{\varepsilon}{R} (1-e^{Rt/L}) = \frac{\varepsilon}{R} (1-e^{-t/\tau_L})$ \hfill $\tau_L = \frac{L}{R}$
+
+RL discharge: $0 - iR - L \frac{di}{dt} = 0 \Longrightarrow \frac{di}{dt} + \frac{R}{L} i = 0$ \hfill $i(0) = i_0 = \frac{\varepsilon}{R}$
+
+$\quad i(t) = i_0 e^{-Rt/L} = \frac{\varepsilon}{R} e^{-t/\tau_L}$
+
+E: $U_B = \frac{1}{2} Li^2$ \hfill E density: $u_B = \frac{B^2}{2 \mu_0}$
+
+Mutual inductance: $M = \frac{N_2 \Phi_{B2}}{i_1} = \frac{N_1 \Phi_{B1}}{i_2}$
+
+$\quad \varepsilon_2 = -M_{21} \frac{di_1}{dt}$ \hfill $\varepsilon_1 = -M_{12} \frac{di_2}{dt}$
+
+Self-inductance: $L = \frac{N \Phi_B}{i}$ \hfill $\varepsilon = -L \frac{di}{dt}$
+
+\dotfill
+
+\textbf{LRC Circuits}
+
+LC (no R, charging): $-L \ddot{q} - \frac{1}{C} q = 0$ \hfill $q(0) = q_0,\ i(0) = 0$
+
+$\quad q(t) = q_0 \cos \omega t$ \hfill $\omega = \frac{1}{\sqrt{LC}}$
+
+$\quad i(t) = - \omega q_0 \sin \omega t$
+
+LRC (weak R, charging): $L \ddot{q} + R \dot{q} + \frac{1}{C} q = 0$ \hfill $q(0) = q_0,\ i(0) = 0$
+
+$\quad q(t) = q_0 e^{-t/\tau} (\cos \omega' t + \frac{1}{\omega' \tau} \sin \omega' t) = A e^{-t/\tau} \cos(\omega' t + \phi)$
+
+$\quad A = q_0 \sqrt{1 + \frac{1}{(\omega' \tau)^2}}$ \hfill $\phi = \arctan \frac{1}{\omega' \tau}$
+
+$\quad i(t) = -\frac{q_0}{\tau} e^{-t/\tau} \left(\frac{1}{\omega'\tau} + \omega' \tau  \right) \sin \omega' t$
+
+$\quad \tau =\frac{2L}{R}$ \hfill $\omega' = \sqrt{\omega^2 - \frac{1}{\tau^2}}$ \hfill $\omega = \frac{1}{\sqrt{LC}}$
+
+LRC w/ battery (weak R, charging): $L \ddot{q} + R \dot{q} + \frac{1}{C} q = \varepsilon$
+
+$\quad q(t) = C \varepsilon \left[ 1-e^{t/\tau} \left( \cos \omega' t + \frac{1}{\omega' \tau} \sin \omega' t \right) \right]$ \hfill $q(0) = i(0) = 0$
+
+$\quad \lim_{t \to \infty} q(t) = C \varepsilon$ \hfill $\lim_{t \to \infty} i(t) = 0$
+
+\dotfill
+
+\textbf{Alternatng Currents}
+
+$\varepsilon = \varepsilon_{\text{max}} \sin \omega_d t$ \hfill $i = i_{\text{max}} \sin(\omega_d t - \phi)$
+
+AC + R: $\varepsilon - iR = 0 \Longrightarrow i(t) = \frac{\varepsilon_{\text{max}}}{R} \sin \omega_d t$
+
+AC + C: $\varepsilon - \frac{1}{C} q = 0$
+
+$\quad q(t) = C \varepsilon_{\text{max}} \sin \omega_d t = C \varepsilon_{\text{max}} \omega_d \sin( \omega_d t - (-\pi/2))$
+
+$\quad I = (C \omega_d) \varepsilon_{m}$ \hfill Capacitive reactance: $X_C = \frac{1}{C \omega_d}$
+
+AC + L: $\varepsilon - L \frac{di}{dt} = 0$
+
+$\quad i(t) = - \frac{1}{L \omega_d} \varepsilon_{\text{max}} \cos \omega_d t = \frac{1}{L \omega_d} \varepsilon_{\text{max}} \sin(\omega_d t - \pi/2)$
+
+$\quad I = \frac{\varepsilon_m}{L \omega_d}$ \hfill Inductive reactance: $X_L = \frac{1}{L \omega_d}$
+
+\newpage
+
+AC + LRC: $L \ddot{q} + R \dot{q} + \frac{1}{C} q = \varepsilon_{\text{max}} \sin \omega_d t$
+
+$\quad q(t) = A ^{-t/ \tau} \cos(\omega' t + \phi_H) + B \cos(\omega_d t - \phi_p)$
+
+$\quad B = - \frac{\varepsilon_{\text{max}}}{\omega_d \sqrt{(X_L - X_C)^2 + R^2}}$ \hfill $\phi = \arctan \frac{X_L-X_C}{R}$
+
+$\quad \lim_{t \to \infty} q(t) = B \cos( \omega_d t - \phi )$ \hfill $\lim_{t \to \infty} i(t) = -B \omega_d \sin( \omega_d t - \phi )$
+
+$\quad \text{Impedance: } Z = \sqrt{(X_L - X_C)^2 + R^2}$
+
+\dotfill
+
+\textbf{Power in AC Circuits}
+
+$\langle P_{\text{in}} \rangle = \langle P_{\text{out}} \rangle = \frac{\varepsilon_{\text{max}}^2 R}{2 Z^2}$
+
+$\quad \langle P_{\text{in}} \rangle = \frac{1}{T} \int_0^T P_{\text{in}}\ dt$ \hfill $\langle P_{\text{out}} \rangle = \frac{1}{T} \int_0^T P_{\text{out}}\ dt$
+
+$\quad P_{\text{in}} = i \varepsilon = \left( \frac{\varepsilon_{\text{max}}}{Z} \sin (\omega_d t - \phi) \right) (\varepsilon_{\text{max} \sin \omega_d t})$
+
+$\quad P_{\text{out}} = i^2 R = \left( \frac{\varepsilon_{\text{max}}}{Z} \right)^2 R \sin^2 (\omega_d t - \phi)$
+
+$\varepsilon_{\text{rms}} = \frac{\varepsilon_{\text{max}}}{\sqrt{2}}$ \hfill $i_{\text{rms}} = \frac{i_{\text{max}}}{\sqrt{2}} = \frac{\varepsilon_{\text{max}}}{Z \sqrt{2}}$
+
+$\quad \langle A \cos \omega_t \rangle_{\text{rms}} = \langle A \sin \omega_t \rangle_{\text{rms}} = \frac{A}{\sqrt{2}}$
+
+$\quad \langle f \rangle_{\text{rms}} = \left[ \frac{1}{b-a} \int_a^b [f(t)]^2\ dt \right]^{1/2}$
+
+Transformers: $\frac{N_p}{N_s} = \frac{V_p}{V_s} = \frac{i_s}{i_p}$
+
+\dotfill
+
+\textbf{Maxwell's Equations}
+
+\textit{Integral Form}
+
+$\quad$Gauss' law for electricity: $\oiint_S \mathbf{E} \cdot d\mathbf{S} = \frac{q_{\text{enc}}}{\epsilon_0}$
+
+$\quad$Gauss' law for magnetism: $\oiint_S \mathbf{B} \cdot d \mathbf{S} = 0$
+
+$\quad$Faraday's law for induction: $\oint_C \mathbf{E} \cdot d\mathbf{r} = -\frac{\partial \Phi_B}{\partial t}$
+
+$\quad$Ampere-Maxwell law: $\oint_C \mathbf{B} \cdot d\mathbf{r} = \mu_0 \epsilon_0 \frac{\partial \Phi_E}{\partial t} + \mu_0 i_{\text{enc}}$
+
+\textit{Differential Form}
+
+$\quad$Gauss' law for electricity: $\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}$
+
+$\quad$Gauss' law for magnetism: $\nabla \cdot \mathbf{B} = 0$
+
+$\quad$Faraday's law for induction: $\nabla \times \mathbf{E} = -\frac{\partial \Phi_B}{\partial t}$
+
+$\quad$Ampere-Maxwell law: $\nabla \times \mathbf{B} = \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t} + \mu_0 \mathbf{J}$
+
+\textit{Maxwell's Equations in a Vacuum}
+
+$\nabla \cdot \mathbf{E} = 0$ \hfill $\nabla \cdot \mathbf{B} = 0$ \hfill $\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$ \hfill $\nabla \times \mathbf{B} = \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}$
+
+$c = \frac{1}{\sqrt{\mu_0 \epsilon_0}} = 2.998 \times 10^7$ m/s
+
+\textit{Maxwell's Equations w/ Constant Fields}
+
+$\nabla \cdot \mathbf{E} = 0$ \hfill $\nabla \cdot \mathbf{B} = 0$ \hfill $\nabla \times \mathbf{E} = \mathbf{0}$ \hfill $\nabla \times \mathbf{B} = \mathbf{0}$
+
+
+
+
+\end{document}
+
+
+\textbf{Divergence}
+
+\vspace{-.5em}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l c}
+        \toprule
+        Coord Sys & $\nabla \cdot \mathbf{E}$ \\
+        \midrule
+        Cartesian & $\frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}$ \\
+        \midrule
+        Cylindrical & $\frac{1}{r} \frac{\partial (rE_r)}{\partial r} + \frac{1}{r} \frac{\partial E_\theta}{\partial \theta} + \frac{\partial E_z}{\partial z}$ \\
+        \midrule
+        Spherical & $\frac{1}{r^2} \frac{\partial (r^2 E_r)}{\partial r} + \frac{1}{r \sin \theta} \frac{\partial (E_\theta \sin \theta)}{\partial \theta} + \frac{1}{r\sin \theta} \frac{\partial E_\phi}{\partial \phi}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}

@@ -1,0 +1,314 @@
+% !TEX program = xelatex
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, mathtools, multicol, pgfplots, wrapfig, caption, booktabs, amsmath}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+
+\usepackage[tableposition=top]{caption}
+\captionsetup[table]{skip=1em}
+\def\arraystretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{EN PH 131 Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+\everymath{\displaystyle}
+
+
+\begin{document}
+\maketitle
+
+\small
+
+\textbf{Conversion Factors and Constants}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcr}
+        \toprule
+        Quantity & FPS Unit & SI Unit \\
+        \midrule
+        Force & 1 lb & 4.4482 N \\
+        Mass & 1 slug & 14.5938 kg \\
+        Length & 1 ft & 0.3048 m \\
+        & 1 in & 0.0254 m \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}
+
+Distance: 1 ft = 12 in \hfill 1 mi = 5280 ft
+
+Weight: 1 kip =  1000 lb \hfill 1 ton = 2000 lb
+
+$\text{slug} = \text{lb} \cdot \text{s}^2 \cdot \text{ft}^{-1}$ \hfill $g = 9.81\ \text{m/s}^2 = 32.2\ \text{ft/s}^2$
+
+$G = 6.673 \times 10^{-12}\ \text{Nm}^2/\text{kg}^2$ \hfill 1 hp = 550 lb$\cdot$ft/s = 746 W
+
+% \textbf{Dimension Homogeneity}
+
+% \vspace{-.5em} \begin{multicols}{2}
+%     $[v] = L \cdot T^{-1}$
+    
+%     $[a] = [v] / T = L \cdot T^{-2}$
+
+%     $[F] = M \cdot L \cdot T^{-2}$
+
+%     $[E] = [F] \cdot L = M \cdot L^2 \cdot T^{-2}$
+    
+%     $[P] = [E] / T = M \cdot L^2 \cdot T^{-3}$
+
+%     [momentum] $= M \cdot [v] = M \cdot L \cdot T^{-1}$
+% \end{multicols} \vspace{-1em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Graph Interpretation}
+\vspace{-.5em}
+\begin{table}[h]
+    \def\arraystretch{2}
+    \begin{tabular}{lll}
+        \toprule
+        Graph & Slope interpretation & Integral interpretation \\
+        \midrule
+        $s$-$t$ & velocity $\left( \frac{ds}{dt} \right)$ \\
+        $v$-$t$ & acceleration $\left( \frac{dv}{dt} \right)$ & $\Delta s = \displaystyle\int v\ dt$ \\
+        $a$-$t$ & jerk $\left( \frac{da}{dt} \right)$ & $\Delta v = \displaystyle\int a\ dt$ \\
+        \midrule
+        $v$-$s$ & acceleration $\left(a = v \frac{dv}{ds}\right)$ \\
+        $a$-$s$ & & $\int_{v_0}^v v\ dv = \displaystyle\int_{s_0}^s a\ ds$ \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-1em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Rectilinear Motion}
+
+$v = \frac{ds}{dt}$ \hfill $a = \frac{dv}{dt} = \frac{d^2s}{dt^2}$ \hfill $a\ ds = v\ dv$
+
+$\displaystyle\int_{v_0}^v dv = a_c \displaystyle\int_0^t dt$ \hfill $v = v_0 + a_c t$
+
+$\displaystyle\int_{s_0}^s ds = \displaystyle\int_0^t (v_0 + a_c t)\ dt$ \hfill $s = s_0 + v_0 t + \frac{1}{2} a_c t^2$
+
+$\displaystyle\int_{v_0}^v v\ dv = a_c \displaystyle\int_{s_0}^s ds$ \hfill $v^2 = v_0^2  + 2a_c (s-s_0)$
+
+\dotfill
+
+\textbf{Relative Motion}
+
+$\mathbf{r}_{B/A} = \mathbf{r}_B - \mathbf{r}_A$ \hfill $\mathbf{v}_{B/A} = \mathbf{v}_B - \mathbf{v}_A$ \hfill $\mathbf{a}_{B/A} = \mathbf{a}_B - \mathbf{a}_A$
+
+$\mathbf{r}_{B/A} = -\mathbf{r}_{A/B}$ \hfill $\mathbf{v}_{B/A} = -\mathbf{v}_{A/B}$ \hfill $\mathbf{a}_{B/A} = -\mathbf{a}_{A/B}$
+
+$B/A$: $B$ with respect to $A$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Miscellaneous}
+
+$f_{\text{res}} = -ks$ \hfill $k_{\text{eff}} = \sum\limits_{i=1}^n k_i$ (parallel) \hfill $k_{\text{eff}} = \left( \sum\limits_{i=1}^n \frac{1}{k_i} \right)^{-1}$ (series)
+
+$f_k = \mu_k N$ \hfill $f_s \leq \mu_s N$ \hfill $\cos \theta = \frac{\mathbf{a} \cdot \mathbf{b}}{ab}$
+
+
+
+% colummn break
+\newpage
+
+
+\textbf{Curvilinear Motion}
+
+$s = \displaystyle\int_{t_0}^t |\mathbf{r}'(t)|\ dt$ \hfill $\mathbf{v} = \langle \dot{x}, \dot{y}, \dot{z} \rangle$ \hfill $\mathbf{a} = \langle \ddot{x}, \ddot{y}, \ddot{z} \rangle$
+
+$\mathbf{a} = a_t \mathbf{u}_t + a_n \mathbf{u}_n$ \hfill $a_t = \dot{v}$ \hfill $a_n = v^2 / \rho$ \hfill $a = \sqrt{a_t^2 + a_n^2}$
+
+$\sum F_t = ma_t$ \hfill $\sum F_n = ma_n = \frac{mv^2}{\rho}$ \hfill $\sum F_b = 0$
+
+$\rho(x) = \frac{(1 + [f'(x)]^2)^{3/2}}{|f''(x)|}$ \hfill $\rho(t) = \frac{| r'(t) |^3}{| r'(t) \times r''(t) |} = \frac{(\dot{x}^2 + \dot{y}^2 )^{3/2}}{|\dot{x} \ddot{y} - \ddot{x} \dot{y}|}$
+
+\vspace{-.5em}
+\begin{itemize}
+    \item $a = a_t$ if straight line ($\rho = \infty$)
+    \item $a = a_n$ if $v$ constant on curve ($a_t = \dot{v} = 0$)
+\end{itemize} \vspace{-1em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Work and Energy}
+
+$U_{1-2} = \int_{\mathbf{r}_1}^{\mathbf{r}_2} \mathbf{F} \cdot d \mathbf{r} = \int_{s_1}^{s_2} F \cos \theta\ ds$ 
+
+Principle of work and energy: $\sum U_{1-2} = T_2 - T_1$
+
+Conservation of energy: $\sum T_1 + \sum V_1 = \sum T_2 + \sum V_2$
+
+$\text{Work} = \Delta T = - \Delta V$
+
+Compressed: $f_s = k(s_0 - s)$ \hfill Stretched: $f_s = k(s - s_0)$
+
+\vspace{-.5em}
+\begin{table}[ht]
+    \begin{tabular}{l | l}
+        \toprule
+        Work type & Integral \\
+        \midrule
+        Straight line & $U_{1-2} = F \cos \theta \int_{s_1}^{s_2} ds = F \cos \theta (s_2 - s_1)$ \\
+        \midrule
+        Weight & $U_{1-2} = -W \int_{y_1}^{y_2} dy = -W(y_2 - y_1)$ \\
+        \midrule
+        Spring force & $U_{1-2} = -k \int_{s_1}^{s_2} s\ ds = -\frac{1}{2} k (s_2^2 - s_1^2)$ \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Power and Efficiency}
+
+$P = \frac{dU}{dt} = \frac{\mathbf{F} \cdot d\mathbf{r}}{dt} = \mathbf{F} \cdot \mathbf{v}$ \hfill $\epsilon = \frac{P_{\text{out}}}{P_{\text{in}}} = \frac{E_{\text{out}}}{E_{\text{in}}}$
+
+$U_{\text{out}} = \epsilon \int P_{\text{in}}\ dt$ \hfill $\mathbf{F} = -\nabla V$
+
+\dotfill
+
+\textbf{Linear Impulse and Momentum}
+
+Single particle: $\int_{t_1}^{t_2} \mathbf{F}\ dt = m \int_{v_1}^{v_2} d\mathbf{v} = m \mathbf{v}_2 - m \mathbf{v}_1$
+
+System of particles: $\sum_{i=1}^n \int_{t_1}^{t_2} \mathbf{F}\ dt = \sum_{i=1}^n m_i (\mathbf{v}_2 - \mathbf{v}_1) = m \mathbf{v}_{g2} - m \mathbf{v}_{g1}$
+
+Linear impulse (action): $\mathbf{I} = \int_{t_1}^{t_2} \mathbf{F}\ dt$ \hfill N$\cdot$s or lb$\cdot$s
+
+Linear momentum (response): $\mathbf{L} = m\mathbf{v}$ \hfill kg$\cdot$m/s or slug$\cdot$ft/s
+
+Conservation of linear momentum: $\sum m_i \mathbf{v}_{i1} = \sum m_i \mathbf{v}_{i2}$
+
+$e = \frac{(v_{b/a})_2}{(v_{a/b})_1} = \frac{v_{b2} - v_{a2}}{v_{a1} - v_{b1}} = \frac{\text{restitution impulse}}{\text{deformation impulse}}$
+
+$\quad\quad e = -\frac{v_{a2}}{v_{a1}}$ if obj $b$ doesn't move after impact
+
+% $\quad\quad \text{E loss} = (1-e^2) \times 100\%$ for a bouncing ball
+
+Oblique impact: $y$-cmpt conserved; need $e$ for $x$-cmpt
+
+
+\clearpage
+
+
+\textbf{Angular Motion}
+
+$\omega = \frac{d\theta}{dt}$ \hfill $\alpha = \frac{d\omega}{dt} = \frac{d\theta}{dt}$ \hfill $\alpha d\theta = \omega d\omega$
+
+$\omega = \omega_0 + \alpha t$ \hfill $\theta = \theta_0 + \omega_0 t + \frac{1}{2}\alpha t^2$ \hfill $\omega^2 = \omega_0^2 + 2 \alpha (\theta - \theta_0)$
+
+$s = r \theta$ \hfill $v = r \omega$ \hfill $a_t = r \alpha$ \hfill $a_n = r \omega^2$
+
+$\mathbf{v} = \boldsymbol\omega \times \mathbf{r}$ \hfill $\mathbf{a} = \boldsymbol\alpha \times \mathbf{r} - \omega^2 \mathbf{r}$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Rigid Body Motion}
+
+$\mathbf{M} = \mathbf{r} \times \mathbf{F}$ \hfill $I = \int_m r^2\ dm = \int_V r^2 \rho\ dV$ \hfill $I = I_{\text{cm}} + md^2$
+
+\vspace{-.5em}
+\begin{table}[ht]
+    \begin{tabular}{l | l}
+        \toprule
+        Object & $I$ \\
+        \midrule
+        Thin uniform rod, axis about center & $ML^2/12$ \\
+        Thin uniform rod, axis about one end & $ML^2/3$ \\
+        Uniform solid cylinder/disk, axis thru centre & $MR^2/2$ \\
+        Uniform hollow cyilnder/hoop axis thru centre & $MR^2$ \\
+        Uniform solid sphere, axis thru centre & $2MR^2/5$ \\
+        Uniform hollow sphere, axis thru centre & $2MR^2/3$ \\
+        \bottomrule
+    \end{tabular}
+\end{table} \vspace{-.5em}
+
+Eqs of motion: $\begin{cases} \sum \mathbf{F} = m \mathbf{a}_{\text{cm}} \\ \sum \mathbf{M}_0 = I_0 \boldsymbol\alpha \end{cases}$ \hfill $\begin{cases} a_{\text{cm}} > r\alpha & \text{slipping} \\ a_{\text{cm}} = R\alpha & \text{no slipping} \end{cases}$
+
+$T = \frac{1}{2} mv_{\text{cm}}^2 + \frac{1}{2} I_{\text{cm}} \omega^2$ \hfill $W_{\text{rot}} = \int_{\theta_1}^{\theta_2} \tau\ d\theta$
+
+
+\end{document}
+
+
+
+
+
+% \textbf{Vectors}
+
+% $\mathbf{F} = \mathbf{F_x} + \mathbf{F_y} + \mathbf{F_z} = F_x \mathbf{i} + F_y \mathbf{j} + F_z \mathbf{k} = F (\cos \alpha \mathbf{i} + \cos \beta \mathbf{j} + \cos \gamma \mathbf{k})$
+
+% $\cos^2 \alpha + \cos^2 \beta + \cos^2 \gamma = 1$
+
+% Unit position vector: $\mathbf{u} = \frac{\mathbf{r}}{|| \mathbf{r} ||}$
+
+% $\mathbf{F} = F \mathbf{u}$ \hfill ($\mathbf{u}$ is in the direction of $\mathbf{F}$)
+
+% Vector directed along a line: $A_{||} = A \cos \theta = \mathbf{A} \cdot \mathbf{u}$
+
+% $\mathbf{A} \cdot \mathbf{B} = AB \cos \theta$
+
+
+% \textbf{Cross Product}
+
+% Magnitude of cross product: $C = AB \sin \theta$
+
+% $\mathbf{C} = \mathbf{A} \times \mathbf{B} = (AB \sin \theta) \mathbf{u_c}$ \hfill $\mathbf{u_c} \perp \mathbf{A}, \mathbf{B}$ by the RHR
+
+% $\mathbf{A} \times \mathbf{B} =
+% \begin{vmatrix}
+%     \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+%     A_x & A_y & A_z \\
+%     B_x & B_y & B_z
+% \end{vmatrix}$
+
+
+
+% \begin{wrapfigure}[7]{r}{0.5\columnwidth} \vspace{2em}
+%     \includegraphics[width=0.5\columnwidth]{Figures/volume_parallelepiped.png}
+% \end{wrapfigure}
+
+% \textbf{Triple scalar product}
+
+% $V = \mathbf{a} \cdot (\mathbf{b} \times \mathbf{c}) = abc \sin \theta \cos \phi$
+
+% $V = ||\mathbf{b} \times \mathbf{c}|| \cos \phi\ abc \sin \theta \cos \phi$
+
+% \textbf{Triple vector product}
+
+% $(\mathbf{a} \times \mathbf{b}) \times \mathbf{c} = -\mathbf{c} \times (\mathbf{a} \times \mathbf{b})$
+
+% $(\mathbf{a} \times \mathbf{b}) \times \mathbf{c} = (\mathbf{c} \cdot \mathbf{a}) \mathbf{b} - (\mathbf{c} \cdot \mathbf{b}) \mathbf{a}$
+
+% $\mathbf{a} \times (\mathbf{b} \times \mathbf{c}) = (\mathbf{a} \cdot \mathbf{c}) \mathbf{b} - (\mathbf{a} \cdot \mathbf{b}) \mathbf{c}$
+
+% \vspace{-.5em}
+% \dotfill

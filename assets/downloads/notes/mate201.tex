@@ -1,0 +1,515 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{graphicx, booktabs, caption, mathtools, amsfonts, amsthm, siunitx, multicol, soul, xcolor, hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{formula}[definition]{Formula}
+\newtheorem{example}[definition]{Example}
+% qed symbo
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\sisetup{
+  inter-unit-product=\ensuremath{{\cdot}},
+}
+
+% strikeout
+\usepackage[normalem]{ulem}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+
+% no indent
+\setlength{\parindent}{0pt}
+
+
+\title{\LARGE MAT E 201 Final Summary}
+\author{Eddie Guo}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Composite Materials}
+
+\begin{definition}
+    (Composite materials). System of $\geq 2$ components with an interface separating them.
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{p{4cm} p{11cm}}
+            \toprule
+            Particulate composites & Contains large amounts of coarse particles. Designed to produce unusual properties rather than to increase strength. \\
+            \midrule
+            Fiber composites & Improved strength, fatigue resistance. Strength may be high at room temp and elevated temps. \\
+            \midrule
+            Laminar composites & Thin coatings designed to improve corrosion resistance while being low cost, high strength, or lightweight. Abrasion resistance, improved appearance, unusual thermal expansion characteristics. \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+\begin{formula}
+    \hl{(Rule of mixtures).} For a composite with density $\rho_c$, with the $i$th component with a fraction $f_i$ and density $\rho_i$,
+    \begin{equation}
+        \rho_c = \sum_{i=1}^n f_i \rho_i \quad \text{and} \quad \sum_{i=1}^n f_i = \frac{\sum_{i=1}^n \rho_i V_i}{\rho_c V_c} = 1
+    \end{equation}
+    Similarly for thermal conductivity $k$ and electric conductivity $\sigma$,
+    \begin{equation}
+        k_c = \sum_{i=1}^n f_i k_i \quad \text{and} \quad \sigma_c =\sum_{i=1}^n f_i \sigma_i
+    \end{equation}
+    Volume fraction for a component $B$ can be computed using this formula:
+    \begin{equation}
+        f_B = \frac{w_B/\rho_B}{w_B/\rho_B + w_A/\rho_A}
+    \end{equation}
+\end{formula}
+
+\begin{example}
+    Spherical silica particles (100 nm in diameter) are added to vulcanized rubber in tires to improve stiffness. If the density of the vulcanized rubber matrix is \SI{1.1}{g/cm^3}, the density of silica is \SI{2.5}{g/cm^3}, and the tire has a porosity of 4.5\%, calculate the number of silica particles lost when a tire wears down \SI{0.4}{cm} in thickness. The density of the tire is \SI{1.2}{g/cm^3}; the overall tire diameter is 63 cm; and it is 10 cm wide.
+
+    \textit{Solution.} We first compute the fraction of silica in the tire.
+    \begin{align*}
+        1 &= f_{\text{rubber}} + f_{\text{silica}} + f_{\text{pores}} \implies f_{\text{rubber}} = 1 - 0.045 - f_{\text{silica}} = 0.955 - f_{\text{silica}} \\
+        \SI{1.2}{g/cm^3} &= (0.955 - f_{\text{silica}}) (\SI{1.1}{g/cm^3}) + f_{\text{silica}} (\SI{2.5}{g/cm^3}) \implies f_{\text{silica}} = 0.107 \\
+        \Delta V &= \frac{\pi}{4}w (d^2 - (d-2w^2)) = \frac{\pi}{4} (10) (63^2 - (63-2\times0.4)^2) = \SI{787}{g/cm^3} \\
+        \Delta V_{\text{silica}} &= f_{\text{silica}} \Delta V = 0.107 \times 787 = \SI{84.17}{cm^3} \\
+        N_{\text{silica}} &= \frac{\Delta V_{\text{silica}}}{V_{\text{silica particle}}} = \frac{84.17}{\frac{4}{3} \pi (100 \times 10^{-9} / 2)^3} = \SI{1.61e23}{silica\ particles\ lost}
+    \end{align*}
+\end{example}
+
+\begin{example}
+    A copper-silver bimetallic wire 1 cm in diameter is prepared by co-extrusion with copper as the core and silver as the outer layer. The desired properties along the length of the bimetallic wire are \vspace{1em}
+
+    \begin{minipage}{0.55\textwidth}        
+        \begin{itemize}
+            \item Thermal conductivity $> 410$ W / (m-K),
+            \item Electric conductivity $> 60 \times 10^{-6}\ \Omega \cdot$m,
+            \item Weight $W < 750$ g/m.
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \begin{tabular}{p{3.45cm} p{1.25cm} p{1.25cm}}
+            \toprule
+            & Copper & Silver \\
+            \midrule
+            Density (g/cm$^3$) & 8.96 & 10.49 \\
+            $\sigma$ ($\Omega^{-1} \cdot \text{m}^{-1})$ & $59 \times 10^6$ & $63 \times 10^6$ \\
+            $k$ (W/(m-K)) & 401 & 429 \\
+            \bottomrule
+        \end{tabular}
+    \end{minipage} \vspace{1em}
+
+    Determine the allowed range of the diameter of the copper core.
+
+    \textit{Solution.}
+    \begin{minipage}{0.4\textwidth}
+        \begin{align*}
+            k_c &= f_{\text{Cu}} k_{\text{Cu}} + f_{\text{Ag}} k_{\text{Ag}} \\
+            410 &< f_{\text{Cu}}(401) + (1-f_{\text{Cu}})(429) \\
+            f_{\text{Cu}} &< 0.679
+        \end{align*}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        \begin{align*}
+            \sigma_c &= f_{\text{Cu}} \sigma_{\text{Cu}} + f_{\text{Ag}} \sigma_{\text{Ag}} \\
+            60 \times 10^6 &< f_{\text{Cu}} (59 \times 10^6) + (1-f_{\text{Cu}})(63\times10^6) \\
+            f_{\text{Cu}} &< 0.75
+        \end{align*}
+    \end{minipage}
+    \begin{align*}
+        V & = \pi \left( \frac{d}{2} \right)^2 l = \frac{\pi}{4} (1)(100) = 78.5 \text{ cm}^3 \implies \rho_c = \frac{m}{V} = \frac{750}{78.5} = 9.55 \text{ g/cm}^3 \\
+        9.55 &> f_{\text{Cu}} (8.96 + (1-f_{\text{Cu}}))(10.49) \implies f_{\text{Cu}} > 0.61
+    \end{align*}
+    Taking $k$, $\sigma$, and $V$ into account, $0.61 < f_{\text{Cu}} < 0.679$. Thus,
+    \begin{equation*}
+        f_{\text{Cu}} = \frac{V_{\text{Cu}}}{V_{\text{wire}}} = \frac{d_{\text{Cu}}^2}{d_{\text{wire}}^2} \implies \sqrt{0.61} < d_{\text{Cu}} < \sqrt{0.679} \implies 0.78 \text{ cm} < d_{\text{Cu}} < 0.82 \text{ cm}
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    (Fiber composites).
+    \begin{itemize}
+        \item \textit{Metal-matrix composites.} Strengthened by metal or ceramic fibers. Provides high temp resistance. E.g., superconducting wire for fusion reaactors.
+        \item \textit{Ceramic-matrix composites.} Contain ceramic fibers in cermc matrix.
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    (Laminar composites).
+    \begin{itemize}
+        \item \textit{Laminates.} Layers of materials joined by organic adhesive.
+        \item \textit{Clad materials.} Metal-metal composites. Provide combo of good corrosion resistance w/ high strength.
+        \item \textit{Multilayer capacitors.} Laminar geometry used to make huge numbers of multilayer capacitors.
+    \end{itemize}
+\end{example}
+
+
+% Electronic Materials
+\section{Electronic Materials}
+
+\begin{definition}
+    (Ohm's law, power, and more).
+    \begin{align}
+        V &= IR, \quad R = \frac{\rho L}{A} = \frac{L}{\sigma A} \\
+        P &= IV = I^2R \\
+        J &= \frac{I}{A} = \frac{\sigma V}{L} = \sigma E = nq\nu, \quad \nu = l/t \\
+        \mu &= \frac{\nu}{E} = \frac{\sigma}{nq}
+    \end{align}
+    where $J$ is current density (A/cm$^2$), $E$ is electric field (V/cm), $n$ is number of charge carriers (carriers/cm$^3$), $q$ is charge on each carrier, $\nu$ is the average drift velocity (cm/s) and $\mu$ is mobility (cm$^2$/(V$\cdot$s)).
+\end{definition}
+
+\begin{example}
+    Design an electrical transmission line 1500 m long with a diameter of 1 cm that will carry a current of 50 A with no more than $5 \times 10^5$ W power loss. \vspace{1em}
+    
+    \textit{Solution}. I.e., what is the minimum conductivity that satisfies these properties?
+    \begin{align*}
+        P &= I^2 R, \quad R = \frac{1}{\sigma} \left( \frac{L}{\pi (d/2)^2} \right) \\
+        \sigma &= \frac{I^2}{P} \left( \frac{4L}{\pi d^2} \right) = \frac{50^2}{5 \times 10^5} \left( \frac{4 \times 1500}{\pi 0.01^2} \right) = 9.54 \times 10^4\ \Omega^{-1} \cdot \text{m}^{-1}
+    \end{align*}
+\end{example}
+
+
+\begin{definition}
+    \hl{(Conductivity of metals and alloys).} Conductivity defined by the structure of the material iff material is pure and defect-free.
+    \begin{equation}
+        \sigma = nq \mu \quad \text{and} \quad \lambda_e = \tau \nu
+    \end{equation}
+    where $\lambda_e$ is the mean free path and $\tau$ is the avg time btw collisions. Furthermore,
+    \begin{equation}
+        \frac{1}{\sigma} = \rho = \rho_0 [1 + \alpha_R (T - 25\ ^\circ \text{C})]
+    \end{equation}
+    where $\rho_0$ is resistivity at room temp ($\Omega \cdot$cm), $\alpha_R$ is temp resistivity coeff ($^\circ$C$^{-1}$), and $T$ is temp. If there are defects:
+    \begin{equation}
+        \rho_d = bx(1-x) \implies \rho = \rho_t + \rho_d
+    \end{equation}
+    where $\rho_d$ is resistivity due to defects ($\Omega \cdot$cm), $\rho_t$ is resitivity for perfect crystal structure ($\Omega \cdot$cm), $b$ is defect resitivity coeff ($\Omega\cdot$cm), and $x$ is fraction of impurity.
+\end{definition}
+
+\begin{definition}
+    \hl{(Semiconductors).} Energy gap $E_g$ btw valence and conduction bands is small.
+    \begin{itemize}
+        \item \textit{Intrinsic semiconductors.} Properties indep of impurities. Pure semiconductors. Temp-dependent. Data gathering and academic applications.
+        \item \textit{Extrinsic semiconductors.} Temp stable and can be ctrld by impurities called dopants. Doped semiconductors. Effect of T insignificant. Industrial applications.
+    \end{itemize}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{Figures/semis.png}
+    \end{figure}
+\end{definition}
+
+\begin{definition}
+    \hl{(Intrinsic semiconductors).} For every e$^-$ promoted to conduction band, there is a hole left in valence band.
+    \begin{equation}
+        \sigma = n_i q(\mu_n + \mu_p)
+    \end{equation}
+    where $n_i$ is conc of e$^-$ (number of carriers), $\mu_n$ is mobility of e$^-$, and $\mu_p$ is mobility of holes. In general, $\mu_n > \mu_p$. The temperature effect can be described as follows:
+    \begin{align}
+        n_i &= n_0 \exp \left( -\frac{E_g}{2k_B T} \right), \quad \text{where } n_0 = 2 \left( \frac{2 \pi k_B T}{h^2} \right)^{3/2} (m_n^* m_p^*)^{3/4} \\
+        \sigma &= n_0 q (\mu_n + \mu_p) \exp \left( -\frac{E_g}{2k_B T} \right)
+    \end{align}
+    where $E_g$ is bandgap, $k_B$ is Boltzmann's constant ($\SI{1.38e-23}{m^2.kg.s^{-2}. K^{-1}}$ or $\SI{8.63e-5}{eV/K}$), $h$ is Planck's constant ($\SI{6.63e-34}{m^2.kg/s}$), $m_n^*$ is effective mass of e$^-$, and $m_p^*$ is effective mass of holes.
+\end{definition}
+
+\begin{example}
+    For Ge at 25 $^\circ$C, find the number of charge carriers/cm$^3$, the fraction of the total number of e$^-$ in the valence band that are excited into the conduction band, and the constant $n_0$ given
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item $\rho_0(\text{Ge}) = \SI{43}{\ohm.cm}$
+            \item $\sigma_{\text{RT}}(\text{Ge}) = \SI{0.0233}{\ohm^{-1}.cm^{-1}}$
+            \item $E_g = 0.67$ eV
+            \item $\mu_n = \SI{3900}{cm^2/(V.s)}$
+            \item $\mu_p = \SI{1900}{cm^2/(V.s)}$
+            \item $2k_BT = \SI{0.0514}{eV}$
+            \item $a_0 = \SI{5.66e-8}{cm}$
+            \item DC $\implies 8$ at/uc.
+            \item Oxidation number = 4.
+        \end{itemize}
+    \end{multicols}
+
+    \vspace{-1em}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.8\columnwidth]{Figures/semi_props.png}
+    \end{figure}
+
+    \textit{Solution}. Number of carriers:
+    \begin{equation*}
+        n = \frac{\sigma_{\text{RT}}(Ge)}{q(\mu_n + \mu_p)} = \frac{\SI{0.0233}{\ohm^{-1}.cm^{-1}}}{(\SI{1.6e-19}{C})(\SI{3900}{cm^2/(V.s)} + \SI{1900}{cm^2/(V.s)})} = \SI{2.51e13}{e^-/cm^3}
+    \end{equation*}
+    Fraction of total e$^-$ in valence band excited into conduction band:
+    \begin{align*}
+        n_t &= \frac{\text{at/uc} \times \text{oxidation number}}{a_0^3} = \frac{8 \times 4}{(\SI{5.66e-8}{cm})^3} = \SI{1.77e23}{e^-/cm^3} \\
+        \frac{n}{n_t} &= \frac{\SI{2.51e13}{e^-/cm^3}}{\SI{1.77e23}{e^-/cm^3}} = \SI{1.42e-10}{}
+    \end{align*}
+    The constant $n_0$:
+    \begin{align*}
+        n_0 &= \frac{n}{\exp(-E_g/(2k_B T))} = \frac{\SI{2.51e13}{e^-/cm^3}}{\exp(\SI{-0.67}{eV} / \SI{0.0514}{eV})} = \SI{1.14e19}{e^-/cm^3}
+    \end{align*}
+\end{example}
+
+\begin{definition}
+    \hl{(Extrinsic semiconductors).} Conductivity based on dopants and can be indep of temp.
+    \begin{itemize}
+        \item \textit{n-type}. Valence of dopant greater than 4 (Fermi lvl closer to conduction band). \hl{Donor level $E_d$} just below Fermi lvl. 
+        \begin{equation}
+            \sigma = n_i q \text{\hl{$\mu_n$}}
+        \end{equation}
+        \item \textit{p-type}. Valence of dopant less than 4. (Fermi lvl closer to valence band). \hl{Acceptor level $E_a$} just below Fermi lvl.
+        \begin{equation}
+            \sigma = n_i q \text{\hl{$\mu_p$}}
+        \end{equation}
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Det $\sigma$ of Si when 0.0001 at\% Sb is added as a dopant. Compare it to $\sigma$ when the same percentage of In is added.
+
+    \textit{Solution.} \vspace{-1em}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.6\columnwidth]{Figures/ed_ea.png}
+    \end{figure} \vspace{-2em}
+    \begin{align*}
+        \text{Sb: } \sigma &= nq(\mu_n + \stkout{\mu_p}) = nq \mu_n, \quad \text{n-type} \\
+        n &= \frac{(\text{at/uc}) (\text{Sb carriers/at Si})}{a_0^3} \\
+        n &= \frac{8 (0.0001 \times 10^{-2})}{(\SI{5.43e-8}{cm})^3} = \SI{5e16}{Sb\ carriers/cm^3} \\
+        \sigma &= (5 \times 10^{16}) (1.6 \times 10^{-19}) (1350) = \SI{10.79}{\ohm^{-1}.cm^{-1}} \\
+        \text{In: } \sigma &= nq(\stkout{\mu_n} + \mu_p) = nq \mu_p, \quad \text{p-type} \\
+        n &= \frac{(\text{at/uc}) (\text{In carriers/at Si})}{a_0^3} = \frac{8 (0.0001 \times 10^{-2})}{(\SI{5.43e-8}{cm})^3} = \SI{5e16}{In\ carriers/cm^3} \\
+        \sigma &= (\SI{5e16}{In\ carriers/cm^3}) (\SI{1.6e-19}{C}) (\SI{480}{cm^2/(V.s)}) = \SI{3.84}{\ohm^{-1}.cm^{-1}}
+    \end{align*}
+\end{example}
+
+\begin{definition}
+    (Bandgap semiconductors).
+    \begin{itemize}
+        \item \textit{Direct BG semiconductor (DBG).} Max E lvl of valence aligns w/ min E lvl f coonduction band. DBG always preferred over iBG for making optical sources (e.g., GaAs).
+        \item \textit{Indirect BG semiconductor (IBG).} Misaligned E lvls (e.g., Si, Ge).
+    \end{itemize}
+\end{definition}
+
+\begin{formula}
+    (Conductivity in ceramics). Unlike previously, entire ions move, not just $e^-$.
+    \begin{equation}
+        \mu = \frac{zqD}{k_B T} \quad \text{and} \quad \sigma = n_i zq \mu \quad \text{and} \quad D = D_0 \exp \left( -\frac{Q}{RT} \right)
+    \end{equation}
+    where $z$ is the valence of the ion, $q$ is the charge on each carrier, $D$ iss the diffusion coeff, and $n_i$ is the conc of diffusing ions.
+\end{formula}
+
+\begin{example}
+    Suppose that $\sigma$ of MgO is determined primarily by the diffusion of Mg$^{2+}$ ions. Estimate the mobility of the Mg$^{2+}$ ions and calculate the electrical conductivity of MgO at \SI{1500}{\celsius} given
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item $D_0 = \SI{0.7005e-13}{cm^2/s}$
+            \item $Q = \SI{1.25e5}{\joule}$
+            \item $a_0 = \SI{3.96e-8}{cm}$
+            \item $T = \SI{1500}{\celsius} = \SI{1773}{K}$
+            \item $z = 2$ for $Mg^{2+}$
+            \item MgO has 4 Mg ions/uc
+        \end{itemize}
+    \end{multicols}
+    \textit{Solution.}
+    \begin{align*}
+        D &= D_0 \exp\left(-\frac{Q}{RT}\right) = (0.7005 \times 10^{-13}) \exp \left( - \frac{1.25 \times 10^5}{(8.314)(1773)} \right) = \SI{1.46e-17}{cm^2/s} \\
+        \mu &= \frac{zqD}{k_BT} = \frac{2(1.6 \times 10^{-19})(1.46 \times 10^{-17})}{(1.38 \times 10^{-23})(1773)} = \SI{1.909e-16}{cm^2/(V.s)} \\
+        n(\text{Mg}^{2+}) &= \frac{4}{(3.96 \times 10^{-8})^3} = \SI{6.4e22}{ions/cm^3} \\
+        \sigma &= nzq\mu = (6.4\times10^{22})(2)(1.6 \times 10^{-19})(1.9 \times 10^{-16}) = \SI{3.9e-12}{\ohm^{-1}.cm^{-1}}
+    \end{align*}
+\end{example}
+
+\begin{formula}
+    (Dielectric and insulating materials: polarization).
+    \begin{equation*}
+        U = qd \quad \text{and} \quad P = zqd
+    \end{equation*}
+    where $P$ is polarization (C/m$^2$), $z$ is the number of charges displaced per unit volume, $d$ is avg displacement (m).
+\end{formula}
+
+\begin{example}
+    Calculate the displacement of e$^-$ if the polarization of Al is \SI{2e-8}{C/m^2} and given $a_0 = \SI{4.04e-8}{cm}$, and Al has FCC structure.
+    
+    \textit{Solution.}
+    \begin{align*}
+        z &= \frac{\text{at/uc} \times \text{atomic number}}{a_0^3} = \frac{4 \times 13}{(4.04 \times 10^{-8})^3} = \SI{7.89e23}{e^-/cm^3} = \SI{7.89e29}{e^-/m^3} \\
+        d &= \frac{P}{zq} = \frac{2 \times 10^{-8}}{(7.89 \times 10^{29})(1.6 \times 10^{-19})} = \SI{1.58e-19}{m}
+    \end{align*}
+\end{example}
+
+\begin{formula}
+    (Capacitors). $Q = CV$, $\kappa = \epsilon/\epsilon_0$, $C = \epsilon A/d = \kappa \epsilon_0 A/d$, $\epsilon_0 = \SI{8.85e-12}{F/m}$.
+\end{formula}
+
+\begin{definition}
+    (Linear and non-linear dielectrics).
+    \begin{itemize}
+        \item \textit{Linear.} Polarization only occurs when an E field is appied. $P = (k-1) \epsilon_0 E$, $V = Ed$. $\chi = k-1$ is dielectric susceptibility.
+        \item \textit{Non-linear.} Polarization remnant even after E field removed.
+        \begin{itemize}
+            \item Electrostricticity: dimensional change in material when there is E.
+            \item Piezoelectricity: application of stresss produces polarization.
+            \item Ferroelectricity: spontaneous and reversible dielectric polarization.
+        \end{itemize}
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    (Superconductivity). Below $T_c$, zero resistance, Meissner effect occurs.
+    \begin{itemize}
+        \item \textit{Type I.} Most ideal metals. Completely expels B field.
+        \item \textit{Type II.} Intermetallic compounds. Able to lose superconductivity.
+    \end{itemize}
+\end{definition}
+
+\cleardoublepage
+
+\section{Magnetic Materials}
+
+\begin{definition}
+    (Classification of magnetic response).
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{ll}
+            \toprule
+            Soft & Hard \\
+            \midrule
+            Easily magnetized & Almost impossible to be magnetized \\
+            Can lose magnetic behav & Don't lose magnetic behav \\
+            Large values for susceptibility and permeability & Small values for susceptibility and permeability \\
+            Electromagnets & Permanent magnets \\
+            Fe-Si, Fe-Ni, ferrites & Fe-Ni-Al, Co alloys \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+\begin{definition}
+    \hl{(Magnetic field, permeability, and magnetization).} Magnetic field is defined as
+    \begin{equation}
+        H = \frac{nI}{L}
+    \end{equation}
+    where $n$ is number of turns, $L$ is length of coil (m), $I$ is curent (A), and $H$ is magnetic field (A/m or oersted; $4\pi \times 10^{-3}$ oersted = 1 A/m). Relative permeability $\mu_r$ is defined as a ratio of permeability
+    \begin{align}
+        \mu_r = \frac{\mu}{\mu_0}
+    \end{align}
+    where $\mu > \mu_0$ if magnetic moments in same dir of applied field and $\mu < \mu_0$ if magnetic moments oppose the field ($\mu_0 = 4\pi \times 10^{-7}$ H/m). Inductance $B$ (H or Teslas) is defined as
+    \begin{align}
+        B &= \mu_0 H, \quad \text{in vacuum} \\
+        B &= \mu (H + M), \quad \text{in material} \\
+        M &= \frac{(\text{at/uc}) (\text{magneton/at}) \mu_B}{a_0^3} \\
+        X_m &= M/H = \mu_r - 1
+    \end{align}
+    where $M$ is magnetization (A/m), $\mu_B$ is Bohr magneton (\SI{9.27e-24}{\ampere.\metre^2/magneton}), and $X_m$ is magnetic susceptibility. We can use oxidation number to estimate magneton/at.
+\end{definition}
+
+\begin{example}
+    Estimate the magnetization produced in a bar made of Ni given $A_0(\text{Ni}) = \SI{3.52e-10}{m}$, oxidation number is 2, and FCC.
+    
+    \textit{Solution.}
+    \begin{equation*}
+        M = \frac{(\text{at/uc}) (\text{magneton/at}) \mu_B}{a_0^3} = \frac{4 \times 2 \times (9.27\times10^{-24})}{(3.52 \times 10^{-10})} = \SI{1.7e6}{A/m}
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    0.0015 at\% of Ni is inserted into Cu. This material has max permeability of \SI{4.5e-3}{H/m} when inductance of \SI{3.5}{A.H/m^2} is obtained. The alloy is placed in 20-turn coil 20 cm in length. What current must flow through the conductor to obtain this field given $a_0(\text{Ni}) = \SI{3.52e-10}{m}$, $a_0(\text{Cu}) = \SI{3.61e-10}{m}$?
+
+    \textit{Solution}
+    \begin{align*}
+        a_0 &= f_\text{matrix} a_{0,\text{matrix}} + f_\text{solute} a_{0, \text{solute}} \approx \SI{3.61e-10}{m} \\
+        M &= \frac{(\text{at/uc})(f\text{ of solute})(\text{magneton/at of solute}) \mu_B}{a_0^3} \\
+        &= \frac{4 (0.0015 \times 10^{-2})(2)(9.27 \times 10^{-24})}{(3.61 \times 10^{-10})} \\
+        &= \SI{23.64}{A/m} \\
+        B &= \mu (H + M) = \mu (\frac{nI}{L} + M) \implies I = \left( \frac{B}{\mu} - M \right) \frac{L}{n} = \left( \frac{3.5}{4.5\times10^{-3}} - 23.64 \right) \frac{0.2}{20} = \SI{7.54}{A}
+    \end{align*}
+\end{example}
+
+\begin{definition}
+    (Classification of magnetic response).
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{lp{3.5cm}lp{4cm}}
+            \toprule
+            Diamagnetism & Paramagnetism & Ferromagnetism & Ferrimagnetism \\
+            \midrule
+            Induced opp mag dipole & Induced random mag dipole & Induced mag dipole & Induced mag dipole both parallel and opposite \\
+            Opposing $H$ & No interaction among dipoles & Amplifies $H$ & Amplifies $H$ \\
+            Au, Ag, Cu, Hg & Ca, Al, Cr & Fe, Co & Zn, Ni, ceramics \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+\newpage
+
+\section{Photonic Materials}
+
+\begin{definition}
+    (Intensity). Intensity is the sum of reflection, absorption, and transmission.
+    \begin{equation}
+        I_0 = I_r + I_a + I_t
+    \end{equation}
+\end{definition}
+
+\begin{definition}
+    (Refraction).
+    \begin{align}
+        n &= \frac{c_0}{c} = \frac{\lambda_{\text{vacuum}}}{\lambda} = \frac{\sin \theta_i}{\sin \theta_t} \\
+        c &= \frac{1}{\sqrt{\mu \epsilon}}, \quad n = \frac{\sqrt{\mu \epsilon}}{\sqrt{\mu_0 \epsilon_0}} \approx \sqrt{\kappa} \\
+        \frac{c_1}{c_2} &= \frac{n_2}{n_1} = \frac{\sin \theta_1}{\sin \theta_2}
+    \end{align}
+    where $\kappa$ is the dielectric constant.
+\end{definition}
+
+\begin{definition}
+    (Reflection). Occurs at interface btw 2 materials.
+    \begin{align}
+        R &= \left( \frac{n-1}{n+1} \right)^2, \quad \text{in air} \\
+        R &= \left( \frac{n-n_i}{n+n_i} \right)^2, \quad \text{in other materials} \\
+        I_r &= RI_0
+    \end{align}
+\end{definition}
+
+\begin{definition}
+    (Absorption).
+    \begin{equation}
+        I = I_0 e^{-\alpha x}
+    \end{equation}
+    where $\alpha$ is the linear absorption coefficient and $x$ is the photon's path (often the thickness of the material).
+\end{definition}
+
+\begin{definition}
+    (Transmission). Depends on properties of material and photon's wavelength.
+    \begin{itemize}
+        \item \textit{Microstructure.} Higher pf and larger atoms transmit less.
+        \item \textit{Porosity.} More porous means more transmission.
+        \item \textit{Bandgap.} Less likely in metals b/c of overlapping bands. Insulators and semiconductors have increased transmission.
+    \end{itemize}
+    \hl{Transmission formulas:}
+    \begin{enumerate}
+        \item After 1st reflection: $I_1 = (1-R)I_0$
+        \item After absorption: $I_2 = I_1 e^{-\alpha x} = (1-R) I_0 e^{-\alpha x}$
+        \item After 2nd reflection: $I_{rb} = RI_2 = R(1-R)I_0 e^{-\alpha x}$
+        \item Difference btw absorption and 2nd reflection: $I_t = (1-R)^2 I_0 e^{-\alpha x}$
+    \end{enumerate}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{Figures/intensity.png}
+    \end{figure}
+\end{definition}
+
+\begin{definition}
+    \hl{(Reflection, Absorption, Transmission).}
+    \begin{align}
+        R &= \frac{I_r}{I_0} = \left( \frac{n-1}{n+1} \right)^2 \\
+        A &= 1 - (1-R) e^{-\alpha x} \\
+        T &= (1-R)^2 e^{-\alpha x} \\
+        1 &= T + R + A, \quad \text{if 0.01 $<$ R $<$ 0.05}
+    \end{align}
+\end{definition}
+
+\end{document}

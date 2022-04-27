@@ -1,0 +1,731 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+
+\usepackage{graphicx, multicol, wrapfig, caption, multirow, mathtools}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+
+\usepackage[table]{xcolor}
+\usepackage{tabularx, tcolorbox}
+\usepackage{karnaugh-map}
+
+% circuits
+\usepackage{tikz, circuitikz}
+\usetikzlibrary{calc, positioning}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength\extrarowheight{2pt}
+
+\everymath{\displaystyle}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\usepackage{booktabs}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{ECE 210 Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+\begin{document}
+\maketitle
+\rowcolors{1}{gray!10}{white}
+
+\textbf{Number Systems}
+
+$N_{10} \to N_R$: Do $N/R$ until 0 then build back using remainder.
+
+$(0 < N_{10} < 1) \to N_R$: Do $N \times R$ until number of terms sufficient and build sequentially using the ones digit.
+
+1's complement: add last carry to right \hfill $\overbar{N} = (2^n-1)-N$
+
+2's complement: flip bits then add 1 \hfill $N^* = 2^n - N$
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Boolean Algebra}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{2}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{Identities}} & \cellcolor{black} \\
+    Identities & $X+0=X$ \\
+    & $X \cdot 0 = 0$ \\
+    & $X + 1 = 1$ \\
+    & $X \cdot 1 = X$ \\
+    Idempotency & $X+X=X$ \\
+    & $X \cdot X = X$ \\
+\end{tcolorbox}
+
+\vspace{.5em}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{2}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{Negation}} & \cellcolor{black} \\
+    Complementarity & $X + X' = 1$ \\
+    & $X \cdot X' = 0$ \\
+    Involution & $(X')' = X$ \\
+\end{tcolorbox}
+
+\vspace{.5em}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{2}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{Laws}} & \cellcolor{black} \\
+    Commutativity & $A \cdot B = B \cdot A$ \\
+    & $A + B = B + A$ \\
+    Associativity & $A \cdot (B \cdot C) = (A \cdot B) \cdot C$ \\
+    & $A + (B + C) = (A + B) + C$ \\
+    Distributivity & $A \cdot (B + C) = A \cdot B + A \cdot C$ \\
+    & $A + B \cdot C = (A + B) (A + C)$ \\
+\end{tcolorbox}
+
+\vspace{.5em}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{2}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{De Morgan's Laws}} & \cellcolor{black} \\
+    \toprule
+    $(X \cdot Y)' = X' + Y'$ & $\left( \prod_{i=1}^n X_i \right)' = \sum_{i=1}^n X_i'$ \\
+    $(X + Y)' = X' \cdot Y'$ & $\left( \sum_{i=1}^n X_i \right)' = \prod_{i=1}^n X_i'$ \\
+\end{tcolorbox}
+
+\vspace{.5em}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{1}{X}l*{1}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{Theorems}} & \cellcolor{black} \\
+    Uniting & $XY + XY' = X$ \\
+    & $(X+Y)(X+Y') = X$ \\
+    Absorption & $X + XY = X$ \\
+    & $X(X+Y) = X$ \\
+    Elimination & $X + X'Y = X + Y$ \\
+    & $X(X' + Y) = XY$ \\
+    Consensus & $XY + X'Z + YZ = XY + X'Z$ \\
+    & $(X+Y)(X'+Z)(Y+Z) = (X+Y)(X'+Z)$ \\
+    Other & $(X+Y)(X'+Z) = XZ + X'Y$ \\
+\end{tcolorbox}
+
+\newpage
+
+\textbf{Binary Codes}
+
+Be careful about multiple ways to form a number!
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{8}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{Dec}} & \cellcolor{black} \textbf{\textcolor{white}{BCD}} & \cellcolor{black} \textbf{\textcolor{white}{6311}} & \cellcolor{black} \textbf{\textcolor{white}{XS-3}} & \cellcolor{black} \textbf{\textcolor{white}{2/5}} & \cellcolor{black} \textbf{\textcolor{white}{Gray}} \\
+    0 & 0000 & 0000 & 0011 & 00011 & 0000 \\
+    1 & 0001 & 0001 & 0100 & 00101 & 0001 \\
+    2 & 0010 & 0011 & 0101 & 00110 & 0011 \\
+    3 & 0011 & 0100 & 0110 & 01001 & 0010 \\
+    4 & 0100 & 0101 & 0111 & 01010 & 0110 \\
+    5 & 0101 & 0111 & 1000 & 01100 & 0111 \\
+    6 & 0110 & 1000 & 1001 & 10001 & 0101 \\
+    7 & 0111 & 1001 & 1010 & 10010 & 0100 \\
+    8 & 1000 & 1011 & 1011 & 10100 & 1100 \\
+    9 & 1001 & 1100 & 1100 & 11000 & 1101 \\
+\end{tcolorbox}
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Look Up Tables}
+
+$n$ inputs \hfill $\Longrightarrow$ \hfill $2^n$ entries/states \hfill $\Longrightarrow$ \hfill $2^{2^n}$ possible fns
+
+\textbf{Caution:} Write out the formula (e.g., $2^{2^n}$) for full marks
+
+If $n=6$, how many fns take 2 or fewer inputs? \vspace{-.5em}
+\begin{itemize}
+    \item Exactly 0 inputs: $2^{2^0} = 2$ fns
+    \item Exactly 1 input: $2^{2^1} - 2^{2^0} = 2$ fns
+    \subitem Choose 1 of 6 inputs: $N = {6 \choose 1} \times 2 = 6 \times 2 = 12$
+    \item Exactly 2 inputs: $2^{2^2} - 2^{2^1} - 2^{2^0} = 10$ fns
+    \subitem Choose 2 of 6 inputs: $N = {6 \choose 2} \times 2 = 15 \times 10 = 150$
+    \item $N = 2 + 12 + 150 = 164$ fns total
+\end{itemize} \vspace{-1em}
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{SOP and POS}
+
+SOP: multiply out \hfill if one term is 1, whole expr is 1
+
+POS: factor \hfill if one term is 0, whole expr is 0
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Logic Gates}
+
+\begin{circuitikz}
+    % gates
+    \node[ieeestd not port, number inputs=1, scale=0.5] (A) at (0, 0) {};
+    \node[ieeestd and port, number inputs=2, scale=0.5] (B) at (0, -1) {};
+    \node[ieeestd or port, number inputs=2, scale=0.5] (C) at (0, -2) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (D) at (0, -3) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (E) at (0, -4) {};
+    \node[ieeestd xor port, number inputs=2, scale=0.5] (F) at (0, -5) {};
+    \node[ieeestd xnor port, number inputs=2, scale=0.5] (G) at (0, -6) {};
+
+    % NOT labels
+    \node[left] at (A.in 1) {$x$};
+    \node[right] at (A.out) {$x'$};
+
+    % AND labels
+    \node[left] at (B.in 1) {$x$};
+    \node[left] at (B.in 2) {$y$};
+    \node[right] at (B.out) {$x y$};
+
+    % OR labels
+    \node[left] at (C.in 1) {$x$};
+    \node[left] at (C.in 2) {$y$};
+    \node[right] at (C.out) {$x + y$};
+
+    % NAND labels
+    \node[left] at (D.in 1) {$x$};
+    \node[left] at (D.in 2) {$y$};
+    \node[right] at (D.out) {$(xy)' = x' + y'$};
+
+    % NOR labels
+    \node[left] at (E.in 1) {$x$};
+    \node[left] at (E.in 2) {$y$};
+    \node[right] at (E.out) {$(x+y)' = x'y'$};
+
+    % XOR labels
+    \node[left] at (F.in 1) {$x$};
+    \node[left] at (F.in 2) {$y$};
+    \node[right] at (F.out) {$x \oplus y = x'y + xy'$};
+
+    % EQUIV labels
+    \node[left] at (G.in 1) {$x$};
+    \node[left] at (G.in 2) {$y$};
+    \node[right] at (G.out) {$x \otimes y = (x \equiv y) = (x \oplus y)' = xy + x'y'$};
+
+    % gate labels
+    \node[left] at ($(A.out) + (-2.35, 0)$) {NOT};
+    \node[left] at ($(B.out) + (-2.5, 0)$) {AND};
+    \node[left] at ($(C.out) + (-2.5, 0)$) {OR};
+    \node[left] at ($(D.out) + (-2.5, 0)$) {NAND};
+    \node[left] at ($(E.out) + (-2.5, 0)$) {NOR};
+    \node[left] at ($(F.out) + (-2.5, 0)$) {XOR};
+    \node[left] at ($(G.out) + (-2.5, 0)$) {XNOR};
+\end{circuitikz}
+
+
+\cleardoublepage
+
+
+\textbf{Logic Gate Heuristics}
+
+NAND is inverted OR \hfill $f = (xy)' = x' + y'$
+
+NOR is inverted AND \hfill $f = (x+y)' = x'y'$
+
+NAND returns 0 $\iff$ all inputs 1
+
+NOR returns 1 $\iff$ all inputs 0
+
+XOR returns 1 $\iff$ inputs have odd number of 1s
+
+XNOR returns 1 $\iff$ all inputs equivalent
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{1}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{XOR Properties}} \\
+    $X \oplus 0 = X$ \hfill $X \oplus 1 = X'$ \\
+    $X \oplus X = 0$ \hfill $X \oplus X' = 1$ \\
+    $X \oplus Y = Y \oplus X$ \\
+    $(X \oplus Y) \oplus Z = X \oplus (Y \oplus Z)$ \\
+    $X(Y \oplus Z) = XY \oplus XZ$ \\
+    $(X \oplus Y)' = X \oplus Y' = X' \oplus Y = XY + X'Y' = (X \equiv Y)$
+\end{tcolorbox}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{1}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{XNOR Properties}} \\
+    $X \otimes 0 = X'$ \hfill $X \otimes 1 = X$ \\
+    $X \otimes X = 1$ \hfill $X \otimes X' = 0$ \\
+    $X \otimes X \otimes \cdots \otimes X = \begin{dcases} X, & n \text{ odd} \\ 1, & n \text{ even} \end{dcases}$
+\end{tcolorbox}
+
+XOR and XNOR complements if even no of inputs given
+
+$\quad A \oplus B \oplus C \oplus D = \overbar{A \otimes B \otimes C \otimes D}$
+
+XOR and XOR same if odd no of inputs given
+
+$\quad A \oplus B \oplus C = A \otimes B \otimes C$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Minterms and Maxterms}
+
+\begin{tcolorbox}[width=\columnwidth, sharp corners, tabularx={*{4}{X}l}]
+    \cellcolor{black} \textbf{\textcolor{white}{Row}} & \cellcolor{black} \textbf{\textcolor{white}{A B C}} & \cellcolor{black} \textbf{\textcolor{white}{Minterms}} & \cellcolor{black} \textbf{\textcolor{white}{Maxterms}} \\
+    0 & 0 0 0 & $A'B'C'$ & $A + B + C$ \\
+    1 & 0 0 1 & $A' B' C$ & $A + B + C'$ \\
+    $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+    9 & 1 1 1 & $A B C$ & $A' + B' + C'$ \\
+\end{tcolorbox}
+
+Q: Find minterms and maxterms of $f(a, b, c, d) = a'b'$.
+
+A: Since 4 inputs, $2^4=16$ possible outputs.
+\begin{align*}
+    \text{minterms} &= a'b' \underbrace{(c+c') (d+d')}_{\text{equals 1}} \\
+    &= \underbrace{a'b'cd}_{0011} + \underbrace{a'b'cd'}_{0010} + \underbrace{a'b'c'd}_{0001} + \underbrace{a'b'c'd'}_{0000} \\
+    &= \sum m(0, 1, 2, 3) \\
+    \text{maxterms} &= \prod M(4, 5, \dots, 15)
+\end{align*}
+
+If $f = \sum m(3, 4, 5, 6, 7)$, \vspace{-.5em}
+\begin{itemize}
+    \item Maxterm expansion of $f$ is $\prod M(0, 1, 2)$.
+    \item Minterm expansion of $f'$ is $\sum m(0, 1, 2)$.
+    \item Maxterm expansion of $f'$ is $\prod M(3, 4, 5, 6, 7)$.
+\end{itemize} \vspace{-.5em}
+
+
+\newpage
+
+\textbf{NAND as a Universal Gate}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-3, 0) {NAND as NOT};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (A) at (0, 0) {};
+
+    % nand inputs
+    \draw (A.in 1) -- (A.in 2);
+    \draw (A.in 1 |- A.out) to (-.75, 0);
+\end{circuitikz}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-4.5, 0) {NAND as AND};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (A) at (-1.5, 0) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (B) at (0, 0) {};
+
+    % nand inputs
+    \draw (B.in 1) -- (B.in 2);
+    \draw (B.in 1 |- B.out) to (-.75, 0) to (A.out);
+
+    % nand inputs
+    \node[left] at (A.in 1) {};
+    \node[left] at (A.in 2) {};
+\end{circuitikz}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-3.125, 0) {NAND as OR};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (A) at (0, .35) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (B) at (0, -.35) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (C) at (1.5, 0) {};
+
+    % nand inputs
+    \draw (A.in 1) -- (A.in 2);
+    \draw (A.in 1 |- A.out) to (-.75, .35);
+    \draw (B.in 1) -- (B.in 2);
+    \draw (B.in 1 |- B.out) to (-.75, -.35);
+    \draw (A.out) -| (C.in 1);
+    \draw (B.out) -| (C.in 2);
+\end{circuitikz}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-3, 0) {NAND as NOR};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (A) at (0, .35) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (B) at (0, -.35) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (C) at (1.5, 0) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (E) at (3, 0) {};
+
+    % nand inputs
+    \draw (A.in 1) -- (A.in 2);
+    \draw (A.in 1 |- A.out) to (-.75, .35);
+    \draw (B.in 1) -- (B.in 2);
+    \draw (B.in 1 |- B.out) to (-.75, -.35);
+    \draw (A.out) -| (C.in 1);
+    \draw (B.out) -| (C.in 2);
+    \draw (E.in 1) -- (E.in 2);
+    \draw (E.in 1 |- E.out) to (C.out);
+\end{circuitikz}
+
+\begin{figure}[h]
+    NAND as XNOR \hfill \includegraphics[width=0.65\columnwidth]{Figures/xnor_from_nand.png}
+\end{figure}
+
+\begin{figure}[h]
+    NAND as XOR \hspace{2em} \includegraphics[width=0.5\columnwidth]{Figures/xor_from_nand.png}    
+\end{figure}
+
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{NOR as a Universal Gate}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-3.215, 0) {NOR as NOT};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (A) at (0, 0) {};
+
+    % nor inputs
+    \draw (A.in 1) -- (A.in 2);
+    \draw (A.in 1 |- A.out) to (-.75, 0);
+\end{circuitikz}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-3.125, 0) {NOR as AND};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (A) at (0, .35) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (B) at (0, -.35) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (C) at (1.5, 0) {};
+    
+    % nor inputs
+    \draw (A.in 1) -- (A.in 2);
+    \draw (A.in 1 |- A.out) to (-.75, .35);
+    \draw (B.in 1) -- (B.in 2);
+    \draw (B.in 1 |- B.out) to (-.75, -.35);
+    \draw (A.out) -| (C.in 1);
+    \draw (B.out) -| (C.in 2);
+\end{circuitikz}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-4.725, 0) {NOR as OR};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (A) at (-1.5, 0) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (B) at (0, 0) {};
+
+    % nor inputs
+    \draw (B.in 1) -- (B.in 2);
+    \draw (B.in 1 |- B.out) to (-.75, 0) to (A.out);
+
+    % nor inputs
+    \node[left] at (A.in 1) {};
+    \node[left] at (A.in 2) {};
+\end{circuitikz}
+
+\begin{circuitikz}
+    % gates
+    \node (text) at (-3.125, 0) {NOR as NAND};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (A) at (0, .35) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (B) at (0, -.35) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (C) at (1.5, 0) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (E) at (3, 0) {};
+
+    % nor inputs
+    \draw (A.in 1) -- (A.in 2);
+    \draw (A.in 1 |- A.out) to (-.75, .35);
+    \draw (B.in 1) -- (B.in 2);
+    \draw (B.in 1 |- B.out) to (-.75, -.35);
+    \draw (A.out) -| (C.in 1);
+    \draw (B.out) -| (C.in 2);
+    \draw (E.in 1) -- (E.in 2);
+    \draw (E.in 1 |- E.out) to (C.out);
+\end{circuitikz}
+
+\begin{figure}[h]
+    NOR as XNOR \hspace{2em} \includegraphics[width=0.5\columnwidth]{Figures/xnor_from_nor.png}
+\end{figure}
+
+\begin{figure}[h!]
+    NOR as XOR \hspace{2em} \includegraphics[width=0.65\columnwidth]{Figures/xor_from_nor.png}    
+\end{figure}
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Miscellaneous Concepts}
+
+\hspace{-1em}
+\begin{circuitikz}
+    % gates
+    \node[ieeestd or port, number inputs=2, scale=0.5] (A) at (0, 0) {};
+    \node[ieeestd nand port, number inputs=2, scale=0.5] (B) at (2, 0) {};
+    \node (equiv) at (1, 0) {$\equiv$};
+
+    % inverter on OR
+    \node[notcirc, right] at (A.in 1) {};
+    \node[notcirc, right] at (A.in 2) {};
+    \node[left] at ([xshift=-1.5mm]A.in 1) (or1) {};
+    \node[left] at ([xshift=-1.5mm]A.in 2) (or2) {};
+
+    % increasing tails on AND
+    \draw (or1) -- (A.in 1);
+    \draw (or2) -- (A.in 2);
+
+    % inverter on AND
+\end{circuitikz}    
+\hfill
+\begin{circuitikz}
+    % gates
+    \node[ieeestd and port, number inputs=2, scale=0.5] (A) at (0, 0) {};
+    \node[ieeestd nor port, number inputs=2, scale=0.5] (B) at (2, 0) {};
+    \node (equiv) at (1, 0) {$\equiv$};
+
+    % inverter on AND
+    \node[notcirc, right] at (A.in 1) {};
+    \node[notcirc, right] at (A.in 2) {};
+    \node[left] at ([xshift=-1.5mm]A.in 1) (or1) {};
+    \node[left] at ([xshift=-1.5mm]A.in 2) (or2) {};
+
+    % increasing tails on AND
+    \draw (or1) -- (A.in 1);
+    \draw (or2) -- (A.in 2);
+\end{circuitikz}
+
+Transistor count \vspace{-1em}
+\begin{itemize}
+    \item NOT: 2
+    \item NAND, NOR: $2 \times \text{inputs}$ \hfill AND = NAND + NOT
+    \item AND, OR: $2 \times \text{inputs} + 2$ \hfill OR = NOR + NOT
+\end{itemize} \vspace{-1em}
+
+Min transistor count: $2 \times \text{inputs} + 2 \times \text{inverters}$
+
+
+\cleardoublepage
+
+
+\textbf{Karnaugh Maps}
+
+Implicant: groups of 1s on map in powers of 2 and is rectangular.
+
+Prime implicant: largest possible implicant.
+
+Essential prime implicant: prime implicant that contains at least 1 term not covered by another prime implicant (can overlap).
+
+\vspace{-1em}
+\begin{figure}[ht]
+    \centering
+    \begin{karnaugh-map}[2][4][1][][]
+        \manualterms{1, 0, X, 0, 0, X, 1, 1}
+        \implicant{0}{2}
+        \implicant{6}{7}
+
+        % labels
+        \draw[color=black, ultra thin] (0, 4) --
+        node [pos=0.7, above right, anchor=south west] {$a$}
+        node [pos=0.7, below left, anchor=north east] {$bc$}
+        ++(135:1);
+    \end{karnaugh-map}
+\end{figure}
+
+\vspace{-4.5em}
+\begin{align*}
+    f &= \sum m(0, 3, 7) + d(1, 6) = a'b' + bc \\
+    &= \prod M(2, 4, 5) + d(1, 6) = (a' + b)(b' + c)
+\end{align*} \vspace{-2em}
+
+\vspace{-.5em}
+\dotfill
+
+
+\textbf{Adders and Subtractors}
+
+\textit{Half Adder} \vspace{-.5em}
+
+\begin{minipage}{0.6\columnwidth}
+    \begin{circuitikz}
+        \node[ieeestd xor port, scale=0.65] (xorone) at (0, 1.25) {};
+        \node[ieeestd and port, scale=0.65] (and) at (0, 0) {};
+        \node[left=0.5cm] (a) at (xorone.in 1) {A};
+        \node[left=0.5cm] (b) at (xorone.in 2) {B};
+
+        \draw (a.east) to[short,-*] (xorone.in 1) |- (and.in 1);
+        \draw (b.east) to[short,-*] ($(b.east)!.5!(xorone.in 2)$) coordinate (branch) -- (xorone.in 2);
+        \draw (branch) |- (and.in 2);
+
+        % labels
+        \node[right] at (xorone.out) {$S = A \oplus B$};
+        \node[right] at (and.out) {$C_0 = AB$};
+    \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.35\columnwidth}
+    \begin{tabular}{c c | c c}
+        A & B & $S$ & $C_0$ \\
+        \hline
+        0 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 1 \\
+    \end{tabular}
+\end{minipage}
+
+\textit{Full Adder}
+
+\begin{circuitikz}  
+    \draw (0,2) node (A) [ieeestd xor port, anchor=in 1, scale=0.65] {};
+    \node [ieeestd and port, anchor=in 1, scale=0.65] (B) at (0,0) {};
+
+    \draw   (A.in 1) to [short,-*] ++ (-0.50,0) coordinate (Bin)
+    |- (B.in 1)
+    (A.in 2)    to [short,-*]   ++  (-0.75,0)   coordinate (Cin)
+    |- (B.in 2)
+    (Bin)       to [short]      ++  (-0.75,0)    node[left] {B}
+    (Cin)       to [short]      ++  (-0.50,0)    node[left] {C\textsubscript{in}}
+
+    (A.out) to [short,*-] ++ (+0.75,0)
+
+    node (D) [ieeestd xor port, anchor=in 2, scale=0.65] {}
+    (D.in 1) to [short,-*] ++ (-0.50,0) coordinate (Din)
+    |- (Bin |- D.north) -- ++ (-0.75,0) node[left] {A}
+
+    (D.in 2) ++ (0,-1)  node (E) [ieeestd and port,  anchor=in 1, scale=0.65] {}
+    (D.out);
+
+    % wiring
+    \draw (A.out) |- (E.in 2)(Din) |-  (E.in 1)
+    (E.out |- B.out) node (F) [ieeestd or port, anchor=in 2, scale=0.65] {} 
+    (B.out) --  (F.in 2)
+    (E.out) --  (F.in 1);
+
+    % labels
+    \node[right] at (D.out) {$S = A \oplus B \oplus C_{\text{in}}$};
+    \node[right] at (F.out) {C\textsubscript{out}};
+\end{circuitikz}
+
+C$_{\text{out}} = AB + AC_{\text{in}} + BC_{\text{in}} = AB + C_{\text{in}}(A \oplus B)$
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c c c | c c}
+        A & B & C$_{\text{in}}$ & $S$ & C$_{\text{out}}$ \\
+        \hline
+        0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 1 & 0 \\
+        0 & 1 & 0 & 1 & 0 \\
+        0 & 1 & 1 & 0 & 1 \\
+        1 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 1 \\
+        1 & 1 & 0 & 0 & 1 \\
+        1 & 1 & 1 & 1 & 1 \\
+    \end{tabular}
+\end{table}
+
+\textit{Half-Subtractor} \vspace{-.5em}
+
+\begin{minipage}{0.6\columnwidth}
+    \begin{circuitikz}
+        \node[ieeestd xor port, scale=0.65] (xorone) at (0, 1.25) {};
+        \node[ieeestd and port, scale=0.65] (and) at (0, 0) {};
+        \node[left=0.5cm] (a) at (xorone.in 1) {A};
+        \node[left=0.5cm] (b) at (xorone.in 2) {B};
+
+        \draw (a.east) to[short,-*] (xorone.in 1) |- (and.in 1);
+        \draw (b.east) to[short,-*] ($(b.east)!.5!(xorone.in 2)$) coordinate (branch) -- (xorone.in 2);
+        \draw (branch) |- (and.in 2);
+        \node[notcirc, scale=0.65, xshift=0.275cm] at (and.in 1) {};
+
+        % labels
+        \node[right] at (xorone.out) {$D = A \oplus B$};
+        \node[right] at (and.out) {$B_0 = A'B$};
+    \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.35\columnwidth}
+    \begin{tabular}{c c | c c}
+        A & B & $D$ & $B_0$ \\
+        \hline
+        0 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 1 \\
+        1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 0 \\
+    \end{tabular}
+\end{minipage}
+
+
+\newpage
+
+
+\textit{Full Subtractor}
+
+\begin{circuitikz}
+    \draw (0,2) node (A) [ieeestd xor port, scale=0.65, anchor=in 1] {}
+    (0,0) node (B) [ieeestd and port, scale=0.65, anchor=in 1] {};
+    \node [notcirc, left] at (B.bin 1) {};
+    %
+    \draw   (A.in 1)    to [short,-*]   ++  (-0.50,0)   coordinate (Bin)
+    |- (B.in 1)
+    (A.in 2)    to [short,-*]   ++  (-0.75,0)   coordinate (Cin)
+    |- (B.in 2)
+    (Bin)       to [short]      ++  (-0.75,0)    node[left] {B}
+    (Cin)       to [short]      ++  (-0.50,0)    node[left] {B\textsubscript{in}}
+    %
+    (A.out)     to [short,*-]   ++  (+0.75,0)
+    node (D) [ieeestd xor port, scale=0.65, anchor=in 2] {}
+    (D.in 1)    to [short,-*]   ++  (-0.50,0)   coordinate (Din)
+    |- (Bin |- D.north) -- ++ (-0.75,0) node[left] {A}
+    %
+    (D.in 2) ++ (0,-1)  node (E) [ieeestd and port, scale=0.65,  anchor=in 1] {}
+    (D.out)     node[right] {$D = A \oplus B \oplus C_{\text{in}}$};
+    \node [notcirc, left] at (E.bin 1) {};
+    %
+    \draw   (A.out)     |-  (E.in 2)(Din)   |-  (E.in 1)
+    (E.out |- B.out) node (F) [ieeestd or port, scale=0.65,anchor=in 2] {} 
+    (F.out) node [right] {B\textsubscript{out}}
+    (B.out) --  (F.in 2)
+    (E.out) --  (F.in 1);
+\end{circuitikz}
+
+B$_{\text{out}} = A'B + A'B_{\text{in}} + BB_{\text{in}}$
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c c c | c c}
+        A & B & B$_{\text{in}}$ & $D$ & B$_{\text{out}}$ \\
+        \hline
+        0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 1 & 1 \\
+        0 & 1 & 1 & 0 & 1 \\
+        1 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 0 \\
+        1 & 1 & 0 & 0 & 0 \\
+        1 & 1 & 1 & 1 & 1 \\
+    \end{tabular}
+\end{table}
+
+
+\textit{Parallel Binary Adder}
+
+\includegraphics[width=\columnwidth]{Figures/4-bit-adder.jpeg}
+
+\textit{Parallel Binary Subtractor}
+
+\includegraphics[width=\columnwidth]{Figures/4-bit-Subtractor.jpeg}
+
+
+\textit{Adder and Subtractor}
+
+M is control bit. If subtracting, M adds 1 and inverts all B bits. If adding, M is 0 (i.e., does nothing).
+
+\includegraphics[width=\columnwidth]{Figures/addsub.jpeg}
+
+
+\cleardoublepage
+
+
+\textbf{Design of Multi-Level NAND- and NOR-Gate Circuits}
+
+\vspace{-1em}
+\begin{enumerate}
+    \item Design multi-lvl circuit w/ AND and OR gates.
+    \begin{itemize}
+        \item Output must be an OR gate.
+        \item Each lvl must alternate btw AND and OR.
+    \end{itemize}
+    \item Number all lvls w/ output as lvl 1. Replace all gates w/ NAND gates.
+    \begin{itemize}
+        \item Leave inputs to even lvls unchanged.
+        \item Invert literal inputs to odd lvls.
+    \end{itemize}
+\end{enumerate} \vspace{-1em}
+
+Procedure for NOR same except (i) output is AND and (ii) all gates replaced w/ NOR gates.
+
+
+\end{document}

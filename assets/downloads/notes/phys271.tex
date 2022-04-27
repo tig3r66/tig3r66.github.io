@@ -1,0 +1,826 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, multicol, wrapfig, caption, multirow, mathtools, amsfonts, booktabs, siunitx, accents, physics}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\everymath{\displaystyle}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{PHYS 271 Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\small
+
+\textbf{Constants}
+
+$h = \SI{6.6261e-34}{J.s} = \SI{4.135e-15}{eV.s}$
+
+$\hbar = \frac{h}{2\pi} = \SI{1.0546e-34}{J.s} = \SI{6.6582e-16}{eV.s}$
+
+$c = \SI{3e8}{m/s}$ \hfill $\epsilon_0 = \SI{8.854e-12}{F/m}$ \hfill $\mu_0 = 4\pi\SI{e-7}{Wb/A.m}$
+
+$\SI{1}{J} = \frac{1}{e}\ \text{eV}$ \hfill $\SI{1}{J} = \SI{2.39e-4}{kcal}$ \hfill $e = \SI{1.6022e-19}{C}$
+
+$k = \SI{1.38e-23}{J/K}$ \hfill $R_H = \SI{1.097e7}{m^{-1}}$ \hfill $N_A = 6.022 \times 10^{23}$
+
+$u=\SI{1.661e-27}{kg} = \SI{931.494}{MeV/c^2}$
+
+$m_e = \SI{9.109e-31}{kg} = \SI{0.511}{MeV/c^2}$
+
+$m_p = \SI{1.673e-27}{kg} = \SI{938.27}{MeV/c^2}$
+
+$m_n = \SI{1.675e-27}{kg} = \SI{939.57}{MeV/c^2}$
+
+$\mu_B = \SI{9.274e-24}{J/T} = \SI{5.788e-5}{eV/T}$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Special Relativity}
+
+
+\textit{Galilean transforms}: $t' = t$, \hfill $x' = x + vt$, \hfill $y' = y$, \hfill $z' = z$
+
+\textit{Inertial frame}: A reference frame in which a body at rest remains at rest and a body in motion moves at a constant speed in a straight line unless acted upon by an outside force.
+
+\textit{Postulates}: \vspace{-1em}
+
+\begin{enumerate}
+    \item The laws of physics are the same in all inertial frames of reference.
+    \item Speed of light same in all inertial frames.
+\end{enumerate} \vspace{-.5em}
+
+\textit{Relativity of simultaneity}: Two spatially-separated events simultaneous in one reference frame are not simultaneous in any other inertial frame moving relative to the first.
+
+If events occur at same spatial location, simultaneous in all frames.
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Time dilation (proper time)}: $\Delta \tau = \frac{\Delta t}{\gamma}$ \hfill $\gamma = \frac{1}{\sqrt{1 - \beta^2}},\ \beta = \frac{v}{c}$
+
+\vspace{-.5em}
+\begin{itemize}
+    \item Stationary frame experiences longer time relative to moving frame. $\Delta \tau$ is the shortest possible interval.
+    \item $\Delta \tau$ is time interval btw two events is time interval measured by an observer for whom both events occur at the same location.
+\end{itemize} \vspace{-.5em}
+
+\textit{Length contraction (proper length)}: $L_0 = \gamma L$
+\vspace{-.5em}
+\begin{itemize}
+    \item $L_0$ is length of obj measured by an observer at rest relative to it.
+    \item $L_0$ is longest possible length.
+\end{itemize} \vspace{-.5em}
+
+Tip: $\Delta \tau$ and $L_0$ are measurements of $S'$ by $S$
+
+\textit{Approximation}: If $\beta \ll 1,\ \gamma \approx 1 + \beta^2/2$ \hfill $1/\gamma \approx 1 - \beta^2/2$
+
+\textit{Radioactive decay}: $N(t) = N_0 e^{-t/\tau}$, \hfill account for time dilation
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Lorentz transform}
+
+$\quad S \mapsto S':$ \hfill $ct' = \gamma (ct - \beta x)$, \hfill $x' = \gamma (x - \beta c t)$, \hfill $y' = y$, \hfill $z' = z$
+
+$\quad S' \mapsto S:$ \hfill $ct = \gamma(ct' + \beta x')$, \hfill $x = \gamma(x' + \beta c t')$, \hfill $y = y'$, \hfill $z = z'$
+
+4-vectors: $\undertilde{x} = [ct, x, y, z]^T = [ct, \mathbf{r}]^T$
+\begin{equation*}
+    \undertilde{x}' = \Lambda \undertilde{x}, \quad \Lambda = \begin{bmatrix} \gamma & -\beta \gamma & 0 & 0 \\ - \beta \gamma & \gamma & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}
+\end{equation*} \vspace{-1em}
+
+\textbf{CAUTION:} Account for the $c$ in $ct$!
+
+
+% new column
+\newpage
+
+
+\textit{Transformations in Minkowski space}
+
+$x' = x \sqrt{\frac{1+\beta^2}{1-\beta^2}}$ \hfill $ct' = ct \sqrt{\frac{1+\beta^2}{1-\beta^2}}$ \hfill $\tan \alpha = \frac{v}{c}$
+
+\textit{Intervals}: $\Delta s^2 = (c \Delta t)^2 - \Delta x^2 - \Delta y^2 - \Delta z^2$ \hfill (Lorentz invariant)
+
+\vspace{-.5em}
+\begin{itemize}
+    \item Timelike: $(c \Delta t)^2 > \Delta x^2 + \Delta y^2 + \Delta z^2$ \hfill $\Delta s^2 > 0$
+    \item Lightlike: $(c \Delta t)^2 = \Delta x^2 + \Delta y^2 + \Delta z^2$ \hfill $\Delta s^2 = 0$
+    \item Spacelike: $(c \Delta t)^2 < \Delta x^2 + \Delta y^2 + \Delta z^2$ \hfill $\Delta s^2 < 0$
+\end{itemize} \vspace{-.5em}
+
+\textit{Causality}: If events $A$ and $B$ are linked, then they have to be timelike or lightlike separated, and all observers agree on temporal order.
+
+\vspace{-.5em}
+\begin{itemize}
+    \item If events timelike, their order is fixed (inside the light cone).
+    \item If events lightlike, event $A$ reaches $B$ at exact instance $B$ occurs. All observers agree that $A$ occurs before $B$.
+    \item If events spacelike, no causality. Not all observers agree on order (outside of the light cone).
+\end{itemize} \vspace{-.5em}
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Relativistic Doppler Effect}
+
+$f_{\text{obs}} = f_{\text{src}} \frac{\sqrt{1-\beta^2}}{1 + \beta \cos \theta}$, \hfill light moving at $\theta$ wrt observer
+
+Directly away: $f_{\text{obs}} = f_{\text{src}} \sqrt{\frac{1-\beta}{1+\beta}}$
+
+Directly towards: $f_{\text{obs}} = f_{\text{src}} \sqrt{\frac{1+\beta}{1-\beta}}$
+
+Transverse: $f_{\text{obs}} = f_{\text{src}} \sqrt{1 - \beta^2}$
+
+\dotfill
+
+\textbf{Moving Charges}
+
+$\lambda_p - \lambda_n = \lambda \beta^2 \gamma$ \hfill $\lambda_p$ is +ve $q$ density, $\lambda_n$ is -ve $q$ density
+
+Assuming $\gamma \approx 1$: $\mathbf{F} = \frac{qv^2 \lambda}{2 \pi r} \mu_0\ \hat{k}$ \hfill $\lambda_n' = \lambda / \gamma, \quad \lambda_p' = \lambda \gamma$
+
+Highly relativistic case: $\mathbf{F}' = \gamma \mathbf{F}$ \hfill $\mathbf{F}_\perp' = \gamma \mathbf{F}_\perp$ \hfill $\mathbf{F}_\parallel' = \mathbf{F}_\parallel$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Relativistic Mechanics}
+
+$u_x = \frac{u_x' + v}{1 + vu_x' / c^2}$ \hfill $u_y = \frac{u'_y}{\gamma(1 + vu_x' / c^2)}$ \hfill $u_z = \frac{u_z'}{\gamma ( 1 + vu_x' / c^2)}$
+
+$u_x' = \frac{u_x - v}{1 - vu_x/c^2}$ \hfill $u_y' = \frac{u_y}{\gamma (1-vu_x/c^2)}$ \hfill $u_z' = \frac{u_z}{\gamma (1-vu_x/c^2)}$
+\begin{itemize}
+    \item $u$ is velocity of event relative to $S$.
+    \item $v$ is velocity of $S'$ relative to $S$.
+    \item $u'$ is velocity of event relative to $S'$.
+    \item $\gamma$ is wrt to $v$.
+\end{itemize} \vspace{-.5em}
+
+4-velocity: $\undertilde{v} = [\gamma c, \gamma \dot{x}, \gamma \dot{y}, \gamma \dot{z}]^T = [\gamma c, \gamma \mathbf{u}]^T$ \hfill $\undertilde{u}' = \Lambda \undertilde{u}$
+
+4-momentum: $\undertilde{p} = \gamma m \mathbf{u}$ \hfill Forces: $\mathbf{F} = \gamma m \frac{d \mathbf u}{dt}$
+
+$E = \gamma mc^2 = E_k + E_0$ \hfill $E_k = (\gamma - 1)mc^2$ \hfill $E_0 = mc^2$
+
+$\undertilde{p} = \left[ \frac{E}{c}, p_x, p_y, p_z \right]^T = \left[ \frac{E}{c}, \mathbf{p} \right]^T$ \hfill $E^2 = m^2 c^4 + p^2 c^2$
+
+Invariant mass (Lorentz invariant): $\undertilde{p} \cdot \undertilde{p} = \frac{E^2}{c^2} - p^2 = m^2 c^2$
+
+
+% new page
+\cleardoublepage
+
+
+For $p \gg m,\ E \approx pc$ \hfill Classical physics: $E = \frac{p^2}{2m}$
+
+For $\mathbf{u} \perp \mathbf{B},\ quB = \gamma m \frac{u^2}{R} \implies \gamma = \frac{qBR}{mu}$ \hfill $p = q B R = \gamma m u$
+
+Approach: Set up $E$-cons and $p$-cons $\to$ sub into $E$-$p$ relationship.
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{General Relativity}
+
+\textit{Equivalence principle:} A homogeneous gravitational field is completely equivalent to a uniformly accelerated reference frame.
+
+\textit{Gravitational lensing:} $\alpha = \frac{4GM}{c^2 R}$
+
+\textit{Einstein's field eqs:} $G_{\mu \nu} + g_{\mu \nu} \Lambda = \frac{8 \pi G}{c^4} T_{\mu \nu}$
+
+\dotfill
+
+\textbf{Charge Quantization}
+
+\textit{J.J. Thompson}: discovered electrons (``cathode rays'').
+
+$\quad Q = Ne \implies W = N \left( \frac{1}{2} mu^2 \right) = \frac{Q}{e} \left( \frac{1}{2} mu^2 \right)$
+
+$\quad mu = QBR \implies \frac{e}{m} = \frac{2W}{QB^2R^2}$
+
+\textit{Millikan}: oil drop expt to det $e$.
+
+$\quad$Stoke's law: $v_T = \frac{2gr^2}{9 \eta} (\rho_{\text{particle}} - \rho_{\text{medium}})$
+
+$\quad qE = mg \implies q = \frac{mg}{E} = \frac{4 \pi r^3 \rho_{\text{oil}} g}{3E}$
+
+\dotfill
+
+\textbf{Energy Quantization}
+
+Wien's displacement law: $\lambda_{\text{max}} T = \SI{2.898e-3}{m.K}$
+
+Radiation power: $P(T) = \sigma A T^4$
+
+Radiation intensity: $R(T) = \sigma T^4$
+
+$\quad$Stefan's constant: $\sigma = \SI{5.6703e-8}{W/(m^2.K^4)}$
+
+$\nabla^2 E = \frac{1}{c^2} \frac{\partial^2 E}{\partial t^2}$, cubic cavity of length $L$, $E=0$ at walls:
+
+$\quad$Modes: $N = \frac{8 \pi L^3}{3 \lambda^3}$
+
+$\quad$Modes/$\lambda$: $\left| \frac{dN}{d \lambda} \right| = \frac{8 \pi L^3}{\lambda^4} = \frac{8 \pi V^3}{\lambda^4}$
+
+$\quad$Modes/$(\lambda \cdot V)$: $\rho_n(\lambda) = \frac{8 \pi}{\lambda^4}$
+
+\dotfill
+
+\textit{Classical Blackbody Formula via Equipartition Thm}
+
+E density/$\lambda$: $u(\lambda) = \frac{8 \pi}{\lambda^4} \langle E \rangle = \frac{8 \pi kT}{\lambda^4}$ \hfill $k = \SI{1.38e-23}{J/K}$
+
+Rayleigh-Jeans eq: $R(\lambda) = \frac{2 \pi k Tc}{\lambda^4}$
+
+UV catastrophe: $\rho_E(\lambda) = \int_0^\infty u(\lambda)\ d\lambda \to \infty$ \hfill (infinite E density)
+
+$\quad$Exptl obs: $\lambda \to 0 \implies u(\lambda) \to 0$ \hfill (Planck solves this issue)
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Planck's Blackbody Formula}
+
+Energy: $\langle E \rangle = \frac{h \nu}{\exp \left( \frac{h \nu}{kT} \right) - 1}$
+
+E density/$\lambda$: $u(\lambda) = \frac{8\pi}{\lambda^4} \langle E \rangle = \frac{8\pi}{\lambda^4} \frac{h\nu}{\exp \left( \frac{h \nu}{kT} \right) - 1}$ \hfill $c = h\nu$
+
+
+% new column
+\newpage
+
+
+E density/$\nu$: $u(\nu) = \frac{dE}{d\nu} = \frac{8\pi\nu^2}{c^3} \frac{h\nu}{\exp \left( \frac{h \nu}{kT} \right)-1}$
+
+Radiant intensity: $R(\lambda, T) = \frac{2 \pi h c^2}{ \lambda^5} \left( \frac{1}{\exp \left( \frac{hc}{\lambda kT} \right) - 1} \right)$
+
+$\quad \lambda \text{ small} \implies R(\lambda) = \frac{2\pi kTc}{\lambda^4}$ \hfill $\lambda \text{ large} \implies R(\lambda) \to 0$
+
+$\quad R \propto \frac{1}{\lambda^5 \left[ \exp \left( \frac{hc}{\lambda k T} \right) - 1 \right]}$
+
+\dotfill
+
+\textbf{Photoelectric Effect}
+
+$E_k = eV \implies$ electron energy depends on $\nu$ of light, NOT intensity
+
+$E_{k, \text{max}} = h \nu - \phi$ \hfill $\phi = hf_c$ (set $E_k = 0$)
+
+X-rays: $\lambda_{\text{min}} = \frac{1.2407 \times 10^{-6}}{V}$
+
+\dotfill
+
+\textbf{Compton Effect}
+
+$\undertilde{p}_{\gamma, 1} = \left[ \frac{h}{\lambda_1}, \frac{h}{\lambda_1}, 0, 0 \right]$ \hfill $\undertilde{p}_{\gamma, 2} = \left[ \frac{h}{\lambda_2}, \frac{h}{\lambda_2} \cos \theta, \frac{h}{\lambda_2} \sin \theta, 0 \right]$
+
+$\undertilde{p}_{e, 1} = \left[ m_e c, 0, 0, 0 \right]$ \hfill $\undertilde{p}_{e, 2} = \left[ \frac{E}{c}, p_e \cos \phi, -p_e \sin \phi, 0 \right]$
+
+$\lambda_2 - \lambda_1 = \underbrace{\frac{h}{m_e c}}_{\lambda_c} (1 - \cos \theta)$ \hfill $p_\gamma = \frac{E_\gamma}{c}$ \hfill $E_\gamma = h\nu = \frac{hc}{\lambda}$
+
+Compton shift: $\Delta \lambda = \lambda_c(1-\cos \theta)$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Rutherford Scattering}
+
+Impact parameter: $b = \frac{Q q_\alpha}{4 \pi \epsilon_0 m_\alpha v^2} \cot \frac{\theta}{2} = \frac{Qq_\alpha}{4\pi\epsilon_0 (2E_k)} \left( \frac{1+\cos\theta}{1-\cos\theta} \right)$
+
+Area: $\sigma = \pi b^2 = \pi \left( \frac{Q q_\alpha}{8 \pi \epsilon_0 E_k} \right)^2 \left( \frac{1+\cos\theta}{1-\cos\theta} \right)$
+
+Scattering fraction: $f = \sigma n L$ \hfill $nL:$ atoms per unit area
+
+$\quad$Atoms/unit V: $n = \frac{1000 \rho N_A}{M}$ \hfill $\rho$ (kg/m$^3$), $M$ (u)
+
+$A$ causing $\alpha$ to scatter at angle $\theta$: $\frac{d\theta}{d \Omega} = \left( \frac{ze^2}{8 \pi \epsilon_0 E} \right)^2 \frac{1}{\sin^4(\theta/2)}$
+
+$N = \left( \frac{A_d nL I_0}{r_d^2} \right) \left( \frac{Ze^2}{8 \pi \epsilon_0 E} \right)^2 \frac{1}{\sin^4(\theta/2)}$ \hfill $I_0$ is beam intensity
+
+\dotfill
+
+\textbf{Bohr Atom}
+
+$L = mvr = n\hbar$
+
+Quantized radius: $r_n = \frac{4 \pi \epsilon_0 n^2 \hbar^2}{m_e Z e^2}$  \hfill $m_e$ can be diff from e$^-$ mass
+
+Quantized energy: $E_n = -\frac{m_e Z^2e^4}{8\epsilon_0 h^2} \frac{1}{n^2}$
+
+$\quad$Ground state E for H: $E_1 = \SI{-13.6}{eV}$ \hfill $n=Z=1$ for H
+
+$\quad$E in $n$th orbit for H: $E_n = -\frac{E_0}{n^2} = - \frac{\SI{13.6}{eV}}{n^2}$
+
+Rydberg formula: $\frac{1}{\lambda_{mn}} = \underbrace{\frac{m_e Z^2 e^4}{8 \epsilon_0^2 h^3 c}}_{R_H} \left( \frac{1}{m^2} - \frac{1}{n^2} \right)$ \hfill $m < n$
+
+$\quad R_H = \SI{1.097e7}{m^{-1}}$ \hfill $m=1$ is ground state
+
+To $m=1$: Lyman (UV), $m=2$: Balmer (vis), $m=3$: Paschen (IR)
+
+
+\cleardoublepage
+
+
+\textbf{Wave-Particle Duality}
+
+Photon Momentum: $p = \frac{h}{\lambda}$ \hfill $\mathbf{p}_\gamma = \hbar \mathbf{k}$ \hfill $|\mathbf{k}| = \frac{2\pi}{\lambda}$
+
+de Broglie wavelenth: $\lambda = \frac{h}{p}$ \hfill $E = \hbar \omega$
+
+Non-relativistic: $\lambda = \frac{h}{\sqrt{2mE_k}}$ \hfill $E_k = \frac{3}{2} kT$
+
+Relativistic: $\lambda = \frac{\lambda_c}{\sqrt{2(E_k / E_0) + (E_k / E_0)^2}}$ \hfill $\lambda_c = \frac{h}{mc}$
+
+Ultra-relativistic ($E_k \gg E_0,\ E \approx pc$): $\lambda = \lambda_c \frac{E_0}{E_k} = \frac{hc}{E_k}$
+
+\dotfill
+
+\textbf{Wave Packets}
+
+$\psi_{xx} = \frac{1}{c^2} \psi_{tt}$ \hfill $\psi = \psi_1 + \psi_2 = 2A e^{i \bar{k} x} e^{-i \bar{\omega} t} \cos \left( \frac{1}{2} \Delta k x - \frac{1}{2} \Delta \omega t \right)$ 
+
+\hfill $\bar{k} = \frac{k_1 + k_2}{2},\ \bar{\omega} = \frac{\omega_1 + \omega_2}{2}$
+
+Phase velocity: $v_p = \frac{\omega}{k}$ \hfill Group velocity: $v_g = \frac{d\omega}{dk} = v_p + k \frac{dv_p}{dk}$
+
+\textit{Uncertainty relations:} $\Delta k \Delta x \approx 1,\ \Delta \omega \Delta t \approx 1$
+
+\textit{Heisenberg Uncertainty Principle}
+
+$\psi(x, t) = \int_0^\infty \int_0^\infty A(k, \omega) e^{i(kx-\omega t)}\ dk\ d\omega$ \hfill (2D Fourier transform)
+
+$\quad \sigma_x \sigma_k = \frac{1}{2},\ \Delta x = \sigma_x,\ \Delta p = \hbar \sigma_k$ \hfill $\Delta p \Delta x \geq \frac{\hbar}{2}$ \hfill $\Delta E \Delta t \geq \frac{\hbar}{2}$
+
+\textit{Particle in a Box of Length $L$}
+
+$(\Delta p)^2 = \langle p^2 \rangle - \langle p \rangle^2 \implies \Delta p \geq \frac{\hbar}{L}$
+
+$E_k = \frac{\langle p^2 \rangle}{2m},\ \langle p \rangle = 0 \implies \langle p^2 \rangle = (\Delta p)^2 \implies \langle E_k \rangle \geq \frac{(\Delta p)^2}{2m} = \frac{\hbar^2}{2mL}$
+
+\dotfill
+
+\textbf{Single Slit Diffraction}
+
+$\psi(\theta) = A \cos (kr - \omega t)\ \text{sinc} \left( \frac{\pi}{\lambda} a \sin\theta \right)$ \hfill $I = I_0\ \text{sinc}^2 \left( \frac{\pi}{\lambda} a \sin\theta \right)$
+
+At min: $\Delta L = a \sin \theta = n \lambda$ \hfill $n = \pm 1, \pm 2, ...$ (NOT 0)
+
+$\theta \approx \frac{\Delta p_y}{p_x},\ \theta \ll 1$ \hfill $\Delta p_y \geq \frac{\hbar}{2 \Delta x},\quad \Delta x = \frac{a}{2},\quad p_x = \frac{h}{\lambda}$
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{Figures/single_slit_intensity.jpeg}
+\end{figure}
+
+\vspace{-.5em}
+\dotfill
+
+\begin{wrapfigure}[7]{r}{0.35\columnwidth}
+    \includegraphics[height=0.35\columnwidth]{Figures/double_slit.png}
+\end{wrapfigure}
+
+\textbf{Double Slit Diffraction}
+
+\textit{Narrow Slit}
+
+$\psi(\theta) = 2A \cos(\frac{\pi d}{\lambda} \sin \theta) \cos(kr - \omega t)$
+
+$I = I_0 \cos^2 \left( \frac{\pi d}{\lambda} \sin \theta \right)$
+
+For $m=0, \pm 1, \pm 2, ...$ \vspace{-.5em}
+\begin{itemize}
+    \item Max $I$: $d \sin \theta = m\lambda$
+    \item Min $I$: $d \sin \theta = \left( m + \frac{1}{2} \right) \lambda$
+\end{itemize}
+
+
+\newpage
+
+
+\textbf{Schr\"{o}dinger Equation}
+
+$i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x) \psi(x, t)$ \hfill $\frac{\partial^2 \psi}{\partial t^2} = c^2 \nabla^2 \psi$
+
+$\psi(x, t) = A e^{i(kx-\omega t)}$ \hfill $\int_{-\infty}^\infty |\psi|^2\ dx = 1,\quad |\psi|^2 = \psi^* \psi$
+
+$\psi(x, t) = \Psi(x) \phi(t)$
+
+$\quad \implies \phi(t) = e^{-iEt/\hbar}$
+
+$\quad \implies -\frac{\hbar^2}{2m} \frac{d^2 \Psi}{dx^2} + V(x) \Psi(x) = E \Psi(x)$ \hfill (time-indep Schr\"o eq)
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Infinite Square Well}
+
+$-\frac{\hbar^2}{2m} \frac{d^2 \Psi}{dx^2} = E \Psi(x) \implies \frac{d^2 \Psi}{dx^2} = - \underbrace{\frac{2mE}{\hbar^2}}_{k^2} \Psi(x)$
+
+$\Psi(0) = \Psi(L) = 0,\quad V(x) = 0,\ 0 < x < L,\quad \int_0^L |\psi(x)|^2\ dx = 1$
+
+$\implies \Psi(x) = \sqrt{\frac{2}{L}} \sin(kx) \implies \Psi_n(x) = \sqrt{\frac{2}{L}} \sin\left( \frac{n\pi x}{L} \right),\ n \in \mathbb{Z}$
+
+$\implies k = \frac{n\pi}{L} \implies p = \hbar k = \frac{n\hbar \pi}{L} \implies E_n = \frac{p_n^2}{2m} = \frac{n^2 \hbar^2 \pi^2}{2mL^2}$
+
+$\psi(x,t) = \sqrt{\frac{2}{L}} \sin \left( \frac{n\pi x}{L} \right) e^{-i\omega_n t} = \sqrt{\frac{2}{L}} \sin \left( \frac{n\pi x}{L} \right) e^{-iE_n t / \hbar}$
+
+\dotfill
+
+\textit{Finite Potential Well}
+
+Inside well: $-\frac{\hbar^2}{2m} \frac{d^2 \Psi}{dx^2} = E \Psi(x)$
+
+$\quad \Psi(x) = A_1 e^{ikx} + A_2 e^{-ikx},\quad k = \frac{\sqrt{2mE}}{\hbar}$
+
+Outside well: $-\frac{\hbar^2}{2m} \frac{d^2 \Psi}{dx^2} = (E-V_0) \Psi(x)$
+
+$\quad \Psi(x) = B_1 e^{\alpha x} + B_2 e^{-\alpha x},\quad \alpha = \frac{\sqrt{2m(V_0 - E)}}{\hbar}$
+
+Well of length $x \in [-a, a]$ with potential $V_0$:
+
+$\quad B_1 = 0$ for $x > a$ and $B_2 = 0$ for $x < -a$
+
+$\quad$At $x=a$, $A_1 e^{ika} + A_2 e^{-ika} = B_2 e^{-\alpha a}$
+
+$\quad$At $x=-a$, $A_1 e^{-ika} + A_2 e^{ika} = B_1 e^{-\alpha a}$
+
+$\quad \implies \tan ka = \frac{\alpha}{k},\ -\cot ka = \frac{\alpha}{k}$
+
+\dotfill
+
+\textbf{Quantum Mechanics}
+
+Expectation: $\langle x \rangle = \int_{-\infty}^\infty \psi^*(x, t) x \psi(x, t)\ dx$
+
+Momentum operator: $\hat{p} = \frac{\hbar}{i} \frac{\partial}{\partial x}$ \hfill $\langle p \rangle = \int_{-\infty}^\infty \psi^* \left( \frac{\hbar}{i} \frac{\partial}{\partial x} \right) \psi\ dx$
+
+Hamiltonian operator: $\hat{H} = \hat{T} + \hat{V} = \frac{\hat{p}^2}{2m} + \hat{V}$
+
+$\quad \implies \hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x) \implies \hat{H} \Psi(x) = E \Psi(x)$
+
+\dotfill
+
+\textit{Quantum Simple Harmonic Oscillator}
+
+$V(x) = \frac{1}{2} kx^2 = \frac{1}{2} \underbrace{m \omega^2}_{k} x^2$ \hfill $\hat{a}_\pm = \frac{1}{\sqrt{2\hbar m \omega}} (\mp i\hat{p} + m\omega x)$
+
+$[A, B] = AB - BA$ \hfill $[x, \hat{p}] = i \hbar$ \hfill $[\hat{a}_{-}, \hat{a}_+] = 1$
+
+
+% new page
+\cleardoublepage
+
+$[A, B] = 0 \implies$ $A$ and $B$ can be measured simultaneously.
+
+$\hat{H} = \hbar \omega \left(\hat{a}_+ \hat{a}_{-} + \frac{1}{2} \right) = \hbar \omega \left(\hat{a}_{-} \hat{a}_{+} - \frac{1}{2} \right)$
+
+Raising operator: $\hat{H} (\hat{a}_+ \Psi) = (E + \hbar \omega) (\hat{a} + \Psi)$
+
+Lowering operator: $\hat{H} (\hat{a}_{-} \Psi) = (E - \hbar \omega) (\hat{a}_{-} \Psi)$
+
+Ground state: $\hat{a}_{-} \Psi_0(x) = 0$
+
+$E_n = \left(n + \frac{1}{2} \right) \hbar \omega$
+
+$\Psi_n(x) = N_n e^{-\beta^2x^2/2} H_n(\beta x)$ \hfill $\beta = \sqrt{\frac{m\omega}{\hbar}}$
+
+Physicist's Hermite polynomial: $H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2}$
+
+$\quad H_0(x) = 1,\ H_1(x) = 2x,\ H_2(x) = 4x^2 - 2,\ H_3(x) = 8x^3-12x$
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Reflection \& Transmission}
+
+Step Potential of $V_0 < E$
+
+$x < 0: \frac{d^2 \Psi}{dx^2} = -k_1^2 \psi(x), \quad k_1 = \frac{\sqrt{2mE}}{\hbar}$
+
+$x > 0: \frac{d^2 \Psi}{dx^2} = -k_2^2 \psi(x), \quad k_2 = \frac{\sqrt{2m(E-V_0)}}{\hbar}$
+
+For $x < 0: \Psi_1(x) = \underbrace{A e^{ik_1 x}}_{L \to R} + \underbrace{Be^{-ik_1 x}}_{R \to L}$
+
+For $x > 0: \Psi_2(x) = Ce^{ik_2 x}$
+
+BC: $A + B = C, \quad k_1 A - k_1 B = k_2 C$
+
+$R = \frac{|B|^2}{|A|^2} = \frac{(k_1 - k_2)^2}{(k_1 + k_2)^2}$ \hfill $T = \frac{k_2}{k_1} \frac{|C|^2}{|A|^2} = \frac{4k_1 k_2}{(k_1 + k_2)^2}$ \hfill $R + T = 1$
+
+\dotfill
+
+\textit{Quantum Tunneling}
+
+Barrier potential of $V_0 > E$ from $x \in [0, L]$.
+
+$x < 0: \Psi_1(x) = A e^{ik_1 x} + B e^{-i k_1 x}$
+
+$0 < x < a: \Psi_2(x) = Ce^{-\alpha x} + De^{\alpha x}$
+
+$x > a: \Psi_3(x) =  Fe^{ik_1 x} + Ge^{-ik_1 x}$
+
+$T(L, E) = \frac{1}{\cosh^2(\beta L) + (\gamma/2)^2 \sinh^2(\beta L)} \approx 16\frac{E}{V_0} \left(1 - \frac{E}{V_0} \right) e^{-2\beta L}$
+
+$\quad \gamma = \frac{\beta}{k} - \frac{k}{\beta}, \quad k = \frac{\sqrt{2mE}}{\hbar}$ \hfill $\beta = \frac{\sqrt{2m (V_0 - E)}}{\hbar}$
+
+\dotfill
+
+\textit{Young's Double Slit Experiment}
+
+$\frac{d^2 \Psi}{dx^2} = -k^2 \Psi(x) \implies \Psi(x) = Ae^{ikx}$
+
+At screen: $\Psi(x) = A(e^{ikx} + e^{ik(x+\Delta x)}) = 2A e^{ikx} e^{ik\Delta x / 2} \cos \left( \frac{k\Delta x}{2} \right)$
+
+$|\Psi(x)|^2 = 4|A|^2 \cos^2 \left( \frac{k\Delta x}{2} \right)$
+
+\dotfill
+
+\textit{Polarized Light}
+
+Consider $\rightarrow$ filter, \SI{45}{\degree} filter, and $\uparrow$ filter, where $\rightarrow$ $\perp$ $\uparrow$ filter.
+
+$|\Psi_0|^2 = 0.5 \bra{\rightarrow} \ket{\rightarrow} + 0.5 \bra{\uparrow} \ket{\uparrow}$
+
+$|\Psi_1|^2 = 0.5 \bra{\rightarrow} \ket{\rightarrow} \implies \Psi_1 = \frac{1}{\sqrt{2}} \ket{\rightarrow}$
+
+% new column
+\newpage
+
+We're at \SI{45}{\degree} filter (think $\cos \theta \ket{\rightarrow} + \sin \theta \ket{\uparrow}$):
+
+$\ket{\SI{45}{\degree}} = \frac{1}{\sqrt{2}} (\ket{\rightarrow} + \ket{\uparrow})$ \hfill $\ket{\SI{-45}{\degree}} = \frac{1}{\sqrt{2}} (\ket{\rightarrow} - \ket{\uparrow})$
+
+$\implies \ket{\rightarrow} = \frac{1}{\sqrt{2}} (\ket{\SI{45}{\degree}} + \ket{\SI{-45}{\degree}})$ \hfill $\ket{\uparrow} = \frac{1}{\sqrt{2}} (\ket{\SI{45}{\degree}} - \ket{\SI{-45}{\degree}})$
+
+$\implies \Psi_1 = \frac{1}{\sqrt{2}} \ket{\rightarrow} = \frac{1}{2} (\ket{\SI{45}{\degree}} + \ket{\SI{-45}{\degree}}) \implies \Psi_2 = \frac{1}{2} \ket{\SI{45}{\degree}}$
+
+$\Psi_2 = \frac{1}{2\sqrt{2}} (\ket{\rightarrow} + \ket{\uparrow})$
+
+$\Psi_3 = \frac{1}{2\sqrt{2}} \ket{\uparrow} \implies |\Psi_3|^2 = \frac{1}{8} \bra{\uparrow} \ket{\uparrow} = \frac{|\Psi_0|^2}{8}$
+
+\dotfill
+
+\textbf{Atomic Physics}
+
+3D Sch\"odinger eq: $-\frac{\hbar^2}{2m} \nabla^2 \Psi(\mathbf{r}, t) + V(\mathbf{r}, t) \Psi(\mathbf{r}, t) = i\hbar \frac{\partial \Psi(\mathbf{r}, t)}{\partial t}$
+
+\textit{Infinite Square Well}
+
+$\Phi(\mathbf{r}) = \sqrt{\frac{8}{L_x L_y L_z}} \sin\left(\frac{n_x\pi x}{L_x}\right) \sin\left(\frac{n_y\pi y}{L_y}\right) \sin\left(\frac{n_y\pi y}{L_y}\right)$
+
+$E_{n_x n_y n_z} = \frac{h^2}{8m} \left( \frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2} \right)$ \hfill $\phi(t) = e^{-iEt/\hbar}$
+
+Ground state when $n_x = n_y = n_z = 1$. If 2 or more dimensions of box equal, then the excited states are degenerate.
+
+If $(L_x > L_y) \land (L_x > L_Z)$, first excited state is $(n_x, n_y, n_z) = (2, 1, 1)$.
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Schr\"odinger Equation in Spherical Coordinates for Hydrogen Atom}
+
+Separation of variables: $\Psi(r, \theta, \phi) = R(r) Y(\theta, \phi) = R(r) \Theta(\theta) \Phi(\phi)$
+
+$Y = Y(\theta, \phi)$ is spherically harmonic
+\vspace{-2em}
+
+\begin{equation*}
+    \begin{split}
+        \frac{1}{R} \frac{d}{dr} \left( r^2 \frac{dR}{dr} \right) &+ \frac{2mr^2}{\hbar^2} [E - V(r)] \\
+        &= -\frac{1}{\sin \theta} \left[ \frac{\sin \theta}{\Theta} \frac{d}{d\theta} \left( \sin \theta \frac{d\Theta}{d\theta} + \frac{1}{\Phi} \frac{d^2\Phi}{d\phi^2} \right) \right] = \underbrace{l(l+1)}_{\text{const}}
+    \end{split}
+\end{equation*} \vspace{-1.5em}
+
+\vspace{-.5em}
+\dotfill
+
+$-\frac{\sin \theta}{\Theta} \frac{d}{d\theta} \left( \sin \theta \frac{d\Theta}{d\theta} \right) - l(l+1) \sin^2 \theta = \frac{1}{\Phi} \frac{d^2 \Phi}{d\phi^2} = \underbrace{-m^2}_{\text{const}}$
+
+$\quad \Phi(\phi) = e^{im\phi}, \quad m \in \mathbb{Z}$
+
+$\quad \Theta(\theta) = N_{lm} P_m^l(\cos \theta), \quad P_m^l(x) = (1-x^2)^{m/2} \frac{d^l P_m(x)}{dx^l}$
+
+$\quad \implies l \in \mathbb{Z},\ |m| \leq l$
+
+\vspace{-.5em}
+\dotfill
+
+$\hat{E}_k \Psi + V \Psi = E\Psi \implies \left( \frac{\hat{p}_r^2}{2m} + \frac{\hat{L}^2}{2mr^2} \right) \Psi + V\Psi = E\Psi$
+
+$\quad \hat{p}_r^2 = -\hbar^2 \frac{1}{r^2} \frac{\partial}{\partial r} \left(r\frac{\partial}{\partial r}\right)$
+
+$\quad \hat{L}^2 = -\hbar^2 \frac{1}{\sin^2\theta} \left[ \sin \theta \frac{\partial}{\partial \theta} \left(\sin \theta \frac{\partial}{\partial \theta}\right) + \frac{\partial^2}{\partial \phi^2} \right]$
+
+$\implies \hat{L}^2 Y_{lm}(\theta, \phi) = l(l+1)\hbar^2 Y_{lm}(\theta, \phi)$
+
+$\implies \hat{L}_z^2 Y(\theta, \phi) = m^2 \hbar^2 Y(\theta, \phi)$
+
+$|\mathbf{L}| = \sqrt{l(l+1)} \hbar,\ l \in \mathbb{N}$ \hfill ($L$ quantized)
+
+$L_z = m\hbar = \sqrt{l(l+1)} \hbar \cos \theta$ \hfill $m = 0, \pm 1, \dots, \pm l$
+
+$\theta = \cos^{-1} \left( \frac{m}{\sqrt{l(l+1)}} \right)$ \hfill $\theta_{\min}$ if $m = l$; $2l+1$ values for $L_z$
+
+\cleardoublepage
+
+$-\frac{\hbar^2}{2mr^2} \frac{d}{dr} \left(r^2 \frac{dR(r)}{dr}\right) + \left[ -\frac{e^2}{4 \pi \epsilon_0 r} + \frac{\hbar^2 l(l+1)}{2mr^2} \right] R(r) = ER(r)$
+
+$\implies E_n = -\frac{m_e}{2} \left( \frac{e^2}{4\pi\epsilon_0\hbar} \right)^2 \frac{1}{n^2} = -\frac{E_0}{n^2}$ \hfill $E_0 = \SI{13.6}{eV}$
+
+\dotfill
+
+\textit{Quantum Numbers}
+
+\vspace{-.5em}
+\begin{itemize}
+    \item $n$: principal quantum number (QN); dets E lvl of $e^-$; $n \in \mathbb{N} \setminus \{0\}$
+    \item $l$: angular momentum QN; gives $|\mathbf{L}|$; $l = 0, 1, \dots, (n-1)$
+    \subitem--- $l=0:\ s,$ \hfill $l=1:\ p,$ \hfill $l=2:\ d,$ \hfill $l=3:\ f$
+    \item $m$: angular momentum projection QN; $m = 0, \pm 1, \dots, \pm l$
+    \subitem--- aka magnetic QN ($m_l$)
+    \item $s$: spin QN; 1/2 for fermions
+    \item $m_s$: spin projection QN; $m_s = \pm 1/2$
+\end{itemize} \vspace{-.5em}
+
+For $l=0$: $P(r)\ dr = |\psi_{n00}|^2 4\pi r^2\ dr$
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Orbital Angular Momentum}
+
+$\mu = IA = \frac{1}{2} qvr$ \hfill $I = \frac{q}{T} = \frac{qv}{2\pi r}$ \hfill $A = \pi r^2$
+
+$\mu = \frac{e}{2m_e} L = \mu_B \sqrt{l(l+1)}$ \hfill $\mu_B = \frac{e\hbar}{2m_e} = \SI{9.27e-24}{J/T}$
+
+$\boldsymbol \mu = -\frac{e}{2m_e} \mathbf{L}$
+
+\dotfill
+
+\textit{Stern-Gerlach Expt \& Spin-Orbit Coupling}
+
+$\boldsymbol \mu = -\frac{g_L \mu_B}{\hbar} \mathbf L = \frac{e}{m_e} \mathbf S$ \hfill $\mu_s = \frac{e}{2m_e} S$
+
+$\mathbf F = -\nabla U = -\nabla(-\mathbf u \cdot \mathbf B) \implies F_z = \mu_z \frac{dB}{dz} = -\mu_B m_l g_L \frac{dB}{dz}$
+
+\vspace{-.5em} \begin{itemize}
+    \item Expected 1 line on screen but saw 2 lines.
+    \item 1 line = uniform, constant field.
+    \item 2 lines = non-uniform field.
+\end{itemize} \vspace{-.5em}
+
+% \vspace{-.5em}
+% \dotfill
+
+\textit{Spin angular momentum}: $|\mathbf{S}| = \sqrt{s(s+1)} \hbar$ \hfill $\mu_z = -g \mu_B m_s$
+
+$\quad S_z = m_s \hbar,\ m_s = \pm\frac{1}{2}$ for e$^-$ \hfill $\mu_z = -\frac{e}{2m_e} = \pm \mu_B \hbar$
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Zeeman Effect}
+
+$U = -\mu_z B = -(\underbrace{-\mu_B m_l}_{\mu_z})B = m_l \mu_B B$ \hfill $\mu_z = \mu \cos \theta$
+
+$\quad$Splitting of energy lvls by $B_{\text{ext}}$. Larger $B$ means larger splitting.
+
+$\text{\# of splits} = 2l+1$ \hfill E.g., $l=1 \to l=0$ has 3 lines.
+
+Pauli exclusion principle: no two e$^-$ can be in exactly the same physical state at the exact same time.
+
+% $N_{e^-} |_n = \sum_{l=0}^{n-1} (2l+1)(2)$
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Total Angular Momentum}
+
+$\mathbf J = \mathbf L + \mathbf S$ \hfill $j = l+s$ or $j = l + m_s$
+
+$J = \sqrt{j(j+1)} \hbar$ \hfill $J_z = m_j \hbar$ \hfill \# states of $m = 2j+1$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Nuclear Physics}
+
+\textit{Hyperfine Splitting}
+
+$\mathbf{F} = \mathbf{I} + \mathbf{J}$ \hfill $\mathbf{I}:$ nuclear ang mom,$\quad$ $\mathbf{J}:$ e$^-$ ang mom
+
+$F = \sqrt{f(f+1)} \hbar,\quad f = |i-j|, \dots, i+j$
+
+$\Delta E = g_M m_l \mu_N B_e$ \hfill $\mu_n = \frac{e\hbar}{2m_p}, \quad$nuclear magneton
+
+
+\newpage
+
+
+$\alpha:\ ^A_Z X \to^{A-4}_{Z-2} Y + ^4_2\alpha$ (due to quantum tunelling)
+
+$\beta$ decay due to weak force
+
+$\quad e^{-}$ emission: $^A_Z X \to ^A_{Z+1} Y + ^0_{-1} e^- + \overline{\nu}_e$
+
+$\quad p^+$ emission: $^A_Z X \to ^A_{Z-1} Y + ^0_{1} e^+ + \nu_e$
+
+$\quad e^-$ capture: $^A_Z X + ^0_{-1} e^- \to ^A_{Z-1} Y + \nu_e$
+
+$\gamma:\ ^A_Z X^* \to ^A_Z X + \gamma$
+
+Atomic radius: $R = R_0 A^{1/3}, \quad R_0 = \SI{1.2}{fm}, \quad A \equiv$ \# of nucleons
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Binding Energy and Radioactivity}
+
+$E_b = \underbrace{(Z m_p + N m_n - M_A)}_{\Delta m} c^2$, \hfill $BEN = \frac{E_b}{A}$ ,\hfill $A$ is atomic \#
+
+Fe-56 is most stable atomic nucleus, \hfill stable $N = \{ 20, 28, 50, 82, 126 \}$
+
+$A < 56$ releases $E$ when extra nucleon added, \textit{fusion} more likely
+
+$A > 56$ requires $E$ when extra nucleon added, \textit{fission} more likely
+
+$\frac{dN}{dt} = -\lambda N \implies N = N_0 e^{-\lambda t},\ N = N_0 (2)^{-t/t_{1/2}}$ \hfill $t_{1/2} = \frac{\ln 2}{\lambda}$
+
+For decay series where $b \to a$: $\frac{dN_a}{dt} = -\lambda_a N_a + \lambda_b N_b$
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Strong Force}
+
+At short range, Coulomb potential dominates: $U_c \propto 1/r$
+
+At $O(\SI{1e-15}{m})$, strong force dominates: $U_s \propto -1/r^m,\ m > 1$
+
+$\quad$Force transmitted via $\pi$ meson
+
+At short range, repulsive $U$ dominates: $U_{\text{exclusion}} \propto 1/r^n,\ n > m$
+
+$\quad$As radius $\downarrow$, $E$ lvls $\uparrow$ spacing (think Pauli exclusion)
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Quantum Mechanics \& Relativity}
+
+\textit{Klein-Gordon Equation}
+
+$\frac{\partial^2 \phi}{\partial t^2} - \nabla^2 \phi + m^2 \phi = 0$
+
+4-vector gradient: $\partial_\mu = \left( \frac{\partial}{\partial t}, \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right), \quad \partial^\mu = \partial_\mu^T$
+
+$(\partial_\mu \partial^\mu + m^2) \phi(\mathbf x, t) = 0 \equiv (\square^2 + m^2) \phi(\mathbf x, t)$ \hfill $\square^2$ is d'Alembertian
+
+Plane wave soln: $\phi(\mathbf x, t) = Ce^{-iEt+i\mathbf p \mathbf x} \implies (-E + p^2 + m^2) \phi = 0 \implies E = \pm \sqrt{p^2+m^2}$ \hfill issue of negative $E$
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Dirac Equation}
+
+$i \frac{\partial \psi}{\partial t} = (-i \boldsymbol \alpha \cdot \nabla \beta m) \psi(\mathbf x, t)$ or $E \psi (\boldsymbol \alpha \cdot \mathbf p + \beta m) \psi$
+
+$\implies -\frac{\partial^2 \psi}{\partial t^2} = (-\nabla^2 + m^2) \psi(x)$ or $E^2 \psi = (\mathbf p^2 + m^2) \psi$
+
+\begin{itemize}
+    \item $\psi$ is now a 4-component vector called a spinor.
+    \item Solutons to Dirac eq have positive definite probability density.
+    \item Dirac: spin-1/2 particles; Klein-Gordon: spin-0 particles.
+    \item Dirac says $E$ lvls symmetric about $E=0$. To prevent +ve $E$ e$^-$ going to -ve $E$ states, all -ve $E$ states are filled (Pauli exclusion) $\implies$ vaccum is sea of $E < 0$ e$^-$.
+    \item Anti-particles due to absence of e$^-$ w/ $E < 0$ (i.e., a hole).
+\end{itemize} \vspace{-.5em}
+
+Feynman interpretation: -ve $E$ particles propagating back in time $\equiv$ +ve $E$ particles propagating forward in time.
+
+
+\end{document}

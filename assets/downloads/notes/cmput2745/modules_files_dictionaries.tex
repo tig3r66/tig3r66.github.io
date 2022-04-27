@@ -1,0 +1,369 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Modules, File I/O, Dictionaries, and other bits}
+\author{Eddie Guo}
+\date{September 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Topics Covered
+\section{Introduction}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item Map fn
+            \item Import modules
+            \item Reading/writing to files
+            \item Dictionaries
+        \end{enumerate}
+    \end{multicols}
+
+% map()
+\subsection{\texttt{map()}}
+    \begin{itemize}
+        \item Unpacks elements of map obj \& assigns fn to indiv vars
+        \item Ex: split string into list then apply map fn on list
+    \end{itemize}
+
+% Modules
+\section{Modules}
+% Intro to modules
+\subsection{Introduction to Modules}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Module: file that contains Python fn defs
+                \begin{itemize}
+                    \item Another Python program will import module \& call fns
+                    \item Allows fns to be reused
+                    \item Organization: related fns grouped in one file
+                \end{itemize}
+            \item Modules can also contain objs that can be accessed from other files (generally constants)
+            \item Rules for module names:
+                \begin{itemize}
+                    \item Filename should end in .py
+                    \item Can't be same as Python keyword
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+\vspace{-1em}
+\begin{lstlisting}
+    # use any fn in module
+    import module_name
+    module_name.fn1() # use dot notation when calling fn
+    
+    # import specific fns in module
+    from module_name import fn1, fn2
+    fn1() # call fn w/o ref to module
+\end{lstlisting}
+
+% __name__ == "__main__"
+\subsection{\texttt{\_\_name\_\_ == "\_\_main\_\_"}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Can include additional code outside fn defs in module file
+                \begin{itemize}
+                    \item Use \texttt{\_\_name\_\_ == "\_\_main\_\_"}
+                    \item Only code in main program will run
+                \end{itemize}
+            \item When module file run, it's main program
+            \item Imported modules are NOT in main program
+        \end{itemize}
+    \end{multicols}
+\vspace{-1em}
+\begin{lstlisting}
+    # program 1
+    def area(width, length):
+        return width*length
+
+    if __name__ == "__main__":
+        print(area(3,5))
+    15 # output 1
+    
+    # program 2
+    import rectangle
+    
+    if __name__ == "__main__":
+        print(rectangle.area(70,100))
+    7000 # output 2; notice how it doesn't print out output 1
+\end{lstlisting}
+
+% Standard Library Modules
+\subsection{Standard Library Modules}
+    Useful modules:
+    \vspace{-1em}
+        \begin{multicols}{3}
+            \begin{itemize}
+                \item time
+                \item sys
+                \item os
+                \item math
+                \item random
+                \item pickle
+            \end{itemize}
+        \end{multicols}
+
+% math Module
+\subsubsection{\texttt{math} Module}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Rounding fns
+                \begin{itemize}
+                    \item math.ceil(x), math.floor(x), math.trunc(x)
+                \end{itemize}
+            \item Trigonometric fns
+                \begin{itemize}
+                    \item math.cos(x), math.sin(x), math.tan(x)
+                    \item math.acos(x), math.asin(x), math.atan(x)
+                    \item math.degrees(x), math.radians(x)
+                \end{itemize}
+            \item Constants
+                \begin{itemize}
+                    \item math.pi, math.e
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+% File I/O
+\section{File I/O}
+% Files for Input/Output
+\subsection{Files for Input/Output}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item So far, got user input via \texttt{input()}
+            \item Some problems req lots of data, or same data to be reused
+                \begin{itemize}
+                    \item Manually entering data can be tedious
+                    \item Instead, save data to file
+                    \item Allows program to retain data btw executions
+                \end{itemize}
+            \item In gen, 2 types of files:
+                \begin{itemize}
+                    \item Binary
+                    \item Text (human readable)
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+% Using Files
+\subsection{Using Files}
+    \begin{enumerate}
+        \item Open connection to file $\rightarrow$ create file obj
+        \item Read data from file or write data to file
+        \item Close connection to file (else, data may not be saved)
+    \end{enumerate}
+
+% Open File
+\subsubsection{Open File}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Read only (default) $\rightarrow$ "r"
+            \item Read \& write $\rightarrow$ "r+"
+            \item Write only $\rightarrow$ "w"
+            \item Append to end of file $\rightarrow$ "a"
+            \item Append a "b" to above modules for binary file (ex: "rb", "t" for text (default)
+        \end{itemize}
+    \end{multicols}
+\vspace{-1em}
+\begin{lstlisting}
+    student_data = open('studentData.txt', 'r') # can also specifiy path in place of 'studentData.txt'
+\end{lstlisting}
+
+% os.path: Check if file exists
+\subsubsection{\texttt{os.path}: Check if File Exists}
+    \begin{itemize}
+        \item B4 trying to open file, may wanna check if files exists
+        \item Use \texttt{os.path} module: \hl{\texttt{os.path.isfile(fname)} returns True if \texttt{fname} exists}
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+    import os.path
+    
+    fname = input('Enter a filename: ')
+    while not os.path.isfile(fname):
+        print('File does not exist')
+        fname = input('Enter a filename: ')
+    
+    fin = open(fname, 'r')
+\end{lstlisting}
+
+% Methods to read from file
+\subsubsection{Methods to Read from File}
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item \texttt{file\_object\_name.read(size)}
+                \begin{itemize}
+                    \item Reads contents of file up to \texttt{size} chars (text file)
+                    \item If \texttt{size} not specified, will read to end of file
+                    \item Contents returned as single string, including any \texttt{\textbackslash n}
+                \end{itemize}
+            \item \texttt{file\_object\_name.readline()}
+                \begin{itemize}
+                    \item Reads single line
+                    \item Line returned as string, including \texttt{\textbackslash n} if present
+                \end{itemize}
+            \item \texttt{file\_object\_name.readlines()}
+                \begin{itemize}
+                    \item Reads all lines in file
+                    \item Lines returned as list of strings, including \texttt{\textbackslash n} if present
+                \end{itemize}
+        \end{enumerate}
+    \end{multicols}
+\vspace{-1em}
+\begin{lstlisting}
+    # Example 1: views file as list
+    infile = open('names.txt', 'r')
+    for line in infile:
+        line = line.strip('\n')
+        print(line)
+    infile.close()
+
+    # Example 2: reads file into list
+    infile = open('names.txt', 'r')
+    alist = infile.read().splitlines() # splitlines() splits lines at line boundaries
+    # splitlines(True) includes line breaks in resulting list
+    for line in alist:
+        print(line)
+    infile.close
+
+    # Both examples produce identical output
+\end{lstlisting}
+
+% Writing to File
+\subsubsection{Writing to File: \texttt{file\_object\_namewrite(string)}}
+    \begin{itemize}
+        \item Used to write data to file, or append data to file, depending on mode file was opened in
+        \item \hl{Argument must be single string $\rightarrow$ use \texttt{str()} to convert (ex: if you're trying to input int, must use \texttt{file.write(str(your\_int))}}
+    \end{itemize}
+
+% Close File
+\subsubsection{Close File}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \hl{Always close any file you open!}
+                \begin{itemize}
+                    \item Write: closing file flushes buffer
+                    \item Read: Hogs resources if you don't close
+                \end{itemize}
+            \item Either use \texttt{close()} or \hl{\textbf{context manager}} to automatically close file when finished using (more Pythonic)
+        \end{itemize}
+    \end{multicols}
+\vspace{-1em}
+\begin{lstlisting}
+    # Ex: context manager -> USE THIS INSTEAD OF close()
+    with open('studentData.txt', 'r') as fin:
+        my_data = fin.read()
+\end{lstlisting}
+
+
+% Dictionaries
+\section{Dictionaries}
+% Built-in type: Dictionary
+\subsection{Built-In Type: Dictionary}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Dictionaries are collections of associated pairs of items
+            \item Dictionaries are mutable
+            \item Elements in dictionaries do NOT have order
+            \item Pair consists of key \& value \{key: value\}
+            \item Keys must be unique \& immutable
+            \item Value can be non-unique \& mutable or immutable
+        \end{itemize}
+    \end{multicols}
+\vspace{-1em}
+\begin{lstlisting}
+    cities = {
+        'AB': ['Edmonton', 'Calgary'],
+        'BC': ['Victoria', 'Vancouver', 'Richmond'],
+        'ON': 'Toronto'
+    }
+\end{lstlisting}
+\vspace{-1em}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Values accessed via keys: \texttt{cities['AB']}
+            \item New pairs can be added
+                \begin{itemize}
+                    \item \texttt{cities['QC']='Montreal'}
+                \end{itemize}
+            \item Existing values can be changed:
+                \begin{itemize}
+                    \item \texttt{cities['QC']='Quebec'}
+                \end{itemize}
+            \item Existing pairs can be deleted:
+                \begin{itemize}
+                    \item \texttt{del cities['QC']}
+                \end{itemize}
+            \item \texttt{list(dict\_name)} returns list of keys of dictionary
+            \item \texttt{dict\_name.keys()} returns iterable keys of dictionary
+            \item \texttt{dict\_name.values()} returns iterable values of dictionary
+            \item \texttt{dict\_name.items()} returns iterable pairs (key, value) of dictionary
+            \item \texttt{in} returns \texttt{True} or \texttt{False} depending on whether key exists
+        \end{itemize}
+    \end{multicols}
+
+
+\end{document}

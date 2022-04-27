@@ -1,0 +1,166 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, mathtools, multicol, pgfplots}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+
+\begin{document}
+
+\small
+
+\textbf{Waves}
+
+Wave number: $k = \frac{2\pi}{\lambda}$
+
+Phase velocity: $c = f\lambda = \frac{\omega}{k}$ \hspace{5em} $\left( t = \frac{\lambda}{c} = \frac{1}{f} \right)$
+
+Wave on string: $c = \sqrt{\frac{T}{\mu}} = \sqrt{\frac{TL}{M}}$ \hfill $\mu = \frac{M}{L}$ (linear mass density)
+
+Wave equation: $\frac{\partial^2 \psi}{\partial x^2} = \frac{1}{c^2} \frac{\partial^2 \psi}{\partial t^2}$
+
+Transverse position: $\psi_\pm(x, t) = A \cos(kx \mp \omega t + \phi)$
+
+Bulk modulus (Pa, N/m$^2$): $B = -\frac{\Delta P}{\Delta V/V_0}$ \hfill $\rho = \frac{m}{V}$ \hfill $P = \frac{F}{A}$
+
+Lower $B \to$ higher compressibility (B usually +ve)
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Acoustic Waves}
+
+$\frac{\partial^2 P}{\partial x^2} = \frac{\rho}{B} \frac{\partial^2 P}{\partial t^2}$ \hfill $p(x, t) = -B \frac{\partial \psi}{\partial x}$ \hfill $c = \sqrt{\frac{B}{\rho}}  = \frac{\omega}{k} = f \lambda$
+
+$p(x, t) = B k A_\psi \sin(kx-\omega t + \phi)$
+
+$Bk = \frac{\omega^2 \rho}{k} = c \omega \rho \Rightarrow Bk A_\psi = c \rho \omega A_\psi$ \hfill $A_\psi$ is displacement $A$
+
+Acoustic amplitude: $A_p = B k A_\psi = c \rho \omega A_\psi$ \hfill $\Rightarrow$ \hfill $A_\psi = \frac{A_p}{Bk} = \frac{A_p}{c \rho \omega}$
+
+\centering \includegraphics[width=0.8\columnwidth]{Figures/var_p.png}
+
+\includegraphics[width=0.8\columnwidth]{Figures/pmax.png} \flushleft \vspace{-1em}
+
+$y$ vs $x$ $\to$ snapshot \hfill $y$ vs $t$ $\to$ position of 1 particle into future
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Wave Power and Intensity}
+
+Units: $[P] = \text{W}$, $[I] = \text{W/m}^2$, $[\beta] = \text{dBSIL}$
+
+$P = T_y v = T \omega k A^2 \sin^2(kx - \omega t + \phi) = \sqrt{T \mu} \omega^2 A^2 \sin^2(kx - \omega t + \phi)$
+
+Wave on string (one direction): $\langle P \rangle = \frac{1}{2} \sqrt{T \mu} \omega^2 A^2$
+
+Wave on string (both directions): $\langle P \rangle = \sqrt{T \mu} \omega^2 A^2$
+
+Acoustic wave: $\langle I \rangle = \frac{1}{2} B \omega k A^2 = \frac{1}{2} \sqrt{B \rho} \omega^2 A^2$
+
+$\beta = 10 \log \left( \frac{I}{I_0} \right)$ \hfill $I_0 = 10^{-12}$ W/m$^2$ (threshold of audibility)
+
+$\beta_2 - \beta_1 = 10 \log \left( \frac{I_2}{I_1} \right)$ \hfill $I = \frac{P}{A}$ (think surface area)
+
+
+% colummn break
+\newpage
+
+
+\textbf{Intensity at a Wave Front} \vspace{-1em}
+\begin{multicols}{2}
+    \textit{Sphere} \vspace{-1em}
+    \begin{itemize}
+        \item $I = \frac{P}{4 \pi r^2}$
+        \item $I \propto P \propto A^2 \propto \omega^2 \propto \frac{1}{r^2}$
+    \end{itemize}
+
+    \textit{Circle} \vspace{-1em}
+    \begin{itemize}
+        \item $I = \frac{P}{2 \pi r}$
+        \item $I \propto P \propto A^2 \propto \omega^2 \propto \frac{1}{r}$
+    \end{itemize}
+\end{multicols} \vspace{-1.5em}
+
+
+\dotfill
+
+
+\textbf{Superposition and Interference}
+
+$\Delta \phi = 0$, same $f$ $\rightarrow$ add $A$ \hfill $\Delta \phi \neq 0$, diff $f$ $\rightarrow$ add $I$
+
+Identical $\lambda$s in same dir w/ constant $\Delta \phi$: \vspace{-1em}
+\begin{center}
+    $\psi_{\text{net}} (x, t) = \underbrace{2 y_m \cos \left( \frac{\phi}{2} \right)}_{\text{$A$ of combined $\lambda$s}} \sin \left( kx - \omega t + \frac{\phi}{2} \right)$
+\end{center} \vspace{-.5em}
+
+\textit{Fully constructive when:} $\sin \theta = \frac{n \lambda}{d}$
+\begin{itemize}
+    \item $\phi$ is even multiple of $\pi$ \hspace{4em} (0, $2\pi$, $4\pi$, ...)
+    \item $\Delta L = n \lambda$ \hspace{9.8em} (whole multiples of $\lambda$)
+\end{itemize}
+
+\textit{Fully destructive when:} $\sin \theta = \frac{\left( n + \frac{1}{2} \right) \lambda}{d}$
+\begin{itemize}
+    \item $\phi$ is odd multiple of $\pi$ \hspace{4.25em} ($\pi$, $3\pi$, $5\pi$, ...)
+    \item $\Delta L = \left( n + \frac{1}{2} \right) \lambda$ \hspace{6.8em} (odd $\lambda / 2$)
+\end{itemize}
+
+$\frac{\Delta L}{\lambda} = \frac{\phi}{2 \pi}$ \hspace{1em} $\Rightarrow$ \hspace{1em} $\phi = k \Delta L$ \hfill $\Delta L = d \sin \theta$
+
+\textit{Beats (in-phase)}: $\psi_{\text{net}} = A \cos(\omega_1 t) + A \cos(\omega_2 t)$ \vspace{-1em}
+
+\begin{center}
+    $\psi_{\text{net}} = \underbrace{2 A \cos \left( \frac{\omega_1 - \omega_2}{2} t \right)}_{\text{time-varying $A$ (beats)}} \cos \Big( \underbrace{\frac{\omega_1 + \omega_2}{2}}_{\text{pitch}} t \Big)$
+\end{center}
+
+\vspace{-1em}
+
+Beat freq ($\Delta \omega$): $f_b = | f_1 - f_2 |$ \hfill Apparent freq ($\bar{\omega}$): $f' = \frac{f_1 + f_2}{2}$
+
+\centering \includegraphics[height=15em]{Figures/shockwave.png} \flushleft \vspace{-1em}
+
+Mach cone: $\sin \theta = \frac{c}{v_s} = \frac{v_p}{v_s} = \frac{v \text{ of } \lambda}{v \text{ of src}}$ \hfill Mach number: $\frac{v_s}{c}$
+
+\vspace{-.5em}
+
+\dotfill
+
+\textbf{Trigonometry}
+
+\textit{Basic Identities} \vspace{-1em}
+\begin{itemize}
+    \item $\sin x = \sin(\pi - x) \hspace{3.5em} \arcsin \Rightarrow x_2 = \pi - x_1$
+    \item $\cos x = \cos(-x) \hspace{4.25em} \arccos \Rightarrow x_2 = -x_1$
+    \item $\tan x = \tan(\pi + x) \hspace{3em} \arctan \Rightarrow x_2 = \pi + x_1$
+    \item $\cos(\theta \pm \pi) = -\cos(\theta)$
+    \item $\cos \theta = \sin \left(\theta + \frac{\pi}{2} \right)$
+    \item $\sin \theta = \cos \left(\theta - \frac{\pi}{2} \right)$
+\end{itemize}
+
+\textit{Addition/Subtraction Identities} \vspace{-1em}
+\begin{itemize}
+    \item $\sin(\alpha \pm \beta) = \sin \alpha \cos \beta \pm \cos \alpha \sin \beta$
+    \item $\cos(\alpha \pm \beta) = \cos \alpha \cos \beta \mp \sin \alpha \sin \beta$
+    \item $\cos \alpha + \cos \beta = 2 \cos \left( \frac{\alpha + \beta}{2} \right) \cos \left( \frac{\alpha - \beta}{2} \right)$
+    \item $\sin \alpha + \sin \beta = 2 \sin \left( \frac{\alpha + \beta}{2} \right) \sin \left( \frac{\alpha - \beta}{2} \right)$
+\end{itemize}
+
+
+\end{document}

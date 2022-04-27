@@ -1,0 +1,298 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Exceptions \& Handling Errors}
+\author{Eddie Guo}
+\date{October 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Introduction to Recursion
+\section{Introduction to Exceptions}
+% Topics Covered
+\subsection{Topics Covered}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item What are exceptions?
+            \item Raising exceptions
+            \item Catching exceptions
+            \item Assertions
+        \end{enumerate}
+    \end{multicols}
+
+% What are Exceptions?
+\subsection{What are Exceptions?}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Input validation != exception handling
+            \item Exception: event during execution of program that disrupts normal flow of program
+            \item Exceptions allow us to handle errors/exceptional conditions
+            \item In Python, exception is obj that reps an error
+        \end{itemize}
+    \end{multicols}
+
+% Exceptions in Python
+\subsection{Exceptions in Python}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Python script raises an exception where error detected
+            \item Python interpreter raises exception when it detects run-time error
+            \item Can explicitly raise an exception
+                \begin{itemize}
+                    \item '2013' + 1 $\rightarrow$ \textbf{TypeError}: cannot concatenate 'str' and 'int' objects
+                    \item 175 + cmput*13 $\rightarrow$ \textbf{NameError}: name 'cmput' is not defined
+                    \item 365 * (12/0) $\rightarrow$ \textbf{ZeroDivisionError}: integer division or modulao by zero
+                \end{itemize}
+            \item Accessing non-existent dictionary key will raise \textbf{KeyError} exception
+            \item Searching list for non-existent value will raise \textbf{ValueError} exception
+            \item Calling non-existent method will raise \textbf{AttributeError} exceptiont
+            \item \href{https://docs.python.org/3/library/exceptions.html}{Python documentation for exceptions}
+        \end{itemize}
+    \end{multicols}
+
+% Why Use Exceptions?
+\subsection{Why Use Exceptions?}
+    \begin{itemize}
+        \item Separating error-handling code from regular code
+        \item Deferring decisions about how to respond to exceptions
+        \item Providing mech for specifying diff kinds of exceptions that can arise in program
+    \end{itemize}
+
+% Exception Handling Blocks
+\subsection{Exception Handling Blocks}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item If you have code that may raise exception, place code in \texttt{try:} followed by \texttt{except:}
+        \item Don't catch exception? Entire program crashes.
+        \item \texttt{except} w/o explicit exception will catch all remaining exceptions
+        \item \texttt{except} may name none/one/multiple exceptions as parenthesized tuple
+\begin{lstlisting}
+except (RuntimeError, TypeError, NameError):
+        [do something here]
+\end{lstlisting}
+        \end{itemize}
+    \end{multicols}
+
+
+% Multiple Except Clauses
+\subsection{Multiple Except Clauses}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \texttt{try} may have >1 \texttt{except} clause to specify handlers for diff exceptions
+            \item \hl{At most, one handler will be executed}
+            \item Handlers only handle exceptions that occur in corresponding try clause, not in other handlers of same try statement
+            \item \hl{Go from specific excpetions to more general ones b/c Python reads top-down}
+        \end{itemize}
+    \end{multicols}
+
+% The try Statement
+\subsection{The \texttt{try} Statement}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item If no exception raised by code w/in try block (or methods called w/in try block), code executes normally \& all except blocks skipped
+            \item If exception arises in try block, execution of try block terminates execution immediately \& \texttt{except} is sought to handle exception
+                \begin{enumerate}
+                    \item If appropriate except clause found, it's executed
+                    \item Elif exception propagated to method or outer \texttt{try} block
+                    \item Elif no handler found $\rightarrow$ \textbf{unhandled exception} \& execution stops w/ message
+                \end{enumerate}
+        \end{itemize}
+    \end{multicols}
+    
+% Propagating Exceptions
+\subsection{Propagating Exceptions}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item An exception will bubble up call stack until it:
+                \begin{itemize}
+                    \item Reaches method w/ suitable handler or
+                    \item Propagates thru main stack (1st method on call stack)
+                \end{itemize}
+            \item If exception not caught by any method, exception treated like error: stack frames displayed \& program terminates
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+try:
+    f = open('myfile.txt', 'r')
+    s = f.readline()
+    i = int(s.strip())
+except IOError:
+    print('File does not exist or cannot be read.')
+except ValueError:
+    print('Could not convert data to an integer')
+except: # If this were first, no IOErrors or ValueErrors will be caught
+    print('Unexpected error')
+    raise # can explicitly propagate exceptions using raise
+\end{lstlisting}
+
+% Raising Exceptions
+\subsection{Raising Exceptions}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item What can be raised as exception?
+                \begin{itemize}
+                    \item Any standard Python exception
+                    \item New instance of exception w/ custom arguments
+                    \item Instances of our own specialized exception classes
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+try:
+    print('Raising an exception')
+    raise Exception('CMPUT', '274')
+except Exception as inst: # the exception instance
+    print(inst.args) # arguments stored in .args
+    x, y = inst.args # unpacks args
+    print('x =', x, 'y =', 'y')
+\end{lstlisting}
+
+% else & finally Clause
+\subsection{\texttt{else} \& \texttt{finally} Clause}
+    \begin{multicols}{2}
+        \begin{itemize}
+        \item \texttt{else} clause CAN'T come b4 try \& except (i.e., must follow all except clauses)
+            \item Code in else clause must be executed if clause does not raise exception
+            \item \texttt{finally} will execute regardless if error was raised (executed under ALL circumstances)
+            \item \texttt{finally} useful if you wanna perform ``cleanup'' operations b4 exiting method (ex: closing file) \& avoids duplicating code in each \texttt{except} clause
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+def divide(x, y):
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        print('division by zero!')
+    else:
+        print('the result is', result)
+    finally:
+        print('thanks for dividing!')
+\end{lstlisting}
+\vspace{-1em}
+\begin{center}
+    \includegraphics[scale = 0.45]{Capture.PNG}
+\end{center}
+
+% Summary: Possible Execution Paths
+\section{Summary: Possible Execution Paths}
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item No exception occurs
+                \begin{enumerate}
+                    \item Execute try block
+                    \item Execute else \& finally clauses
+                    \item Execute rest of method
+                \end{enumerate}
+            \item Exception occurs \& is caught
+                \begin{enumerate}
+                    \item Execute try block until 1st exception occurs
+                    \item Execute 1st except clause that matches exception
+                    \item Execute finally clause
+                    \item Execute rest of method
+                \end{enumerate}
+            \item Exception occurs \& is not caught
+                \begin{enumerate}
+                    \item Execute try block until 1st exception occurs
+                    \item Execute try block until 1st exception occurs
+                    \item Execute finally clause
+                    \item Propagate exception to calling method
+                \end{enumerate}
+        \end{enumerate}
+    \end{multicols}
+
+% Assertions
+\section{Assertions}
+        \begin{multicols}{2}
+        \begin{itemize}
+            \item Assertion is statement that raises \textbf{AssertionError} exception if condition not met
+            \item \texttt{assert Expression[, Arguments]}
+            \item If assertion fails, Python uses given arg as arg for \texttt{AssertionError}
+            \item \texttt{AssertionError} exceptions can be caught \& handled like any other exception
+            \item Good practice to place assertions at start of fn to check for valid input, \& after fn call to check for valid output
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+def KelvintoFahrenheit(temperature):
+    assert (temperature >= 0), 'Colder than absolute zero!'
+    return ((temperature - 273) * 1.80 + 32
+
+if __name__ == '__main__':
+    try:
+        fahrenheit = KelvintoFahrenheit(-23)
+        print(fahrenheit)
+    except AssertionError as my_error:
+        print(my_error.args)
+
+# Output
+(Colder than absolute zero!, )
+\end{lstlisting}
+
+\end{document}

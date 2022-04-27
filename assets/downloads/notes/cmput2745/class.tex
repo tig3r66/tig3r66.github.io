@@ -1,0 +1,249 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{ colorlinks, citecolor=green, filecolor=black, linkcolor=blue, urlcolor=blue } 
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Classes}
+\author{Eddie Guo}
+\date{September 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Topics Covered
+\section{Introduction to Classes}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item Procedural vs object-oriented programming
+            \item Define new class
+            \item Instantiate new obj
+            \item Encapsulation
+        \end{enumerate}
+    \end{multicols}
+
+% Procedural vs OOP
+\subsection{Procedural vs Object-Oriented Programming (OOP)}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \textbf{Procedural programming}
+                \begin{itemize}
+                    \item \hl{Emphasis on actions (verb)}
+                    \item Ex: \textbf{roll} dice \textit{n} times, then \textbf{build} table of data
+                \end{itemize}
+            \item \textbf{OOP}
+                \begin{itemize}
+                    \item \hl{Emphasis on objs (noun) w/ properties \& behavs}
+                    \item Allows us to model real-world objs (ex: car, dog)
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+
+% Example: Dogs
+\subsection{Example: Dogs}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item unique property values define each dog (ex: age, colour, size)
+            \item Common behavs (ex: bark, wag tail)
+        \end{itemize}
+    \end{multicols}
+
+% Python Class
+\section{Python Class}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Class is template/blueprint
+            \item Defines all attributes (properties) \& methods (behavs) that an obj will have
+                \begin{itemize}
+                    \item Attributes: age, size, colour
+                    \item Behavs: bark, wag\_tail
+                \end{itemize}
+            \item Obj is \textbf{instance of a class}
+                \begin{itemize}
+                    \item Classes give values to all attributes of an obj
+                \end{itemize}
+            \item Attributes of one obj differentiates it from other objs that are instances of same class
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+# Ex: Def New Class
+# dice.py
+import random
+
+class Dice: # class name is by convention capitalized
+    # self must be 1st parameter for all class defs
+    def __init__(self): # method def (initializes attributes of class)
+        self.sides = 6  # 'sides' is an attribute
+    
+    def roll(self):
+        # self is ref to the obj itself (self refers to the spec die roll obj)
+        return random.randint(1, self.sides) # no need to pass attribute to method inside class def
+    
+    def __str__(self):
+        return 'Die has ' + str(self.sides) + ' sides.'
+
+# Ex: Instantiate Obj
+# use_dice.py
+from dice import Dice
+
+def play():
+    # create new dice obj
+    my_die = Dice() # calls __init__ method
+    
+    # roll my dice 3 times
+    print('Roll 1:', my_die.roll()) # use dot operator on obj to invoke method
+    print('Roll 2:', my_die.roll())
+    print('Roll 3:', my_die.roll())
+    
+    # display obj
+    print(my_die) # calls __str__ method
+
+if __name__ == "__main__":
+    play()
+
+# Output
+Roll 1: 3
+Roll 2: 4
+Roll 3: 1
+Die has 6 sides.
+\end{lstlisting}
+
+% __init__()
+\subsection{\texttt{\_\_init\_\_()}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Special method; typically used to \textbf{initialize attributes} for new obj that's created
+            \item Automatically called when an obj is instantiated (i.e., when name of class is called)
+            \item Aka constructor method (not quite accurate name; see \href{https:://www.programiz.com/article/python-self-why}{here})
+        \end{itemize}
+    \end{multicols}
+
+% __str__() and __repr__()
+\subsection{\texttt{\_\_str\_\_()} \& \texttt{\_\_repr\_\_()}}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Both used to rep obj
+            \item Good idea to define at least one
+            \item \texttt{\_\_str\_\_} returns \textbf{informal} str rep of instance
+            \item \texttt{\_\_str\_\_} is called by built-in fns \texttt{str()} \& \texttt{print()}
+            \item \texttt{\_\_repr\_\_} returns \textbf{official} str rep of instance
+            \item \texttt{\_\_repr\_\_} called by built-in fn \texttt{repr()}
+        \end{itemize}
+    \end{multicols}
+
+% self Parameter
+\subsection{\texttt{self} Parameter}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item 1st parameter in EVERY class method
+            \item Refers to obj itself
+            \item Don't include as argument when invoking method of obj $\rightarrow$ self passed implicitly when using dot operator on obj
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+# dice2.py
+import random
+
+class Dice:
+    def __init__(self, howMany): # pass in additional value(s) to initialize attribute(s)
+        self.sides = howMany
+    
+    def roll(self):
+        return random.randint(1, self.sides)
+    
+    def __str__(self):
+        return 'Die has ' + str(self.sides) + ' sides.'
+
+# use_dice2.py
+from dice2 import Dice
+
+def play():
+    # create new dice objs
+    cube_die = Dice(6)
+    icosahedron_die = Dice(20)
+    
+    # roll dice
+    print('Cube roll:', cube_die.roll())
+    print('Icosahedron roll:', icosahedron_die.roll())
+    
+    # display objs
+    print(cube_die)
+    print(icosahedron_die)
+
+if __name__ = "__main__":
+    play()
+
+# Output
+Cube roll: 1
+Icosahdron roll: 11
+Die has 6 sides.
+Die has 20 sides.
+\end{lstlisting}
+
+% Encapsulation
+\section{Encapsulation}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item A class wraps up/\textbf{encapsulates} its attributes \& methods
+                \begin{itemize}
+                    \item Ensures all data related to an obj is contained in single struc
+                \end{itemize}
+            \item Attributes can be made \textbf{private} to prevent them being accessed directly by outside programs
+                \begin{itemize}
+                    \item Def attribute name starting w/ '\texttt{\_\_}'
+                    \item Ex: \texttt{self.\_\_sides}
+                \end{itemize}
+            \item Implemment \textcolor{blue}{setter} \& \textcolor{red}{getter} methods to \textcolor{blue}{change} \& \textcolor{red}{access} attributes
+                \begin{itemize}
+                    \item Ctrl HOW attribute values can be changed \& seen
+                    \item Form public interface btw program \& obj
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+
+\end{document}
+

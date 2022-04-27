@@ -1,0 +1,60 @@
+% !TEX program = xelatex
+\documentclass{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, mathtools, multicol, booktabs, caption, amsmath}
+\newcommand{\bigcell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\usepackage[tableposition=top]{caption}
+\captionsetup[table]{skip=1em}
+\def\arraystretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\everymath{\displaystyle}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\centering
+\textbf{Heat Conduction Problems and the 1D Wave Equation}
+
+Eddie Guo
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{l|l}
+        \toprule
+        \multicolumn{2}{c}{\textbf{Heat Equation}} \\
+        \midrule
+        \bigcell{l}{\textbf{Dirichlet BC}\\ $u_t = \alpha^2 u_{xx}$ \\ $u(0, t) = 0$ \\ $u(L, t) = 0$ \\ $u(x, 0) = f(x)$} & \bigcell{l}{$u(x, t) = \sum_{n=1}^\infty c_n e^{-\alpha^2 n^2 \pi^2 t / L^2} \sin \frac{n \pi x}{L}$ \\ $v(x)$ = 0 \\ $c_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n\pi x}{L}\ dx$} \\
+        \midrule
+        \bigcell{l}{\textbf{Neumann BC} \\ $u_t = \alpha^2 u_{xx}$ \\ $u_x(0, t) = 0$ \\ $u_x(L, t) = 0$ \\ $u(x, 0) = f(x)$} & \bigcell{l}{$u(x, t) = \frac{c_0}{2} + \sum_{n=1}^\infty c_n e^{-\alpha^2 n^2 \pi^2 t / L^2} \cos \frac{n \pi x}{L}$ \\ $v(x) = \frac{c_0}{2}$ \\ $c_0 = \frac{2}{L} \int_0^L f(x)\ dx$ \\ $c_n = \frac{2}{L} \int_0^L f(x) \cos \frac{n \pi x}{L}\ dx$} \\
+        \midrule
+        \bigcell{l}{\textbf{Nonhomogeneous} \\ $u_t = \alpha^2 u_{xx}$ \\ $u(0, t) = T_1$ \\ $u(L, t) = T_2$ \\ $u(x, 0) = f(x)$} & \bigcell{l}{$u(x, t) = v(x) + w(x, t)$ \\ $v(x) = \frac{T_2 - T_1}{L} x + T_1$ \\ $w(x, 0) = f(x) - v(x)$ \\ $c_n = \frac{2}{L} \int_0^L (f(x) - v(x)) \sin \frac{n \pi x}{L}\ dx$} \\
+        \midrule
+        \bigcell{l}{\textbf{Forcing Term} \\ $u_t = \alpha^2 u_{xx} + q(x)$ \\ $u(0, t) = T_1$ \\ $u(L, t) = T_2$ \\ $u(x, 0) = f(x)$} & \bigcell{l}{$u(x, t) = v(x) + w(x, t)$ \\ $v''(x) = - \frac{q(x)}{\alpha^2}$ \\ $w(x, 0) = f(x) - v(x)$ \\ $c_n = \frac{2}{L} \int_0^L (f(x) - v(x)) \sin \frac{n \pi x}{L}\ dx$} \\
+        \midrule
+        \multicolumn{2}{c}{\textbf{Wave Equation}} \\
+        \midrule
+        \bigcell{l}{\textbf{General Case} \\ $u_{tt} = \alpha^2 u_{xx}$ \\ $u(0, t) = 0$ \\ $u(L, t) = 0$ \\ $u(x, 0) = f(x)$ \\ $u_t(x, 0) = g(x)$} & \bigcell{l}{$u(x, t) = \sum_{n=1}^\infty \left( A_n \cos \frac{n \pi a t}{L} + B_n \sin \frac{n \pi a t}{L} \right) \sin \frac{n \pi x}{L}$ \\ $u(x, t) = u_1(x, t) + u_2(x, t)$ \\ Solve for the below two cases then add them.} \\
+        \midrule
+        \bigcell{l}{\textbf{Zero Initial Displacement} \\ $u_{tt} = \alpha^2 u_{xx}$ \\ $u(0, t) = 0$ \\ $u(L, t) = 0$ \\ $u(x, 0) = 0$ \\ $u_t(x, 0) = g(x)$} & \bigcell{l}{$u_1(x, t) = \sum_{n=1}^\infty \sin \frac{n \pi a t}{L} \sin \frac{n \pi x}{L}$ \\ $A_n = 0$ \\ $B_n = \frac{2}{n \pi a} \int_0^L g(x) \sin \frac{n \pi x}{L}\ dx$} \\
+        \midrule
+        \bigcell{l}{\textbf{Zero Initial Velocity} \\ $u_{tt} = \alpha^2 u_{xx}$ \\ $u(0, t) = 0$ \\ $u(L, t) = 0$ \\ $u(x, 0) = f(x)$ \\ $u_t(x, 0) = 0$} & \bigcell{l}{$u_2(x, t) = \sum_{n=1}^\infty \cos \frac{n \pi a t}{L} \sin \frac{n \pi x}{L}$ \\ $B_n = 0$ \\ $A_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n \pi x}{L}\ dx$} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\end{document}

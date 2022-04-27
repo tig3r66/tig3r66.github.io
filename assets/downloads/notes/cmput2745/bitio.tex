@@ -1,0 +1,183 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Exceptions bitio.py Quick Reference}
+\author{Eddie Guo}
+\date{October 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Introduction to Recursion
+\section{Introduction to bitio.py}
+% Topics Covered
+\subsection{Topics Covered}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item BitReader
+            \item EOFError
+            \item BitWriter
+        \end{enumerate}
+    \end{multicols}
+
+% BitReader
+\section{BitReader}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \texttt{BitReader(input\_stream)}
+                \begin{itemize}
+                    \item Creates instance of BitReader class
+                    \item This obj will read from input\_stream
+                \end{itemize}
+            \item \texttt{readbit()} reads next bit in input\_stream, \& returns it as 1 or 0
+            \item \texttt{readbits(n)} reads n bits \& returns them as seq of bits eval as integer
+        \end{itemize}
+    \end{multicols}
+\vspace{-2em}
+\begin{lstlisting}
+import bitio
+
+with open('simple.txt', 'rb') as fin:
+    mybitreader = bitio.BitReader(fin)
+    
+    # read in a byte, one bit at a time
+    for i in range(8):
+        my_bit = mybitreader.readbit()
+        print(my_bit, end = '')
+    print()
+    
+    # read in a byte all at once
+    my_bite = mybitreader.readbits(8)
+    print(my_byte)
+\end{lstlisting}
+
+% How to Read to End of File?
+\subsection{How to Read to End of File?}
+    \begin{itemize}
+        \item EOFError raised when there are no more bits to read from the input\_stream
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+import bitio
+
+with open('simple.txt', 'rb') as fin:
+    mybitreader = bitio.BitReader(fin)
+    end_of_file = False
+    
+    while note end_of_file:
+        try:
+            bit = mybitreader.readbit()
+            print(bit, end = '')
+        except EOFError:
+            end_of_file = True
+\end{lstlisting}
+
+% BitWriter
+\section{BitWriter}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item \texttt{BitWriter(output\_stream)}
+                \begin{itemize}
+                    \item Creates instance of BitWriter class
+                    \item This obj will write to output\_stream
+                \end{itemize}
+            \item \texttt{writebit(bit)}
+                \begin{itemize}
+                    \item If bit is True, writes 1 to output\_stream
+                    \item If bit is False, write 0 to output\_stream
+                \end{itemize}
+            \item \texttt{writebits(integer\_value, n)} writes the n least significant bits of integer\_value to output\_stream starting w/ most significant of these bits
+            \item \texttt{flush()}
+                \begin{itemize}
+                    \item Forces any bits waiting in buffer to output\_stream
+                    \item ALWAYS call when finished writing to write any partial bytes to output\_stream
+                    \item Any incomplete bytes automatically padded w/ extra 0s in least significant bits
+                \end{itemize}
+        \end{itemize}
+    \end{multicols}
+\begin{lstlisting}
+import bitio
+
+seq1 = '01101000'
+seq2 = [ord('E'), ord('L'), ord('L'), ord('O')]
+
+with open('message.txt', 'wb') as fout:
+    mybitwriter = bitio.BitWriter(fout)
+    
+    for single_bit in seq1:
+        if single_bit == '1':
+            mybitwriter.writebit(True)
+        elif single_bit == '0':
+            mybitwriter.writebit(False)
+    mybitwriter.flush()  # don't forget at the end!
+    
+    for single_byte in seq2:
+        mybitwriter.writebits(single_byte, 8)
+    mybitwriter.flush() # don't forget at the end!
+    
+# output
+hELLO
+\end{lstlisting}

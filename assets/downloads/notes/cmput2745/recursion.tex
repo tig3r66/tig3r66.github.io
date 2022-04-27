@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{soul}
+\usepackage{csvsimple}
+\usepackage{hanging}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pgfplotstable,filecontents}
+\pgfplotsset{compat=1.9}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{xcolor}
+\usepackage{enumitem}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\setlength\parindent{0pt}
+
+\frenchspacing
+
+\title{Python 3 Recursion}
+\author{Eddie Guo}
+\date{October 2019}
+
+
+\begin{document}
+\lstset{language=Python}
+\maketitle
+
+% Introduction to Recursion
+\section{Introduction to Recursion}
+% Topics Covered
+\subsection{Topics Covered}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\roman*)]
+            \item What is recursion?
+            \item Conditions for termination
+            \item Stack frames
+        \end{enumerate}
+    \end{multicols}
+
+% Recursion
+\subsection{Recursion}
+    \begin{itemize}
+        \item Recursion occurs when fn (or method) calls itself, either directly or indirectly
+        \item If problem can be resolved by solving simple part of it \& resolving rest of big problem in same way, can write a fn that solves simple part of problem then calls itself to resolve rest of problem
+        \item For recursion to terminate, 2 conditions must be met:
+            \begin{itemize}
+                \item Must be 1/more simple cases that do NOT make recursive calls (\textbf{base case})
+                \item Recursive call must somehow be simpler than original call (change state to move towards base base)
+            \end{itemize}
+    \end{itemize}
+\vspace{-1em}
+\begin{lstlisting}
+def factorial(n):
+    '''Return factorial of number.
+    '''
+    if (n == 0 or n == 1): # base case
+        answer = 1
+    else:
+        answer = n * factorial(n-1)
+    return answer
+\end{lstlisting}
+
+% Fn Activations & Frames
+\subsection{Fn Activations \& Frames}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item When fn invoked, frame/stack frame corresponding to that fn created \& pushed onto the stack
+            \item Frame stores all local vars assoc w/ that fn call
+            \item Frame created when fn invoked \& destroyed when fn finishes
+            \item If fn invoked again, new frame is created for it w/ all its local vars
+        \end{itemize}
+    \end{multicols}
+
+% Multiple Activations of a Fn
+\subsection{Multiple Activations of Fn}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item When we invoke recursive fn, fn becomes active
+            \item B4 it's finished, it makes recursive call to same fn
+            \item This means that when recursion used, there's >1 copy of same fn active at once
+            \item Each active fn has its own frame which contains indep copies of its local vars
+            \item These frames stored on the call stack
+        \end{itemize}
+    \end{multicols}
+
+\end{document}
