@@ -22,6 +22,14 @@
         <script src="https://kit.fontawesome.com/aa1eb67981.js" crossorigin="anonymous"></script>
         <!-- fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+                // $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169008636-1"></script>
         <script>
@@ -42,7 +50,7 @@
                         <div class="logo">
                             <h1><a href="../index.html" class="name current">Eddie Guo</a></h1>
                         </div>
-
+                
                         <!-- navigation links -->
                         <ul class="my-nav-links">
                             <li><a href="../index.html"><button class="fade-in">Home</button></a></li>
@@ -50,7 +58,7 @@
                             <li><a href="research.html"><button class="fade-in">Research</button></a></li>
                             <li><a href="resources.html"><button class="fade-in current">Resources</button></a></li>
                         </ul>
-
+                
                         <!-- burger menu icon -->
                         <div class="hamburger">
                             <div class="line1"></div>
@@ -58,7 +66,7 @@
                             <div class="line3"></div>
                         </div>
                     </div>
-                </nav>
+                </nav>                
 
                 <section class="affiliation current">
                     <p>BSc Engineering Physics Student<br>University of Alberta</p>
@@ -79,7 +87,7 @@
                     <!-- intro -->
                     <h2 class="small-spacer">Notes and Formula Sheets</h2>
 
-                    <p class="med-spacer">This page contains a collection of my notes and formula sheets from courses I've taken at the University of Alberta. Feel free to use, share, and modify at your leisure. Please keep in mind that these notes were designed to provide a quick reference during examinations, so please be aware of things that your course may include that I haven't included in the notes. All pdfs were typeset using LaTeX unless XeLaTeX was specified in the preamble of the .tex file.</p>
+                    <p class="med-spacer">This page contains a collection of my notes and formula sheets from courses I've taken at the University of Alberta. Feel free to use, share, and modify at your leisure. Please keep in mind that these notes were designed to provide a quick reference during examinations, so please be aware of things that your course may include that I haven't included in my notes. All pdfs were typeset using LaTeX unless XeLaTeX was specified in the preamble of the .tex file.</p>
 
                     <span class="small-spacer bottom-border"></span>
 
@@ -309,11 +317,7 @@
                 </a>
             </article>
 
-            <footer>
-                <div class="footer-container">
-                    <p>&copy; 2020-2022 by Eddie Guo</p>
-                </div>
-            </footer>
+            <div id="footer"></div>
 
         </div>
 
