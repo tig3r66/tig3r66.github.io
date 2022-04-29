@@ -12,6 +12,7 @@
     --dark-white : rgb(230, 230, 230);
     --light-white : white;
     --dark-black: black;
+    --drop-down-white: rgba(250, 235, 215, 0.95);
 }
 
 /* NAV STYLES =============================================================== */
@@ -40,6 +41,8 @@ button {
 
 .my-nav-links a li { text-decoration: none; }
 
+.my-nav-links li { position: relative; }
+
 .my-nav-links {
     display: flex;
     width: 50%;
@@ -47,6 +50,52 @@ button {
     justify-content: space-around;
     align-content: center;
     margin-left: auto;
+}
+
+.nav-item-drop {
+    position: absolute;
+    top: 2rem;
+    left: -2rem;
+    width: 12rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 200ms linear;
+}
+
+.nav-item-drop li {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-item-drop a {
+    text-decoration: none;
+    display: block;
+}
+
+.nav-item-drop li:first-child { margin-top: 10px; }
+
+.drop-item:hover .nav-item-drop {
+    visibility: visible;
+    opacity: 1;
+    background-color: var(--drop-down-white);
+}
+
+.nav-item-drop li:hover {
+    border-radius: 10px;
+    background-color: #600B04;
+}
+
+.nav-item-drop li:hover a {
+    color: white;
 }
 
 /* for the burger lines */
@@ -85,7 +134,7 @@ button {
     .my-nav-links {
         z-index: 100;
         position: absolute;
-        background: rgba(250, 235, 215, 0.95);
+        background: var(--drop-down-white);
         height: 300px;
         width: 75%;
         flex-direction: column;
