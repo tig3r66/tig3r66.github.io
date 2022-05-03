@@ -159,25 +159,100 @@ $\quad \gamma \to 1$: future rewards contribute more.
 \vspace{-.5em}
 \dotfill
 
-\textbf{Policies and Value Functions}
+\textbf{Policies}
+
+Law of total expectation: $\mathbb E[X] = \mathbb E[\mathbb E[X \mid Y]]$
+
+$\quad$Partition formula: $\mathbb E[X] = \sum_i \mathbb E[X \mid A_i] P(A_i)$
 
 Policy: mapping from states to probs of selecting each possible action.
 
-$\quad \pi(a|s)$ is prob that $A_t = a$ if $S_t = s$.
+$\quad \pi(a|s)= p(a \mid s) = \Pr \{ A_t = a \mid S_t = s \}$
 
 Expectation of $R_{t+1}$ in terms of $\pi$ and $p$:
 
 $\quad \mathbb E[R_{t+1} \mid S_t = s] = \sum_a \pi(a \mid S_t) \sum_{s', r} p(s', r \mid s, a) r$
 
-Value fn: expected return $G_t$ when starting in state $s$ and following policy $\pi$ thereafter.
+\dotfill
 
-State-value fn: $v_\pi(s) \equiv \mathbb E_\pi [G_t \mid S_t = s]$ \hfill $G_t = \sum_{k=0}^\infty \gamma^k R_{t+k+1}$
+\textbf{Value Functions}
+
+Value fns give expected return $G_t$ when starting in state $s$ and following policy $\pi$ thereafter.
+
+\textit{State-value fn:} $v_\pi(s) \equiv \mathbb E_\pi [G_t \mid S_t = s]$ \hfill $G_t = \sum_{k=0}^\infty \gamma^k R_{t+k+1}$
 
 $\quad$Value of terminal state is always 0.
 
-Action-value fn: $q_\pi(a) \equiv \mathbb E_\pi [G_t \mid S_t = s, A_t = a]$
+\textit{Action-value fn:} $q_\pi(s, a) \equiv \mathbb E_\pi [G_t \mid S_t = s, A_t = a]$
 
-$v_\pi$ in terms of $q_\pi$ and $\pi$: $v_\pi (s) = \sum_a \pi(a \mid S_t) q_\pi(s, a)$
+$\quad v_\pi$ in terms of $q_\pi$ and $\pi$: $v_\pi (s) = \sum_a \pi(a \mid S_t) q_\pi(s, a)$
+
+$\quad q_\pi$ in terms of $v_\pi$ and $p$: $q_\pi(s, a) = \sum_{r, s'} p(s', r \mid s, a) [r + \gamma v_\pi(s')]$
+
+
+\cleardoublepage
+
+
+\textbf{Bellman Equations}
+
+$v_\pi(s) = \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) [r + \gamma v_\pi(s')]$
+
+$q_\pi(s,a) = \sum_{s', r} p(s',r \mid s,a) \left[ r + \gamma \sum_{a'} \pi(a' \mid s') q(s', a') \right]$
+
+\textit{Optimal value fns:} $\pi_1 \geq \pi_2 \iff v_{\pi_1}(s) \geq v_{\pi_2}(s), \quad \forall s \in \mathcal S$
+
+$\quad v_*(s) = \max_\pi v_{\pi}(s) = \max_a \sum_{s', r} p(s', r \mid s, a) [r + \gamma v_*(s')], \quad \forall s \in \mathcal S$
+
+$\quad q_*(s, a) = \max_{\pi} q_\pi(s,a) = \sum_{s', r} p(s', r \mid s, a) [ r + \gamma \max_{a'} q_*(s', a')]$
+
+$\quad \quad \forall s \in \mathcal S, \forall a \in \mathcal A$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Policy Evaluation}
+
+$\pi_* = \argmax_a \sum_{s', r} p(s',r \mid s, a)[r + \gamma v_*(s')]$
+
+\begin{mydef}{Iterative Policy Evaluation}{}
+    Input $\pi$, the policy to be evaluated \\
+    $\vec V \leftarrow \vec 0, \vec V' \leftarrow \vec 0$ \\
+    loop: \\
+        \hspace*{2em} $\Delta \leftarrow 0$ \\
+        \hspace*{2em} loop for each $s \in \mathcal S$: \\
+            \hspace*{4em}$V'(s) \leftarrow \sum_a \pi(a \mid s) \sum_{s', r} p(s', r \mid s, a) [r + \gamma V(s')]$ \\
+            \hspace*{4em}$\Delta \leftarrow \max(\Delta, |V'(s) - V(s)|)$ \\
+        \hspace*{2em}$V \leftarrow V'$ \\
+    until $\Delta < \theta$ (small positive number) \\
+    return $V \approx v_\pi$
+\end{mydef}
+
+\textit{Policy improvement thm:} $q_\pi(s, \pi'(s)) \geq v_\pi(s), \quad \forall s \in \mathcal S$
+
+$\pi'(s) \equiv \argmax_a q_\pi(s,a) = \argmax_a \sum_{s', r} p(s',r \mid s,a) [r + \gamma v_\pi(s')]$
+
+\begin{mydef}{Policy Iteration}{}
+    1. Initialization \\
+    $V(s) \in \mathbb R$ and $\pi(s) \in \mathcal A(s)$ arbitrarily $\forall s \in \mathcal S$ \\
+    
+    2. Policy Evaluation \\
+    Loop: \\
+        \hspace*{2em}$\Delta \leftarrow 0$ \\
+        \hspace*{2em}Loop for each $s \in \mathcal S:$ \\
+            \hspace*{4em}$v \leftarrow V(s)$ \\
+            \hspace*{4em}$V(s) \leftarrow \sum_{s', r} p(s', r \mid s, \pi(s)) [r + \gamma V(s')]$ \\
+            \hspace*{4em}$\Delta \leftarrow \max(\Delta, |v - V(s)|)$ \\
+    
+    3. Policy Improvement \\
+    \textit{policy-stable} $\leftarrow$ true \\
+    For each $s \in \mathcal S$: \\
+        \hspace*{2em}\textit{old-action} $\leftarrow \pi(s)$ \\
+        \hspace*{2em}$\pi(s) \leftarrow \argmax_a \sum_{s', r} p(s', r \mid s,a)[r + \gamma V(s')]$ \\
+        \hspace*{2em}If \textit{old-action} $\neq \pi(s)$, then \textit{policy-stable} $\leftarrow$ false \\
+    If \textit{policy-stable}, then stop and return $V \approx v_*$ and $\pi \approx \pi_*$; else go to 2.
+\end{mydef}
+
+
 
 
 \end{document}

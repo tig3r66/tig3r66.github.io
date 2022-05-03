@@ -57,13 +57,15 @@ Marginal PMF: $p_X(x) = \sum_j p(x_i, y_j)$ \hfill $p_Y(y) = \sum_i p(x_i, y_j)$
 
 Expectation: $\mathbb E[g(X, Y)] = \underset{(x,y) \in A}{\sum\sum} g(x,y) p(x, y)$
 
+Conditional expectation: $\mathbb E[X \mid A] = \sum_x x P(X = x \mid A)$
+
 $\quad \mathbb E[X, Y] = xy \cdot p(x, y)$ \hfill $\mathbb E[X] = x \cdot p(x, y)$  \hfill $\mathbb E[Y] = y \cdot p(x, y)$
 
 Independent RVs: $p(x_1, x_2, \dots, x_n) = p_{X_1}(x_1) p_{X_2}(x_2) \cdots p_{X_n}(x_n)$
 
 $\quad \mathbb E[XY] = \mathbb E[X] \mathbb E[Y]$
 
-$p(A \cap B) = P(A \mid B) P(B) = P(B \mid A) P(A)$
+$P(A \cap B) = P(A \mid B) P(B) = P(B \mid A) P(A)$
 
 $p_{Y \mid X} (y \mid x) = P(Y=y \mid X = x) = \frac{P(X=x\ \text{and}\ Y=y)}{P_X(x)}$
 
