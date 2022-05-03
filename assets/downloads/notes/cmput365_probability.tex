@@ -1,0 +1,91 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, caption, multirow, mathtools, amsfonts, booktabs, siunitx, bbold}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows, fit}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\everymath{\displaystyle}
+
+% for box
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem[]{mydef}{}{colback=gray!5, colframe=black!75, fonttitle=\bfseries}{th}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{Multivariate Probabilities Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\small
+
+\textbf{Discrete Pairs of Random Variables}
+
+Joint pmf: $p(x, y) = P(X=x\ \text{and}\ Y=y)$
+
+$\quad 0 \leq p(x, y) \leq 1$ \hfill $\underset{(x,y)}{\sum\sum} p(x,y) = 1$
+
+$\quad P((X, Y) \in A) = \underset{(x,y) \in A}{\sum\sum} p(x, y)$
+
+Joint CDF: $F(x, y) = P(X \leq x\ \text{and}\ Y \leq y) = \sum_{x_i \leq x} \sum_{y_i \leq y} p(x_i, y_j)$
+
+Marginal PMF: $p_X(x) = \sum_j p(x_i, y_j)$ \hfill $p_Y(y) = \sum_i p(x_i, y_j)$
+
+Expectation: $\mathbb E[g(X, Y)] = \underset{(x,y) \in A}{\sum\sum} g(x,y) p(x, y)$
+
+$\quad \mathbb E[X, Y] = xy \cdot p(x, y)$ \hfill $\mathbb E[X] = x \cdot p(x, y)$  \hfill $\mathbb E[Y] = y \cdot p(x, y)$
+
+Independent RVs: $p(x_1, x_2, \dots, x_n) = p_{X_1}(x_1) p_{X_2}(x_2) \cdots p_{X_n}(x_n)$
+
+$\quad \mathbb E[XY] = \mathbb E[X] \mathbb E[Y]$
+
+$p(A \cap B) = P(A \mid B) P(B) = P(B \mid A) P(A)$
+
+$p_{Y \mid X} (y \mid x) = P(Y=y \mid X = x) = \frac{P(X=x\ \text{and}\ Y=y)}{P_X(x)}$
+
+\newpage
+
+\textbf{Continuous Pairs of Random Variables}
+
+Joint PDF: $F_{X,Y}(x, y) = \int_{-\infty}^x \int_{-\infty}^y f_{X,Y}(u, v)\ du\ dv$
+
+$\quad \int_{-\infty}^\infty \int_{-\infty}^\infty f_{X,Y}(u,v)\ du\ dv = 1$
+
+$\quad P[x_0 < x < x_0 + dx, y_0 < Y < y_0 + dy] = f_{X,Y}(x_0, y_0)\ dx\ dy$
+
+$\quad f_{X, Y}(x,y) = \frac{\partial^2 F_{X,Y}(x,y)}{\partial x \partial y}$
+
+$\quad P[A] = \iint_{(x,y) \in A} f_{X,Y}(x,y)\ dx\ dy$
+
+Marginal PDF: $f_X(x,y) = \int_{-\infty}^\infty f_{X,Y}(x, y)\ dy$
+
+$\hspace{7em} f_Y(x,y) = \int_{-\infty}^\infty f_{X,Y}(x, y)\ dx$
+
+Expectation: $\mathbb E[g(x,y)] = \iint_{(x,y) \in A} g(x,y) f_{X,Y}(x,y)\ dx\ dy$
+
+
+\end{document}
