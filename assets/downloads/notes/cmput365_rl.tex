@@ -252,6 +252,69 @@ $\pi'(s) \equiv \argmax_a q_\pi(s,a) = \argmax_a \sum_{s', r} p(s',r \mid s,a) [
     If \textit{policy-stable}, then stop and return $V \approx v_*$ and $\pi \approx \pi_*$; else go to 2.
 \end{mydef}
 
+\newpage
+
+\textbf{Monte Carlo Methods}
+
+\vspace{-.5em}\begin{itemize}
+    \item Reqs only sample sequences of states, actions, rewards from interactions w/ envir. Works in RL by averaging sample returns.
+    \item MC only for episodic tasks b/c only upon completion of episode are value estimates and policies changed.
+\end{itemize} \vspace{-.5em}
+
+\begin{mydef}{First-visit MC prediction for estimating $V \approx v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+
+    Initialize: \\
+        \hspace*{2em}$V(s) \in \mathbb R$, arbitrarily $\forall s \in \mathcal S$ \\
+        \hspace*{2em}$Returns(s) \leftarrow$ empty list $\forall s \in \mathcal S$ \\
+
+    Loop (for each episode): \\
+        \hspace*{2em}Generate episode following $\pi$ \\
+        \hspace*{2em}$G \leftarrow 0$ \\
+        \hspace*{2em}Loop for each step of episode, $t = T-1, T-2, \dots, 0$: \\
+            \hspace*{4em}$G \leftarrow \gamma G + R_{t+1}$ \\
+            \hspace*{4em}Unless $S_t$ appears in $S_0, S_1, \dots, S_{t-1}$: \\
+                \hspace*{6em}Append $G$ to $Returns(S_t)$ \\
+                \hspace*{6em}$V(S_t) \leftarrow \text{average}(Returns(S_t))$
+\end{mydef}
+
+\dotfill
+
+\textit{MC Estimation of Action Values}
+
+$\pi(s) \equiv \argmax_a q(s,a)$, \hfill $q_{\pi_k}(s, \pi_{k+1}(s)) \geq q_{\pi_k}(s, \pi_k(s)) \geq v_{\pi_k}(s)$
+
+\begin{mydef}{First-visit MC prediction for estimating $V \approx v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+
+    Initialize: \\
+        \hspace*{2em}$\pi(s) \in \mathcal A(s)$, arbitrarily $\forall s \in \mathcal S$ \\
+        \hspace*{2em}$Q(s, a) \in \mathbb R$, arbitrarily $\forall s \in \mathcal S, \forall a \in \mathcal A$ \\
+        \hspace*{2em}$Returns(s) \leftarrow$ empty list $\forall s \in \mathcal S, \forall a \in \mathcal A$ \\
+
+    Loop (for each episode): \\
+        \hspace*{2em}Choose $S_0 \in \mathcal S, A_0 \in \mathcal A(S_0)$ randomly st all pairs have probabilities greater than $0$ \\
+        \hspace*{2em}Generate episode from $S_0, A_0$ following $\pi$ \\
+        \hspace*{2em}$G \leftarrow 0$ \\
+        \hspace*{2em}Loop for each step of episode, $t = T-1, T-2, \dots, 0$: \\
+            \hspace*{4em}$G \leftarrow \gamma G + R_{t+1}$ \\
+            \hspace*{4em}Unless $S_t$ appears in $S_0, A_0, \dots, S_{t-1}, A_{t-1}$: \\
+                \hspace*{6em}Append $G$ to $Returns(S_t)$ \\
+                \hspace*{6em}$Q(S_t, A_t) \leftarrow \text{average}(Returns(S_t, A_t))$ \\
+                \hspace*{6em}$\pi(S_t) \leftarrow \argmax_a Q(S_t, a)$
+\end{mydef}
+
+Note the last three lines can be made more efficient:
+
+$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac{1}{n} (G - Q(S_t, A_t))$
+
+$\pi(S_t) \leftarrow \argmax_a Q(S_t, a))$
+
+\vspace{-.5em}
+\dotfill
+
+
+
 
 
 
