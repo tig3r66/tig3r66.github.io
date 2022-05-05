@@ -313,6 +313,141 @@ $\pi(S_t) \leftarrow \argmax_a Q(S_t, a))$
 \vspace{-.5em}
 \dotfill
 
+\textit{MC Control w/o Exploring Starts}
+
+On-policy: tries to evaluate or improve policy used to make decisions.
+
+Off-policy: same as on-policy but policy is different from that used to generate data: target policy + behaviour policy.
+
+$\epsilon$-soft policy: all nongreedy actions given minimal probability of selection $\epsilon / | \mathcal A(s)|$ whereas greedy action given probability $1 - \epsilon + \epsilon/| \mathcal A(s)|$.
+
+
+\cleardoublepage
+
+
+\begin{mydef}{On-policy first-visit MC control (for $\epsilon$-soft policies, $\pi \approx \pi_*$)}{}
+    Algorithm parameter: small $\epsilon > 0$ \\
+
+    Initialize: \\
+        \hspace*{2em}$\pi \leftarrow$ arbitrary $\epsilon$-soft policy \\
+        \hspace*{2em}$Q(s, a) \in \mathbb R$, arbitrarily $\forall s \in \mathcal S, \forall a \in \mathcal A$ \\
+        \hspace*{2em}$Returns(s) \leftarrow$ empty list $\forall s \in \mathcal S, \forall a \in \mathcal A$ \\
+
+    Loop (for each episode): \\
+        \hspace*{2em}Generate episode from $S_0, A_0$ following $\pi$ \\
+        \hspace*{2em}$G \leftarrow 0$ \\
+        \hspace*{2em}Loop for each step of episode, $t = T-1, T-2, \dots, 0$: \\
+            \hspace*{4em}$G \leftarrow \gamma G + R_{t+1}$ \\
+            \hspace*{4em}Unless pair $S_t, A_t$ appears in $S_0, A_0, \dots, S_{t-1}, A_{t-1}$: \\
+                \hspace*{6em}Append $G$ to $Returns(S_t)$ \\
+                \hspace*{6em}$Q(S_t, A_t) \leftarrow \text{average}(Returns(S_t, A_t))$ \\
+                \hspace*{6em}$A^* \leftarrow \argmax_a Q(S_t, a)$ \\
+                \hspace*{6em}$\forall a \in \mathcal A(S_t)$: \\
+                    \hspace*{8em}$\pi(a \mid S_t) \leftarrow \begin{cases}
+                        1 - \epsilon + \epsilon / |A(S_t)| & \text{if } a = A^* \\
+                        \epsilon / |A(S_t)| & \text{if } a \neq A^*
+                    \end{cases}$
+\end{mydef}
+
+\dotfill
+
+\textit{Off-Policy Prediction via Importance Sampling}
+
+$\Pr \{ A_t, S_{t+1}, A_{t+1}, \dots, S_T \mid S_t, A_{t:T-1} \sim \pi \} = \prod_{k=t}^{T-1} \pi(A_k \mid S_k) p(S_{k+1} \mid S_k, A_k)$
+
+$\mathbb E [G_t \mid S_t = s] = v_b(s)$ \hfill $\mathbb E [\rho_{t:T-1} G_t \mid S_t = s] = v_\pi(s)$
+
+$\quad \rho_{t:T-1} = \prod_{k=t}^{T-1} \frac{\pi(A_k \mid S_k)}{b(A_k \mid S_k)}$
+
+Ordinary importance sampling: $V(s) \equiv \frac{\sum_{t \in \mathcal T(s)} \rho G_t}{|\mathcal T(s)|}$
+
+Weighted importance sampling: $V(s) \equiv \frac{\sum_{t \in \mathcal T(s)} \rho G_t}{\sum_{t \in \mathcal T(s)} \rho}$
+
+Ordinary unbiased w/ high variance; weighted is biased w/ lower variance (preferred method).
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Incremental Implementation}
+
+Suppose we have seq of returns $G_1, G_2, \dots, G_{n-1}$ all starting from same state with random weight $W_i$. We wish to estimate
+\begin{equation*}
+    V_n \equiv \frac{\sum_{k=1}^{n-1}} W_k G_k{\sum_{k=1}^{n-1} W_k}, \quad n \geq 2
+\end{equation*}
+
+We can use the following equation:
+\begin{equation*}
+    V_{n+1} \equiv V_n + \frac{W_n}{C_n} (G_n - V_n), \quad n \geq 1
+\end{equation*}
+where $C_{n+1} \equiv C_n + W_{n+1}$ and $C_0 = 0$ ($C_n$ is sum of weights).
+
+\newpage
+
+\begin{mydef}{Off-policy MC prediction (policy evaluation) $Q \approx Q_\pi$)}{}
+    Input: an arbitrary target policy $\pi$ \\
+    
+    Initialize, $\forall s \in \mathcal S, a \in \mathcal A(s)$: \\
+        \hspace*{2em}$Q(s,a) \in \mathbb R$ (arbitrarily) \\
+        \hspace*{2em}$C(s,a) \leftarrow 0$ \\
+    
+        Loop (for each episode): \\
+            \hspace*{2em}$b\leftarrow$ any policy w/ coverage of $\pi$ \\
+            \hspace*{2em}Generate an episode following $b: S_0, A_0, R_1, \dots$ \\
+            \hspace*{2em}$G \leftarrow 0$ \\
+            \hspace*{2em}$W \leftarrow 1$ \\
+            \hspace*{2em}Loop for each step of episode, $t = T-1, T-2, \dots, 0$ while $W \neq 0$: \\
+                \hspace*{4em}$G \leftarrow \gamma G + R_{t+1}$ \\
+                \hspace*{4em}$C(S_t, A_t) \leftarrow C(S_t, A_t) + W$ \\
+                \hspace*{4em}$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac{W}{C(S_t, A_t)} [G - Q(S_t, A_t)]$ \\
+                \hspace*{4em}$W \leftarrow W \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}$
+\end{mydef}
+
+\begin{mydef}{Off-policy MC control $\pi \approx \pi_*$)}{}
+    Initialize, $\forall s \in \mathcal S, a \in \mathcal A(s)$: \\
+        \hspace*{2em}$Q(s,a) \in \mathbb R$ (arbitrarily) \\
+        \hspace*{2em}$C(s,a) \leftarrow 0$ \\
+        \hspace*{2em}$\pi(s) \leftarrow \argmax_a Q(s, a)$
+    
+        Loop (for each episode): \\
+            \hspace*{2em}$b\leftarrow$ any policy w/ coverage of $\pi$ \\
+            \hspace*{2em}Generate an episode following $b: S_0, A_0, R_1, \dots$ \\
+            \hspace*{2em}$G \leftarrow 0$ \\
+            \hspace*{2em}$W \leftarrow 1$ \\
+            \hspace*{2em}Loop for each step of episode, $t = T-1, T-2, \dots, 0$: \\
+                \hspace*{4em}$G \leftarrow \gamma G + R_{t+1}$ \\
+                \hspace*{4em}$C(S_t, A_t) \leftarrow C(S_t, A_t) + W$ \\
+                \hspace*{4em}$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \frac{W}{C(S_t, A_t)} [G - Q(S_t, A_t)]$ \\
+                \hspace*{4em}$\pi(S_t) \leftarrow \argmax_a Q(S_t, a)$ \\
+                \hspace*{4em}If $A_t \neq \pi(S_t)$ then exit inner Loop \\
+                \hspace*{4em}$W \leftarrow W \frac{1}{b(A_t \mid S_t)}$
+\end{mydef}
+
+\dotfill
+
+\textbf{Temporal-Difference Learning}
+
+TD error: $\delta_t \equiv R_{t+1} + \gamma V(S_{t+1}) - V(S_t)$
+
+MC error: $G_t - V(S_t) = \sum_{k=t}^{T-1} \gamma^{k-t} S_t$
+
+\begin{mydef}{Tabular TD(0) for estimating $v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+    Algorithm parameter: step size $\alpha \in (0, 1]$ \\
+    Initialize $V(s)$, $\forall s \in \mathcal S$ arbitrarily except $V(\text{terminal}) = 0$ \\
+    
+        Loop (for each episode): \\
+            \hspace*{2em}Initialize $S$ \\
+            \hspace*{2em}Loop for each step of episode: \\
+                \hspace*{4em}$A \leftarrow$ action given by $\pi$ for $S$ \\
+                \hspace*{4em}Take action $A$, observe $R, S'$ \\
+                \hspace*{4em}$V(s) \leftarrow V(s) + \alpha [R + \gamma V(s') - V(s)]$ \\
+                \hspace*{4em}$S \leftarrow S'$ \\
+            \hspace*{2em}until $S$ is terminal
+\end{mydef}
+
+
+\cleardoublepage
+
 
 
 
