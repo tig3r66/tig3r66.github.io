@@ -426,9 +426,9 @@ where $C_{n+1} \equiv C_n + W_{n+1}$ and $C_0 = 0$ ($C_n$ is sum of weights).
 
 \textbf{Temporal-Difference Learning}
 
-TD error: $\delta_t \equiv R_{t+1} + \gamma V(S_{t+1}) - V(S_t)$
+TD(0) update: $V(S_t) \leftarrow V(S_t) + \alpha [R_{t+1} + \gamma V(S_{t+1}) - V(S_t)]$
 
-MC error: $G_t - V(S_t) = \sum_{k=t}^{T-1} \gamma^{k-t} S_t$
+TD error: $\delta_t \equiv R_{t+1} + \gamma V(S_{t+1}) - V(S_t)$
 
 \begin{mydef}{Tabular TD(0) for estimating $v_\pi$}{}
     Input: policy $\pi$ to be evaluated \\
@@ -448,6 +448,116 @@ MC error: $G_t - V(S_t) = \sum_{k=t}^{T-1} \gamma^{k-t} S_t$
 
 \cleardoublepage
 
+MC error: $G_t - V(S_t) = \sum_{k=t}^{T-1} \gamma^{k-t} S_t$
+
+\dotfill
+
+\textbf{Sarsa: On-Policy TD Control}
+
+$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha [R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)]$
+
+\begin{mydef}{Sarsa (on-policy TD control) for estimating $Q \approx q_*$}{}
+    Algorithm parameter: step size $\alpha \in (0, 1]$, small $\epsilon > 0$ \\
+    Initialize $Q(s,a)$, $\forall s \in \mathcal S, a \in \mathcal A(s)$ arbitrarily except $Q(\text{terminal}, \cdot) = 0$ \\
+    
+        Loop (for each episode): \\
+            \hspace*{2em}Initialize $S$ \\
+            \hspace*{2em}Choose $A$ from $S$ using policy derived from $Q$: \\
+            \hspace*{2em}Loop for each step of episode: \\
+                \hspace*{4em}Take action $A$, observe $R, S'$ \\
+                \hspace*{4em}Choose $A'$ from $S'$ using policy derived from $Q$ \\
+                \hspace*{4em}$Q(S,A) \leftarrow Q(S,A) + \alpha[R + \gamma Q(S', A') - Q(S, A)]$ \\
+                \hspace*{4em}$S \leftarrow S'; A \leftarrow A'$ \\
+            \hspace*{2em}until $S$ is terminal
+\end{mydef}
+
+\dotfill
+
+\textbf{Q-Learning: Off-Policy TD Control}
+
+$Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha [R_{t+1} + \gamma \max_a Q(S_{t+1}, a) - Q(S_t, A_t)]$
+
+\begin{mydef}{Q-learning (off-policy TD control) for estimating $\pi \approx \pi_*$}{}
+    Algorithm parameter: step size $\alpha \in (0, 1]$, small $\epsilon > 0$ \\
+    Initialize $Q(s,a)$, $\forall s \in \mathcal S, a \in \mathcal A(s)$ arbitrarily except $Q(\text{terminal}, \cdot) = 0$ \\
+    
+        Loop (for each episode): \\
+            \hspace*{2em}Initialize $S$ \\
+            \hspace*{2em}Choose $A$ from $S$ using policy derived from $Q$: \\
+            \hspace*{2em}Loop for each step of episode: \\
+                \hspace*{4em}Choose $A$ from $S$ using policy derived from $Q$ \\
+                \hspace*{4em}Take action $A$, observe $R, S'$ \\
+                \hspace*{4em}$Q(S,A) \leftarrow Q(S,A) + \alpha[R + \max_a \gamma Q(S', a) - Q(S, A)]$ \\
+                \hspace*{4em}$S \leftarrow S'$ \\
+            \hspace*{2em}until $S$ is terminal
+\end{mydef}
+
+Double $Q$-learning addresses maximization bias problem. Instead of single $Q(S,A)$ update, with 0.5 probability, choose one of:
+\begin{equation*}
+    \begin{cases}
+        Q_1(S,A) + \alpha \left( R + \gamma Q_2(S', \argmax_a Q_1(S', a)) - Q_1(S, A) \right) \\
+        Q_2(S,A) + \alpha \left( R + \gamma Q_1(S', \argmax_a Q_2(S', a)) - Q_2(S, A) \right)
+    \end{cases}
+\end{equation*}
+Can adapt this for Sarsa and expected Sarsa updates.
+
+\vspace{-.5em}
+\dotfill
+
+
+\textbf{Expected Sarsa}
+
+$Q(S_t, A_t)$
+
+$\quad \leftarrow Q(S_t, A_t) + \alpha [R_{t+1} + \gamma \mathbb E_\pi [Q(S_{t+1}, A_{t+1}) \mid S_{t+1}] - Q(S_t, A_t)]$
+
+$\quad\leftarrow Q(S_t, A_t) + \alpha[R_{t+1} + \gamma \sum_a \pi(a \mid S_{t+1}) Q(S_{t+1}, a) - Q(S_t, A_t)]$
+
+Eliminates variance due to random selection of $A_{t+1}$ from Sarsa.
+
+
+\newpage
+
+
+\textbf{Models and Planning}
+
+model $\xrightarrow{\text{planning}}$ policy
+
+\begin{mydef}{Random-sample one-step tabular Q-planning}{}
+    Loop:
+    \begin{enumerate}
+        \item Select a state, $S \in \mathcal S$ and action, $A \in \mathcal A(S)$, at random
+        \item Send $S, A$ to a sample model and obtain sample next reward $R$ and sample next state $S'$
+        \item Apply one-step tabular Q-learning to $S, A, R, S'$: \\
+        $Q(S, A) \leftarrow Q(S, A) + \alpha [R + \gamma \max_a Q(S', a) - Q(S, A)]$
+    \end{enumerate}
+\end{mydef}
+
+\dotfill
+
+\textbf{Dyna-Q}
+
+\begin{mydef}{Tabular Dyna-Q}{}
+    Initialize $Q(s,a)$ and $Model(s,a),\ \forall s \in \mathcal S, a \in \mathcal A(s)$ \\
+    Loop:
+    \begin{enumerate}
+        \item $S \leftarrow$ current (nonterminal) state
+        \item $A \leftarrow \epsilon$-greedy($S,Q$)
+        \item Take action $A$; observe resultant reward $R$ and state $S'$
+        \item $Q(S,A) \leftarrow Q(S,A) + \alpha[R + \gamma \max_a Q(S',a) - Q(S, A)]$
+        \item $Model(S,A) \leftarrow R, S'$ (assuming deterministic envir)
+        \item Loop repeat $n$ times:
+        \subitem$S \leftarrow$ random previously observed state
+        \subitem$A \leftarrow$ random action previously taken in $S$
+        \subitem$R,S' \leftarrow Model(S,A)$
+        \subitem$Q(S,A) \leftarrow Q(S,A) + \alpha [R + \gamma \max_a Q(S', a) - Q(S,A)]$
+    \end{enumerate}
+\end{mydef}
+
+Dyna-Q+ has reward of $r + \kappa \sqrt{\tau}$, where $\kappa$ is a constant and $\tau$ is the number of time steps since a given transition.
+
+\vspace{-.5em}
+\dotfill
 
 
 
