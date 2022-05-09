@@ -559,6 +559,127 @@ Dyna-Q+ has reward of $r + \kappa \sqrt{\tau}$, where $\kappa$ is a constant and
 \vspace{-.5em}
 \dotfill
 
+\textbf{n-Step Bootstrapping}
+
+\begin{mydef}{$n$-step TD for estimating $V \approx v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+    Algorithm parameters: step size $\alpha \in (0, 1]$, positive integer $n$ \\
+    Initialize $V(s)$, arbitrarily $\forall s \in \mathcal S$ \\
+    All store and access operations (for $S_t$ and $R_t$) can take their index mod ($n+1$) \\
+    
+    Loop (for each episode): \\
+        \hspace*{2em}Initialize and store $S_0 \neq$ terminal \\
+        \hspace*{2em}$T \leftarrow \infty$ \\
+        \hspace*{2em}Loop for $t=0,1,2,\dots$: \\
+            \hspace*{4em}If $t < T$, then: \\
+                \hspace*{6em}Take an action according to $\pi(\cdot \mid S_t)$ \\
+                \hspace*{6em}Observe and store $R_{t+1}, S_{t+1}$ \\
+                \hspace*{6em}If $S_{t+1}$ terminal, then $T \leftarrow t+1$ \\
+            \hspace*{4em}$\tau \leftarrow t-n+1$ \\
+            \hspace*{4em}If $\tau \geq 0$: \\
+                \hspace*{6em}$G \leftarrow \sum_{i=\tau+1}^{\min (\tau+n, T)} \gamma^{i-\tau-1} R_i$ \\
+                \hspace*{6em}If $\tau + n < T$, then: $G \leftarrow G + \gamma^n V(S_{\tau+n})$ \\
+                \hspace*{6em}$V(S_\tau) \leftarrow V(S_\tau) + \alpha [G-V(S_\tau)]$ \\
+        \hspace*{2em}Until $\tau=T-1$
+\end{mydef}
+
+
+\cleardoublepage
+
+
+\textbf{Prediction Objective}
+
+$\overline{VE} \equiv \sum_{s \in \mathcal S} \mu(s)[v_\pi(s) - \hat v(s, \mathbf w)]^2$ \hfill $\mu(s) \geq 0, \quad \sum_s \mu(s) = 1$
+
+Goal: $\overline{VE}(\mathbf w^*) \leq \overline{VE}(\mathbf w),\ \forall \mathbf w$
+
+$\mu(s)$ is often the fraction of time spent in state $s$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Stochastic-Gradient and Semi-Gradient Methods}
+
+$\mathbf w_{t+1} \equiv \mathbf w_t - \frac{1}{2}\alpha \nabla[v_\pi(S_t) - \hat v(S_t, \mathbf w_t)]^2$
+
+$\hspace{2.5em} = \mathbf w_t + \alpha [v_\pi(S_t) - \hat v(S_t, \mathbf w_t)] \nabla \hat v(S_t, \mathbf w_t)$ \hfill $\nabla$ wrt $\mathbf w$
+
+Oftentimes $v_\pi(S_t)$ noise-corrupted, so we denote target as $U_t$:
+
+$\quad w_{t+1} = \mathbf w_t + \alpha [U_t - \hat v(S_t, \mathbf w_t)] \nabla \hat v(S_t, \mathbf w_t)$
+
+\begin{mydef}{Gradient MC algorithm for estimating $\hat v \approx v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+    Input: a differentiable fn $\hat v: \mathcal S \times \mathbb R^d \mapsto \mathbb R$ \\
+    Algorithm parameter: step size $\alpha > 0$ \\
+    Initialize value-fn weights $\mathbf w \in \mathbb R^d$ arbitrarily (e.g., $\mathbf w = \mathbf 0$) \\
+    Loop (for each episode): \\
+        \hspace*{2em}Generate episode $S_0, A_0, R_1, \dots, R_T, S_T$ using $\pi$ \\
+        \hspace*{2em}Loop for each step of episode, $t = 0, 1, \dots, T-1$: \\
+        \hspace*{4em}$\mathbf w \leftarrow \mathbf w + \alpha [G_t - \hat v(S_t, \mathbf w)] \nabla \hat v(S_t, \mathbf w)$
+\end{mydef}
+
+\dotfill
+
+Semi-gradient TD(0) uses $U_t \equiv R_{t+1} + \gamma \hat v (S_{t+1}, \mathbf w_t)$
+
+\begin{mydef}{Semi-gradient TD(0) for estimating $\hat v \approx v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+    Input: a differentiable fn $\hat v: \mathcal S \times \mathbb R^d \mapsto \mathbb R$ st $\hat v(\text{terminal}, \cdot) = 0$\\
+    Algorithm parameter: step size $\alpha > 0$ \\
+    Initialize value-fn weights $\mathbf w \in \mathbb R^d$ arbitrarily (e.g., $\mathbf w = \mathbf 0$) \\
+    Loop (for each episode): \\
+        \hspace*{2em}Initialize $\mathcal S$ \\
+        \hspace*{2em}Loop for each step of episode: \\
+            \hspace*{4em}Choose $A \sim \pi(\cdot \mid s)$ \\
+            \hspace*{4em}Take action $A$, observe $R, S'$ \\
+            \hspace*{4em}$\mathbf w \leftarrow \mathbf w + \alpha[R + \gamma \hat{v}(S', \mathbf w) - \hat v(S, \mathbf w)] \nabla \hat v(S, \mathbf w)$ \\
+            \hspace*{4em}$S \leftarrow S'$ \\
+        \hspace*{2em}Until $S$ is terminal
+\end{mydef}
+
+\dotfill
+
+\textbf{Linear Methods}
+
+Let $\hat v(\cdot, \mathbf w)$ be linear and for each state $s$, $\mathbf x(s) \equiv [x_1(s), \dots, x_d(s)]^\top$.
+
+$\hat v(s, \mathbf w) \equiv \langle \mathbf w, \mathbf x(s) \rangle = \mathbf w^\top \mathbf x(s) = \sum_{i=1}^d w_i x_i(s)$, \hfill $x_i: S \mapsto \mathbb R$
+
+$\nabla v(s, \mathbf w) = \mathbf x(s) \implies \mathbf w_{t+1} = \mathbf w_t + \alpha[U_t - \hat v(S_t, \mathbf w_t)] \mathbf x(S_t)$
+
+$\mathbf w_{\text{TD}} = A^{-1} \mathbf b$
+
+$\quad A \equiv \mathbb E[\mathbf x_t (\mathbf x_t - \gamma \mathbf x_{t+1})]^\top \in \mathbb R^d \times \mathbb R^d$ \hfill $\mathbf b \equiv \mathbb E[R_{t+1} \mathbf x_t] \in \mathbb R^d$
+
+$\quad \overline{VE}(\mathbf w_{\text{TD}}) = \frac{1}{1-\gamma} \min_{\mathbf w} \overline{VE}(\mathbf w)$
+
+
+
+\newpage
+
+\begin{mydef}{$n$-step semi-gradient TD for estimating $V \approx v_\pi$}{}
+    Input: policy $\pi$ to be evaluated \\
+    Input: a differentiable fn $\hat v: \mathcal S \times \mathbb R^d \mapsto \mathbb R$ st $\hat v(\text{terminal}, \cdot) = 0$ \\
+    Algorithm parameters: step size $\alpha \in (0, 1]$, positive integer $n$ \\
+    Initialize value-fn weights $\mathbf w \in \mathbb R^d$ arbitrarily (e.g., $\mathbf w = \mathbf 0$) \\
+    All store and access operations (for $S_t$ and $R_t$) can take their index mod ($n+1$) \\
+    
+    Loop (for each episode): \\
+        \hspace*{2em}Initialize and store $S_0 \neq$ terminal \\
+        \hspace*{2em}$T \leftarrow \infty$ \\
+        \hspace*{2em}Loop for $t=0,1,2,\dots$: \\
+            \hspace*{4em}If $t < T$, then: \\
+                \hspace*{6em}Take an action according to $\pi(\cdot \mid S_t)$ \\
+                \hspace*{6em}Observe and store $R_{t+1}, S_{t+1}$ \\
+                \hspace*{6em}If $S_{t+1}$ terminal, then $T \leftarrow t+1$ \\
+            \hspace*{4em}$\tau \leftarrow t-n+1$ \\
+            \hspace*{4em}If $\tau \geq 0$: \\
+                \hspace*{6em}$G \leftarrow \sum_{i=\tau+1}^{\min (\tau+n, T)} \gamma^{i-\tau-1} R_i$ \\
+                \hspace*{6em}If $\tau + n < T$, then: $G \leftarrow G + \gamma^n \hat v(S_{\tau+n}, \mathbf w)$ \\
+                \hspace*{6em}$\mathbf w \leftarrow \mathbf w + \alpha [G-\hat v(S_\tau, \mathbf w)] \nabla \hat v(S_\tau, \mathbf w)$ \\
+        \hspace*{2em}Until $\tau=T-1$
+\end{mydef}
 
 
 
