@@ -402,7 +402,7 @@ where $C_{n+1} \equiv C_n + W_{n+1}$ and $C_0 = 0$ ($C_n$ is sum of weights).
                 \hspace*{4em}$W \leftarrow W \frac{\pi(A_t \mid S_t)}{b(A_t \mid S_t)}$
 \end{mydef}
 
-\begin{mydef}{Off-policy MC control $\pi \approx \pi_*$)}{}
+\begin{mydef}{Off-policy MC control $\pi \approx \pi_*$}{}
     Initialize, $\forall s \in \mathcal S, a \in \mathcal A(s)$: \\
         \hspace*{2em}$Q(s,a) \in \mathbb R$ (arbitrarily) \\
         \hspace*{2em}$C(s,a) \leftarrow 0$ \\
@@ -680,6 +680,38 @@ $\quad \overline{VE}(\mathbf w_{\text{TD}}) = \frac{1}{1-\gamma} \min_{\mathbf w
                 \hspace*{6em}$\mathbf w \leftarrow \mathbf w + \alpha [G-\hat v(S_\tau, \mathbf w)] \nabla \hat v(S_\tau, \mathbf w)$ \\
         \hspace*{2em}Until $\tau=T-1$
 \end{mydef}
+
+\dotfill
+
+\textbf{Parameterized Policies}
+
+$\pi(a \mid s, \boldsymbol \theta) \geq 0, \quad \forall a \in \mathcal A, s \in \mathcal S$ \hfill $\sum_{a \in \mathcal A} \pi(a \mid s, \boldsymbol \theta) = 1, \quad \forall s \in \mathcal S$
+
+Softmax policy: $\pi(a \mid s, \boldsymbol \theta) \equiv \frac{e^{h(s,a, \theta)}}{\sum_{b\in \mathcal A} e^{h(s, b, \boldsymbol \theta)}}$
+
+$\quad$Action preference: $e^{h(s,a, \theta)}$
+
+Avg reward formulation: $G_t = \sum_{t=0}^\infty R_t - r(\pi)$
+
+Avg reward objective:
+
+$\quad \mathbb r(\pi) = E_\pi[R_t] = \sum_s \mu(s) \sum_a \pi(a \mid s, \boldsymbol \theta) \sum_{s', r} p(s', r \mid s, a) r$
+
+$\quad\quad \mathbb E_\pi[R_t \mid S_t = s, A_t = a] = \sum_{s', r} p(s', r \mid s, a) r$
+
+$\quad\quad \mathbb E_\pi[R_t \mid S_t = s] = \sum_a \pi(a \mid s, \boldsymbol \theta) \sum_{s', r} p(s', r \mid s, a) r$
+
+\dotfill
+
+\textbf{Policy Gradient}
+
+Policy gradient thm: $\nabla r(\pi) = \sum_s \mu(s) \sum_a \nabla \pi(a \mid s, \boldsymbol \theta) q_\pi(s,a)$
+
+$\quad \nabla r(\pi) = \mathbb E_\pi \left[ \frac{\nabla \pi (A \mid S, \boldsymbol \theta)}{\pi(A \mid S, \boldsymbol \theta)} q_\pi(S, A) \right]$
+
+Gradient ascent: $\boldsymbol \theta_{t+1} \equiv \boldsymbol \theta_t + \alpha \sum_a \nabla \pi(a \mid S_t, \boldsymbol \theta_t) q_\pi(S_t, a)$
+
+$\quad \boldsymbol \theta_{t+1} \equiv \boldsymbol \theta_t + \alpha \ln \pi(A_t \mid S_t, \boldsymbol \theta_t) q_\pi(S_t, A_t)$
 
 
 
