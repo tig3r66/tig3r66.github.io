@@ -141,6 +141,10 @@ ul, ol, dl {
     margin-left: 20px;
 }
 
+.bullet-list li:before {
+    content: "• \00a0\00a0";
+}
+
 
 /* LAYOUT STYLES ============================================================ */
 
