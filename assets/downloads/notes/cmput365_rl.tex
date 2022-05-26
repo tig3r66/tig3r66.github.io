@@ -679,7 +679,7 @@ $\quad \overline{VE}(\mathbf w_{\text{TD}}) = \frac{1}{1-\gamma} \min_{\mathbf w
                 \hspace*{6em}If $\tau + n < T$, then: $G \leftarrow G + \gamma^n \hat v(S_{\tau+n}, \mathbf w)$ \\
                 \hspace*{6em}$\mathbf w \leftarrow \mathbf w + \alpha [G-\hat v(S_\tau, \mathbf w)] \nabla \hat v(S_\tau, \mathbf w)$ \\
         \hspace*{2em}Until $\tau=T-1$
-\end{mydef}
+\end{mydef} \vspace{-0.5em}
 
 \dotfill
 
@@ -707,11 +707,150 @@ $\quad\quad \mathbb E_\pi[R_t \mid S_t = s] = \sum_a \pi(a \mid s, \boldsymbol \
 
 Policy gradient thm: $\nabla r(\pi) = \sum_s \mu(s) \sum_a \nabla \pi(a \mid s, \boldsymbol \theta) q_\pi(s,a)$
 
-$\quad \nabla r(\pi) = \mathbb E_\pi \left[ \frac{\nabla \pi (A \mid S, \boldsymbol \theta)}{\pi(A \mid S, \boldsymbol \theta)} q_\pi(S, A) \right]$
+Expected return: $J(\pi_\theta) = \mathbb E_{\tau \sim \pi_\theta} [r(\tau)]$
 
-Gradient ascent: $\boldsymbol \theta_{t+1} \equiv \boldsymbol \theta_t + \alpha \sum_a \nabla \pi(a \mid S_t, \boldsymbol \theta_t) q_\pi(S_t, a)$
+Gradient ascent: $\boldsymbol \theta_{t+1} \equiv \boldsymbol \theta_t + \alpha \underbrace{\nabla_\theta J(\pi_\theta)}_{\text{policy grad}} \vert_{\theta_k}$
 
-$\quad \boldsymbol \theta_{t+1} \equiv \boldsymbol \theta_t + \alpha \ln \pi(A_t \mid S_t, \boldsymbol \theta_t) q_\pi(S_t, A_t)$
+Probability of trajectory $\tau = (s_0, a_0, \dots, s_{T+1}) \sim \pi_\theta$:
+
+$\quad P(\tau \mid \theta) = \rho_0(s_0) \prod_{t=0}^T P(s_{t+1} \mid s_t, a_t) \pi_\theta(a_t \mid s_t)$
+
+Log-probability of trajectory:
+
+$\quad \log P(\tau \mid \theta) = \log \rho_0 (s_0) + \sum_{t=0}^T \left( \log P(s_{t+1} \mid s_t, a_t) + \log \pi_\theta (a_t \mid s_t) \right)$
+
+Grad-log-prob of trajectory: $\nabla_\theta \log P(\tau \mid \theta) = \sum_{t=0}^T \nabla_\theta \log \pi_\theta (a_t \mid s_t)$
+
+
+\cleardoublepage
+
+$\nabla_\theta J(\pi_\theta) = \nabla_\theta \mathbb E_{\tau \sim \pi_\theta} [r(\tau)] =  \int_\tau \nabla_\theta P(\tau \mid \theta) r(\tau)\ d\tau$
+
+$\hspace{4em} = \int_\tau P(\tau \mid \theta) \nabla_\theta \log P(\tau \mid \theta) r(\tau)\ d\tau$
+
+$\hspace{4em} = \mathbb E_{\tau \sim \pi_\theta} [\nabla_\theta \log P(\tau \mid \theta) r(\tau)]$
+
+$\hspace{4em} = \mathbb E_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta (a_t \mid s_t) r(\tau) \right]$
+
+\dotfill
+
+EGLP Lemma: $\mathbb E_{x \sim P_\theta} [\nabla_\theta \log P_\theta(x)] = 0$
+
+$\quad \int_x P_\theta(x)\ dx = 1 \implies \nabla_\theta \int_x P_\theta(x)\ dx = \nabla_\theta 1 = 0$
+
+$\quad 0 = \nabla_\theta \int_x P_\theta(x)\ dx = \int_x \nabla_\theta P_\theta(x)\ dx = \int_x P_\theta(x) \nabla_\theta \log P_\theta(x)\ dx$
+
+$\quad \implies 0 = \mathbb E_{x \sim P_\theta}[\nabla_\theta \log P_\theta(x)]$
+
+$\nabla_\theta J(\pi_\theta) = \mathbb E_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t \mid s_t) \sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}) \right]$
+
+$\quad = \mathbb E_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t \mid s_t) \left( \sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}) - b(s_t) \right) \right]$
+
+$\quad$Due to Markov property of MDPs and EGLP lemma
+
+$\quad b(s_t)$ is a baseline (common to choose $b(s_t) = V^\pi(s_t)$)
+
+MSE objective: $\phi_k = \argmin_\phi \mathbb E_{s_t, \hat R_t \sim \pi_k} \left[ \left(V_\pi(s_t) - \hat R_t \right)^2 \right]$
+
+\dotfill
+
+\textbf{Alternative Forms of Policy Gradient}
+
+$\nabla_\theta J(\pi_\theta) = \mathbb E_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t \mid s_t) \Phi_t \right]$
+
+We can choose $\Phi_t$ to be any of $\Phi_t = R(\tau)$, \hfill $\Phi_t = \sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1})$, or $\Phi_t = \sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}) - b(s_t)$.
+
+All choices of $\Phi_t$ have the same expectation, just diff variances.
+
+On-policy action-value fn: $\Phi_t = Q^{\pi_\theta}(s_t, a_t)$
+
+Advantage fn: $\Phi_t = A^{\pi_\theta} (s_t, a_t) = Q^\pi(s_t, a_t) - V^\pi(s_t)$
+
+\dotfill
+
+\textbf{Vanilla Policy Gradient}
+
+% $\nabla_\theta J(\pi_\theta) = \mathbb E_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t \mid s_t) A^{\pi_\theta}(s_t, a_t) \right]$
+
+
+\begin{mydef}{Vanilla Policy Gradient Algorithm}{}
+    Input: initial policy params $\theta_0$, intitial value fn params $\phi_0$ \\
+    for $k=0,1,2,\dots$ do \\
+        \hspace*{2em}Collect set of trajectories $\mathcal D_k = \{\tau_i\}$ following $\pi_k = \pi(\theta_k)$ \\
+        \hspace*{2em}Compute rewards $\hat R_t$ \\
+        \hspace*{2em}Compute $\hat A_t$ \\
+        \hspace*{2em}Estimate policy gradient:
+        
+        \centering $\hat g_k = \frac{1}{|\mathcal D_k|} \sum_{\tau \in \mathcal D_k}\sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t \mid s_t) \vert_{\theta_k} \hat A_t$ \flushleft
+
+        \hspace*{2em}Compute policy update using SGD: $\theta_{k+1} = \theta_k + \alpha_k \hat g_k$ \\
+        \hspace*{2em}Fit value fn by regression on MSE
+
+        \centering $\phi_{k+1} = \argmin \frac{1}{|\mathcal D_k| T} \sum_{\tau \in \mathcal D_k} \sum_{t=0}^T \left(V_\phi(s_t) - \hat R_t \right)^2$
+\end{mydef}
+
+
+\newpage
+
+\textbf{Actor-Critic Algorithms}
+
+\begin{mydef}{Q Actor-Critic}{}
+    Initialize parameters, $s, \theta, w$ and learning rates $\alpha_\theta, \alpha_w$; sample $a \sim \pi_\theta(a \mid s)$ \\
+    for $t = 1 \dots T$ do \\
+        \hspace*{2em}Sample reward $r_t \sim R(s, a)$ and next state $s' \sim P (s' \mid s, a)$ \\
+        \hspace*{2em}Sample next action $a' \sim \pi_\theta(a' \mid s')$ \\
+        \hspace*{2em}Update policy params: $\theta \leftarrow \theta + \alpha_\theta Q_w(s, a) \nabla_\theta \log \pi_\theta (a\mid s)$ \\
+        \hspace*{2em}Compute TD error: $\delta_t = r_t + \gamma Q_w(s', a') - Q_w(s, a)$ \\
+        \hspace*{2em}Update params of Q function: $w \leftarrow w + \alpha_w \delta_t \nabla_w Q_w(s, a)$ \\
+        \hspace*{2em}$a \leftarrow a', \quad s \leftarrow s'$ \\
+    end for
+\end{mydef}
+
+\dotfill
+
+\textbf{Deep Deterministic Policy Gradient (DDPG)}
+
+Mean-squared Bellman error (MSBE):
+
+$\quad L(\phi, \mathcal D) = \mathbb E_{(s,a,r,s',d) \sim \mathcal D} \left[ \left( Q_\phi(s,a) - (r + \gamma(1-d) \max_{a'} Q_\phi(s', a')) \right)^2 \right]$
+
+$\quad \mathcal D$ is set of transitions $(s, a, r, s', d)$, $d$ tells us if transition is terminal
+
+Target: $r + \gamma (1-d) \max_{a'} Q_\phi(s', a')$
+
+Target network update: $\phi_{\text{targ}} = \rho \phi_{\text{targ}} + (1-\rho)\phi$
+
+Policy learning: gradient ascent wrt $\max_\theta \mathbb E_{s \sim \mathcal D} [Q_\phi(s, \mu_\theta(s))]$
+
+$\quad \mu_\theta(s)$ is deterministic policy
+
+\begin{mydef}{DDPG}{}
+    Input: initial policy params $\theta$, Q-fn params $\phi$, empty replay buffer $\mathcal D$ \\
+    Set target params equal to main params: $\theta_{\text{targ}} \leftarrow \theta, \phi_{\text{targ}} \leftarrow \phi$ \\
+    Loop (until convergence): \\
+        \hspace*{2em}Observe $s$ and select $a = \text{clip}(\mu_\theta(s) + \epsilon, a_{\text{lo}}, a_{\text{hi}}), \quad \epsilon \sim \mathcal N$ \\
+        \hspace*{2em}Execute $a$ and observe $s', r, d$ \\
+        \hspace*{2em}Store $(s, a, r, s', d)$ in replay buffer $\mathcal D$ \\
+        \hspace*{2em}If $s'$ terminal, reset environment state \\
+        \hspace*{2em}If time to update then: \\
+            \hspace*{4em}For however many updates do: \\
+                \hspace*{6em}Sample batch $B = \{(s, a, r, s', d)\} \in \mathcal D$ \\
+                \hspace*{6em}Compute targets:
+                
+                \centering $y(r, s', d) = r + \gamma(1-d) Q_{\phi_{\text{targ}}}(s', \mu_{\theta_{\text{targ}}}(s'))$ \flushleft
+
+                \hspace*{6em}Update Q-function by gradient descent
+
+                \centering $\nabla_\phi \frac{1}{|B|} \sum_{(s,a,r,s',d) \in B} (Q_\phi(s,a) - y(r,s',d))^2$ \flushleft
+
+                \hspace*{6em}Update policy by gradient descent
+
+                \centering $\nabla_\theta \frac{1}{|B|} \sum_{s \in B} Q_\phi(s, \mu_\theta(s))$ \flushleft
+
+                \hspace*{6em}Update target networks with
+
+                \centering $\phi_{\text{targ}} \leftarrow \rho \phi_{\text{targ}} + (1-\rho) \phi, \quad \theta_{\text{targ}} \leftarrow \rho \theta_{\text{targ}} + (1-\rho) \theta$
+\end{mydef}
 
 
 
