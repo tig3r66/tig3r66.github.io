@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medical School - Eddie Guo</title>
+        <meta property="og:title" content="Medical School - Eddie Guo">
+        <meta property="og:description" content="Medical school webpage for Eddie Guo's personal website.">
+        <meta property="og:image" content="../assets/img/index_thumbnail.png">
+        <meta property="og:url" content="https://tig3r66.github.io/medschool.html">
+        <meta name="author" content="Eddie Guo">
+        <meta name="theme-color" content="#600B04">
+        <!-- bootstrap stylesheet -->
+        <link rel="stylesheet" href="../assets/stylesheets/bootstrap.min.css">
+        <!-- AOS stylesheet -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- custom stylesheets -->
+        <link rel="stylesheet" href="../assets/stylesheets/reset.css">
+        <link rel="stylesheet" href="../assets/stylesheets/main.css">
+        <link rel="stylesheet" href="../assets/stylesheets/styles.css">
+        <title>Eddie Guo</title>
+        <!-- font awesome icons -->
+        <script src="https://kit.fontawesome.com/aa1eb67981.js" crossorigin="anonymous"></script>
+        <!-- fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169008636-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-169008636-1');
+        </script>
+    </head>
+
+    <body>
+        <div id="page-container">
+
+            <header>
+                <div id="header"></div>          
+
+                <section class="page-title">
+                    <div class="page-name-container" data-aos="fade-in" data-aos-duration="1000">
+                        <h2>Medical School</h2>
+                    </div>
+                </section>
+            </header>
+
+
+            <article>
+                <div class="article-container">
+                    <!-- intro -->
+                    <p class="med-spacer">This page contains resources that I have compiled from my time in medical school at the University of Calgary.</p>
+
+                    <span class="small-spacer bottom-border"></span>
+
+                    <h3 class="med-spacer">CMA Specialty Profile Summary</h3>
+                    <div class="app-container" style="height: 925px">
+                        <iframe id="slr-app" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTUMy7vShggjFZucakUtbWq5lvDRH9n8TbLTe3cW7LuRXRQzYHVIJ9i_ePtTS7iWpjPgf3qcNc1lfdy/pubhtml?widget=true&amp;headers=false" alt="Summary of CMA specialty profile data from 2019."></iframe>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+                <a id="btt-button">
+                    <i class="fa fa-angle-up" aria-hidden="true"></i>
+                </a>
+            </article>
+
+            <div id="footer"></div>
+
+        </div>
+
+        <!-- bootstrap -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="../assets/scripts/bootstrap.min.js"></script>
+        <!-- AOS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- custom -->
+        <script src="../assets/scripts/app.js"></script>
+    </body>
+</html>
