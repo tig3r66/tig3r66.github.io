@@ -129,6 +129,10 @@ p, .primary-text {
     line-height: 20px;
 }
 
+.indent {
+    margin-left: 20px;
+}
+
 
 /* LIST STYLES ============================================================== */
 
@@ -143,6 +147,10 @@ ul, ol, dl {
 
 .bullet-list li:before {
     content: "• \00a0\00a0";
+}
+
+.ordered-list li:before {
+    content: "\00a0\00a0";
 }
 
 
