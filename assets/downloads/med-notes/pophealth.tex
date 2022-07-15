@@ -1,0 +1,151 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=0.75cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\usepackage{graphicx, caption, multirow, mathtools, amsfonts, booktabs, siunitx}
+\setlength{\columnseprule}{.75pt}
+\def\columnseprulecolor{\color{black}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows, fit, decorations.pathmorphing}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\everymath{\displaystyle}
+
+\title{
+	\vspace{-2em}
+	\normalsize \textbf{Population Health (MDCN 340) Formula Sheet} \\
+	\small Eddie Guo \\
+	\dotfill
+	\vspace{-5em}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\small
+
+\textbf{Mortality}
+
+MR = mortality rate
+
+$\text{crude MR} = \frac{\text{no. of deaths/yr}}{\text{mid-yr pop}}$
+
+$\text{infant MR} = \frac{\text{no. of deaths} <1 \text{ y/o}}{\text{live births/yr}}$
+
+$\text{neonatal MR} = \frac{\text{no. of deaths} <28 \text{ days/o}}{\text{live births/yr}}$
+
+$\text{maternal MR} = \frac{\text{no. of deaths in pregnancy and childbirth}}{\text{live births/yr}}$
+
+$\text{case fatality rate} = \frac{\text{no. of deaths due to disease}}{\text{no. cases of that disease}}$
+
+\dotfill
+
+\textbf{Morbidity}
+
+$\text{point prevalence} = \frac{\text{no. cases at particular time}}{\text{pop}}$
+
+$\text{period prevalence} = \frac{\text{no. cases over interval of time}}{\text{pop at mid-pnt of interval}}$
+
+$\text{incidence risk (cum. incidence)} = \frac{\text{no. new cases over interval of time}}{\text{pop at risk at start of interval}}$
+
+$\text{incidence rate (density)} = \frac{\text{no. new cases over interval of time}}{\text{person-yrs at risk over interval}}$
+
+$\text{absolute risk (AR)} = \frac{\text{no. deaths}}{\text{pop}}$
+
+$\text{relative risk} = \frac{\text{incidence of disease in exposed}}{\text{incidence of disease in unexposed}}$ \hfill OR
+
+$\text{relative risk} = \frac{\text{AR in exposed group}}{\text{AR in unexposed group}}$
+
+\dotfill
+
+\textbf{Disease Burden}
+
+\textit{Acronyms}
+
+PYLL = potential years of life lost
+
+PYLD = potential years of life disabled
+
+DALY = disability adjusted life years
+
+QALY = quality of life adjusted life years
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Equations}
+
+$\text{PYLL} = \sum_{\text{age}} \text{(no. deaths at each age)} \text{(life exp at each age)}$
+
+$\text{PYLD} = \text{(no. incident cases)} \text{(avg duration)} \text{(weight)}$
+
+$\quad$0 = perfect health, 1 = death
+
+$\text{DALY} = \text{PYLL} + \text{PYLD}$
+
+\vspace{-.5em}
+\dotfill
+
+\textbf{Measuring Healthy Populations}
+
+Direct standardization: modifies standard pop w/ measured pop
+
+Indirect standardization: modfifies measured pop w/ standard pop
+
+$\quad \text{SMR} = \frac{\text{no. of observed deaths}}{\text{no. of expected deaths}}$
+
+$\quad$SMR = standardized mortality ratio
+
+
+\newpage
+
+
+\textbf{Confusion Matrix}
+
+\textit{Acronyms}
+
+PPV = positive predictive value
+
+NPV = negative predictive value
+
+\vspace{-.5em}
+\dotfill
+
+\textit{Equations}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        & Disease & No disease \\
+        \midrule
+        Test + & TP & FP \\
+        Test - & FN & TN \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+$\text{PPV} = \frac{\text{TP}}{\text{TP} + \text{FP}}$ \hfill $\text{NPV} = \frac{\text{TN}}{\text{TN} + \text{FN}}$
+
+$\text{sensitivity} = \frac{\text{TP}}{\text{TP} + \text{FN}}$ \hfill \hfill $\text{specificity} = \frac{\text{TN}}{\text{TN} + \text{FP}}$
+
+\dotfill
+
+
+
+
+
+
+\end{document}

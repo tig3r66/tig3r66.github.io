@@ -58,22 +58,11 @@
             <article>
                 <div class="article-container">
                     <!-- intro -->
-                    <p>This page contains resources that I have compiled from my time in medical school at the University of Calgary.</p>
+                    <p>This page contains resources that I have compiled from my time in medical school at the University of Calgary. These include notes, CaRMS R-1 match rate analysis, and CMA specialty profile summaries.</p>
 
                     <span class="small-spacer bottom-border"></span>
 
-                    <h3 class="med-spacer">CMA Specialty Profile Summary</h3>
-                    <p>The data was compiled from the <a class="url" href="https://www.cma.ca/canadian-physician-specialty-profiles" target="_blank">Canadian Medical Association: Canadian physician specialty profiles webpage</a>.</p>
-                    <br>
-
-                    <div class="app-container" style="height: 925px">
-                        <iframe id="slr-app" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTUMy7vShggjFZucakUtbWq5lvDRH9n8TbLTe3cW7LuRXRQzYHVIJ9i_ePtTS7iWpjPgf3qcNc1lfdy/pubhtml?widget=true&amp;headers=false" alt="Summary of CMA specialty profile data from 2019."></iframe>
-                    </div>
-
-                    <span class="small-spacer"></span>
-                    <span class="med-spacer bottom-border"></span>
-
-                    <h3>Match Rates</h3>
+                    <h3>Notes</h3>
                     <span class="small-spacer"></span>
 
                     <table class="uni-notes">
@@ -85,8 +74,42 @@
                           </colgroup>
                         <thead>
                             <tr>
-                                <th>Item</th>
+                                <th>Class</th>
                                 <th>Description</th>
+                                <th>PDF</th>
+                                <th>TeX</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Population Health (MDCN 340)</td>
+                                <td>Concepts of health and disease as they apply to populations, communities and individual patients. The determinants of health and the distribution of disease within and between populations will be explored. The roles of health promotion, health protection and disease prevention will be presented. Students will learn about the evolution and function of the Canadian health-care system in the context of current and historic challenges and international alternatives. Basic epidemiology and biostatistics as they apply to the core concepts of the course will be covered. Community experience with individuals and social/medical community partners is a core part of this course.</td>
+                                <td><a href="../assets/downloads/med-notes/pophealth.pdf" target="_blank" data-toggle="tooltip" data-placement="bottom" title="epidemiology formula sheet" class="url">pophealth.pdf</a></td>
+                                <td><a href="../assets/downloads/med-notes/pophealth.tex" target="_blank" data-toggle="tooltip" data-placement="bottom" title="epidemiology formula sheet" class="url">pophealth.tex</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <span class="small-spacer"></span>
+                    <span class="med-spacer bottom-border"></span>
+
+                    <h3>Match Rates</h3>
+                    <span class="small-spacer"></span>
+
+                    <p><a class="url" href="https://www.carms.ca/" target="_blank">From the CaRMS website:</a> "The Canadian Resident Matching Service (CaRMS) is national, independent, not-for-profit, fee-for-service organization that provides a fair, objective and transparent application and matching service for medical training throughout Canada."</p>
+                    <br>
+                    <p>In the .R files, I analyze the match rates for each year and across time for the following medical schools: Queen's University, University of Toronto, McMaster University, University of Alberta, University of Calgary, University of British Columbia, and University of Ottawa. You can easily add additional schools to analyze by modifying the relevant sections in the code. Whereas big_analysis.R uses the data I've compiled in this table row, carms_match_rate.R pulls directly from the CaRMS website. Open the PDF or run the code using the R programming language to view the figures. All data was obtained from the <a class="url" href="https://www.carms.ca/data-reports/r1-data-reports/" target="_blank">R-1 match reports on the CaRMS website</a>.</p>
+                    <br>
+
+                    <table class="uni-notes">
+                        <colgroup>
+                            <col style="width:33%">
+                            <col style="width:33%">
+                            <col style="width:34%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
                                 <th>Code</th>
                                 <th>Data</th>
                             </tr>
@@ -94,9 +117,6 @@
                         <tbody>
                             <tr>
                                 <td>CaRMS Match Rates</td>
-                                <td><p><a class="url" href="https://www.carms.ca/" target="_blank">From the CaRMS website:</a> "The Canadian Resident Matching Service (CaRMS) is national, independent, not-for-profit, fee-for-service organization that provides a fair, objective and transparent application and matching service for medical training throughout Canada."</p>
-                                <br>
-                                <p>In the .R files, I analyze the match rates for each year and across time for the following medical schools: Queen's University, University of Toronto, McMaster University, University of Alberta, University of Calgary, University of British Columbia, and University of Ottawa. You can easily add additional schools to analyze by modifying the relevant sections in the code. Whereas big_analysis.R uses the data I've compiled in this table row, carms_match_rate.R pulls directly from the CaRMS website. Open the PDF or run the code using the R programming language to view the figures. All data was obtained from the <a class="url" href="https://www.carms.ca/data-reports/r1-data-reports/" target="_blank">R-1 match reports on the CaRMS website</a>.</p></td>
                                 <td>
                                     <p><a href="../assets/downloads/carms_match_rates/match_rates.pdf" target="_blank" data-toggle="tooltip" data-placement="bottom" title="PDF of plots" class="url">match_rates.pdf</a></p>
                                     <p><a href="../assets/downloads/carms_match_rates/big_analysis.R" target="_blank" data-toggle="tooltip" data-placement="bottom" title="requires .xlsx files" class="url">big_analysis.R</a></p>
@@ -112,6 +132,17 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <span class="small-spacer"></span>
+                    <span class="med-spacer bottom-border"></span>
+
+                    <h3 class="med-spacer">CMA Specialty Profile Summary</h3>
+                    <p>The data was compiled from the <a class="url" href="https://www.cma.ca/canadian-physician-specialty-profiles" target="_blank">Canadian Medical Association: Canadian physician specialty profiles webpage</a>.</p>
+                    <br>
+
+                    <div class="app-container" style="height: 925px">
+                        <iframe id="slr-app" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTUMy7vShggjFZucakUtbWq5lvDRH9n8TbLTe3cW7LuRXRQzYHVIJ9i_ePtTS7iWpjPgf3qcNc1lfdy/pubhtml?widget=true&amp;headers=false" alt="Summary of CMA specialty profile data from 2019."></iframe>
+                    </div>
                 </div>
 
                 <div class="spacer"></div>
