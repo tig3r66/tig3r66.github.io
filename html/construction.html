@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <!-- media meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="Page Undeer Construction">
+        <meta property="og:title" content="Page Under Construction">
         <meta property="og:description" content="Construction page for Eddie Guo's personal website.">
         <meta property="og:image" content="../assets/img/construction_thumbnail.png">
         <meta property="og:url" content="https://tig3r66.github.io/construction.html">
         <meta name="author" content="Eddie Guo">
         <meta name="theme-color" content="#600B04">
-        <!-- boostrap stylesheet -->
+        <!-- bootstrap stylesheet -->
         <link rel="stylesheet" href="../assets/stylesheets/bootstrap.min.css">
         <!-- AOS stylesheet -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -23,6 +23,14 @@
         <script src="https://kit.fontawesome.com/aa1eb67981.js" crossorigin="anonymous"></script>
         <!-- fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169008636-1"></script>
         <script>
@@ -38,34 +46,7 @@
         <div id="page-container">
 
             <header>
-                <nav>
-                    <div class="nav-container">
-                        <!-- name -->
-                        <div class="logo">
-                            <h1><a href="../index.html" class="name current">Eddie Guo</a></h1>
-                        </div>
-
-                        <!-- navigation links -->
-                        <ul class="my-nav-links">
-                            <li><a href="../index.html"><button class="fade-in">Home</button></a></li>
-                            <li><a href="projects.html"><button class="fade-in">Projects</button></a></li>
-                            <li><a href="research.html"><button class="fade-in">Research</button></a></li>
-                            <li><a href="html/university.html"><button class="fade-in">University</button></a></li>
-                            <li><a href="construction.html"><button class="fade-in">Contact</button></a></li>
-                        </ul>
-
-                        <!-- burger menu icon -->
-                        <div class="hamburger">
-                            <div class="line1"></div>
-                            <div class="line2"></div>
-                            <div class="line3"></div>
-                        </div>
-                    </div>
-                </nav>
-
-                <section class="affiliation current">
-                    <p>BSc Engineering Physics Student<br>University of Alberta</p>
-                </section>
+                <div id="header"></div>
 
                 <span class="large-spacer"></span>
 
@@ -100,7 +81,7 @@
 
             <footer>
                 <div class="footer-container">
-                    <p>&copy; 2020-2021 by Eddie Guo</p>
+                    <p>&copy; 2020-2022 by Eddie Guo</p>
                 </div>
             </footer>
 
