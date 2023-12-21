@@ -225,8 +225,8 @@ button {
     display: flex;
     flex-direction: row;
     font-size: 48px;
-    justify-content: left;
     width: 100%;
+    margin-left: 0;
 }
 
 .social-media-icons a {
@@ -243,6 +243,14 @@ button {
 .social-media-icons #orcid-icon a:hover { color: #FFE74C; }
 
 .social-media-icons #github-icon a:hover { color: #20BF55; }
+
+.social-media-icons #research-icon i:hover { color: var(--main-bg-color); }
+
+#research-icon i {
+    margin-right: 50px;
+    font-size: 24px;
+    color: var(--dark-black);
+}
 
 .filler { width: 15px; }
 

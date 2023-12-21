@@ -1,5 +1,11 @@
 <footer>
     <div class="footer-container">
-        <p>&copy; 2020-2023 by Eddie Guo</p>
+        <p>&copy; 2020-{Present Year} by Eddie Guo</p>
     </div>
 </footer>
+
+<script>
+    var currentYear = new Date().getFullYear();
+    var footer = document.querySelector("footer > div > p");
+    footer.innerHTML = footer.innerHTML.replace("{Present Year}", currentYear);
+</script>
