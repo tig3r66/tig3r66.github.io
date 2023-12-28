@@ -39,6 +39,11 @@
           gtag('js', new Date());
           gtag('config', 'UA-169008636-1');
         </script>
+
+        <script
+            type="module"
+            src="https://gradio.s3-us-west-2.amazonaws.com/4.12.0/gradio.js"
+        ></script>
     </head>
 
 
@@ -61,6 +66,12 @@
                     <section class="main-projects">
                         <h2>Interactive Projects</h2>
                         <span class="small-spacer"></span>
+                        <h3>Eddie Guo Chatbot</h3>
+                        <p class="med-spacer">This chatbot is powered by retrieval-augmented generation using my CV with OpenAI large language models. Please note that all answers should be taken with a grain of salt.</p>
+                        <gradio-app src="https://eddieguo-eddieguo.hf.space" theme_mode="light"></gradio-app>
+
+                        <span class="xs-spacer"></span>
+
                         <h3>A Gentle Introduction to Data Science with R</h3>
                         <p class="med-spacer">This <a class="url" target="_blank" href="https://youreka-textbook.netlify.app/">interactive textbook</a> was designed for high school and undergraduate students to learn the R programming language with an emphasis on statistical tests and data visualization. Over 800 students across Canada in the <a class="url" target="_blank" href="https://yourekacanada.org/">Youreka Canada Program</a> have used this textbook.</p>
 
