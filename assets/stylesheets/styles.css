@@ -299,7 +299,7 @@ button {
         margin: auto;
         border-radius: 15px;
         background: transparent;
-        transition: all 0.25s ease-in;
+        /* transition: all 0.25s ease-in; */
         border: 0;
     }
 
