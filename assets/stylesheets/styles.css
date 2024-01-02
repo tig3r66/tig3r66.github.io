@@ -224,6 +224,7 @@ button {
 .social-media-icons {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     font-size: 48px;
     width: 100%;
     margin-left: 0;
