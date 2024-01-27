@@ -354,6 +354,8 @@ button {
 
     .social-media-icons { justify-content: center; }
 
+    #research-icons { justify-content: left; }
+
     .filler { width: 15px; }
 }
 
