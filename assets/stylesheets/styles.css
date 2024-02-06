@@ -246,6 +246,10 @@ button {
 
 .social-media-icons #github-icon a:hover { color: #20BF55; }
 
+.social-media-icons #gs-icon a:hover { color: #adfaee; }
+
+.social-media-icons #rg-icon a:hover { color: #d293fe; }
+
 .social-media-icons #research-icon i:hover { color: var(--main-bg-color); }
 
 #research-icon i {
