@@ -4,6 +4,7 @@
 \usepackage{amsmath, graphicx}
 \usepackage{times}
 \usepackage[symbol]{footmisc}
+\usepackage{xurl}
 
 % Link Colors
 \usepackage{xcolor}
@@ -55,7 +56,7 @@
 \textit{Doctor of Medicine (MD)}
 \begin{itemize}
     \item Elected President of the Calgary Medical Students' Association
-    \item Published 31 peer-reviewed publications (14 first-author); USMLE Step 1 (Pass)
+    \item Published 34 peer-reviewed publications (16 first-author); USMLE Step 1 (Pass)
     \item Awarded grants from OpenAI, Microsoft, Calgary Department of Surgery, and UCalgary Students' Union to develop large language model platforms for medical education and clinical practice
 \end{itemize} \vspace{1em}
 
@@ -81,24 +82,25 @@
 \section*{\textcolor{my_colour}{Leadership and Volunteering}}
 \vspace{-.25em} \hrulefill \vspace{.25em}
 
-\textbf{OSCE-GPT} \hfill Feb 2023 -- Present \\
+\textbf{OSCEai} \hfill Feb 2023 -- Present \\
 \textit{Co-Creator and Principal Software Developer}
 \begin{itemize}
-    \item Created \href{https://oscegpt.com/}{OSCE-GPT}, an AI-powered app that offers communications and medical management practice with images, medical documentation, and feedback; 6,000+ users in 60+ countries
-    \item Solely responsible for the entire development lifecycle of the application, including coding, testing, deployment, and outreach for use in medical and nursing education curricula across Canada
+    \item Created \href{https://osceai.ca/}{OSCEai}, a generative AI app that offers communications and medical management practice with images, medical documentation, and feedback; 10,000+ users in 80+ countries
+    \item Solely responsible for coding, testing, deployment, outreach, research, and grant funding
     \item Used in the University of Calgary RIME curriculum for medical students, NURS 289 for Calgary nursing students, and University of Manitoba for nursing students
     \item Collaborating with \textit{Medical schools} -- Calgary, McMaster, Ottawa, UBC; \textit{Neurosurgery programs} -- across the country; \textit{Dermatology residents} -- Calgary, Toronto; \textit{Ophthalmology residents} -- Toronto, McGill; \textit{Allied Health} -- Alberta Association of Nurses, Calgary nursing, Manitoba nursing, SAIT respiratory therapy
-    \item Media coverage: \href{https://cumming.ucalgary.ca/news/ucalgary-students-create-app-help-medical-students-learn-how-talk-patients}{UCalgary News}, \href{https://www.theglobeandmail.com/canada/alberta/article-new-app-uses-ai-to-help-calgary-medical-students-practise-interacting/}{The Globe and Mail}, \href{https://www.thestar.com/news/canada/new-app-uses-ai-to-help-calgary-medical-students-practise-interacting-with-patients/article_e24a869c-58f4-58ee-99ea-666e2bc65f27.amp.html}{Toronto Star}, \href{https://www.cbc.ca/amp/1.6975645}{CBC}, \href{https://globalnews.ca/news/9978614/new-app-uses-ai-medical-students-practise-interacting-patients/}{Global News}, \href{https://calgary.ctvnews.ca/new-app-uses-ai-to-help-calgary-medical-students-practise-interacting-with-patients-1.6573065?utm_source=ground.news&utm_medium=referral}{CTV News}
+    \item Media coverage: \href{https://cumming.ucalgary.ca/news/ucalgary-students-create-app-help-medical-students-learn-how-talk-patients}{UCalgary News}, \href{https://www.theglobeandmail.com/canada/alberta/article-new-app-uses-ai-to-help-calgary-medical-students-practise-interacting/}{The Globe and Mail}, \href{https://www.thestar.com/news/canada/new-app-uses-ai-to-help-calgary-medical-students-practise-interacting-with-patients/article_e24a869c-58f4-58ee-99ea-666e2bc65f27.amp.html}{Toronto Star}, \href{https://www.cbc.ca/amp/1.6975645}{CBC}, \href{https://globalnews.ca/news/9978614/new-app-uses-ai-medical-students-practise-interacting-patients/}{Global News}, \href{https://calgary.ctvnews.ca/new-app-uses-ai-to-help-calgary-medical-students-practise-interacting-with-patients-1.6573065?utm_source=ground.news&utm_medium=referral}{CTV News}, \href{https://agetechworld-co-uk.cdn.ampproject.org/c/s/agetechworld.co.uk/news/new-ai-app-could-hold-key-to-better-older-patient-doctor-communication/?amp=1}{AgeTech World}
 \end{itemize} \vspace{1em}
 
 \textbf{Medical Education Working Group} \hfill Feb 2023 -- Present \\
 \textit{Co-Founder, Editor-In-Chief, and Principal Software Developer}
 \begin{itemize}
-    \item Created a \href{https://chat.openai.com/g/g-cewxRzfa6-toronto-notes}{Toronto Notes GPT}, an AI model that provides medical knowledge using the Toronto Notes; creating a medical question bank in collaboration with Toronto Notes and University of Calgary Cards
-    \item Created \href{https://prepcarms.netlify.app/}{PrepCaRMS}, an AI-powered app that offers interview practice with all CaRMS R-1 specialties (users speak to their device and then it speaks back) and feedback based on the interview
-    \item Created the \href{https://github.com/tig3r66/royal-college-practice}{Royal College Oral Practice App}, an AI-powered app that provides practice and feedback for Canadian residents oral board exams; the app features dynamically-added images; users speak to their device and then it speaks back
-    \item Created \href{https://github.com/tig3r66/mednoteai}{MedNoteAI}, a GPT-powered app for automated generation of notes and questions from lecture videos, audio, and PDFs; powered by Flask, OpenAI Whisper API, and GPT-3.5
-    \item Created \href{https://github.com/tig3r66/mednoteai}{SOAPNoteAI} a GPT-powered app for automated generation of SOAP notes, consult notes, differential diagnoses, and more from an audio file of a patient interaction
+    \item Created \href{https://oncallscheduler.netlify.app/}{On Call Scheduler}, an automatic call shift scheduler that optimizes time off and load balancing across team members with statistics per individual; the app allows export of the generated schedule to calendar apps and Microsoft Word
+    \item Created a \href{https://chat.openai.com/g/g-cewxRzfa6-toronto-notes}{Toronto Notes GPT} to provide medical knowledge using Toronto Notes and ChatGPT
+    \item Created \href{https://prepcarms.netlify.app/}{PrepCaRMS} to provide interview practice with all CaRMS R-1 specialties with tailored feedback for each interaction
+    \item Created the \href{https://github.com/tig3r66/royal-college-practice}{Royal College Oral Practice App} to provide practice and feedback for Canadian residents oral board exams
+    \item Created \href{https://github.com/tig3r66/mednoteai}{MedNoteAI} app for automated generation of notes and questions from lecture videos, audio, and PDFs
+    \item Created \href{https://github.com/tig3r66/mednoteai}{SOAPNoteAI} an app for automated generation of SOAP notes, consult notes, differential diagnoses, and more from an audio file of a patient interaction
 \end{itemize} \vspace{1em}
 
 \textbf{Calgary Medical Students' Association (CMSA)} \hfill Sep 2022 -- Present \\
@@ -162,9 +164,10 @@
 \textbf{Manuscripts} \vspace{.5em}
 
 \begin{enumerate}
-    % \item S. Lama, M. Chow, A. Baghdadi, \textbf{E. Guo}, R. Singh, N.A. Lad, H.A. Riva-Cambrin, G. Sutherland$^*$, ``The SmartForceps System: Interconnected Digital Operating Rooms,'' \textit{Frontiers in Neurosurgery} [in review].
+    \item \textbf{E. Guo}, R. Ramchandani, Y. Park, M. Gupta, ``OSCEai: Personalized Interactive Learning for Undergraduate Medical Education,'' \textit{Canadian Medical Education Journal} [accepted].
+    \item \textbf{E. Guo}, M.B. Keough, A.M. Henderson, E. Hagen, M.A. Levine, T.G. Arnason, K. Au, ``Perioperative Management of Patients with Glioblastoma Co-Presenting with Pheochromocytoma,'' \textit{Journal of Neurosurgery: Case Lessons} [accepted].
+    \item \textbf{E. Guo}, C. Perlette, M. Sharifi, L. Grasse, M. Tata, V. K. Mushahwar, M. Tavakoli$^*$, ``Speech-Based Human-Exoskeleton Interaction for Lower Limb Motion Planning,''  \textit{IEEE International Conference on Human-Machine Systems}, May 2024, doi: \href{https://doi.org/10.1109/ICHMS59971.2024.10555587}{10.1109/ICHMS59971.2024.10555587}.
     \item \textbf{E. Guo}, M. Gupta, H. Rossong, L. Boone, B. Manoranjan, S. Ahmed, I. Stukalin, S. Lama, G. Sutherland$^*$, ``Healthcare Spending vs Mortality in CNS Cancer: Has Anything Changed?'' \textit{Neuro-Oncology Practice}, Apr. 2024, doi: \href{https://doi.org/10.1093/nop/npae039}{10.1093/nop/npae039}.
-    \item \textbf{E. Guo}, C. Perlette, M. Sharifi, L. Grasse, M. Tata, V. K. Mushahwar, M. Tavakoli$^*$, ``Speech-Based Human-Exoskeleton Interaction for Lower Limb Motion Planning,''  \textit{IEEE International Conference on Human-Machine Systems} [accepted].
     \item J. S.G. Pascual, \textbf{E. Guo}, R. Yang, K. D. Langdon, S. Lama, G. Sutherland$^*$, ``Ruptured pial-pial collateral aneurysm associated with left internal carotid artery occlusion: Nuances of surgical management,'' \textit{Journal of Neurosurgery: Case Lessons}, 7(12), CASE2454, Mar. 2024, doi: \href{https://doi.org/10.3171/CASE2454}{10.3171/CASE2454}
     \item Y. Park, A. Pillai, J. Deng, \textbf{E. Guo}, M. Gupta, M. Paget, C. Naugler$^*$, ``Assessing the research landscape and utility of large language models in the clinical setting: A scoping review,'' \textit{BMC Medical Informatics and Decision Making}, Mar. 2024, doi: \href{https://doi.org/10.1186/s12911-024-02459-6}{10.1186/s12911-024-02459-6}.
     \item \textbf{E. Guo}$^*$, M. Gupta, J. Deng, Y. Park, M. Paget, C. Naugler, ``Automated Paper Screening for Clinical Reviews Using Large Language Models: Data Analysis Study,'' \textit{Journal of Medical Internet Research}, Jan. 2024, doi: \href{https://doi.org/10.2196/48996}{10.2196/48996}.
@@ -179,8 +182,9 @@
 \textbf{Invited Talks} \vspace{.5em}
 
 \begin{enumerate}
-    \item ``The Role of Artificial Intelligence in Geriatric Medicine Education,'' \textit{Canadian Geriatrics Society Annual Scientific Meeting}, Calgary, AB, Canada, Apr. 26, 2024.
-    \item ``IEEE Humangineering Series: Changing the Medical Landscape with LLMs,'' \textit{IEEE Sight, Schulich School of Engineering, University of Calgary}, Jan. 11, 2024.
+    \item \textbf{E. Guo}, ``OSCEai: Generative AI for Interactive Medical Education,'' \textit{Alberta Innovates Student Innovator Session}, AB, Canada, Jul. 11, 2024.
+    \item A. Burrell, E. Dempsey, \textbf{E. Guo}, ``The Role of Artificial Intelligence in Geriatric Medicine Education,'' \textit{Canadian Geriatrics Society Annual Scientific Meeting}, Calgary, AB, Canada, Apr. 26, 2024.
+    \item \textbf{E. Guo}, ``IEEE Humangineering Series: Changing the Medical Landscape with LLMs,'' \textit{IEEE Sight, Schulich School of Engineering, University of Calgary}, Jan. 11, 2024.
 \end{enumerate} \vspace{1em}
 
 \textbf{Oral Presentations} \vspace{.5em}
@@ -194,16 +198,17 @@
 \textbf{Poster Presentations} \vspace{.5em}
 
 \begin{enumerate}
-    \item Y. Park, B. Ma, M. Gupta, \textbf{E. Guo}, ``Temporal and Regional Trends in Canada for the Epidemiology and Management of Infective Endocarditis,'' \textit{The International Congress on Academic Medicine 2024 Conference}, Vancouver, BC, Canada, Apr. 12-15, 2024 [submitted].
-    \item Y. Park, A. Pillai, J. Deng, M. Gupta, \textbf{E. Guo}, M. Paget, C. Naugler, ``Assessing the research landscape and clinical utility of large language models: a scoping review,'' \textit{The International Congress on Academic Medicine 2024 Conference}, Vancouver, BC, Canada, Apr. 12-15, 2024 [submitted].
-    \item \textbf{E. Guo}, L. Boone, H. Shakil, R. Sanguinetti, M. Gupta, S. Lama, G. Sutherland$^*$, ``Chordoma Management with Artificial Intelligence: A Scoping Review of Current Applications and Future Prospects,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024 [accepted].
+    \item Y.J. Park, \textbf{E. Guo}, M. Sachdeva, B. Ma, S. Mirali, B. Rankin, N. Nathaniels, A. Abduelmula, T. Lapa, T. Champagne, ``OSCE-GPT Dermatology: Augmenting Medical Education With Artificial Intelligence,'' \textit{Dermatology Medical Student Virtual Symposium 2024}, Brigham and Women’s Hospital, Boston, MA, May 29, 2024.
+    \item \textbf{E. Guo}, L. Boone, H. Shakil, R. Sanguinetti, M. Gupta, S. Lama, G. Sutherland$^*$, ``Chordoma management with artificial intelligence: a scoping review of current applications and future prospects,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024, doi: \href{https://doi.org/10.1017/cjn.2024.186}{10.1017/cjn.2024.186}.
     \item \textbf{E. Guo}, R. Sanguinetti, R. Ramchandani, S. Lama, G. Sutherland$^*$, ``
-    Evaluating AI Performance in Written Neurosurgery Exams: A Comparative Analysis of Large Language Models,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024 [accepted].
-    \item J. S.G. Pascual, \textbf{E. Guo}, R. Yang, K. D. Langdon, S. Lama, G. Sutherland$^*$, ``Left Temporal Aneurysm Resection: Surgical Approach in Pial-Pial Collateral Formation from the Posterior Temporal Artery Secondary to Left Internal Artery Occlusion,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024 [accepted].
-    \item \textbf{E. Guo}, R. Sanguinetti, L. Boone, B. Karmur, S. Lama, G. Sutherland$^*$, ``Canadian Neurosurgical Healthcare Spending Trends,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024 [accepted].
-    \item R. Ramchandani, \textbf{E. Guo}, N. Sahlollbey, M. Carr, L. Caulley$^*$, ``Evaluation of GPT-4 with Vision on the Oto Chautauqua Question Bank,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024 [accepted].
-    \item \textbf{E. Guo}, J. S.G. Pascual, S. K.N. Cua, K. J.O. Khu, S. Lama, G. Sutherland$^*$, ``AI automation of awake brain mapping with Eloquent Aid: A possible solution for low-resource settings,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024 [accepted].
-    \item I. Ma$^*$, \textbf{E. Guo}, M. Gupta, O. Chen, M. Vergouwen, B. Chiang, M. Paget, C. Naugler, A. Harvey, ``Using large language models to automate literature screening in undergraduate medical program evaluation,'' \textit{International Congress on Academic Medicine 2024}, Vancouver, BC, Canada, Apr. 12-15, 2024 [accepted].
+    Evaluating AI performance in written neurosurgery exams: a comparative analysis of large language models,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024, doi: \href{https://doi.org/10.1017/cjn.2024.213}{10.1017/\\cjn.2024.213}.
+    \item J. S.G. Pascual, \textbf{E. Guo}, R. Yang, K. D. Langdon, S. Lama, G. Sutherland$^*$, ``Left temporal aneurysm resection: surgical approach in Pial-Pial collateral formation from the posterior temporal artery secondary to left internal artery occlusion,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024, doi: \href{https://doi.org/10.1017/cjn.2024.223}{10.1017/cjn.2024.223}.
+    \item \textbf{E. Guo}, R. Sanguinetti, L. Boone, B. Karmur, S. Lama, G. Sutherland$^*$, ``Canadian neurosurgical healthcare spending trends,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024, doi: \href{https://doi.org/10.1017/cjn.2024.230}{10.1017/cjn.2024.230}.
+    \item R. Ramchandani, S.G. Biglou, M. Gupta, \textbf{E. Guo}, $^*$, ``Using AI to revolutionize clinical training through OSCE-GPT: a focused exploration of user feedback on otolaryngology and neurology cases,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024, doi: \href{https://doi.org/10.1017/cjn.2024.176}{10.1017/cjn.2024.176}.
+    \item \textbf{E. Guo}, J. S.G. Pascual, S. K.N. Cua, K. J.O. Khu, S. Lama, G. Sutherland$^*$, ``Automated awake brain mapping with eloquentaid: a novel tool for low-resource settings,'' \textit{CNSF 2024}, Toronto, ON, Canada, May 20-25, 2024, doi: \href{https://doi.org/10.1017/cjn.2024.236}{10.1017/cjn.2024.236}.
+    \item Y. Park, A. Pillai, J. Deng, M. Gupta, \textbf{E. Guo}, M. Paget, C. Naugler, ``Assessing the research landscape and clinical utility of large language models: a scoping review,'' \textit{The International Congress on Academic Medicine 2024 Conference}, Vancouver, BC, Canada, Apr. 12-15, 2024.
+    \item Y. Park, B. Ma, M. Gupta, \textbf{E. Guo}, ``Temporal and Regional Trends in Canada for the Epidemiology and Management of Infective Endocarditis,'' \textit{The International Congress on Academic Medicine 2024 Conference}, Vancouver, BC, Canada, Apr. 12-15, 2024.
+    \item I. Ma$^*$, \textbf{E. Guo}, M. Gupta, O. Chen, M. Vergouwen, B. Chiang, M. Paget, C. Naugler, A. Harvey, ``Using large language models to automate literature screening in undergraduate medical program evaluation,'' \textit{International Congress on Academic Medicine 2024}, Vancouver, BC, Canada, Apr. 12-15, 2024.
     \item Y.J. Park, B. Ma, \textbf{E. Guo}, M. Gupta, M. Ramien$^*$, ``RIME-GPT:  Leveraging AI to provide real-time, personalized clinical support for pediatric reactive infectious mucocutaneous eruptions (RIME),'' \textit{Pediatric Dermatology Research Alliance}, Nov. 9-11, 2023.
     \item \textbf{E. Guo}, M. Gupta, H. Rossong, S. Lama, G. Sutherland$^*$, ``A cost analysis of brain and nervous system cancer care: an examination of healthcare expenditure trends in the United States from 1996 to 2016,'' \textit{Neuro-Oncology}, Vancouver, BC, Canada, Nov. 15-19, 2023, vol. 25, pp. v122-v123, doi: \href{https://doi.org/10.1093/neuonc/noad179.0464}{10.1093/neuonc/noad179.0464}.
     \item \textbf{E. Guo}, M. Gupta, S. Sinha, K. R\"ossler, M. Tatagiba, R. Akagami, O. Al-Mefty, T. Sugiyama, P.E. Stieg, G.E. Pickett, M. de Lotbiniere-Bassett, R. Singh, S. Lama, G. Sutherland$^*$, ``neuroGPT-X: Advancing Responsible Large Language Models for Clinical Use,'' \textit{CNS 2023}, Washington, DC, USA, Sep. 9-13, 2023.
@@ -240,7 +245,7 @@
 
 
 % ================================== RESEARCH GRANTS ================================== 
-\section*{\textcolor{my_colour}{Selected Grants} \normalfont{(of 17)}}
+\section*{\textcolor{my_colour}{Selected Grants} \normalfont{(of 19)}}
 \vspace{-.25em} \hrulefill \vspace{.25em}
 
 \textbf{Innovation in Surgical Education Grant} \hfill Mar 2024
@@ -297,6 +302,11 @@
 % ================================== HONOURS AND AWARDS ================================== 
 \section*{\textcolor{my_colour}{Selected Scholarships and Awards} \normalfont{(of 22)}}
 \vspace{-.25em} \hrulefill \vspace{.25em}
+
+\textbf{Dutkevich Memorial Trust Award for Medical Students} \hfill Jun 2024
+\begin{itemize}
+    \item Offered to MD students who have taken an  approved clerkship elective in Pathology, Medical Microbiology, or Neuropathology
+\end{itemize} \vspace{1em}
 
 \textbf{Cumming School of Medicine Tuition Reinvestment Bursary} \hfill Dec 2023
 \begin{itemize}
@@ -370,15 +380,16 @@
     \item Journey to Medicine, Spotify, Nathan Barreth: \href{https://open.spotify.com/episode/61ah1zCA0stsM13zechA8C?si=ff46203a4e5a4721}{E5 - Eddie Guo: Find Your Reason} \hfill Dec 2023
 \end{enumerate} \vspace{1em}
 
-\textbf{Interviews} \vspace{.5em}
+\textbf{News} \vspace{.5em}
 \begin{enumerate}
+    \item UCalgary News, Lorelei Anselmo: \href{https://ucalgary.ca/news/empowering-teaching-and-learning-experiences-through-genai}{Empowering teaching and learning experiences through GenAI} \hfill May 2024
     \item Calgary Department of Clinical Neurosciences 2022-2023 Annual Report: \href{https://cumming.ucalgary.ca/departments/dcns/about/annual-reports}{The AI will see you shortly} \hfill Mar 2024
     \item AgeTech World, Jane Hall: \href{https://agetechworld-co-uk.cdn.ampproject.org/c/s/agetechworld.co.uk/news/new-ai-app-could-hold-key-to-better-older-patient-doctor-communication/?amp=1}{New AI app could hold key to better older patient-doctor communication} \hfill Oct 2023
     \item The Canadian Press: \href{https://www.youtube.com/watch?v=e8d3D5-pBSM&ab_channel=TheCanadianPress}{Calgary med student develops AI patient program} \hfill Sep 2023
     \item CBC, Bill Graveland: \href{https://www.cbc.ca/news/canada/calgary/ai-calgary-medical-students-app-skills-1.6975645}{New app uses AI to help Calgary medical students practise interacting with patients} \hfill Sep 2023
     \item L'actualit\'e: Bill Graveland: \href{https://lactualite.com/actualites/un-etudiant-de-calgary-cree-une-application-pour-former-les-futurs-medecins/}{Un \'etudiant de Calgary crée une application pour former les futurs m\'edecins} \hfill Sep 2023
     \item Noovo Info, Bill Graveland: \href{https://www.noovo.info/nouvelle/de-futurs-medecins-formes-avec-une-application.html}{De futurs m\'edecins form\`es avec une application?} \hfill Sep 2023
-    \item U of C UToday, Kelly Johnston: \href{https://cumming.ucalgary.ca/news/ucalgary-students-create-app-help-medical-students-learn-how-talk-patients}{UCalgary students create app to help medical students learn how to talk to patients} \hfill Sep 2023
+    \item UToday, Kelly Johnston: \href{https://cumming.ucalgary.ca/news/ucalgary-students-create-app-help-medical-students-learn-how-talk-patients}{UCalgary students create app to help medical students learn how to talk to patients} \hfill Sep 2023
     \item CTV News Edmonton, Adam Lachacz: \href{U of A integrating artificial intelligence into exoskeleton technology}{U of A integrating artificial intelligence into exoskeleton technology} \hfill Aug 2022
     \item U of A Folio, Michael Brown: \href{https://www.ualberta.ca/folio/2020/07/students-develop-online-tool-to-predict-covid-19-spread-based-on-demographics.html}{Students develop online tool to predict COVID-19 spread based on demographics} \hfill Jul 2020
     \item Cybera: \href{https://www.cybera.ca/covid-19-data-science-hackathon-winners/}{Alberta Innovates Announces Results from COVID-19 Data Science Hackathon} \hfill May 2020
@@ -413,12 +424,12 @@
 
 \textbf{Certifications} \hfill \parbox[t]{.8\linewidth}{USMLE Step 1, ACLS, BLS, Standard First Aid CPR and AED Level C, DELF B1}
 
-\textbf{Skills} \hfill \parbox[t]{.8\linewidth}{Machine learning, deep learning, reinforcement learning, data science, education, curriculum development}
+\textbf{Skills} \hfill \parbox[t]{.8\linewidth}{Machine learning, reinforcement learning, medical education, curriculum development}
 
-\textbf{Software} \hfill \parbox[t]{.8\linewidth}{R, Python, C++, MATLAB, Simulink, VHDL, Git, \LaTeX, HTML, CSS, JavaScript, Node.JS}
+\textbf{Software} \hfill \parbox[t]{.8\linewidth}{Python, R, C++, MATLAB, \LaTeX, HTML, CSS, JavaScript, Node.JS, Simulink, Git}
 
 \textbf{Professional Societies} \hfill \parbox[t]{0.8\linewidth}{Congress of Neurological Surgeons, Institute of Electrical and Electronics Engineers (IEEE)}
 
-\textbf{Hobbies \& Interests} \hfill \parbox[t]{.8\linewidth}{Billiards, programming, machine learning, running, fencing, soccer, reading}
+\textbf{Hobbies \& Interests} \hfill \parbox[t]{.8\linewidth}{Billiards, programming, generative AI, running, fencing, soccer, reading}
 
 \end{document}
