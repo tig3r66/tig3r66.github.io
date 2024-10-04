@@ -28,9 +28,17 @@
 \setlist[enumerate]{itemsep=0.5em}
 
 
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyfoot[C]{\raisebox{0.25cm}{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
 
 \begin{document}
-\thispagestyle{plain}
+\pagestyle{plain}
 % =================================== HEADER ===================================
 \begin{center}
 \LARGE \textbf{\textcolor{my_colour}{Edward (Eddie) Guo}} \vspace{.2em}
